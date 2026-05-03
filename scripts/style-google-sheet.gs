@@ -162,6 +162,35 @@ function styleSheet() {
     urlRange.setFontColor("#b91c1c");
   }
 
+  // ── 11. Header hover-tooltip notes ───────────────────────────────
+  // Hover any column header to see what the column means. Same content
+  // as the local viewer's field guide.
+  const NOTES = {
+    ID: "Unique source identifier (R001, R002…). Stable across edits.",
+    Source: "Title of the article, repo, course, podcast episode, or document.",
+    Who: "Person/org that published it + their professional role.\nFormat: \"{Name} · {Role}\".\nThe \"why their voice matters\" column.",
+    TrustSignals: "1–3 concrete observable facts supporting (or qualifying) credibility — e.g. \"agency operating since 2007\", \"vendor of the MCP server they describe\", \"code-as-evidence — every claim verifiable in repo\". Distinct from the AUTH score.",
+    Type: "Source category:\nPRIMARY (Anthropic publishing about Claude)\nVENDOR-COURSE / VENDOR-DOCS / VENDOR-BLOG / VENDOR-RESOURCE (vendor selling something)\nINDUSTRY-PUB (Search Engine Land, MarTech.org)\nAGENCY-CASE (named agency case study)\nPRACTITIONER (individual blog/Substack)\nOPEN-SOURCE (GitHub repo)\nPODCAST · COURSE · PRIMARY-RESEARCH",
+    Discipline: "Marketing area:\nSEO · GADS (Google Ads) · META (Facebook/Instagram Ads) · BRAND (digital branding) · ANALYTICS · MOPS (marketing ops) · CONTENT · CROSS (cross-cutting).\nCompound values like GADS+META are allowed.",
+    Year: "Publication or measurement year.",
+    URL: "Direct link to the source.",
+    KeyData: "Headline data points extracted from the source — numbers, named workflows, case studies, methodologies.\nShould be readable on its own without opening the URL.",
+    AUTH: "Authority (1–5) — credibility of the source itself.\n5 = Anthropic primary / peer-reviewed / major industry pub (Search Engine Land, MarTech)\n4 = established agency with operating history (Ayima, Animalz, AdventurePPC) OR senior named operator (Emily Kramer)\n3 = named individual with verifiable professional context\n2 = pseudonymous handle / GitHub username with no verified institutional identity (AgriciDaniel, aaron-he-zhu, HeyOz) — even with rich repos\n1 = anonymous / no track record",
+    SPEC: "Specificity (1–5) — concreteness of the data.\n5 = exact metrics with methodology (e.g. \"ad copy 2h→15min, sub-agent architecture\")\n4 = specific named workflows with measured outcomes\n3 = specific named workflows without numbers\n2 = generic categorical claims\n1 = vague enthusiasm",
+    INDP: "Independence (1–5) — commercial interest in promoting Claude Code.\n5 = no stake (pure user case study)\n4 = industry observer (publication writing about the space)\n3 = practitioner who uses Claude but doesn't sell anything related\n2 = adjacent-tool vendor (HubSpot, Coupler, Improvado, Windsor)\n1 = vendor of the tool itself (Anthropic only)\nLow INDP doesn't disqualify a source — just read it more carefully.",
+    RCNT: "Recency (1–5) — how recent the data is.\n5 = 2026\n4 = late 2025 (Q3-Q4)\n3 = mid 2025 (Q2)\n2 = early 2025 (Q1)\n1 = ≤ 2024 (likely covers tooling that has changed)",
+    VRFY: "Verifiability (1–5) — can the claim be independently checked?\n5 = open-source code or public dataset\n4 = live demo / public artifact / accessible product\n3 = detailed methodology described\n2 = self-reported with no verification path\n1 = anecdotal with no specifics",
+    MTCH: "Match (1–5) — direct relevance to SEONGON's billable services.\n5 = SEO / Google Ads / Facebook Ads / Digital Branding\n4 = cross-cutting that compounds across services (analytics, ops)\n3 = adjacent service (content marketing, email)\n2 = tangential (CRM, ABM)\n1 = unrelated (personal use, software-eng only)",
+    ADOPT: "Adoption (1–5) — external validation / market traction.\n5 = canonical / market-leading: 3,000+ GitHub stars, major industry pub, top platform docs, top product newsletter\n4 = strong: 200–2,999 stars, established vendor, named industry observer\n3 = mid: 50–199 stars, established but smaller vendor\n2 = niche: <50 stars, newer practitioner brand\n1 = brand new / no traction\nFor non-repos: vendor revenue/funding, publication reach, citation count.\nDeliberately separate from AUTH — many high-ADOPT repos have anonymous handle authors (low AUTH, high ADOPT); many high-AUTH sources have low reach (high AUTH, low ADOPT).",
+    Total: "Sum of the 7 scores (AUTH + SPEC + INDP + RCNT + VRFY + MTCH + ADOPT). Range 7–35. The single quality-of-evidence number.",
+    Tier: "Bucket derived from Total:\nS = 28–35 → headline-grade evidence (anchor proposal claims)\nA = 21–27 → solid supporting evidence\nB = 14–20 → weak / context-only\nC = ≤ 13 → skip\nNo source is auto-disqualified by one low dimension.",
+  };
+  Object.keys(NOTES).forEach((col) => {
+    if (colIdx[col]) {
+      sheet.getRange(1, colIdx[col]).setNote(NOTES[col]);
+    }
+  });
+
   // Toast confirmation
   SpreadsheetApp.getActiveSpreadsheet().toast(
     "Styling applied — " + (lastRow - 1) + " rows × " + lastCol + " columns",
