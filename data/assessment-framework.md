@@ -1,6 +1,6 @@
 # Source Assessment Framework
 
-**Purpose**: Not every source we collected is equally useful for the SEONGON adoption decision. This framework grades each source on **7 dimensions** producing a composite score (0–35), and labels each source with a recommended **Use** (HEADLINE / SUPPORT / CONTEXT / SKIP). The proposal should be built primarily from sources with high composite scores and a HEADLINE or SUPPORT tag.
+**Purpose**: Not every source we collected is equally useful for the SEONGON adoption decision. This framework grades each source on **6 quality dimensions** producing a composite score (0–30), assigns a **Tier (S/A/B/C)** from the score, and labels each source with a recommended **Use** (HEADLINE / SUPPORT / CONTEXT / SKIP). Tier reflects evidence quality; Use reflects the role in the proposal; the two are orthogonal.
 
 The spreadsheet also includes **3 identity columns** so a reader can judge *who* is making each claim and *what reputation signals* support (or weaken) their voice — independent of the numerical scores I assigned.
 
@@ -32,7 +32,7 @@ When trust signals point in conflicting directions (e.g., high authority + low i
 
 ---
 
-## The 7 dimensions
+## The 6 dimensions
 
 Each dimension is scored **1 (worst) → 5 (best)**. The scoring rubric for each:
 
@@ -92,31 +92,24 @@ Each dimension is scored **1 (worst) → 5 (best)**. The scoring rubric for each
 | 2 | Tangential (CRM, B2B-ABM, demand gen) |
 | 1 | Unrelated (personal-life use, software-engineering-only) |
 
-### G. Decision impact — usefulness for the adoption proposal
-| Score | Description |
-|------:|-------------|
-| 5 | Directly answers "should we adopt and how?" — the headline of a proposal page would cite it |
-| 4 | Provides ROI / cost / time numbers for the financial case |
-| 3 | Provides workflow templates / patterns to fork |
-| 2 | Provides demand-signal / market context |
-| 1 | Ambient interest only |
+> **Note**: a previous "Decision impact" dimension was removed because it duplicated information already captured by the **Use** column (HEADLINE / SUPPORT / CONTEXT / SKIP). Tier now reflects pure source quality; Use reflects role in the proposal. Cleaner separation.
 
 ---
 
-## Composite score interpretation
+## Composite score and Tier
 
-**Composite** = sum of 7 dimensions. Range: 7–35.
+**Composite (Total)** = sum of 6 dimensions. Range: 6–30.
 
-The score is a continuous signal, not a tier. Treat it as a guide:
+| Tier | Range | Quality of evidence | Recommended posture |
+|------|-------|---------------------|---------------------|
+| **S** | 24–30 | High-confidence headline evidence | Cite by name. Anchor proposal claims. |
+| **A** | 18–23 | Solid supporting evidence | Use in body sections. Triangulate against S-tier. |
+| **B** | 12–17 | Weak / context-only | Background reading; do not cite as primary evidence. |
+| **C** | 6–11 | Skip | Mention only if specifically asked. |
 
-| Range | Quality of evidence | Recommended use |
-|-------|---------------------|-----------------|
-| **28–35** | High-confidence headline evidence | Lead the proposal with these. Cite by name in exec summary. |
-| **21–27** | Solid supporting evidence | Use in body sections. Triangulate against high scorers. |
-| **14–20** | Weak / context-only | Background reading; do not cite as primary evidence. |
-| **≤13** | Skip | Mention only if specifically asked; do not build claims on. |
+**No source is auto-disqualified by one low dimension.** A vendor publication (Independence=1) can still hit S-tier if Authority + Specificity + Recency + Verifiability are all 5s. Conversely, a high-Independence solo-practitioner anecdote (low on Specificity + Verifiability) won't reach S even with 5s on Independence and Match.
 
-**No source is auto-disqualified by one low dimension.** A vendor publication (Independence=1) can still score high if Authority + Specificity + Recency + Verifiability are all 5s. Conversely, a high-Independence solo-practitioner anecdote (low on Specificity + Verifiability) won't reach 28 even with 5s on Independence and Match.
+> **Why orthogonal Tier vs. Use?** A source can be S-tier (high quality) but tagged CONTEXT (not directly cited in the proposal). Conversely, a source can be A-tier (good but not exceptional quality) and still be the only HEADLINE source for a particular claim because nothing better exists. Don't conflate the two.
 
 ---
 
@@ -165,8 +158,8 @@ Most sources scoring 28+ are HEADLINE. Sources scoring 21–27 are typically SUP
 2. **Read Author/Role/TrustSignals before the scores.** The numerical scores are summaries of those signals — you should be able to look at the identity columns and (mostly) predict the scores. Where the identity columns surprise you, that's where to dig deeper.
 3. **Sort by Total descending** to see the strongest evidence at the top.
 4. **Filter by Discipline = `SEO`** (or `GADS`, `META`, `BRAND`) to see what's available for each service-line claim.
-5. **Filter to Total ≥ 28** to see the ~10–15 sources the proposal should be primarily built on.
-6. **Don't trust a single source for a critical claim**. If a number anchors the proposal, verify it appears in at least 2 sources (one of which should score 21+) and at least one of them should be a high-Independence source (≥3) so it isn't all vendor-derived.
+5. **Filter by Tier = S** to see the sources the proposal should be primarily built on.
+6. **Don't trust a single source for a critical claim**. If a number anchors the proposal, verify it appears in at least 2 sources (one of which should be Tier S or A) and at least one of them should be a high-Independence source (≥3) so it isn't all vendor-derived.
 
 ### When adding new sources
 
