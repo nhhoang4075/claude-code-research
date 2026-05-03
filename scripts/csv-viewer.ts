@@ -136,14 +136,15 @@ const HTML = `<!doctype html>
             <tr><td class="col-key">Year</td><td class="col-label">Năm</td><td class="col-desc">Năm xuất bản hoặc đo đạc dữ liệu</td></tr>
             <tr><td class="col-key">URL</td><td class="col-label">Liên kết</td><td class="col-desc">Đường dẫn đến nguồn gốc — bấm để mở</td></tr>
             <tr><td class="col-key">KeyData</td><td class="col-label">Dữ liệu chính</td><td class="col-desc">Số liệu, workflow, hoặc case study quan trọng nhất được trích từ nguồn — đủ để hiểu nội dung mà không cần mở URL</td></tr>
-            <tr><td class="col-key">AUTH</td><td class="col-label">Uy tín</td><td class="col-desc"><strong>Authority (1–5)</strong> — uy tín bản thân nguồn. 5 = vendor chính thức / báo chuyên ngành lớn (Search Engine Land, MarTech). 4 = practitioner hoặc agency có danh tiếng. 3 = blogger độc lập có nhân thân rõ. 2 = blog mới/ít tên tuổi. 1 = ẩn danh.</td></tr>
+            <tr><td class="col-key">AUTH</td><td class="col-label">Uy tín</td><td class="col-desc"><strong>Authority (1–5) — đã thắt chặt:</strong> 5 = Anthropic / báo chuyên ngành lớn / nền tảng top (HubSpot, Lenny). 4 = agency lâu năm có nhân thân rõ (Ayima, Animalz, AdventurePPC) hoặc operator senior công khai (Emily Kramer). 3 = cá nhân tên thật có hồ sơ chuyên môn (LinkedIn, sự kiện) hoặc vendor mid-tier có team công khai. <strong>2 = handle GitHub / brand không định danh tổ chức (AgriciDaniel, aaron-he-zhu, inhouseseo, HeyOz)</strong> — kể cả khi repo chất lượng cao, AUTH vẫn là 2 vì không xác minh được tác giả. 1 = ẩn danh.</td></tr>
             <tr><td class="col-key">SPEC</td><td class="col-label">Cụ thể</td><td class="col-desc"><strong>Specificity (1–5)</strong> — độ cụ thể của dữ liệu. 5 = số liệu chính xác kèm phương pháp ("ad copy 2h → 15min, sub-agent kiến trúc"). 1 = lời tuyên bố mơ hồ ("rất hiệu quả").</td></tr>
             <tr><td class="col-key">INDP</td><td class="col-label">Độc lập</td><td class="col-desc"><strong>Independence (1–5)</strong> — không có lợi ích thương mại trong việc quảng bá Claude Code. 5 = không lợi ích. 4 = báo chí ngành. 3 = practitioner dùng nhưng không bán. 2 = vendor công cụ kế cận (HubSpot, Coupler). 1 = vendor chính (Anthropic). Lưu ý: INDP thấp KHÔNG loại trừ nguồn — chỉ cần biết để đọc cẩn thận.</td></tr>
             <tr><td class="col-key">RCNT</td><td class="col-label">Mới</td><td class="col-desc"><strong>Recency (1–5)</strong> — độ mới của dữ liệu. 5 = 2026. 4 = cuối 2025. 3 = giữa 2025. 2 = đầu 2025. 1 = ≤2024 (có thể đã lỗi thời).</td></tr>
             <tr><td class="col-key">VRFY</td><td class="col-label">Kiểm chứng</td><td class="col-desc"><strong>Verifiability (1–5)</strong> — khả năng kiểm chứng độc lập. 5 = mã nguồn mở / dataset công khai. 4 = sản phẩm sống có thể test. 3 = mô tả phương pháp chi tiết. 2 = tự khai báo, không có cách kiểm. 1 = giai thoại.</td></tr>
             <tr><td class="col-key">MTCH</td><td class="col-label">Phù hợp</td><td class="col-desc"><strong>Match (1–5)</strong> — mức phù hợp với dịch vụ SEONGON. 5 = trùng dịch vụ chính (SEO/Google Ads/FB Ads/Branding). 4 = xuyên suốt giúp mọi dịch vụ (analytics, ops). 3 = dịch vụ kế cận (content). 2 = tiếp tuyến. 1 = không liên quan.</td></tr>
-            <tr><td class="col-key">Total</td><td class="col-label">Tổng</td><td class="col-desc">Tổng điểm 6 chiều (AUTH + SPEC + INDP + RCNT + VRFY + MTCH). Tối đa 30.</td></tr>
-            <tr><td class="col-key">Tier</td><td class="col-label">Hạng</td><td class="col-desc">Hạng tổng hợp suy ra từ Tổng. <strong>S (24–30)</strong> = bằng chứng đầu đề. <strong>A (18–23)</strong> = bằng chứng hỗ trợ. <strong>B (12–17)</strong> = chỉ là context. <strong>C (≤11)</strong> = bỏ qua. Tier = chất lượng nguồn; Use = vai trò trong đề xuất — hai chiều khác nhau.</td></tr>
+            <tr><td class="col-key">ADOPT</td><td class="col-label">Phổ biến</td><td class="col-desc"><strong>Adoption (1–5) — chiều mới:</strong> mức độ được kiểm chứng bên ngoài. 5 = canonical / market-leading (3000+ GitHub stars, báo lớn, nền tảng top). 4 = adoption mạnh (200–2999 stars, vendor có khách hàng). 3 = mid (50–199 stars). 2 = niche/mới (<50 stars). 1 = chưa có traction. <em>Tách biệt với AUTH</em>: nhiều repo nổi tiếng có AUTH thấp (handle vô danh) nhưng ADOPT cao — và ngược lại.</td></tr>
+            <tr><td class="col-key">Total</td><td class="col-label">Tổng</td><td class="col-desc">Tổng điểm 7 chiều (AUTH + SPEC + INDP + RCNT + VRFY + MTCH + ADOPT). Tối đa 35.</td></tr>
+            <tr><td class="col-key">Tier</td><td class="col-label">Hạng</td><td class="col-desc">Hạng tổng hợp suy ra từ Tổng. <strong>S (28–35)</strong> = bằng chứng đầu đề. <strong>A (21–27)</strong> = bằng chứng hỗ trợ. <strong>B (14–20)</strong> = chỉ là context. <strong>C (≤13)</strong> = bỏ qua. Tier = chất lượng nguồn; Use = vai trò trong đề xuất — hai chiều khác nhau.</td></tr>
             <tr><td class="col-key">Use</td><td class="col-label">Sử dụng</td><td class="col-desc">Gợi ý dùng trong đề xuất. <strong>HEADLINE</strong> = nêu trong tóm tắt điều hành. <strong>SUPPORT</strong> = trích dẫn ở phần thân. <strong>CONTEXT</strong> = đọc nền, không trích. <strong>SKIP</strong> = không khuyến khích dùng.</td></tr>
             <tr><td class="col-key">Cluster</td><td class="col-label">Cụm</td><td class="col-desc">Nhóm nguồn có nội dung <strong>tương tự</strong> (cùng tác giả, cùng sản phẩm, hoặc cùng chủ đề). Cùng cụm = MỘT điểm bằng chứng — không nên đếm gấp. Khi trích, lấy nguồn có Tổng cao nhất trong cụm làm đại diện. Cụm hiện tại: ANTHROPIC-EI, AGRICIDANIEL-SEO, ADVENTUREPPC, STORMY-AI, META-INTEGRATION, GA4-CLAUDE, MARKETING-DATA-CONNECTORS. Cột trống = nguồn độc lập, không trùng nội dung với nguồn khác.</td></tr>
           </tbody>
@@ -164,7 +165,7 @@ const updatedEl = document.getElementById('updated');
 let header = []; let rows = [];
 let sortCol = -1; let sortDir = 1;
 
-const NUMERIC_COLS = new Set(['AUTH','SPEC','INDP','RCNT','VRFY','MTCH','Total','Year']);
+const NUMERIC_COLS = new Set(['AUTH','SPEC','INDP','RCNT','VRFY','MTCH','ADOPT','Total','Year']);
 const TRUNCATE_COLS = new Set(['TrustSignals','Role','KeyData','Author','Source']);
 
 const COL_LABELS = {
@@ -184,6 +185,7 @@ const COL_LABELS = {
   RCNT: 'Mới',
   VRFY: 'Kiểm chứng',
   MTCH: 'Phù hợp',
+  ADOPT: 'Phổ biến',
   Total: 'Tổng',
   Tier: 'Hạng',
   Use: 'Sử dụng',
@@ -207,8 +209,9 @@ const COL_TIPS = {
   RCNT: 'Recency (1–5) — độ mới. 5 = 2026. 1 = ≤2024.',
   VRFY: 'Verifiability (1–5) — khả năng kiểm chứng. 5 = mã nguồn mở. 1 = giai thoại.',
   MTCH: 'Match (1–5) — phù hợp dịch vụ SEONGON. 5 = SEO / Google Ads / FB Ads / Branding. 1 = không liên quan.',
-  Total: 'Tổng 6 chiều (max 30).',
-  Tier: 'Hạng tổng hợp: S (24–30) / A (18–23) / B (12–17) / C (≤11). Tier = chất lượng; Use = vai trò trong đề xuất.',
+  ADOPT: 'Adoption (1–5) — mức độ phổ biến / được kiểm chứng bên ngoài. 5 = 3000+ GitHub stars hoặc báo lớn. 4 = 200–2999 stars hoặc vendor có khách. 3 = 50–199 stars. 2 = <50 stars hoặc brand mới. 1 = chưa có traction.',
+  Total: 'Tổng 7 chiều (max 35).',
+  Tier: 'Hạng tổng hợp: S (28–35) / A (21–27) / B (14–20) / C (≤13). Tier = chất lượng; Use = vai trò trong đề xuất.',
   Use: 'Gợi ý: HEADLINE / SUPPORT / CONTEXT / SKIP',
   Cluster: 'Cụm — các nguồn có nội dung tương tự (cùng tác giả, cùng sản phẩm, hoặc cùng chủ đề). Khi trích dẫn, các nguồn cùng cụm tính là MỘT điểm bằng chứng; lấy nguồn có Tổng cao nhất làm đại diện.',
 };

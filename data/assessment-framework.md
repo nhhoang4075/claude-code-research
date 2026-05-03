@@ -1,6 +1,10 @@
 # Source Assessment Framework
 
-**Purpose**: Not every source we collected is equally useful for the SEONGON adoption decision. This framework grades each source on **6 quality dimensions** producing a composite score (0–30), assigns a **Tier (S/A/B/C)** from the score, and labels each source with a recommended **Use** (HEADLINE / SUPPORT / CONTEXT / SKIP). Tier reflects evidence quality; Use reflects the role in the proposal; the two are orthogonal.
+**Purpose**: Not every source we collected is equally useful for the SEONGON adoption decision. This framework grades each source on **7 quality dimensions** producing a composite score (0–35), assigns a **Tier (S/A/B/C)** from the score, and labels each source with a recommended **Use** (HEADLINE / SUPPORT / CONTEXT / SKIP). Tier reflects evidence quality; Use reflects the role in the proposal; the two are orthogonal.
+
+**Strictness note (2026-05 revision):** the rubric was tightened after a calibration check exposed that the original AUTH rubric was too generous to GitHub-handle authors and SPEC didn't reward external validation. Two changes:
+1. **AUTH 4 is now reserved for verifiable institutional identity** (named agencies with operating history, senior named operators with public track record, major MarTech vendors). GitHub handles like `AgriciDaniel`, `aaron-he-zhu`, `inhouseseo`, `HeyOz` — even with rich repos — are AUTH=2. Quality of artifact ≠ verifiable authority of author.
+2. **ADOPT (Adoption / external validation) was added as a 7th dimension.** It captures GitHub stars, citations, market position. The widely-adopted repos (`claude-seo` at 5,959 stars, `claude-ads` at 4,152 stars) get ADOPT=5; smaller repos like `superseo-skills` (136 stars) get ADOPT=2.
 
 The spreadsheet also includes **3 identity columns** so a reader can judge *who* is making each claim and *what reputation signals* support (or weaken) their voice — independent of the numerical scores I assigned.
 
@@ -32,18 +36,20 @@ When trust signals point in conflicting directions (e.g., high authority + low i
 
 ---
 
-## The 6 dimensions
+## The 7 dimensions
 
 Each dimension is scored **1 (worst) → 5 (best)**. The scoring rubric for each:
 
-### A. Authority — credibility of the source itself
+### A. Authority — credibility of the source itself (tightened)
 | Score | Description |
 |------:|-------------|
-| 5 | Primary research from the platform vendor (Anthropic), peer-reviewed academic, or a major industry publication's editorial standard (e.g., Search Engine Land, MarTech) |
-| 4 | Established practitioner with demonstrated agency operations + professional reputation (Ayima, AdventurePPC, MKT1, Animalz, Lenny) |
-| 3 | Solo practitioner blog with traceable identity and domain expertise |
-| 2 | Newer / niche practitioner blog with limited track record |
-| 1 | Anonymous, thinly-credentialed, or low-effort content |
+| 5 | Anthropic primary publication, peer-reviewed academic, or major industry pub with editorial standards (Search Engine Land, MarTech.org). Established product company at the platform tier (HubSpot, Lenny's Newsletter). |
+| 4 | Verifiable established agency with multi-year operating history (Ayima, AdventurePPC, Animalz) **OR** senior named operator with public track record (Emily Kramer / MKT1, Boris Cherny). Established product vendor with named team (SE Ranking, PorterMetrics). |
+| 3 | Named individual with verifiable professional context (LinkedIn, conference talks, named agency role). Mid-tier or newer vendor product with publicly named team (Improvado, Coupler.io, Windsor.ai). |
+| 2 | **Pseudonymous handle / GitHub username / brand-name-only with operational artifacts but no verified institutional identity.** A repo author named `AgriciDaniel` who ships excellent code is still AUTH=2 — quality of artifact ≠ authority of author. |
+| 1 | Anonymous / no identifying info / unverified. |
+
+> **Why the change**: the previous rubric let unverified handles (AgriciDaniel, aaron-he-zhu, InhouseSEO, HeyOz) tie with established agencies (Ayima, Animalz). Authority should reflect *who is making the claim*, separately from how good the artifact is. Artifact quality is captured by Specificity and Verifiability; market acceptance is captured by ADOPT.
 
 ### B. Specificity — concreteness of the data
 | Score | Description |
@@ -92,20 +98,31 @@ Each dimension is scored **1 (worst) → 5 (best)**. The scoring rubric for each
 | 2 | Tangential (CRM, B2B-ABM, demand gen) |
 | 1 | Unrelated (personal-life use, software-engineering-only) |
 
+### G. ADOPT — external validation / market traction (NEW)
+| Score | Description |
+|------:|-------------|
+| 5 | Canonical / market-leading. **3,000+ GitHub stars**, major industry publication article, top platform docs (HubSpot, Anthropic), top product newsletter (Lenny). |
+| 4 | Strong adoption. **200–2,999 GitHub stars**, established vendor with paying customers, named industry observer (Maven course platform), established agency course (Ayima programme). |
+| 3 | Mid traction. **50–199 stars**, established but smaller vendor (Adspirer, Windsor.ai), individual practitioner with reach (AdventurePPC). |
+| 2 | Niche / new. **<50 stars**, newer practitioner brand (Stormy AI, HeyOz, Ryze AI, aimaker), limited external citation. |
+| 1 | Brand-new / no traction / no measurable external validation. |
+
+> **For repos**: stargazer count is the primary signal. **For non-repos**: signals include vendor revenue/funding, publication reach, citation in aggregator lists, course enrollment. ADOPT is deliberately separate from Authority — many highly-adopted repos are by anonymous handles (high ADOPT, low AUTH); many low-adoption sources are by credentialed authors (low ADOPT, high AUTH). Both signals matter.
+
 > **Note**: a previous "Decision impact" dimension was removed because it duplicated information already captured by the **Use** column (HEADLINE / SUPPORT / CONTEXT / SKIP). Tier now reflects pure source quality; Use reflects role in the proposal. Cleaner separation.
 
 ---
 
 ## Composite score and Tier
 
-**Composite (Total)** = sum of 6 dimensions. Range: 6–30.
+**Composite (Total)** = sum of 7 dimensions. Range: 7–35.
 
 | Tier | Range | Quality of evidence | Recommended posture |
 |------|-------|---------------------|---------------------|
-| **S** | 24–30 | High-confidence headline evidence | Cite by name. Anchor proposal claims. |
-| **A** | 18–23 | Solid supporting evidence | Use in body sections. Triangulate against S-tier. |
-| **B** | 12–17 | Weak / context-only | Background reading; do not cite as primary evidence. |
-| **C** | 6–11 | Skip | Mention only if specifically asked. |
+| **S** | 28–35 | High-confidence headline evidence | Cite by name. Anchor proposal claims. |
+| **A** | 21–27 | Solid supporting evidence | Use in body sections. Triangulate against S-tier. |
+| **B** | 14–20 | Weak / context-only | Background reading; do not cite as primary evidence. |
+| **C** | 7–13 | Skip | Mention only if specifically asked. |
 
 **No source is auto-disqualified by one low dimension.** A vendor publication (Independence=1) can still hit S-tier if Authority + Specificity + Recency + Verifiability are all 5s. Conversely, a high-Independence solo-practitioner anecdote (low on Specificity + Verifiability) won't reach S even with 5s on Independence and Match.
 
