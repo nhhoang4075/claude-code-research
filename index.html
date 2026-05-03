@@ -5,128 +5,240 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Claude Code for Marketers — Adoption Evidence Pack for SEONGON</title>
   <meta name="description" content="Research pack: ~85 documented Claude Code workflows across 7 marketing disciplines, weighted to SEONGON's services (SEO, Google Ads, Facebook Ads, Digital Branding)." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <style>
-    :root { color-scheme: light; }
-    html { scroll-behavior: smooth; }
-    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-    .num-strong { font-feature-settings: "tnum" 1, "ss01" 1; font-variant-numeric: tabular-nums; }
-    .accent { color: #b91c1c; }
-    .bg-accent { background-color: #b91c1c; }
-    .bg-accent-soft { background-color: #fef2f2; }
-    .border-accent { border-color: #b91c1c; }
-    .ring-accent { --tw-ring-color: #b91c1c; }
-    .grid-divide > * + * { border-top: 1px solid #e5e7eb; }
-    @media (min-width: 768px) {
-      .grid-divide { border-top: 1px solid #e5e7eb; border-left: 1px solid #e5e7eb; }
-      .grid-divide > * { border-top: 0 !important; border-right: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb; }
+    /* ── reset + tokens ────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #1c1917; background: #fafaf9; line-height: 1.55; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    :root {
+      --accent: #b91c1c;
+      --accent-2: #dc2626;
+      --accent-soft: #fef2f2;
+      --bg: #fafaf9;
+      --bg-2: #f5f5f4;
+      --card: #ffffff;
+      --border: #e7e5e4;
+      --border-strong: #d6d3d1;
+      --text: #1c1917;
+      --text-2: #44403c;
+      --text-3: #78716c;
+      --text-muted: #a8a29e;
+      --max: 1120px;
+      color-scheme: light;
     }
-    .pyramid-tier { transition: transform .2s ease; }
-    .pyramid-tier:hover { transform: translateY(-2px); }
-    .timeline-bar { background: linear-gradient(90deg, #b91c1c 0%, #dc2626 50%, #f87171 100%); }
+    a { color: inherit; }
+    p { margin: 0 0 0.75rem; }
+    h1, h2, h3 { margin: 0; letter-spacing: -0.01em; }
+    h1 { font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 600; line-height: 1.1; }
+    h2 { font-size: clamp(1.4rem, 2.5vw, 1.75rem); font-weight: 600; line-height: 1.2; }
+    h3 { font-size: 1.05rem; font-weight: 600; }
+    code { background: #f5f5f4; padding: 0 0.25rem; border-radius: 4px; font: 0.9em/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    em { color: var(--text-2); }
+    .num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }
+    .accent { color: var(--accent); }
+
+    /* ── layout primitives ─────────────────────────────────────────── */
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+    @media (min-width: 768px) { section { padding: 80px 0; } }
+    .alt { background: var(--card); }
+    .alt-2 { background: var(--bg-2); }
+    .eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-3); }
+    .eyebrow.accent { color: var(--accent); }
+    .lede { font-size: 1.05rem; color: var(--text-2); max-width: 64ch; margin: 12px 0 0; }
+    .muted { color: var(--text-3); font-size: 0.9rem; }
+    .small { font-size: 0.85rem; }
+    .row { display: flex; flex-wrap: wrap; gap: 16px; }
+    .row.between { justify-content: space-between; align-items: baseline; }
+
+    /* ── nav ───────────────────────────────────────────────────────── */
+    .nav { position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; padding-bottom: 12px; }
+    .nav-brand { font-weight: 600; text-decoration: none; letter-spacing: -0.01em; }
+    .nav-brand .x { color: var(--text-muted); }
+    .nav-links { display: none; gap: 24px; font-size: 14px; color: var(--text-2); }
+    .nav-links a { text-decoration: none; }
+    .nav-links a:hover { color: var(--text); }
+    @media (min-width: 768px) { .nav-links { display: flex; } }
+
+    /* ── hero ──────────────────────────────────────────────────────── */
+    .hero { background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%); padding: 80px 0; }
+    @media (min-width: 768px) { .hero { padding: 120px 0; } }
+    .hero h1 { max-width: 24ch; }
+    .hero .lede { font-size: clamp(1.05rem, 1.5vw, 1.25rem); max-width: 72ch; margin-top: 24px; }
+    .stat-grid { display: grid; gap: 16px; margin-top: 40px; grid-template-columns: repeat(2, 1fr); }
+    @media (min-width: 768px) { .stat-grid { grid-template-columns: repeat(4, 1fr); } }
+    .stat { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .stat-num { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; }
+    .stat-label { color: var(--text-3); font-size: 13px; margin-top: 6px; }
+    .cta-row { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 12px; font-size: 14px; }
+    .btn { display: inline-flex; align-items: center; padding: 10px 16px; border-radius: 8px; text-decoration: none; border: 1px solid var(--border); background: var(--card); transition: background-color .15s ease, transform .15s ease, opacity .15s ease; }
+    .btn:hover { background: var(--bg-2); }
+    .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn.primary:hover { background: var(--accent-2); opacity: 0.95; }
+
+    /* ── sections / cards ──────────────────────────────────────────── */
+    .panel { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+    @media (min-width: 768px) { .panel { padding: 28px; } }
+    .grid-2 { display: grid; gap: 24px; grid-template-columns: 1fr; }
+    @media (min-width: 768px) { .grid-2 { grid-template-columns: 5fr 7fr; } }
+    .grid-3 { display: grid; gap: 16px; grid-template-columns: 1fr; }
+    @media (min-width: 640px) { .grid-3 { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 900px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+
+    /* ── chart container ───────────────────────────────────────────── */
+    .chart-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 16px; }
+    @media (min-width: 768px) { .chart-card { padding: 24px; } }
+    .chart-h-1 { height: 480px; position: relative; }
+    .chart-h-2 { height: 300px; position: relative; }
+
+    /* ── precedent panel ───────────────────────────────────────────── */
+    .precedent-list { padding: 0; margin: 0; list-style: none; display: grid; gap: 12px; }
+    .precedent-list li { display: grid; grid-template-columns: 14px 1fr; gap: 12px; align-items: start; color: var(--text); }
+    .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 9px; }
+
+    /* ── discipline grid ───────────────────────────────────────────── */
+    .disc-grid { display: grid; grid-template-columns: 1fr; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; background: var(--card); }
+    @media (min-width: 768px) { .disc-grid { grid-template-columns: repeat(3, 1fr); } }
+    .disc { padding: 24px; border-top: 1px solid var(--border); }
+    .disc:first-child { border-top: 0; }
+    @media (min-width: 768px) {
+      .disc { border-top: 0; border-left: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+      .disc:nth-child(3n+1) { border-left: 0; }
+      .disc:nth-last-child(-n+3) { border-bottom: 0; }
+    }
+    .disc .marker { display: flex; gap: 10px; align-items: center; }
+    .disc .marker .ball { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    .disc .marker .ball.muted { background: var(--text-muted); }
+
+    /* ── tables ────────────────────────────────────────────────────── */
+    .table-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    thead th { text-align: left; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); background: var(--bg-2); padding: 12px 16px; font-weight: 500; }
+    tbody td { padding: 12px 16px; border-top: 1px solid var(--border); vertical-align: top; }
+
+    /* ── adoption pyramid ──────────────────────────────────────────── */
+    .tier { border: 1px solid var(--border); border-radius: 16px; padding: 18px 22px; margin: 0 auto; }
+    .tier + .tier { margin-top: 16px; }
+    .tier.t1 { background: var(--bg-2); max-width: 720px; }
+    .tier.t2 { background: var(--accent-soft); max-width: 880px; border-color: #fee2e2; }
+    .tier.t3 { background: var(--bg-2); max-width: 1040px; }
+    .tier .head { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: baseline; }
+    .tier .body { margin-top: 8px; font-size: 0.92rem; color: var(--text-2); }
+
+    /* ── pilot timeline ────────────────────────────────────────────── */
+    .phase { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
+    .phase + .phase { margin-top: 16px; }
+    .phase-head { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: baseline; }
+    .phase-grid { display: grid; gap: 12px; grid-template-columns: 1fr; margin-top: 14px; }
+    @media (min-width: 768px) { .phase-grid { grid-template-columns: repeat(3, 1fr); } }
+    .phase-cell { background: var(--bg-2); border-radius: 10px; padding: 12px; font-size: 0.9rem; color: var(--text-2); }
+    .progress { margin-top: 14px; height: 8px; background: var(--bg-2); border-radius: 999px; overflow: hidden; }
+    .progress > i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 50%, #f87171 100%); }
+
+    /* ── upside grid ───────────────────────────────────────────────── */
+    .upside-grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
+    @media (min-width: 640px) { .upside-grid { grid-template-columns: 1fr 1fr; } }
+    .up-card { background: var(--bg-2); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+    .up-card .tag { font-size: 13px; font-weight: 500; color: var(--accent); }
+    .up-card.muted .tag { color: var(--text-3); }
+
+    /* ── open questions ────────────────────────────────────────────── */
+    .q-grid { display: grid; gap: 14px; grid-template-columns: 1fr; list-style: none; padding: 0; margin: 32px 0 0; }
+    @media (min-width: 768px) { .q-grid { grid-template-columns: 1fr 1fr; } }
+    .q-grid li { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+
+    /* ── footer ────────────────────────────────────────────────────── */
+    footer { background: var(--card); }
+    footer .wrap { padding-top: 48px; padding-bottom: 48px; }
+    footer .grid { display: grid; gap: 32px; grid-template-columns: 1fr; font-size: 0.9rem; color: var(--text-2); }
+    @media (min-width: 768px) { footer .grid { grid-template-columns: repeat(3, 1fr); } }
+    footer ul { padding: 0; margin: 8px 0 0; list-style: none; display: grid; gap: 4px; color: var(--text-3); }
+
+    /* ── print ─────────────────────────────────────────────────────── */
     @media print {
-      nav, .no-print { display: none !important; }
-      section { break-inside: avoid; page-break-inside: avoid; }
+      .nav, .no-print { display: none !important; }
+      section, .panel, .phase, .tier, .disc, .chart-card { break-inside: avoid; page-break-inside: avoid; }
+      body { background: #fff; }
     }
   </style>
 </head>
-<body class="bg-stone-50 text-stone-900 antialiased">
+<body>
 
   <!-- top nav -->
-  <nav class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-stone-200 no-print">
-    <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
-      <a href="#top" class="font-semibold tracking-tight">Claude Code <span class="text-stone-400">×</span> SEONGON</a>
-      <div class="hidden md:flex gap-6 text-sm text-stone-600">
-        <a href="#numbers" class="hover:text-stone-900">Numbers</a>
-        <a href="#precedent" class="hover:text-stone-900">Precedent</a>
-        <a href="#workflows" class="hover:text-stone-900">Workflows</a>
-        <a href="#disciplines" class="hover:text-stone-900">Disciplines</a>
-        <a href="#adoption" class="hover:text-stone-900">Adoption</a>
-        <a href="#pilot" class="hover:text-stone-900">Pilot</a>
-        <a href="#upside" class="hover:text-stone-900">Upside</a>
+  <nav class="nav no-print">
+    <div class="wrap">
+      <a href="#top" class="nav-brand">Claude Code <span class="x">×</span> SEONGON</a>
+      <div class="nav-links">
+        <a href="#numbers">Numbers</a>
+        <a href="#precedent">Precedent</a>
+        <a href="#workflows">Workflows</a>
+        <a href="#disciplines">Disciplines</a>
+        <a href="#adoption">Adoption</a>
+        <a href="#pilot">Pilot</a>
+        <a href="#upside">Upside</a>
       </div>
     </div>
   </nav>
 
   <!-- HERO -->
-  <header id="top" class="border-b border-stone-200 bg-gradient-to-b from-white to-stone-50">
-    <div class="max-w-6xl mx-auto px-6 py-16 md:py-24">
-      <div class="text-xs uppercase tracking-[0.2em] text-stone-500 mb-5">Adoption evidence pack · 2026-05-03</div>
-      <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-tight max-w-4xl">
-        Claude Code is already in production at <span class="accent">non-technical marketing teams</span> running SEONGON's exact channel mix.
-      </h1>
-      <p class="mt-6 text-lg md:text-xl text-stone-600 max-w-3xl">
-        ~85 documented workflows across 7 disciplines. ~30 sources. The most decision-relevant precedent is Anthropic's own Growth Marketing team — a non-technical team of one covering paid search, paid social, mobile app, email, and SEO — the same channels SEONGON delivers.
-      </p>
-      <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="bg-white rounded-xl border border-stone-200 p-5">
-          <div class="text-3xl md:text-4xl font-semibold num-strong">10×</div>
-          <div class="text-sm text-stone-500 mt-1">creative output, Anthropic Growth Mktg</div>
-        </div>
-        <div class="bg-white rounded-xl border border-stone-200 p-5">
-          <div class="text-3xl md:text-4xl font-semibold num-strong">87%</div>
-          <div class="text-sm text-stone-500 mt-1">ad copy time saved (2h → 15min)</div>
-        </div>
-        <div class="bg-white rounded-xl border border-stone-200 p-5">
-          <div class="text-3xl md:text-4xl font-semibold num-strong">25–30 hr</div>
-          <div class="text-sm text-stone-500 mt-1">recovered/wk per ad-ops staffer</div>
-        </div>
-        <div class="bg-white rounded-xl border border-stone-200 p-5">
-          <div class="text-3xl md:text-4xl font-semibold num-strong">73%</div>
-          <div class="text-sm text-stone-500 mt-1">monthly SEO billable hours saved</div>
-        </div>
+  <header id="top" class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Adoption evidence pack · 2026-05</div>
+      <h1 style="margin-top: 16px;">Claude Code is already in production at <span class="accent">non-technical marketing teams</span> running SEONGON's exact channel mix.</h1>
+      <p class="lede">~85 documented workflows across 7 disciplines. ~30 sources. The most decision-relevant precedent is Anthropic's own Growth Marketing team — a non-technical team of one covering paid search, paid social, mobile app, email, and SEO — the same channels SEONGON delivers.</p>
+
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-num">10×</div><div class="stat-label">creative output, Anthropic Growth Mktg</div></div>
+        <div class="stat"><div class="stat-num">87%</div><div class="stat-label">ad copy time saved (2 h → 15 min)</div></div>
+        <div class="stat"><div class="stat-num">25–30 hr</div><div class="stat-label">recovered/wk per ad-ops staffer</div></div>
+        <div class="stat"><div class="stat-num">73%</div><div class="stat-label">monthly SEO billable hours saved</div></div>
       </div>
-      <div class="mt-10 flex flex-wrap gap-3 text-sm">
-        <a href="#numbers" class="inline-flex items-center px-4 py-2 rounded-lg bg-accent text-white hover:opacity-90">See the numbers</a>
-        <a href="#adoption" class="inline-flex items-center px-4 py-2 rounded-lg border border-stone-300 hover:bg-white">Read the recommendation</a>
-        <a href="https://github.com/nhhoang4075/claude-code-research" target="_blank" rel="noreferrer" class="inline-flex items-center px-4 py-2 rounded-lg border border-stone-300 hover:bg-white">Source repo →</a>
+      <div class="cta-row">
+        <a href="#numbers" class="btn primary">See the numbers</a>
+        <a href="#adoption" class="btn">Read the recommendation</a>
+        <a href="https://github.com/nhhoang4075/claude-code-research" target="_blank" rel="noreferrer" class="btn">Source repo →</a>
       </div>
     </div>
   </header>
 
   <!-- NUMBERS / TIME SAVINGS CHART -->
-  <section id="numbers" class="border-b border-stone-200">
-    <div class="max-w-6xl mx-auto px-6 py-16">
-      <div class="flex items-baseline justify-between flex-wrap gap-4">
-        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Documented time savings — across SEONGON's service lines</h2>
-        <span class="text-xs text-stone-500">Source: per-workflow citations in <code class="bg-stone-100 px-1 rounded">data/workflows-table.md</code></span>
+  <section id="numbers">
+    <div class="wrap">
+      <div class="row between">
+        <h2>Documented time savings — across SEONGON's service lines</h2>
+        <span class="muted">Source: per-workflow citations in <code>data/workflows-table.md</code></span>
       </div>
-      <p class="mt-3 text-stone-600 max-w-3xl">
-        Each bar is a documented before/after for a specific marketing workflow. Bars are normalized to minutes for direct comparison. Where a source reported a range, the midpoint is shown.
-      </p>
-      <div class="mt-8 bg-white rounded-2xl border border-stone-200 p-4 md:p-6">
-        <canvas id="timeChart" height="420"></canvas>
+      <p class="lede">Each bar is a documented before/after for a specific marketing workflow. Bars are normalized to minutes for direct comparison. Where a source reported a range, the midpoint is shown.</p>
+      <div class="chart-card" style="margin-top: 32px;">
+        <div class="chart-h-1"><canvas id="timeChart" data-chart="time"></canvas></div>
       </div>
-      <p class="mt-4 text-xs text-stone-500">
-        Sources, top→bottom: Anthropic internal Growth Mktg report; Ayima programme materials; Michael Patrick Cortez 2026 SEO guide; SE Ranking blog; HeyOz Meta Ads suite; Stack and Scale.
-      </p>
+      <p class="muted small" style="margin-top: 12px;">Sources, top→bottom: Anthropic internal Growth Mktg report; Ayima programme materials; Michael Patrick Cortez 2026 SEO guide; SE Ranking blog; HeyOz Meta Ads suite; Stack and Scale.</p>
     </div>
   </section>
 
   <!-- PRECEDENT -->
-  <section id="precedent" class="border-b border-stone-200 bg-white">
-    <div class="max-w-6xl mx-auto px-6 py-16">
-      <div class="grid md:grid-cols-12 gap-10">
-        <div class="md:col-span-5">
-          <div class="text-xs uppercase tracking-[0.2em] accent mb-3">The strongest single precedent</div>
-          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Anthropic's own Growth Marketing team is non-technical — and runs SEONGON's exact channel mix.</h2>
-          <p class="mt-4 text-stone-600">
-            From <em>How Anthropic teams use Claude Code</em> (the company's own internal-team interview report). The precedent matters because Anthropic owns the tool and has no incentive to over-promise its usefulness in an internal report.
-          </p>
+  <section id="precedent" class="alt">
+    <div class="wrap">
+      <div class="grid-2">
+        <div>
+          <div class="eyebrow accent">The strongest single precedent</div>
+          <h2 style="margin-top: 12px;">Anthropic's own Growth Marketing team is non-technical — and runs SEONGON's exact channel mix.</h2>
+          <p class="lede">From <em>How Anthropic teams use Claude Code</em> (their internal-team interview report). The precedent matters because Anthropic owns the tool and has no incentive to over-promise its usefulness in an internal report.</p>
         </div>
-        <div class="md:col-span-7 bg-stone-50 rounded-2xl border border-stone-200 p-6 md:p-8">
-          <div class="text-sm text-stone-500 mb-2">Anthropic Growth Marketing team — documented profile</div>
-          <ul class="space-y-3 text-stone-800">
-            <li class="flex gap-3"><span class="text-accent">●</span><span><strong>Team size:</strong> "non-technical team of one"</span></li>
-            <li class="flex gap-3"><span class="text-accent">●</span><span><strong>Channels:</strong> paid search · paid social · mobile app stores · email marketing · <strong>SEO</strong></span></li>
-            <li class="flex gap-3"><span class="text-accent">●</span><span><strong>Workflow #1:</strong> Automated Google Ads creative generation with sub-agents (one for headlines, one for descriptions)</span></li>
-            <li class="flex gap-3"><span class="text-accent">●</span><span><strong>Workflow #2:</strong> Figma plugin generates 100 ad variations per batch in 0.5s — <span class="num-strong">10× creative output</span></span></li>
-            <li class="flex gap-3"><span class="text-accent">●</span><span><strong>Workflow #3:</strong> In-house Meta Ads MCP server for campaign analytics inside Claude Desktop</span></li>
-            <li class="flex gap-3"><span class="text-accent">●</span><span><strong>Workflow #4:</strong> Memory system that logs hypotheses across iterations — self-improving testing framework</span></li>
-            <li class="flex gap-3"><span class="text-accent">●</span><span><strong>Reported impact:</strong> ad copy 2h → 15min · "operates like a larger team" · strategic focus shift from manual execution to system-building</span></li>
+        <div class="panel" style="background: var(--bg);">
+          <div class="muted small" style="margin-bottom: 8px;">Anthropic Growth Marketing team — documented profile</div>
+          <ul class="precedent-list">
+            <li><span class="dot"></span><span><strong>Team size:</strong> "non-technical team of one"</span></li>
+            <li><span class="dot"></span><span><strong>Channels:</strong> paid search · paid social · mobile app stores · email marketing · <strong>SEO</strong></span></li>
+            <li><span class="dot"></span><span><strong>Workflow #1:</strong> Automated Google Ads creative generation with sub-agents (one for headlines, one for descriptions)</span></li>
+            <li><span class="dot"></span><span><strong>Workflow #2:</strong> Figma plugin generates 100 ad variations per batch in 0.5 s — <span class="num">10× creative output</span></span></li>
+            <li><span class="dot"></span><span><strong>Workflow #3:</strong> In-house Meta Ads MCP server for campaign analytics inside Claude Desktop</span></li>
+            <li><span class="dot"></span><span><strong>Workflow #4:</strong> Memory system that logs hypotheses across iterations — self-improving testing framework</span></li>
+            <li><span class="dot"></span><span><strong>Reported impact:</strong> ad copy 2 h → 15 min · "operates like a larger team" · strategic focus shift from manual execution to system-building</span></li>
           </ul>
-          <div class="mt-6 pt-6 border-t border-stone-200 text-sm text-stone-600">
+          <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--text-2);">
             <strong>Implication for SEONGON:</strong> the question isn't "can a marketer run Claude Code?" — that's been answered in production. The question is operating-model design across SEONGON's 100+ specialists.
           </div>
         </div>
@@ -135,32 +247,30 @@
   </section>
 
   <!-- ECOSYSTEM CHART + PRECEDENTS -->
-  <section id="workflows" class="border-b border-stone-200">
-    <div class="max-w-6xl mx-auto px-6 py-16">
-      <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">A mature ecosystem to fork — not bleeding-edge risk</h2>
-      <p class="mt-3 text-stone-600 max-w-3xl">
-        SEONGON wouldn't be building from scratch. Production-grade open-source skill kits already cover paid media and SEO with hundreds of pre-built checks and dozens of specialized agents.
-      </p>
-      <div class="mt-8 grid md:grid-cols-12 gap-6">
-        <div class="md:col-span-7 bg-white rounded-2xl border border-stone-200 p-4 md:p-6">
-          <div class="text-sm text-stone-500 mb-2">Skill / check density per open-source kit</div>
-          <canvas id="ecoChart" height="280"></canvas>
+  <section id="workflows">
+    <div class="wrap">
+      <h2>A mature ecosystem to fork — not bleeding-edge risk</h2>
+      <p class="lede">SEONGON wouldn't be building from scratch. Production-grade open-source skill kits already cover paid media and SEO with hundreds of pre-built checks and dozens of specialized agents.</p>
+      <div class="grid-2" style="margin-top: 32px;">
+        <div class="chart-card" style="grid-column: auto;">
+          <div class="muted small" style="margin-bottom: 8px;">Skill / check density per open-source kit</div>
+          <div class="chart-h-2"><canvas id="ecoChart" data-chart="eco"></canvas></div>
         </div>
-        <div class="md:col-span-5 grid gap-3">
-          <div class="rounded-xl border border-stone-200 bg-white p-5">
-            <div class="text-xs uppercase tracking-[0.15em] text-stone-500">Agency precedent · UK</div>
-            <div class="mt-2 font-semibold">Ayima — 4-week Claude-for-SEO programme</div>
-            <p class="text-sm text-stone-600 mt-2">Two tracks (Efficiency + Build). Targets account managers and analysts, not just technical SEOs. Closest analog to SEONGON's adoption shape.</p>
+        <div style="display: grid; gap: 12px;">
+          <div class="panel" style="padding: 18px;">
+            <div class="eyebrow">Agency precedent · UK</div>
+            <div style="margin-top: 6px; font-weight: 600;">Ayima — 4-week Claude-for-SEO programme</div>
+            <p class="small" style="margin-top: 6px; color: var(--text-2);">Two tracks (Efficiency + Build). Targets account managers and analysts, not just technical SEOs. Closest analog to SEONGON's adoption shape.</p>
           </div>
-          <div class="rounded-xl border border-stone-200 bg-white p-5">
-            <div class="text-xs uppercase tracking-[0.15em] text-stone-500">Agency precedent · in-house SEO</div>
-            <div class="mt-2 font-semibold">InhouseSEO — production-tested skill kit</div>
-            <p class="text-sm text-stone-600 mt-2">11 SEO skills shipped to GitHub by an operating agency, including a tiered anti-AI-slop ruleset (the "Horoscope Test").</p>
+          <div class="panel" style="padding: 18px;">
+            <div class="eyebrow">Agency precedent · in-house SEO</div>
+            <div style="margin-top: 6px; font-weight: 600;">InhouseSEO — production-tested skill kit</div>
+            <p class="small" style="margin-top: 6px; color: var(--text-2);">11 SEO skills shipped to GitHub by an operating agency, including a tiered anti-AI-slop ruleset (the "Horoscope Test").</p>
           </div>
-          <div class="rounded-xl border border-stone-200 bg-white p-5">
-            <div class="text-xs uppercase tracking-[0.15em] text-stone-500">Vendor endorsement</div>
-            <div class="mt-2 font-semibold">HubSpot × Marketing Against the Grain</div>
-            <p class="text-sm text-stone-600 mt-2">Major MarTech vendor co-brands a "Master Claude Code for Marketing" course. Signals that role-fit for marketers is real, not theoretical.</p>
+          <div class="panel" style="padding: 18px;">
+            <div class="eyebrow">Vendor endorsement</div>
+            <div style="margin-top: 6px; font-weight: 600;">HubSpot × Marketing Against the Grain</div>
+            <p class="small" style="margin-top: 6px; color: var(--text-2);">Major MarTech vendor co-brands a "Master Claude Code for Marketing" course. Signals that role-fit for marketers is real, not theoretical.</p>
           </div>
         </div>
       </div>
@@ -168,231 +278,206 @@
   </section>
 
   <!-- DISCIPLINE COVERAGE -->
-  <section id="disciplines" class="border-b border-stone-200 bg-white">
-    <div class="max-w-6xl mx-auto px-6 py-16">
-      <div class="flex items-baseline justify-between flex-wrap gap-4">
-        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Discipline-by-discipline fit for SEONGON</h2>
-        <span class="text-xs text-stone-500">Weighted to SEONGON's actual service mix</span>
+  <section id="disciplines" class="alt">
+    <div class="wrap">
+      <div class="row between">
+        <h2>Discipline-by-discipline fit for SEONGON</h2>
+        <span class="muted">Weighted to SEONGON's actual service mix</span>
       </div>
-      <div class="mt-8 grid grid-divide md:grid-cols-3">
-        <div class="p-6">
-          <div class="flex items-center gap-3">
-            <span class="inline-block w-2 h-2 rounded-full bg-accent"></span>
-            <div class="text-xs uppercase tracking-[0.15em] text-stone-500">Service line</div>
-          </div>
-          <div class="mt-2 font-semibold">SEO <span class="text-stone-400 font-normal">· largest</span></div>
-          <div class="mt-3 text-sm"><span class="font-medium">Fit:</span> <span class="accent">Strong</span></div>
-          <div class="mt-2 text-sm text-stone-600">3 production-grade open-source kits. 50+ skills, 27+ subagents combined. 20-30 → 6-8 monthly billable hr per account documented.</div>
+      <div class="disc-grid" style="margin-top: 32px;">
+        <div class="disc">
+          <div class="marker"><span class="ball"></span><span class="eyebrow">Service line</span></div>
+          <div style="margin-top: 8px; font-weight: 600;">SEO <span class="muted" style="font-weight:400;">· largest</span></div>
+          <div class="small" style="margin-top: 10px;"><strong>Fit:</strong> <span class="accent">Strong</span></div>
+          <p class="small" style="margin-top: 6px; color: var(--text-2);">3 production-grade open-source kits. 50+ skills, 27+ subagents combined. 20-30 → 6-8 monthly billable hr per account documented.</p>
         </div>
-        <div class="p-6">
-          <div class="flex items-center gap-3">
-            <span class="inline-block w-2 h-2 rounded-full bg-accent"></span>
-            <div class="text-xs uppercase tracking-[0.15em] text-stone-500">Service line</div>
-          </div>
-          <div class="mt-2 font-semibold">Google Ads <span class="text-stone-400 font-normal">· 2nd largest</span></div>
-          <div class="mt-3 text-sm"><span class="font-medium">Fit:</span> <span class="accent">Strong</span></div>
-          <div class="mt-2 text-sm text-stone-600">Direct Anthropic precedent. <code class="bg-stone-100 px-1 rounded">claude-ads</code> covers 80 Google checks. Ad copy 2h → 15min.</div>
+        <div class="disc">
+          <div class="marker"><span class="ball"></span><span class="eyebrow">Service line</span></div>
+          <div style="margin-top: 8px; font-weight: 600;">Google Ads <span class="muted" style="font-weight:400;">· 2nd largest</span></div>
+          <div class="small" style="margin-top: 10px;"><strong>Fit:</strong> <span class="accent">Strong</span></div>
+          <p class="small" style="margin-top: 6px; color: var(--text-2);">Direct Anthropic precedent. <code>claude-ads</code> covers 80 Google checks. Ad copy 2 h → 15 min.</p>
         </div>
-        <div class="p-6">
-          <div class="flex items-center gap-3">
-            <span class="inline-block w-2 h-2 rounded-full bg-accent"></span>
-            <div class="text-xs uppercase tracking-[0.15em] text-stone-500">Service line</div>
-          </div>
-          <div class="mt-2 font-semibold">Facebook Ads <span class="text-stone-400 font-normal">· 3rd largest</span></div>
-          <div class="mt-3 text-sm"><span class="font-medium">Fit:</span> <span class="accent">Strong, with compliance design</span></div>
-          <div class="mt-2 text-sm text-stone-600">HeyOz 10-skill suite recovers $2,500–4,500/wk per staffer. Compliance is approval-gate-controllable.</div>
+        <div class="disc">
+          <div class="marker"><span class="ball"></span><span class="eyebrow">Service line</span></div>
+          <div style="margin-top: 8px; font-weight: 600;">Facebook Ads <span class="muted" style="font-weight:400;">· 3rd largest</span></div>
+          <div class="small" style="margin-top: 10px;"><strong>Fit:</strong> <span class="accent">Strong, with compliance design</span></div>
+          <p class="small" style="margin-top: 6px; color: var(--text-2);">HeyOz 10-skill suite recovers $2,500–4,500/wk per staffer. Compliance is approval-gate-controllable.</p>
         </div>
-        <div class="p-6">
-          <div class="flex items-center gap-3">
-            <span class="inline-block w-2 h-2 rounded-full bg-stone-400"></span>
-            <div class="text-xs uppercase tracking-[0.15em] text-stone-500">Service line</div>
-          </div>
-          <div class="mt-2 font-semibold">Digital Branding</div>
-          <div class="mt-3 text-sm"><span class="font-medium">Fit:</span> Medium — productize as Brand Strategy Sprint</div>
-          <div class="mt-2 text-sm text-stone-600">MKT1's 7-step strategy skill is a portable template. Brand-as-Skill is a sticky client deliverable.</div>
+        <div class="disc">
+          <div class="marker"><span class="ball muted"></span><span class="eyebrow">Service line</span></div>
+          <div style="margin-top: 8px; font-weight: 600;">Digital Branding</div>
+          <div class="small" style="margin-top: 10px;"><strong>Fit:</strong> Medium — productize as Brand Strategy Sprint</div>
+          <p class="small" style="margin-top: 6px; color: var(--text-2);">MKT1's 7-step strategy skill is a portable template. Brand-as-Skill is a sticky client deliverable.</p>
         </div>
-        <div class="p-6">
-          <div class="flex items-center gap-3">
-            <span class="inline-block w-2 h-2 rounded-full bg-stone-400"></span>
-            <div class="text-xs uppercase tracking-[0.15em] text-stone-500">Cross-cutting</div>
-          </div>
-          <div class="mt-2 font-semibold">Analytics &amp; Attribution</div>
-          <div class="mt-3 text-sm"><span class="font-medium">Fit:</span> Compounds across retainers</div>
-          <div class="mt-2 text-sm text-stone-600">GA4 audit in 4 minutes. Improvado: Chacka Marketing 90% reporting time reduction; analyst saves 38 hr/wk.</div>
+        <div class="disc">
+          <div class="marker"><span class="ball muted"></span><span class="eyebrow">Cross-cutting</span></div>
+          <div style="margin-top: 8px; font-weight: 600;">Analytics &amp; Attribution</div>
+          <div class="small" style="margin-top: 10px;"><strong>Fit:</strong> Compounds across retainers</div>
+          <p class="small" style="margin-top: 6px; color: var(--text-2);">GA4 audit in 4 minutes. Improvado: Chacka Marketing 90% reporting time reduction; analyst saves 38 hr/wk.</p>
         </div>
-        <div class="p-6">
-          <div class="flex items-center gap-3">
-            <span class="inline-block w-2 h-2 rounded-full bg-stone-400"></span>
-            <div class="text-xs uppercase tracking-[0.15em] text-stone-500">Cross-cutting</div>
-          </div>
-          <div class="mt-2 font-semibold">MarTech &amp; Content</div>
-          <div class="mt-3 text-sm"><span class="font-medium">Fit:</span> Compounds across retainers</div>
-          <div class="mt-2 text-sm text-stone-600">HubSpot first-party connector. Anti-slop content layer (Horoscope Test) ports to Vietnamese.</div>
+        <div class="disc">
+          <div class="marker"><span class="ball muted"></span><span class="eyebrow">Cross-cutting</span></div>
+          <div style="margin-top: 8px; font-weight: 600;">MarTech &amp; Content</div>
+          <div class="small" style="margin-top: 10px;"><strong>Fit:</strong> Compounds across retainers</div>
+          <p class="small" style="margin-top: 6px; color: var(--text-2);">HubSpot first-party connector. Anti-slop content layer (Horoscope Test) ports to Vietnamese.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- COST REPLACEMENT -->
-  <section class="border-b border-stone-200 bg-stone-100">
-    <div class="max-w-6xl mx-auto px-6 py-16">
-      <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">What Claude Code workflows displace — agency margin upside</h2>
-      <p class="mt-3 text-stone-600 max-w-3xl">For an agency that <em>sells these services to clients</em>, the implication isn't "fire the contractor" — it's <strong>increased per-client margin and faster fulfillment</strong>. Going rates below are US market reference; SEONGON's local cost basis differs but the relative shape holds.</p>
-      <div class="mt-8 overflow-x-auto bg-white rounded-2xl border border-stone-200">
-        <table class="min-w-full text-sm">
-          <thead class="bg-stone-50 text-stone-600 uppercase text-xs tracking-wider">
+  <section class="alt-2">
+    <div class="wrap">
+      <h2>What Claude Code workflows displace — agency margin upside</h2>
+      <p class="lede">For an agency that <em>sells these services to clients</em>, the implication isn't "fire the contractor" — it's <strong>increased per-client margin and faster fulfillment</strong>. Going rates below are US market reference; SEONGON's local cost basis differs but the relative shape holds.</p>
+      <div class="table-card" style="margin-top: 28px; overflow-x: auto;">
+        <table>
+          <thead>
             <tr>
-              <th class="text-left px-5 py-3 font-medium">Workflow</th>
-              <th class="text-left px-5 py-3 font-medium">Replaces</th>
-              <th class="text-left px-5 py-3 font-medium">Going rate (US)</th>
-              <th class="text-left px-5 py-3 font-medium">Build time</th>
+              <th>Workflow</th>
+              <th>Replaces</th>
+              <th>Going rate (US)</th>
+              <th>Build time</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-stone-200">
-            <tr><td class="px-5 py-3">Automated performance reporting</td><td class="px-5 py-3">Reporting automation contractor</td><td class="px-5 py-3 num-strong">$1.5k – $6k + retainer</td><td class="px-5 py-3">4–8 hr</td></tr>
-            <tr><td class="px-5 py-3">Content brief generation at scale</td><td class="px-5 py-3">Content strategist</td><td class="px-5 py-3 num-strong">$80 – $200 / hr</td><td class="px-5 py-3">6–12 hr</td></tr>
-            <tr><td class="px-5 py-3">Ad copy + A/B test pipelines</td><td class="px-5 py-3">Copywriter retainer</td><td class="px-5 py-3 num-strong">$2k – $5k / month</td><td class="px-5 py-3">8–16 hr</td></tr>
-            <tr><td class="px-5 py-3">Lead scoring + CRM enrichment</td><td class="px-5 py-3">RevOps contractor</td><td class="px-5 py-3 num-strong">$5k – $15k / project</td><td class="px-5 py-3">12–24 hr</td></tr>
-            <tr><td class="px-5 py-3">Competitor monitoring + intel</td><td class="px-5 py-3">Dedicated analyst</td><td class="px-5 py-3 num-strong">$1k – $3k / month</td><td class="px-5 py-3">8–16 hr</td></tr>
-            <tr><td class="px-5 py-3">Email sequence personalization</td><td class="px-5 py-3">Email specialist</td><td class="px-5 py-3 num-strong">$3k – $8k / campaign</td><td class="px-5 py-3">10–20 hr</td></tr>
+          <tbody>
+            <tr><td>Automated performance reporting</td><td>Reporting automation contractor</td><td class="num">$1.5k – $6k + retainer</td><td>4–8 hr</td></tr>
+            <tr><td>Content brief generation at scale</td><td>Content strategist</td><td class="num">$80 – $200 / hr</td><td>6–12 hr</td></tr>
+            <tr><td>Ad copy + A/B test pipelines</td><td>Copywriter retainer</td><td class="num">$2k – $5k / month</td><td>8–16 hr</td></tr>
+            <tr><td>Lead scoring + CRM enrichment</td><td>RevOps contractor</td><td class="num">$5k – $15k / project</td><td>12–24 hr</td></tr>
+            <tr><td>Competitor monitoring + intel</td><td>Dedicated analyst</td><td class="num">$1k – $3k / month</td><td>8–16 hr</td></tr>
+            <tr><td>Email sequence personalization</td><td>Email specialist</td><td class="num">$3k – $8k / campaign</td><td>10–20 hr</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="mt-3 text-xs text-stone-500">Source: AdventurePPC, "6 Workflows That Replace Freelancer Contracts."</div>
+      <div class="muted small" style="margin-top: 12px;">Source: AdventurePPC, "6 Workflows That Replace Freelancer Contracts."</div>
     </div>
   </section>
 
   <!-- ADOPTION TIERS -->
-  <section id="adoption" class="border-b border-stone-200 bg-white">
-    <div class="max-w-6xl mx-auto px-6 py-16">
-      <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Three-tier adoption shape</h2>
-      <p class="mt-3 text-stone-600 max-w-3xl">Adoption is <strong>not all-staff</strong>. Different roles need different tooling and different access. The leverage compounds when Tier 2 builds skills that Tiers 3 reuse.</p>
-      <div class="mt-10 space-y-4">
-        <div class="pyramid-tier rounded-2xl border border-stone-200 bg-stone-50 p-5 md:p-6 max-w-3xl mx-auto">
-          <div class="flex items-baseline justify-between gap-4 flex-wrap">
+  <section id="adoption" class="alt">
+    <div class="wrap">
+      <h2>Three-tier adoption shape</h2>
+      <p class="lede">Adoption is <strong>not all-staff</strong>. Different roles need different tooling and different access. The leverage compounds when Tier 2 builds skills that Tier 3 reuses.</p>
+      <div style="margin-top: 40px;">
+        <div class="tier t1">
+          <div class="head">
             <div>
-              <div class="text-xs uppercase tracking-[0.15em] text-stone-500">Tier 1 · ~5 people</div>
-              <div class="font-semibold">Engineering / AI team</div>
+              <div class="eyebrow">Tier 1 · ~5 people</div>
+              <div style="margin-top: 4px; font-weight: 600;">Engineering / AI team</div>
             </div>
-            <div class="text-sm text-stone-600">Tooling: Claude Code CLI + API · Cost: API-based</div>
+            <div class="small muted">Tooling: Claude Code CLI + API · Cost: API-based</div>
           </div>
-          <p class="mt-2 text-sm text-stone-700">Builds SEONGON-internal infrastructure: shared skill repo, internal MCP servers, training materials, governance tooling. Already exists; extends to internal infra builder role.</p>
+          <div class="body">Builds SEONGON-internal infrastructure: shared skill repo, internal MCP servers, training materials, governance tooling. Already exists; extends to internal infra builder role.</div>
         </div>
-
-        <div class="pyramid-tier rounded-2xl border border-stone-200 bg-accent-soft p-5 md:p-6 max-w-4xl mx-auto">
-          <div class="flex items-baseline justify-between gap-4 flex-wrap">
+        <div class="tier t2">
+          <div class="head">
             <div>
-              <div class="text-xs uppercase tracking-[0.15em] accent">Tier 2 · ~10–20 people · highest leverage</div>
-              <div class="font-semibold">Senior power users — 1–2 leads per discipline</div>
+              <div class="eyebrow accent">Tier 2 · ~10–20 people · highest leverage</div>
+              <div style="margin-top: 4px; font-weight: 600;">Senior power users — 1–2 leads per discipline</div>
             </div>
-            <div class="text-sm text-stone-600">Tooling: Claude Code CLI + IDE · Cost: Team plan + meaningful API</div>
+            <div class="small muted">Tooling: Claude Code CLI + IDE · Cost: Team plan + meaningful API</div>
           </div>
-          <p class="mt-2 text-sm text-stone-700">Builds the agency's Claude Skills as Git-versioned <code class="bg-white px-1 rounded">.md</code> files. QA's outputs from Tier 3. Localizes open-source skills to Vietnamese-market specifics. <strong>This is where compounding agency IP gets created.</strong></p>
+          <div class="body">Builds the agency's Claude Skills as Git-versioned <code>.md</code> files. QA's outputs from Tier 3. Localizes open-source skills to Vietnamese-market specifics. <strong>This is where compounding agency IP gets created.</strong></div>
         </div>
-
-        <div class="pyramid-tier rounded-2xl border border-stone-200 bg-stone-50 p-5 md:p-6 max-w-5xl mx-auto">
-          <div class="flex items-baseline justify-between gap-4 flex-wrap">
+        <div class="tier t3">
+          <div class="head">
             <div>
-              <div class="text-xs uppercase tracking-[0.15em] text-stone-500">Tier 3 · ~100+ people</div>
-              <div class="font-semibold">Production marketers — ad ops, junior SEOs, content writers, AMs</div>
+              <div class="eyebrow">Tier 3 · ~100+ people</div>
+              <div style="margin-top: 4px; font-weight: 600;">Production marketers — ad ops, junior SEOs, content writers, AMs</div>
             </div>
-            <div class="text-sm text-stone-600">Tooling: Claude.ai Team plan + Claude Cowork · Cost: per-seat</div>
+            <div class="small muted">Tooling: Claude.ai Team plan + Claude Cowork · Cost: per-seat</div>
           </div>
-          <p class="mt-2 text-sm text-stone-700">Consume the skills Tier 2 builds. Don't write new skills; run existing ones, request fixes when outputs miss. Terminal/CLI is a graduation path, not a default.</p>
+          <div class="body">Consume the skills Tier 2 builds. Don't write new skills; run existing ones, request fixes when outputs miss. Terminal/CLI is a graduation path, not a default.</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- PILOT TIMELINE -->
-  <section id="pilot" class="border-b border-stone-200 bg-stone-100">
-    <div class="max-w-6xl mx-auto px-6 py-16">
-      <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">90-day pilot sequence</h2>
-      <p class="mt-3 text-stone-600 max-w-3xl">Priority disciplines first (highest documented ROI, mature open-source ecosystem). Compliance-sensitive disciplines second. Productize new service lines last.</p>
-      <div class="mt-10 space-y-5">
-        <!-- phase 1 -->
-        <div class="bg-white rounded-2xl border border-stone-200 p-5 md:p-6">
-          <div class="flex items-baseline justify-between flex-wrap gap-3">
+  <section id="pilot" class="alt-2">
+    <div class="wrap">
+      <h2>90-day pilot sequence</h2>
+      <p class="lede">Priority disciplines first (highest documented ROI, mature open-source ecosystem). Compliance-sensitive disciplines second. Productize new service lines last.</p>
+      <div style="margin-top: 32px;">
+        <div class="phase">
+          <div class="phase-head">
             <div>
-              <div class="text-xs uppercase tracking-[0.15em] accent">Phase 1 · Weeks 1–4</div>
-              <div class="font-semibold">Infrastructure + first pilots (SEO + Google Ads)</div>
+              <div class="eyebrow accent">Phase 1 · Weeks 1–4</div>
+              <div style="margin-top: 4px; font-weight: 600;">Infrastructure + first pilots (SEO + Google Ads)</div>
             </div>
-            <div class="text-sm text-stone-500">Risk: low</div>
+            <div class="small muted">Risk: low</div>
           </div>
-          <div class="mt-3 grid md:grid-cols-3 gap-3 text-sm text-stone-700">
-            <div class="rounded-lg bg-stone-50 p-3">Tier 1 sets up shared skill Git repo + Google Ads &amp; GA4 MCP servers</div>
-            <div class="rounded-lg bg-stone-50 p-3">Fork <code>claude-seo</code> + <code>claude-ads</code> → <code>seongon-seo</code> + <code>seongon-ads</code></div>
-            <div class="rounded-lg bg-stone-50 p-3">Run <code>/seo audit</code> against 10 client sites; compare to senior-SEO baselines</div>
+          <div class="phase-grid">
+            <div class="phase-cell">Tier 1 sets up shared skill Git repo + Google Ads &amp; GA4 MCP servers</div>
+            <div class="phase-cell">Fork <code>claude-seo</code> + <code>claude-ads</code> → <code>seongon-seo</code> + <code>seongon-ads</code></div>
+            <div class="phase-cell">Run <code>/seo audit</code> against 10 client sites; compare to senior-SEO baselines</div>
           </div>
-          <div class="mt-3 h-2 rounded-full bg-stone-200 overflow-hidden"><div class="h-full timeline-bar" style="width: 33%;"></div></div>
+          <div class="progress"><i style="width: 33%;"></i></div>
         </div>
-        <!-- phase 2 -->
-        <div class="bg-white rounded-2xl border border-stone-200 p-5 md:p-6">
-          <div class="flex items-baseline justify-between flex-wrap gap-3">
+        <div class="phase">
+          <div class="phase-head">
             <div>
-              <div class="text-xs uppercase tracking-[0.15em] accent">Phase 2 · Weeks 5–8</div>
-              <div class="font-semibold">Add Facebook Ads + onboard Tier 3</div>
+              <div class="eyebrow accent">Phase 2 · Weeks 5–8</div>
+              <div style="margin-top: 4px; font-weight: 600;">Add Facebook Ads + onboard Tier 3</div>
             </div>
-            <div class="text-sm text-stone-500">Risk: medium (Meta compliance)</div>
+            <div class="small muted">Risk: medium (Meta compliance)</div>
           </div>
-          <div class="mt-3 grid md:grid-cols-3 gap-3 text-sm text-stone-700">
-            <div class="rounded-lg bg-stone-50 p-3">Compliance review per <a href="https://portermetrics.com/en/tutorial/claude/chat-meta-ads/" class="underline" target="_blank" rel="noreferrer">PorterMetrics ban-risk reference</a>; pick approved MCP layer</div>
-            <div class="rounded-lg bg-stone-50 p-3">Deploy HeyOz <code>/weekly-report</code>, <code>/spy</code>, <code>/audience-audit</code> read-only first</div>
-            <div class="rounded-lg bg-stone-50 p-3">Onboard ~100 Tier 3 marketers to Claude.ai Team + Cowork</div>
+          <div class="phase-grid">
+            <div class="phase-cell">Compliance review per <a href="https://portermetrics.com/en/tutorial/claude/chat-meta-ads/" target="_blank" rel="noreferrer">PorterMetrics ban-risk reference</a>; pick approved MCP layer</div>
+            <div class="phase-cell">Deploy HeyOz <code>/weekly-report</code>, <code>/spy</code>, <code>/audience-audit</code> read-only first</div>
+            <div class="phase-cell">Onboard ~100 Tier 3 marketers to Claude.ai Team + Cowork</div>
           </div>
-          <div class="mt-3 h-2 rounded-full bg-stone-200 overflow-hidden"><div class="h-full timeline-bar" style="width: 66%;"></div></div>
+          <div class="progress"><i style="width: 66%;"></i></div>
         </div>
-        <!-- phase 3 -->
-        <div class="bg-white rounded-2xl border border-stone-200 p-5 md:p-6">
-          <div class="flex items-baseline justify-between flex-wrap gap-3">
+        <div class="phase">
+          <div class="phase-head">
             <div>
-              <div class="text-xs uppercase tracking-[0.15em] accent">Phase 3 · Weeks 9–12</div>
-              <div class="font-semibold">Productize new service lines</div>
+              <div class="eyebrow accent">Phase 3 · Weeks 9–12</div>
+              <div style="margin-top: 4px; font-weight: 600;">Productize new service lines</div>
             </div>
-            <div class="text-sm text-stone-500">Risk: revenue, not cost</div>
+            <div class="small muted">Risk: revenue, not cost</div>
           </div>
-          <div class="mt-3 grid md:grid-cols-3 gap-3 text-sm text-stone-700">
-            <div class="rounded-lg bg-stone-50 p-3"><strong>GEO Consulting pilot</strong> with 1 willing SEO retainer client</div>
-            <div class="rounded-lg bg-stone-50 p-3"><strong>Brand Strategy Sprint</strong> with 1–2 willing clients (MKT1 7-step skill)</div>
-            <div class="rounded-lg bg-stone-50 p-3"><strong>AI Search Visibility Dashboard</strong> built and offered as upsell</div>
+          <div class="phase-grid">
+            <div class="phase-cell"><strong>GEO Consulting pilot</strong> with 1 willing SEO retainer client</div>
+            <div class="phase-cell"><strong>Brand Strategy Sprint</strong> with 1–2 willing clients (MKT1 7-step skill)</div>
+            <div class="phase-cell"><strong>AI Search Visibility Dashboard</strong> built and offered as upsell</div>
           </div>
-          <div class="mt-3 h-2 rounded-full bg-stone-200 overflow-hidden"><div class="h-full timeline-bar" style="width: 100%;"></div></div>
+          <div class="progress"><i style="width: 100%;"></i></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- STRATEGIC UPSIDE -->
-  <section id="upside" class="border-b border-stone-200 bg-white">
-    <div class="max-w-6xl mx-auto px-6 py-16">
-      <div class="grid md:grid-cols-12 gap-10">
-        <div class="md:col-span-5">
-          <div class="text-xs uppercase tracking-[0.2em] accent mb-3">Strategic upside · beyond efficiency</div>
-          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">GEO is a service line, not a side note.</h2>
-          <p class="mt-4 text-stone-600">
-            Generative Engine Optimization — getting brands to surface inside Claude / ChatGPT / Perplexity / Gemini / Google AI Overviews — appears as a first-class capability in every serious SEO Claude Code resource we reviewed. <strong>Few Vietnamese agencies have productized GEO yet.</strong> SEONGON has a first-mover window.
-          </p>
+  <section id="upside" class="alt">
+    <div class="wrap">
+      <div class="grid-2">
+        <div>
+          <div class="eyebrow accent">Strategic upside · beyond efficiency</div>
+          <h2 style="margin-top: 12px;">GEO is a service line, not a side note.</h2>
+          <p class="lede">Generative Engine Optimization — getting brands to surface inside Claude / ChatGPT / Perplexity / Gemini / Google AI Overviews — appears as a first-class capability in every serious SEO Claude Code resource we reviewed. <strong>Few Vietnamese agencies have productized GEO yet.</strong> SEONGON has a first-mover window.</p>
         </div>
-        <div class="md:col-span-7 grid sm:grid-cols-2 gap-3">
-          <div class="rounded-xl border border-stone-200 bg-stone-50 p-5">
-            <div class="text-sm accent font-medium">Defensive</div>
-            <div class="mt-1 font-semibold">Search-traffic erosion</div>
-            <p class="mt-2 text-sm text-stone-600">AI Overviews and ChatGPT capture queries upstream of Google's blue links. SEO retainer CTR metrics will face downward pressure within 12–24 months.</p>
+        <div class="upside-grid">
+          <div class="up-card">
+            <div class="tag">Defensive</div>
+            <div style="margin-top: 4px; font-weight: 600;">Search-traffic erosion</div>
+            <p class="small" style="margin-top: 6px; color: var(--text-2);">AI Overviews and ChatGPT capture queries upstream of Google's blue links. SEO retainer CTR metrics will face downward pressure within 12–24 months.</p>
           </div>
-          <div class="rounded-xl border border-stone-200 bg-stone-50 p-5">
-            <div class="text-sm accent font-medium">Offensive</div>
-            <div class="mt-1 font-semibold">Productize GEO consulting</div>
-            <p class="mt-2 text-sm text-stone-600">Use the open-source GEO skill libraries (<code>claude-seo</code>'s seo-geo subagent, aaron-he-zhu's CORE-EEAT + CITE frameworks) as the technical base.</p>
+          <div class="up-card">
+            <div class="tag">Offensive</div>
+            <div style="margin-top: 4px; font-weight: 600;">Productize GEO consulting</div>
+            <p class="small" style="margin-top: 6px; color: var(--text-2);">Use the open-source GEO skill libraries (<code>claude-seo</code>'s seo-geo subagent, aaron-he-zhu's CORE-EEAT + CITE frameworks) as the technical base.</p>
           </div>
-          <div class="rounded-xl border border-stone-200 bg-stone-50 p-5">
-            <div class="text-sm font-medium text-stone-500">Adjacent service</div>
-            <div class="mt-1 font-semibold">AI Search Visibility Dashboard</div>
-            <p class="mt-2 text-sm text-stone-600">Recurring deliverable per client; tracks brand presence across Claude/ChatGPT/Perplexity/Gemini/AIO. 15-min build per SEO Francisco recipe.</p>
+          <div class="up-card muted">
+            <div class="tag">Adjacent service</div>
+            <div style="margin-top: 4px; font-weight: 600;">AI Search Visibility Dashboard</div>
+            <p class="small" style="margin-top: 6px; color: var(--text-2);">Recurring deliverable per client; tracks brand presence across Claude/ChatGPT/Perplexity/Gemini/AIO. 15-min build per SEO Francisco recipe.</p>
           </div>
-          <div class="rounded-xl border border-stone-200 bg-stone-50 p-5">
-            <div class="text-sm font-medium text-stone-500">Adjacent service</div>
-            <div class="mt-1 font-semibold">Brand-as-Skill</div>
-            <p class="mt-2 text-sm text-stone-600">Package each client's brand guidelines as a reusable Claude Skill — sticky deliverable that recurs across the client lifecycle.</p>
+          <div class="up-card muted">
+            <div class="tag">Adjacent service</div>
+            <div style="margin-top: 4px; font-weight: 600;">Brand-as-Skill</div>
+            <p class="small" style="margin-top: 6px; color: var(--text-2);">Package each client's brand guidelines as a reusable Claude Skill — sticky deliverable that recurs across the client lifecycle.</p>
           </div>
         </div>
       </div>
@@ -400,52 +485,52 @@
   </section>
 
   <!-- OPEN QUESTIONS -->
-  <section class="border-b border-stone-200 bg-stone-100">
-    <div class="max-w-6xl mx-auto px-6 py-16">
-      <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Open questions for SEONGON-internal phase</h2>
-      <p class="mt-3 text-stone-600 max-w-3xl">These need internal data, not desk research. They gate the move from research pack to formal proposal.</p>
-      <ol class="mt-8 grid md:grid-cols-2 gap-4 list-none">
-        <li class="rounded-xl border border-stone-200 bg-white p-5">
-          <div class="text-xs uppercase tracking-[0.15em] text-stone-500">Q1 · Baseline</div>
-          <div class="mt-1 font-semibold">Current per-account fulfillment hours by service line</div>
-          <p class="mt-2 text-sm text-stone-600">Without this, the time-savings projection is industry-average, not SEONGON-specific.</p>
+  <section class="alt-2">
+    <div class="wrap">
+      <h2>Open questions for SEONGON-internal phase</h2>
+      <p class="lede">These need internal data, not desk research. They gate the move from research pack to formal proposal.</p>
+      <ol class="q-grid">
+        <li>
+          <div class="eyebrow">Q1 · Baseline</div>
+          <div style="margin-top: 4px; font-weight: 600;">Current per-account fulfillment hours by service line</div>
+          <p class="small" style="margin-top: 6px; color: var(--text-2);">Without this, the time-savings projection is industry-average, not SEONGON-specific.</p>
         </li>
-        <li class="rounded-xl border border-stone-200 bg-white p-5">
-          <div class="text-xs uppercase tracking-[0.15em] text-stone-500">Q2 · Stack</div>
-          <div class="mt-1 font-semibold">Client mix by martech stack (HubSpot vs. Salesforce vs. nothing)</div>
-          <p class="mt-2 text-sm text-stone-600">Drives the integration build order for marketing-ops automation.</p>
+        <li>
+          <div class="eyebrow">Q2 · Stack</div>
+          <div style="margin-top: 4px; font-weight: 600;">Client mix by martech stack (HubSpot vs. Salesforce vs. nothing)</div>
+          <p class="small" style="margin-top: 6px; color: var(--text-2);">Drives the integration build order for marketing-ops automation.</p>
         </li>
-        <li class="rounded-xl border border-stone-200 bg-white p-5">
-          <div class="text-xs uppercase tracking-[0.15em] text-stone-500">Q3 · Content</div>
-          <div class="mt-1 font-semibold">Vietnamese AI-content detector landscape</div>
-          <p class="mt-2 text-sm text-stone-600">Drives anti-slop layer design. Need to know which detectors clients use and at what thresholds.</p>
+        <li>
+          <div class="eyebrow">Q3 · Content</div>
+          <div style="margin-top: 4px; font-weight: 600;">Vietnamese AI-content detector landscape</div>
+          <p class="small" style="margin-top: 6px; color: var(--text-2);">Drives anti-slop layer design. Need to know which detectors clients use and at what thresholds.</p>
         </li>
-        <li class="rounded-xl border border-stone-200 bg-white p-5">
-          <div class="text-xs uppercase tracking-[0.15em] text-stone-500">Q4 · Demand</div>
-          <div class="mt-1 font-semibold">Existing-client appetite for GEO consulting upsell</div>
-          <p class="mt-2 text-sm text-stone-600">Drives whether GEO becomes a productized service in 90 days vs. 12 months.</p>
+        <li>
+          <div class="eyebrow">Q4 · Demand</div>
+          <div style="margin-top: 4px; font-weight: 600;">Existing-client appetite for GEO consulting upsell</div>
+          <p class="small" style="margin-top: 6px; color: var(--text-2);">Drives whether GEO becomes a productized service in 90 days vs. 12 months.</p>
         </li>
-        <li class="rounded-xl border border-stone-200 bg-white p-5">
-          <div class="text-xs uppercase tracking-[0.15em] text-stone-500">Q5 · Capacity</div>
-          <div class="mt-1 font-semibold">Senior time available for skill-building vs. running current accounts</div>
-          <p class="mt-2 text-sm text-stone-600">Drives realistic pilot timeline. Tier 2 work is meaningful upfront investment.</p>
+        <li>
+          <div class="eyebrow">Q5 · Capacity</div>
+          <div style="margin-top: 4px; font-weight: 600;">Senior time available for skill-building vs. running current accounts</div>
+          <p class="small" style="margin-top: 6px; color: var(--text-2);">Drives realistic pilot timeline. Tier 2 work is meaningful upfront investment.</p>
         </li>
       </ol>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-white">
-    <div class="max-w-6xl mx-auto px-6 py-12">
-      <div class="grid md:grid-cols-3 gap-8 text-sm">
+  <footer>
+    <div class="wrap">
+      <div class="grid">
         <div>
-          <div class="font-semibold">Research repository</div>
-          <p class="mt-2 text-stone-600">Full evidence base — per-discipline deep dives, master workflows table, source index, raw extracts.</p>
-          <a href="https://github.com/nhhoang4075/claude-code-research" target="_blank" rel="noreferrer" class="mt-2 inline-block accent hover:underline">github.com/nhhoang4075/claude-code-research →</a>
+          <div style="font-weight: 600; color: var(--text);">Research repository</div>
+          <p class="small" style="margin-top: 8px;">Full evidence base — per-discipline deep dives, master workflows table, source index, raw extracts.</p>
+          <a href="https://github.com/nhhoang4075/claude-code-research" target="_blank" rel="noreferrer" class="accent" style="margin-top: 8px; display: inline-block; text-decoration: none;">github.com/nhhoang4075/claude-code-research →</a>
         </div>
         <div>
-          <div class="font-semibold">Top sources</div>
-          <ul class="mt-2 text-stone-600 space-y-1">
+          <div style="font-weight: 600; color: var(--text);">Top sources</div>
+          <ul>
             <li>Anthropic — <em>How Anthropic teams use Claude Code</em></li>
             <li>Anthropic Economic Index (Jan + Mar 2026)</li>
             <li>Ayima — <em>Claude for Technical SEO</em> programme</li>
@@ -455,88 +540,121 @@
           </ul>
         </div>
         <div>
-          <div class="font-semibold">Methodology</div>
-          <p class="mt-2 text-stone-600">~30 sources extracted via structured prompts. Time-savings reported as sources stated; ranges normalized to midpoints. Anthropic PDF extracted via <code>pdftotext</code>; raw text in <code>raw/</code>.</p>
+          <div style="font-weight: 600; color: var(--text);">Methodology</div>
+          <p class="small" style="margin-top: 8px;">~30 sources extracted via structured prompts. Time-savings reported as sources stated; ranges normalized to midpoints. Anthropic PDF extracted via <code>pdftotext</code>; raw text in <code>raw/</code>.</p>
         </div>
       </div>
-      <div class="mt-8 pt-6 border-t border-stone-200 text-xs text-stone-500 flex flex-wrap gap-4 justify-between">
-        <span>Compiled 2026-05-03 · for SEONGON-internal use</span>
+      <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; font-size: 0.8rem; color: var(--text-3);">
+        <span>Compiled 2026-05 · for SEONGON-internal use</span>
         <span>Not a finished proposal — an evidence base for one.</span>
       </div>
     </div>
   </footer>
 
+  <!-- charts: load lib only when first chart is in viewport -->
   <script>
-    // ── Time savings chart ─────────────────────────────────────────────
-    const fmtMin = (m) => (m >= 60 ? (m/60).toFixed(m%60===0?0:1)+' h' : m+' min');
-    const timeData = [
-      // label, before(min), after(min), source
-      ['SEO · Cannibalization detection',     210,   2,   'Michael Patrick Cortez'],
-      ['SEO · CTR quick-win audit',           150,   1.5, 'Michael Patrick Cortez'],
-      ['SEO · Content gap analysis',          270,   5,   'Michael Patrick Cortez'],
-      ['SEO · Technical SEO brief',           240,  20,   'Ayima programme'],
-      ['SEO · Schema review',                  45,   3,   'Ayima programme'],
-      ['SEO · Content brief generation',      210,  10,   'SE Ranking'],
-      ['Google Ads · Ad copy creation',       120,  15,   'Anthropic Growth Mktg'],
-      ['Google Ads · Multi-platform audit',   480, 120,   'Stormy AI'],
-      ['Google Ads · Weekly client reporting',180,   4,   'AdventurePPC'],
-      ['Meta · Campaign deployment',          210,  10,   'HeyOz /deploy-ads'],
-      ['Meta · Daily bleed-check',             40,   2,   'HeyOz /bleed-check'],
-      ['Brand · Competitive brief',            90,  10,   'Stack and Scale'],
-      ['Brand · Content repurposing per blog',270,  15,   'Stack and Scale'],
-      ['Brand · Executive deck (weekly)',      90,  10,   'Stack and Scale'],
-      ['Analytics · GA4 audit',                60,   4,   'measureu.com'],
-    ];
-    new Chart(document.getElementById('timeChart'), {
-      type: 'bar',
-      data: {
-        labels: timeData.map(d=>d[0]),
-        datasets: [
-          { label: 'Before (manual)',  data: timeData.map(d=>d[1]), backgroundColor: '#dc2626' },
-          { label: 'After (Claude Code)', data: timeData.map(d=>d[2]), backgroundColor: '#0f766e' },
-        ]
-      },
-      options: {
-        indexAxis: 'y',
-        responsive: true, maintainAspectRatio: false,
-        scales: {
-          x: { type: 'logarithmic',
-               title: { display: true, text: 'Minutes (log scale)' },
-               grid: { color: '#f3f4f6' },
-               ticks: { color: '#6b7280' } },
-          y: { ticks: { color: '#374151' }, grid: { display: false } }
-        },
-        plugins: {
-          legend: { position: 'top', labels: { color: '#374151' } },
-          tooltip: {
-            callbacks: { label: (c) => `${c.dataset.label}: ${fmtMin(c.parsed.x)}` }
-          }
-        }
-      }
-    });
+    (function () {
+      const targets = document.querySelectorAll('canvas[data-chart]');
+      if (!targets.length) return;
 
-    // ── Ecosystem density chart ────────────────────────────────────────
-    const ecoLabels = ['claude-ads (paid)', 'claude-seo', 'superseo-skills', 'seo-geo (incl. CORE-EEAT/CITE)', 'HeyOz Meta Ads', 'Improvado Marketing'];
-    const ecoData   = [250, 36, 11, 24, 10, 54];
-    new Chart(document.getElementById('ecoChart'), {
-      type: 'bar',
-      data: {
-        labels: ecoLabels,
-        datasets: [{
-          label: 'Skills / checks / subagents',
-          data: ecoData,
-          backgroundColor: ['#b91c1c', '#dc2626', '#ef4444', '#f87171', '#fb7185', '#fda4af']
-        }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        scales: {
-          y: { title: { display: true, text: 'Count' }, grid: { color: '#f3f4f6' } },
-          x: { ticks: { autoSkip: false, maxRotation: 30, minRotation: 0, color: '#374151' }, grid: { display: false } }
-        },
-        plugins: { legend: { display: false } }
+      let chartLibPromise = null;
+      function loadChartJs() {
+        if (chartLibPromise) return chartLibPromise;
+        chartLibPromise = new Promise(function (resolve, reject) {
+          const s = document.createElement('script');
+          s.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js';
+          s.async = true;
+          s.onload = resolve;
+          s.onerror = reject;
+          document.head.appendChild(s);
+        });
+        return chartLibPromise;
       }
-    });
+
+      const fmtMin = function (m) { return m >= 60 ? (m/60).toFixed(m%60===0?0:1) + ' h' : m + ' min'; };
+
+      const datasets = {
+        time: function (ctx) {
+          const rows = [
+            ['SEO · Cannibalization detection',     210,   2],
+            ['SEO · CTR quick-win audit',           150,   1.5],
+            ['SEO · Content gap analysis',          270,   5],
+            ['SEO · Technical SEO brief',           240,  20],
+            ['SEO · Schema review',                  45,   3],
+            ['SEO · Content brief generation',      210,  10],
+            ['Google Ads · Ad copy creation',       120,  15],
+            ['Google Ads · Multi-platform audit',   480, 120],
+            ['Google Ads · Weekly client reporting',180,   4],
+            ['Meta · Campaign deployment',          210,  10],
+            ['Meta · Daily bleed-check',             40,   2],
+            ['Brand · Competitive brief',            90,  10],
+            ['Brand · Content repurposing per blog',270,  15],
+            ['Brand · Executive deck (weekly)',      90,  10],
+            ['Analytics · GA4 audit',                60,   4],
+          ];
+          return new window.Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: rows.map(function (r) { return r[0]; }),
+              datasets: [
+                { label: 'Before (manual)',     data: rows.map(function (r) { return r[1]; }), backgroundColor: '#dc2626' },
+                { label: 'After (Claude Code)', data: rows.map(function (r) { return r[2]; }), backgroundColor: '#0f766e' }
+              ]
+            },
+            options: {
+              indexAxis: 'y',
+              responsive: true, maintainAspectRatio: false, animation: { duration: 200 },
+              scales: {
+                x: { type: 'logarithmic', title: { display: true, text: 'Minutes (log scale)' }, grid: { color: '#f3f4f6' }, ticks: { color: '#6b7280' } },
+                y: { ticks: { color: '#374151' }, grid: { display: false } }
+              },
+              plugins: {
+                legend: { position: 'top', labels: { color: '#374151' } },
+                tooltip: { callbacks: { label: function (c) { return c.dataset.label + ': ' + fmtMin(c.parsed.x); } } }
+              }
+            }
+          });
+        },
+        eco: function (ctx) {
+          return new window.Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ['claude-ads (paid)', 'claude-seo', 'superseo-skills', 'seo-geo (incl. CORE-EEAT/CITE)', 'HeyOz Meta Ads', 'Improvado Marketing'],
+              datasets: [{
+                label: 'Skills / checks / subagents',
+                data: [250, 36, 11, 24, 10, 54],
+                backgroundColor: ['#b91c1c', '#dc2626', '#ef4444', '#f87171', '#fb7185', '#fda4af']
+              }]
+            },
+            options: {
+              responsive: true, maintainAspectRatio: false, animation: { duration: 200 },
+              scales: {
+                y: { title: { display: true, text: 'Count' }, grid: { color: '#f3f4f6' } },
+                x: { ticks: { autoSkip: false, maxRotation: 30, minRotation: 0, color: '#374151' }, grid: { display: false } }
+              },
+              plugins: { legend: { display: false } }
+            }
+          });
+        }
+      };
+
+      const rendered = new WeakSet();
+      const io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          const c = entry.target;
+          if (rendered.has(c)) return;
+          rendered.add(c);
+          io.unobserve(c);
+          loadChartJs().then(function () {
+            const fn = datasets[c.getAttribute('data-chart')];
+            if (fn) fn(c.getContext('2d'));
+          });
+        });
+      }, { rootMargin: '200px' });
+
+      targets.forEach(function (c) { io.observe(c); });
+    })();
   </script>
 </body>
 </html>
