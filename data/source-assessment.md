@@ -47,12 +47,12 @@ Read the rubric in [`assessment-framework.md`](assessment-framework.md) before r
 | R039 | [R039](#r039) [AdventurePPC — Sarah's Story (zero-code marketer 8-week transfor…](https://www.adventureppc.com/blog/from-zero-to-ai-builder-how-one-marketer-learned-claude-code-and-automated-their-entire-workflow) | GADS | `ADVENTUREPPC` | A | 26 | 4 | 4 | 4 | 5 | 2 | 4 | 3 | SUPPORT |
 | R040 | [R040](#r040) [claude-seo.md — Free AI SEO Audit Tool](https://claude-seo.md/) | SEO | `AGRICIDANIEL-SEO` | A | 26 | 2 | 4 | 4 | 5 | 4 | 5 | 2 | SUPPORT |
 | R014 | [R014](#r014) [Ryze AI — 10 Claude Code Marketing Workflows](https://www.get-ryze.ai/blog/claude-code-marketing-workflows-google-meta-ads) | GADS+META | — | A | 25 | 3 | 5 | 3 | 5 | 2 | 5 | 2 | SUPPORT |
+| R024 | [R024](#r024) [Improvado — Claude Marketing Skills](https://improvado.io/blog/claude-marketing-skills) | ANALYTICS+MOPS | `MARKETING-DATA-CONNECTORS` ★ | A | 25 | 3 | 4 | 2 | 5 | 3 | 4 | 4 | SUPPORT |
+| R025 | [R025](#r025) [Coupler.io — Claude Code for Marketing Real Use Cases](https://blog.coupler.io/claude-code-for-marketing/) | CROSS | `MARKETING-DATA-CONNECTORS` | A | 25 | 3 | 4 | 2 | 5 | 3 | 4 | 4 | SUPPORT |
+| R026 | [R026](#r026) [Windsor.ai — GA4 Connector for Claude](https://windsor.ai/connect/google-analytics-4-to-claude-integration/) | ANALYTICS | `GA4-CLAUDE` | A | 25 | 3 | 4 | 2 | 5 | 4 | 4 | 3 | SUPPORT |
 | R031 | [R031](#r031) [nex.ad — How to make brand show up in Claude answers](https://nex.ad/blog/how-to-make-your-brand-show-up-in-claude-answers) | BRAND+SEO | — | A | 25 | 3 | 4 | 4 | 5 | 3 | 4 | 2 | SUPPORT |
 | R034 | [R034](#r034) [getmarketingwithai — Marketer's Guide to Claude Code](https://getmarketingwithai.substack.com/p/the-marketers-guide-to-claude-code) | CROSS | — | A | 25 | 3 | 5 | 4 | 5 | 2 | 4 | 2 | SUPPORT |
 | R022 | [R022](#r022) [Stack and Scale — Claude Code Playbook for Marketers](https://www.stackandscale.ai/p/the-claude-code-playbook-for-marketers) | BRAND+CROSS | — | A | 24 | 3 | 5 | 3 | 5 | 2 | 4 | 2 | SUPPORT |
-| R024 | [R024](#r024) [Improvado — Claude Marketing Skills](https://improvado.io/blog/claude-marketing-skills) | ANALYTICS+MOPS | `MARKETING-DATA-CONNECTORS` ★ | A | 24 | 3 | 4 | 1 | 5 | 3 | 4 | 4 | SUPPORT |
-| R025 | [R025](#r025) [Coupler.io — Claude Code for Marketing Real Use Cases](https://blog.coupler.io/claude-code-for-marketing/) | CROSS | `MARKETING-DATA-CONNECTORS` | A | 24 | 3 | 4 | 1 | 5 | 3 | 4 | 4 | SUPPORT |
-| R026 | [R026](#r026) [Windsor.ai — GA4 Connector for Claude](https://windsor.ai/connect/google-analytics-4-to-claude-integration/) | ANALYTICS | `GA4-CLAUDE` | A | 24 | 3 | 4 | 1 | 5 | 4 | 4 | 3 | SUPPORT |
 | R035 | [R035](#r035) [aimaker — Newsletter inside Claude Code](https://aimaker.substack.com/p/claude-code-newsletter-agentic-system) | CONTENT | — | A | 24 | 3 | 5 | 4 | 5 | 2 | 3 | 2 | CONTEXT |
 
 
@@ -821,6 +821,75 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ---
 
+### <a id="r024"></a>R024 · Improvado — Claude Marketing Skills
+
+**Total 25/35** · Tier A (support) · Use: `SUPPORT` · Discipline: `ANALYTICS+MOPS` · Type: `VENDOR-BLOG` · 2026 · Cluster: `MARKETING-DATA-CONNECTORS` ★
+
+**URL**: https://improvado.io/blog/claude-marketing-skills
+
+**Author**: Improvado (~$30M+ funded marketing-data platform)
+
+**Role**: Marketing-data SaaS vendor with commercial Claude integration
+
+**Trust signals**: Established platform with 1,000+ source connectors. Customer outcomes (Chacka 90% reduction, SoftwareOne 3x ROI) cite named clients but not verifiable independently.
+
+**Key data extracted**:
+> 54 skills across 4 funnel stages; 1,000+ data sources; Chacka Marketing 90% reporting reduction; analyst 38hr/wk saved; SoftwareOne 3x ROI
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 3 | 4 | 2 | 5 | 3 | 4 | 4 | **25** |
+
+---
+
+### <a id="r025"></a>R025 · Coupler.io — Claude Code for Marketing Real Use Cases
+
+**Total 25/35** · Tier A (support) · Use: `SUPPORT` · Discipline: `CROSS` · Type: `VENDOR-BLOG` · 2026 · Cluster: `MARKETING-DATA-CONNECTORS`
+
+**URL**: https://blog.coupler.io/claude-code-for-marketing/
+
+**Author**: Coupler.io (Railsware product; established data-integration vendor)
+
+**Role**: Marketing data connector vendor
+
+**Trust signals**: Established Railsware portfolio brand. Names 4 practitioners (Paladiy, Lau, Firestone, Clancy) — verifiable individuals on LinkedIn. Vendor commercial interest.
+
+**Key data extracted**:
+> 400+ data sources; 4 case studies (Paladiy 5-agent>10; Lau non-coder solo; Firestone 2-3x reply rate; Clancy 3 blogs/wk refresh)
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 3 | 4 | 2 | 5 | 3 | 4 | 4 | **25** |
+
+---
+
+### <a id="r026"></a>R026 · Windsor.ai — GA4 Connector for Claude
+
+**Total 25/35** · Tier A (support) · Use: `SUPPORT` · Discipline: `ANALYTICS` · Type: `VENDOR-DOCS` · 2026 · Cluster: `GA4-CLAUDE`
+
+**URL**: https://windsor.ai/connect/google-analytics-4-to-claude-integration/
+
+**Author**: Windsor.ai (marketing data integration vendor)
+
+**Role**: Marketing data connector vendor
+
+**Trust signals**: Vendor of the integration described. Live product testable for free 30 days — claims directly verifiable.
+
+**Key data extracted**:
+> 480+ GA4 dimensions/metrics; 325+ data sources; no-code MCP wrapper; 30-day free trial
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 3 | 4 | 2 | 5 | 4 | 4 | 3 | **25** |
+
+---
+
 ### <a id="r031"></a>R031 · nex.ad — How to make brand show up in Claude answers
 
 **Total 25/35** · Tier A (support) · Use: `SUPPORT` · Discipline: `BRAND+SEO` · Type: `PRACTITIONER` · 2026
@@ -887,75 +956,6 @@ Each card: identity → key data → scores. Identity columns first because they
 | AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
 |---:|---:|---:|---:|---:|---:|---:|---:|
 | 3 | 5 | 3 | 5 | 2 | 4 | 2 | **24** |
-
----
-
-### <a id="r024"></a>R024 · Improvado — Claude Marketing Skills
-
-**Total 24/35** · Tier A (support) · Use: `SUPPORT` · Discipline: `ANALYTICS+MOPS` · Type: `VENDOR-BLOG` · 2026 · Cluster: `MARKETING-DATA-CONNECTORS` ★
-
-**URL**: https://improvado.io/blog/claude-marketing-skills
-
-**Author**: Improvado (~$30M+ funded marketing-data platform)
-
-**Role**: Marketing-data SaaS vendor with commercial Claude integration
-
-**Trust signals**: Established platform with 1,000+ source connectors. Customer outcomes (Chacka 90% reduction, SoftwareOne 3x ROI) cite named clients but not verifiable independently.
-
-**Key data extracted**:
-> 54 skills across 4 funnel stages; 1,000+ data sources; Chacka Marketing 90% reporting reduction; analyst 38hr/wk saved; SoftwareOne 3x ROI
-
-**Scores**:
-
-| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
-|---:|---:|---:|---:|---:|---:|---:|---:|
-| 3 | 4 | 1 | 5 | 3 | 4 | 4 | **24** |
-
----
-
-### <a id="r025"></a>R025 · Coupler.io — Claude Code for Marketing Real Use Cases
-
-**Total 24/35** · Tier A (support) · Use: `SUPPORT` · Discipline: `CROSS` · Type: `VENDOR-BLOG` · 2026 · Cluster: `MARKETING-DATA-CONNECTORS`
-
-**URL**: https://blog.coupler.io/claude-code-for-marketing/
-
-**Author**: Coupler.io (Railsware product; established data-integration vendor)
-
-**Role**: Marketing data connector vendor
-
-**Trust signals**: Established Railsware portfolio brand. Names 4 practitioners (Paladiy, Lau, Firestone, Clancy) — verifiable individuals on LinkedIn. Vendor commercial interest.
-
-**Key data extracted**:
-> 400+ data sources; 4 case studies (Paladiy 5-agent>10; Lau non-coder solo; Firestone 2-3x reply rate; Clancy 3 blogs/wk refresh)
-
-**Scores**:
-
-| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
-|---:|---:|---:|---:|---:|---:|---:|---:|
-| 3 | 4 | 1 | 5 | 3 | 4 | 4 | **24** |
-
----
-
-### <a id="r026"></a>R026 · Windsor.ai — GA4 Connector for Claude
-
-**Total 24/35** · Tier A (support) · Use: `SUPPORT` · Discipline: `ANALYTICS` · Type: `VENDOR-DOCS` · 2026 · Cluster: `GA4-CLAUDE`
-
-**URL**: https://windsor.ai/connect/google-analytics-4-to-claude-integration/
-
-**Author**: Windsor.ai (marketing data integration vendor)
-
-**Role**: Marketing data connector vendor
-
-**Trust signals**: Vendor of the integration described. Live product testable for free 30 days — claims directly verifiable.
-
-**Key data extracted**:
-> 480+ GA4 dimensions/metrics; 325+ data sources; no-code MCP wrapper; 30-day free trial
-
-**Scores**:
-
-| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
-|---:|---:|---:|---:|---:|---:|---:|---:|
-| 3 | 4 | 1 | 5 | 4 | 4 | 3 | **24** |
 
 ---
 
