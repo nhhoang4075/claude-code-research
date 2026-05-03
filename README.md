@@ -21,6 +21,9 @@ Compiled 2026-05-03. Evidence base for whether/how SEONGON should adopt Claude C
 - **[08-cross-cutting-evidence.md](08-cross-cutting-evidence.md)** — Anthropic's own teams report, Economic Index data, demand signals
 
 **Reference:**
+- **[data/assessment-framework.md](data/assessment-framework.md)** — 7-dimension grading rubric (Authority, Specificity, Independence, Recency, Verifiability, Match, Impact) plus identity columns (Author, Role, TrustSignals)
+- **[data/source-assessment.csv](data/source-assessment.csv)** — 40 sources scored, spreadsheet-ready (open in Excel/Numbers/Sheets)
+- **[data/source-assessment.md](data/source-assessment.md)** — same data rendered as a sortable ranking + per-source detail cards for GitHub browsing
 - **[data/workflows-table.md](data/workflows-table.md)** — master structured table: ~85 workflows × discipline × tools × time-savings × source
 - **[sources.md](sources.md)** — full source index, 100+ links, tier-ranked
 - **raw/** — extracted text from primary documents (Anthropic internal teams PDF)
