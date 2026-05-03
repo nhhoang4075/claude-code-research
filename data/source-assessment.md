@@ -2,7 +2,7 @@
 
 Auto-generated from [`source-assessment.csv`](source-assessment.csv). Sorted by composite score descending.
 
-**Total sources scored**: 40 · **Tier S**: 18 · **Tier A**: 22 · **Tier B**: 0 · **Tier C**: 0
+**Total sources scored**: 56 · **Tier S**: 23 · **Tier A**: 33 · **Tier B**: 0 · **Tier C**: 0
 
 Read the rubric in [`assessment-framework.md`](assessment-framework.md) before relying on the scores. **TL;DR**: Tier S = headline; A = supporting; B = context; C = skip. Composite is sum of 7 dimensions (max 35): AUTH, SPEC, INDP, RCNT, VRFY, MTCH, ADOPT. The 2026-05 strictness revision tightened AUTH for handle-only authors and added ADOPT (external validation: GitHub stars, citations, market traction).
 
@@ -22,23 +22,31 @@ Read the rubric in [`assessment-framework.md`](assessment-framework.md) before r
 | R007 | [R007](#r007) [aaron-he-zhu/seo-geo-claude-skills (GitHub)](https://github.com/aaron-he-zhu/seo-geo-claude-skills) | SEO | — | **S** | **30** | 2 | 5 | 4 | 5 | 5 | 5 | 4 | HEADLINE |
 | R021 | [R021](#r021) [Emily Kramer (MKT1) — Build marketing strategy in Claude (7-step…](https://newsletter.mkt1.co/p/build-marketing-strategy-skill-in-claude-code) | BRAND | — | **S** | **30** | 4 | 5 | 4 | 5 | 4 | 4 | 4 | HEADLINE |
 | R036 | [R036](#r036) [rohitg00/awesome-claude-code-toolkit (marketing-analyst agent)](https://github.com/rohitg00/awesome-claude-code-toolkit) | ANALYTICS | — | **S** | **30** | 3 | 4 | 5 | 5 | 5 | 4 | 4 | HEADLINE |
-| R010 | [R010](#r010) [HubSpot — Claude connector docs](https://knowledge.hubspot.com/integrations/set-up-and-use-the-hubspot-connector-for-claude) | MOPS | — | **S** | **29** | 5 | 3 | 2 | 5 | 5 | 4 | 5 | SUPPORT |
+| R042 | [R042](#r042) [Built In — Anthropic's Economic Index Shows the AI Skills Gap Is…](https://builtin.com/articles/anthropic-economic-index-2026-ai-jobs-report) | CROSS | — | **S** | **30** | 5 | 4 | 4 | 5 | 4 | 4 | 4 | HEADLINE |
+| R010 | [R010](#r010) [HubSpot — Claude connector docs](https://knowledge.hubspot.com/integrations/set-up-and-use-the-hubspot-connector-for-claude) | MOPS | `HUBSPOT-CLAUDE` ★ | **S** | **29** | 5 | 3 | 2 | 5 | 5 | 4 | 5 | SUPPORT |
 | R011 | [R011](#r011) [AdventurePPC — 6 Workflows That Replace Freelancer Contracts](https://www.adventureppc.com/blog/6-claude-code-workflows-that-replace-entire-freelancer-contracts-for-marketing-teams) | GADS+CROSS | `ADVENTUREPPC` ★ | **S** | **29** | 4 | 5 | 4 | 5 | 3 | 5 | 3 | HEADLINE |
 | R012 | [R012](#r012) [AdventurePPC — Claude Code for PPC Professionals](https://www.adventureppc.com/blog/claude-code-for-ppc-professionals-automating-campaign-management-with-ai) | GADS | `ADVENTUREPPC` | **S** | **29** | 4 | 5 | 4 | 5 | 3 | 5 | 3 | HEADLINE |
 | R019 | [R019](#r019) [SE Ranking — Claude Code & SE Ranking MCP](https://seranking.com/blog/claude-code-for-seo/) | SEO+ANALYTICS | — | **S** | **29** | 4 | 5 | 2 | 5 | 4 | 5 | 4 | HEADLINE |
 | R020 | [R020](#r020) [MKT1 — 4 Gen Marketers + Claude Code Builds](https://newsletter.mkt1.co/p/real-marketers-claude-code-builds) | CROSS+META | — | **S** | **29** | 4 | 5 | 4 | 5 | 3 | 4 | 4 | HEADLINE |
+| R044 | [R044](#r044) [MarTech.org — HubSpot adds another CRM connector with Claude](https://martech.org/hubspot-adds-another-crm-connector-this-time-with-claude/) | MOPS | — | **S** | **29** | 5 | 4 | 4 | 4 | 4 | 4 | 4 | HEADLINE |
+| R045 | [R045](#r045) [MKT1 — State of Marketing Report (100 B2B teams, Part 1)](https://newsletter.mkt1.co/p/state-of-marketing-report-teams-part-1) | CROSS | — | **S** | **29** | 4 | 5 | 4 | 5 | 4 | 3 | 4 | HEADLINE |
 | R001 | [R001](#r001) [Anthropic — How Anthropic teams use Claude Code (PDF)](https://www-cdn.anthropic.com/58284b19e702b49db9302d5b6f135ad8871e7658.pdf) | CROSS | — | **S** | **28** | 5 | 5 | 1 | 4 | 3 | 5 | 5 | HEADLINE |
-| R009 | [R009](#r009) [HubSpot × Marketing Against the Grain — Master Claude Code for M…](https://offers.hubspot.com/claude-code-for-marketing-matg) | CROSS+CONTENT | — | **S** | **28** | 5 | 4 | 2 | 5 | 3 | 4 | 5 | SUPPORT |
+| R009 | [R009](#r009) [HubSpot × Marketing Against the Grain — Master Claude Code for M…](https://offers.hubspot.com/claude-code-for-marketing-matg) | CROSS+CONTENT | `HUBSPOT-CLAUDE` | **S** | **28** | 5 | 4 | 2 | 5 | 3 | 4 | 5 | SUPPORT |
 | R017 | [R017](#r017) [PorterMetrics — 5 ways to connect Meta Ads to Claude (no ban)](https://portermetrics.com/en/tutorial/claude/chat-meta-ads/) | META | `META-INTEGRATION` ★ | **S** | **28** | 4 | 4 | 2 | 5 | 4 | 5 | 4 | HEADLINE |
 | R023 | [R023](#r023) [Animalz — Claude Code for Content Marketers](https://www.animalz.co/blog/claude-code) | CONTENT | — | **S** | **28** | 4 | 5 | 4 | 5 | 3 | 3 | 4 | SUPPORT |
 | R028 | [R028](#r028) [Lenny's Newsletter (Lenny Rachitsky + Dan Shipper)](https://www.lennysnewsletter.com/p/everyone-should-be-using-claude-code) | CROSS | — | **S** | **28** | 5 | 4 | 4 | 5 | 2 | 3 | 5 | SUPPORT |
+| R047 | [R047](#r047) [Two Octobers — Connecting to the Google Analytics MCP server wit…](https://twooctobers.com/blog/connecting-to-the-google-analytics-mcp-with-claude/) | ANALYTICS | `GA4-CLAUDE` ★ | **S** | **28** | 4 | 4 | 4 | 5 | 4 | 4 | 3 | HEADLINE |
+| R050 | [R050](#r050) [Ruben Hassid — Claude (How to AI newsletter, 290k+ subs)](https://ruben.substack.com/p/claude) | CROSS+CONTENT | — | **S** | **28** | 4 | 4 | 4 | 5 | 3 | 3 | 5 | HEADLINE |
 | R002 | [R002](#r002) [Anthropic Economic Index Mar 2026 (Learning curves)](https://www.anthropic.com/research/economic-index-march-2026-report) | CROSS | `ANTHROPIC-EI` ★ | A | 27 | 5 | 4 | 2 | 5 | 4 | 2 | 5 | CONTEXT |
 | R003 | [R003](#r003) [Anthropic Economic Index Jan 2026 (Economic primitives)](https://www.anthropic.com/research/anthropic-economic-index-january-2026-report) | CROSS | `ANTHROPIC-EI` | A | 27 | 5 | 4 | 2 | 5 | 4 | 2 | 5 | CONTEXT |
 | R006 | [R006](#r006) [inhouseseo/superseo-skills (GitHub)](https://github.com/inhouseseo/superseo-skills) | SEO+CONTENT | — | A | 27 | 2 | 5 | 3 | 5 | 5 | 5 | 2 | HEADLINE |
-| R027 | [R027](#r027) [measureu.com — GA4 Audit MCP in 4 Minutes](https://measureu.com/ga4-audit-mcp/) | ANALYTICS | `GA4-CLAUDE` ★ | A | 27 | 3 | 5 | 4 | 5 | 4 | 4 | 2 | HEADLINE |
+| R027 | [R027](#r027) [measureu.com — GA4 Audit MCP in 4 Minutes](https://measureu.com/ga4-audit-mcp/) | ANALYTICS | `GA4-CLAUDE` | A | 27 | 3 | 5 | 4 | 5 | 4 | 4 | 2 | HEADLINE |
 | R029 | [R029](#r029) [Lenny's Newsletter — Head of Claude Code (Boris Cherny)](https://www.lennysnewsletter.com/p/head-of-claude-code-what-happens) | CROSS | — | A | 27 | 5 | 5 | 1 | 5 | 4 | 2 | 5 | SUPPORT |
 | R030 | [R030](#r030) [Anthropic — Package brand guidelines in a skill](https://claude.com/resources/use-cases/package-your-brand-guidelines-in-a-skill) | BRAND | — | A | 27 | 5 | 3 | 1 | 5 | 4 | 4 | 5 | SUPPORT |
 | R037 | [R037](#r037) [Maven course catalog (Claude Code for non-engineers etc.)](https://maven.com/p/747df1/intro-to-claude-code-for-non-engineers) | CROSS | — | A | 27 | 4 | 3 | 4 | 5 | 4 | 3 | 4 | CONTEXT |
+| R041 | [R041](#r041) [Anthropic Skilljar — Claude Code in Action (official course)](https://anthropic.skilljar.com/claude-code-in-action) | CROSS | — | A | 27 | 5 | 4 | 1 | 5 | 4 | 3 | 5 | SUPPORT |
+| R043 | [R043](#r043) [HubSpot × MATG — Claude Hacks for Marketers (prompt pack)](https://offers.hubspot.com/claude-hacks-marketers) | CROSS+CONTENT | `HUBSPOT-CLAUDE` | A | 27 | 5 | 3 | 2 | 5 | 3 | 4 | 5 | SUPPORT |
+| R055 | [R055](#r055) [Anthony Lee — How to Set Up Google Analytics as a Claude Code Sk…](https://www.linkedin.com/pulse/how-set-up-google-analytics-claude-code-skill-anthony-lee-r0n4e) | ANALYTICS | — | A | 27 | 3 | 5 | 4 | 5 | 4 | 4 | 2 | SUPPORT |
 | R013 | [R013](#r013) [Stormy AI — Performance Marketing Playbook](https://stormy.ai/blog/claude-code-for-performance-marketing-playbook) | GADS+META | `STORMY-AI` ★ | A | 26 | 3 | 5 | 3 | 5 | 3 | 5 | 2 | HEADLINE |
 | R015 | [R015](#r015) [HeyOz — 10 Claude Code Skills for Meta Ads](https://heyoz.com/blogs/claude-code-skills-for-meta-ads) | META | — | A | 26 | 2 | 5 | 3 | 5 | 4 | 5 | 2 | HEADLINE |
 | R016 | [R016](#r016) [Adspirer — Run Facebook & Instagram Ads with Claude Code Agent](https://www.adspirer.com/blog/meta-ads-claude-code-agent) | META | `META-INTEGRATION` | A | 26 | 3 | 4 | 2 | 5 | 4 | 5 | 3 | SUPPORT |
@@ -46,14 +54,22 @@ Read the rubric in [`assessment-framework.md`](assessment-framework.md) before r
 | R038 | [R038](#r038) [Stormy AI — Google Ads Automation Playbook](https://stormy.ai/blog/google-ads-automation-claude-code-playbook) | GADS | `STORMY-AI` | A | 26 | 3 | 5 | 3 | 5 | 3 | 5 | 2 | SUPPORT |
 | R039 | [R039](#r039) [AdventurePPC — Sarah's Story (zero-code marketer 8-week transfor…](https://www.adventureppc.com/blog/from-zero-to-ai-builder-how-one-marketer-learned-claude-code-and-automated-their-entire-workflow) | GADS | `ADVENTUREPPC` | A | 26 | 4 | 4 | 4 | 5 | 2 | 4 | 3 | SUPPORT |
 | R040 | [R040](#r040) [claude-seo.md — Free AI SEO Audit Tool](https://claude-seo.md/) | SEO | `AGRICIDANIEL-SEO` | A | 26 | 2 | 4 | 4 | 5 | 4 | 5 | 2 | SUPPORT |
+| R046 | [R046](#r046) [NoCode SaaS — I Got Claude Code to Build My Entire SEO Strategy](https://www.nocodesaas.io/p/i-got-claude-code-to-build-my-entire) | SEO | — | A | 26 | 3 | 4 | 4 | 5 | 3 | 5 | 2 | SUPPORT |
+| R053 | [R053](#r053) [Dan Renyi (Electric B2B / Klear) — Is Claude Code Changing Go-To…](https://electricb2b.substack.com/p/is-claude-code-changing-go-to-market) | CROSS | — | A | 26 | 4 | 4 | 4 | 5 | 3 | 4 | 2 | SUPPORT |
+| R056 | [R056](#r056) [Dheeraj Sharma (GenAI Unplugged) — Claude Cowork Tutorial: Subst…](https://genaiunplugged.substack.com/p/claude-cowork-tutorial-substack-newsletter-analysis) | CONTENT | — | A | 26 | 3 | 5 | 4 | 5 | 4 | 3 | 2 | SUPPORT |
 | R014 | [R014](#r014) [Ryze AI — 10 Claude Code Marketing Workflows](https://www.get-ryze.ai/blog/claude-code-marketing-workflows-google-meta-ads) | GADS+META | — | A | 25 | 3 | 5 | 3 | 5 | 2 | 5 | 2 | SUPPORT |
 | R024 | [R024](#r024) [Improvado — Claude Marketing Skills](https://improvado.io/blog/claude-marketing-skills) | ANALYTICS+MOPS | `MARKETING-DATA-CONNECTORS` ★ | A | 25 | 3 | 4 | 2 | 5 | 3 | 4 | 4 | SUPPORT |
 | R025 | [R025](#r025) [Coupler.io — Claude Code for Marketing Real Use Cases](https://blog.coupler.io/claude-code-for-marketing/) | CROSS | `MARKETING-DATA-CONNECTORS` | A | 25 | 3 | 4 | 2 | 5 | 3 | 4 | 4 | SUPPORT |
 | R026 | [R026](#r026) [Windsor.ai — GA4 Connector for Claude](https://windsor.ai/connect/google-analytics-4-to-claude-integration/) | ANALYTICS | `GA4-CLAUDE` | A | 25 | 3 | 4 | 2 | 5 | 4 | 4 | 3 | SUPPORT |
 | R031 | [R031](#r031) [nex.ad — How to make brand show up in Claude answers](https://nex.ad/blog/how-to-make-your-brand-show-up-in-claude-answers) | BRAND+SEO | — | A | 25 | 3 | 4 | 4 | 5 | 3 | 4 | 2 | SUPPORT |
 | R034 | [R034](#r034) [getmarketingwithai — Marketer's Guide to Claude Code](https://getmarketingwithai.substack.com/p/the-marketers-guide-to-claude-code) | CROSS | — | A | 25 | 3 | 5 | 4 | 5 | 2 | 4 | 2 | SUPPORT |
+| R051 | [R051](#r051) [Daria Cupareanu (AI Blew My Mind) — How I Created a Claude Skill…](https://aiblewmymind.substack.com/p/how-to-create-claude-brand-skill) | BRAND | — | A | 25 | 3 | 4 | 4 | 5 | 3 | 4 | 2 | SUPPORT |
+| R054 | [R054](#r054) [Toni (Vibe Product Marketing) — 3 Claude Cowork Workflows for Ma…](https://vibeproductmarketing.substack.com/p/3-claude-cowork-workflows-for-marketing) | BRAND+CROSS | — | A | 25 | 2 | 5 | 4 | 5 | 3 | 4 | 2 | SUPPORT |
 | R022 | [R022](#r022) [Stack and Scale — Claude Code Playbook for Marketers](https://www.stackandscale.ai/p/the-claude-code-playbook-for-marketers) | BRAND+CROSS | — | A | 24 | 3 | 5 | 3 | 5 | 2 | 4 | 2 | SUPPORT |
 | R035 | [R035](#r035) [aimaker — Newsletter inside Claude Code](https://aimaker.substack.com/p/claude-code-newsletter-agentic-system) | CONTENT | — | A | 24 | 3 | 5 | 4 | 5 | 2 | 3 | 2 | CONTEXT |
+| R048 | [R048](#r048) [Anthropic Economic Index — landing page](https://www.anthropic.com/economic-index) | CROSS | `ANTHROPIC-EI` | A | 24 | 5 | 2 | 1 | 5 | 4 | 2 | 5 | CONTEXT |
+| R052 | [R052](#r052) [Mike Thomson (The AI Solopreneur) — I Tried Claude Design's 4 Ne…](https://aisolopreneurhub.substack.com/p/i-tried-claude-designs-4-new-features) | CONTENT+BRAND | — | A | 24 | 3 | 4 | 4 | 5 | 3 | 3 | 2 | SUPPORT |
+| R049 | [R049](#r049) [Adam Goyette — Free the Marketers (strategic essay on Claude Cod…](https://adamgoyette.substack.com/p/free-the-marketers) | CROSS | — | A | 23 | 4 | 2 | 4 | 5 | 2 | 4 | 2 | CONTEXT |
 
 
 ---
@@ -246,9 +262,32 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ---
 
+### <a id="r042"></a>R042 · Built In — Anthropic's Economic Index Shows the AI Skills Gap Is Growing
+
+**Total 30/35** · **Tier S** (headline-grade) · Use: `HEADLINE` · Discipline: `CROSS` · Type: `INDUSTRY-PUB` · 2026
+
+**URL**: https://builtin.com/articles/anthropic-economic-index-2026-ai-jobs-report
+
+**Author**: Matthew Urwin (Built In editorial)
+
+**Role**: Industry-pub journalist with editorial review
+
+**Trust signals**: Built In is an established tech-industry publication. Bylined article (Apr 22 2026), reviewed by Ellen Glover. Reports on Anthropic Economic Index data without distortion.
+
+**Key data extracted**:
+> API workflows for sales/outreach doubled Nov 2025→Feb 2026. Trading + market ops doubled too. Customer service reps face highest automation risk. Widening skills gap between power users and slow adopters.
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 5 | 4 | 4 | 5 | 4 | 4 | 4 | **30** |
+
+---
+
 ### <a id="r010"></a>R010 · HubSpot — Claude connector docs
 
-**Total 29/35** · **Tier S** (headline-grade) · Use: `SUPPORT` · Discipline: `MOPS` · Type: `VENDOR-DOCS` · 2026
+**Total 29/35** · **Tier S** (headline-grade) · Use: `SUPPORT` · Discipline: `MOPS` · Type: `VENDOR-DOCS` · 2026 · Cluster: `HUBSPOT-CLAUDE` ★
 
 **URL**: https://knowledge.hubspot.com/integrations/set-up-and-use-the-hubspot-connector-for-claude
 
@@ -361,6 +400,52 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ---
 
+### <a id="r044"></a>R044 · MarTech.org — HubSpot adds another CRM connector with Claude
+
+**Total 29/35** · **Tier S** (headline-grade) · Use: `HEADLINE` · Discipline: `MOPS` · Type: `INDUSTRY-PUB` · 2025
+
+**URL**: https://martech.org/hubspot-adds-another-crm-connector-this-time-with-claude/
+
+**Author**: Mike Pastore (Head of Content & Media at MarTech.org)
+
+**Role**: Senior MarTech industry-publication editor
+
+**Trust signals**: MarTech.org is established publication; named author with senior role; dated July 29 2025; explicit data-privacy quote from HubSpot ("Anthropic does not use the data shared through HubSpot to train its models..."). Notes mixed industry reaction.
+
+**Key data extracted**:
+> HubSpot CRM connector for Claude — generates tailored summaries+visualizations from HubSpot data; takes action inside HubSpot (campaign opt, lead engagement). Available all tiers with paid Claude. Privacy reassurance noted.
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 5 | 4 | 4 | 4 | 4 | 4 | 4 | **29** |
+
+---
+
+### <a id="r045"></a>R045 · MKT1 — State of Marketing Report (100 B2B teams, Part 1)
+
+**Total 29/35** · **Tier S** (headline-grade) · Use: `HEADLINE` · Discipline: `CROSS` · Type: `PRIMARY-RESEARCH` · 2026
+
+**URL**: https://newsletter.mkt1.co/p/state-of-marketing-report-teams-part-1
+
+**Author**: Emily Kramer (MKT1; ex-Asana CMO, ex-Carta)
+
+**Role**: Senior marketing operator + newsletter publisher conducting primary research
+
+**Trust signals**: Author has named methodology + acknowledged limitations ("intentionally curated, not statistically significant"). Sample 100 B2B startups Apr 2026. Data from LinkedIn + career pages + Clay scraping + ad libraries. Manual verification described.
+
+**Key data extracted**:
+> 100 B2B startups (seed→IPO, AI-skewed). 84% of marketing JDs mention "AI". Most-named tools in JDs: OpenAI 10% · Claude 7% · Anthropic 6% · ChatGPT 5%. Median marketing team 13 (mean 44). 4% of headcount median. 87/100 companies have open marketing roles. Only 27/100 have CMOs.
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 4 | 5 | 4 | 5 | 4 | 3 | 4 | **29** |
+
+---
+
 ### <a id="r001"></a>R001 · Anthropic — How Anthropic teams use Claude Code (PDF)
 
 **Total 28/35** · **Tier S** (headline-grade) · Use: `HEADLINE` · Discipline: `CROSS` · Type: `PRIMARY` · 2025
@@ -386,7 +471,7 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ### <a id="r009"></a>R009 · HubSpot × Marketing Against the Grain — Master Claude Code for Marketing
 
-**Total 28/35** · **Tier S** (headline-grade) · Use: `SUPPORT` · Discipline: `CROSS+CONTENT` · Type: `VENDOR-COURSE` · 2026
+**Total 28/35** · **Tier S** (headline-grade) · Use: `SUPPORT` · Discipline: `CROSS+CONTENT` · Type: `VENDOR-COURSE` · 2026 · Cluster: `HUBSPOT-CLAUDE`
 
 **URL**: https://offers.hubspot.com/claude-code-for-marketing-matg
 
@@ -476,6 +561,52 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ---
 
+### <a id="r047"></a>R047 · Two Octobers — Connecting to the Google Analytics MCP server with Claude
+
+**Total 28/35** · **Tier S** (headline-grade) · Use: `HEADLINE` · Discipline: `ANALYTICS` · Type: `AGENCY-CASE` · 2026 · Cluster: `GA4-CLAUDE` ★
+
+**URL**: https://twooctobers.com/blog/connecting-to-the-google-analytics-mcp-with-claude/
+
+**Author**: Nico Brooks, Head of Analytics at Two Octobers (Denver marketing agency)
+
+**Role**: Senior analytics lead at established marketing agency
+
+**Trust signals**: Named senior at named agency. Two Octobers is established Denver marketing agency. Detailed install workflow (Homebrew, pipx, official Google Analytics MCP repo) suggests genuine implementation. Outcome quotes describe real conversational analytics usage.
+
+**Key data extracted**:
+> Official Google Analytics MCP setup. Conversational analytics workflow. Specific recommendations generated: AI content expansion, video scaling, technical SEO. Strategic alignment with business strengths.
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 4 | 4 | 4 | 5 | 4 | 4 | 3 | **28** |
+
+---
+
+### <a id="r050"></a>R050 · Ruben Hassid — Claude (How to AI newsletter, 290k+ subs)
+
+**Total 28/35** · **Tier S** (headline-grade) · Use: `HEADLINE` · Discipline: `CROSS+CONTENT` · Type: `PRACTITIONER` · 2026
+
+**URL**: https://ruben.substack.com/p/claude
+
+**Author**: Ruben Hassid (Founder, How to AI newsletter)
+
+**Role**: Established AI newsletter creator with massive reach (290k+ subs, hundreds of millions of post views over 3 years)
+
+**Trust signals**: Major AI-content creator with verifiable scale. Explicitly states: 'Claude Code is not on my list because my audience (myself included) does not code.' Counter-data-point: top AI influencer with non-coding marketer audience uses Cowork, not Claude Code.
+
+**Key data extracted**:
+> Personal workflow: markdown files as style/brand DNA. Uses Claude Cowork (not Claude Code). Claude in Excel for spreadsheets. Connectors for Slack/GDrive/Notion. 'Never felt like Cowork was hallucinating' with 1M-token context.
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 4 | 4 | 4 | 5 | 3 | 3 | 5 | **28** |
+
+---
+
 ### <a id="r002"></a>R002 · Anthropic Economic Index Mar 2026 (Learning curves)
 
 **Total 27/35** · Tier A (support) · Use: `CONTEXT` · Discipline: `CROSS` · Type: `PRIMARY` · 2026 · Cluster: `ANTHROPIC-EI` ★
@@ -547,7 +678,7 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ### <a id="r027"></a>R027 · measureu.com — GA4 Audit MCP in 4 Minutes
 
-**Total 27/35** · Tier A (support) · Use: `HEADLINE` · Discipline: `ANALYTICS` · Type: `PRACTITIONER` · 2026 · Cluster: `GA4-CLAUDE` ★
+**Total 27/35** · Tier A (support) · Use: `HEADLINE` · Discipline: `ANALYTICS` · Type: `PRACTITIONER` · 2026 · Cluster: `GA4-CLAUDE`
 
 **URL**: https://measureu.com/ga4-audit-mcp/
 
@@ -634,6 +765,75 @@ Each card: identity → key data → scores. Identity columns first because they
 | AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
 |---:|---:|---:|---:|---:|---:|---:|---:|
 | 4 | 3 | 4 | 5 | 4 | 3 | 4 | **27** |
+
+---
+
+### <a id="r041"></a>R041 · Anthropic Skilljar — Claude Code in Action (official course)
+
+**Total 27/35** · Tier A (support) · Use: `SUPPORT` · Discipline: `CROSS` · Type: `VENDOR-COURSE` · 2026
+
+**URL**: https://anthropic.skilljar.com/claude-code-in-action
+
+**Author**: Anthropic (course on Skilljar)
+
+**Role**: AI-lab vendor official training course
+
+**Trust signals**: Free, Anthropic-branded official course. 4 modules cover fundamentals, hands-on setup, MCP integration, hooks + SDK. Targets developers + teams.
+
+**Key data extracted**:
+> 4 modules: What is Claude Code · Getting hands-on (setup, project config, context mgmt) · Controlling context (custom commands, MCP+GitHub) · Hooks and the SDK. Free. Quiz + summary assessment.
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 5 | 4 | 1 | 5 | 4 | 3 | 5 | **27** |
+
+---
+
+### <a id="r043"></a>R043 · HubSpot × MATG — Claude Hacks for Marketers (prompt pack)
+
+**Total 27/35** · Tier A (support) · Use: `SUPPORT` · Discipline: `CROSS+CONTENT` · Type: `VENDOR-RESOURCE` · 2026 · Cluster: `HUBSPOT-CLAUDE`
+
+**URL**: https://offers.hubspot.com/claude-hacks-marketers
+
+**Author**: HubSpot + Marketing Against the Grain podcast
+
+**Role**: Major MarTech vendor co-branded prompt library
+
+**Trust signals**: HubSpot major vendor. MATG hosts are HubSpot's CMO + SVP. Prompt library covers content production, strategic planning, data dashboards, meeting transcription. Live downloadable resource.
+
+**Key data extracted**:
+> Prompt pack (not course/ebook). Topics: content production multi-channel, strategic planning + competitive analysis, data-driven dashboards + reporting, meeting transcription + action items.
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 5 | 3 | 2 | 5 | 3 | 4 | 5 | **27** |
+
+---
+
+### <a id="r055"></a>R055 · Anthony Lee — How to Set Up Google Analytics as a Claude Code Skill (LinkedIn Pulse)
+
+**Total 27/35** · Tier A (support) · Use: `SUPPORT` · Discipline: `ANALYTICS` · Type: `PRACTITIONER` · 2026
+
+**URL**: https://www.linkedin.com/pulse/how-set-up-google-analytics-claude-code-skill-anthony-lee-r0n4e
+
+**Author**: Anthony Lee (LinkedIn handle aimarketerguy)
+
+**Role**: Marketing-focused technologist on LinkedIn
+
+**Trust signals**: LinkedIn Pulse post (real platform). Code shared (Python, GA service-account auth, file structure). 12 likes / 11 comments engagement signal. Commenter validates 'works perfect' + flags multi-client improvements.
+
+**Key data extracted**:
+> Built GA Claude Code skill personally. 8 report types (overview/pages/sources/countries/devices/daily/realtime/custom). 4-phase setup: Google Cloud SA → GA4 viewer permission → Python env → local skill files. Validated by commenter.
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 3 | 5 | 4 | 5 | 4 | 4 | 2 | **27** |
 
 ---
 
@@ -798,6 +998,75 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ---
 
+### <a id="r046"></a>R046 · NoCode SaaS — I Got Claude Code to Build My Entire SEO Strategy
+
+**Total 26/35** · Tier A (support) · Use: `SUPPORT` · Discipline: `SEO` · Type: `PRACTITIONER` · 2026
+
+**URL**: https://www.nocodesaas.io/p/i-got-claude-code-to-build-my-entire
+
+**Author**: James Devonport (NoCode SaaS Substack)
+
+**Role**: Indie SaaS founder + Substack publisher
+
+**Trust signals**: Named author with traceable Substack identity. Single-person anecdote of own website experiment, positioned as replicable. Specific MCPs and runtime described.
+
+**Key data extracted**:
+> 20-minute SEO strategy: keyword research, competitor analysis, prioritized page list. Tools: Playwright MCP (crawl + markdown export), SerpAPI MCP (live SERP data + volumes). Single founder, own website.
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 3 | 4 | 4 | 5 | 3 | 5 | 2 | **26** |
+
+---
+
+### <a id="r053"></a>R053 · Dan Renyi (Electric B2B / Klear) — Is Claude Code Changing Go-To-Market?
+
+**Total 26/35** · Tier A (support) · Use: `SUPPORT` · Discipline: `CROSS` · Type: `PRACTITIONER` · 2026
+
+**URL**: https://electricb2b.substack.com/p/is-claude-code-changing-go-to-market
+
+**Author**: Dan Renyi (Founder, Klear; publisher Electric B2B podcast)
+
+**Role**: GTM consulting/services-firm founder, 6+ years operating Klear
+
+**Trust signals**: Named founder with verifiable 6-year operating history. Reports first-person business outcome from launching Growth OS service. Tools listed are real (Clay, Fullenrich, n8n).
+
+**Key data extracted**:
+> Built 'Growth OS' productized GTM service via Claude Code. Pipeline/sales response 'significantly larger than any new service/offering I've ever launched for Klear over the past 6 years.' Stack: Clay, Fullenrich, n8n, CRMs.
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 4 | 4 | 4 | 5 | 3 | 4 | 2 | **26** |
+
+---
+
+### <a id="r056"></a>R056 · Dheeraj Sharma (GenAI Unplugged) — Claude Cowork Tutorial: Substack Newsletter Analysis
+
+**Total 26/35** · Tier A (support) · Use: `SUPPORT` · Discipline: `CONTENT` · Type: `PRACTITIONER` · 2026
+
+**URL**: https://genaiunplugged.substack.com/p/claude-cowork-tutorial-substack-newsletter-analysis
+
+**Author**: Dheeraj Sharma (GenAI Unplugged Substack, 1,100+ subs)
+
+**Role**: AI systems builder by day, indie product publisher by night
+
+**Trust signals**: Named author with day-job context. Live demo with co-host. Specific deliverable (17-page Word doc). Explicit non-technical positioning despite Claude Code use. Replicable prompt template provided.
+
+**Key data extracted**:
+> 17-page newsletter-DNA report from one prompt via Cowork. ~1 hour total. 15-25 min one-time setup (Cowork + Chrome ext + Firecrawl MCP). Workflow handles paywalled content via Jina.ai/built-in fetch fallbacks.
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 3 | 5 | 4 | 5 | 4 | 3 | 2 | **26** |
+
+---
+
 ### <a id="r014"></a>R014 · Ryze AI — 10 Claude Code Marketing Workflows
 
 **Total 25/35** · Tier A (support) · Use: `SUPPORT` · Discipline: `GADS+META` · Type: `PRACTITIONER` · 2026
@@ -936,6 +1205,52 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ---
 
+### <a id="r051"></a>R051 · Daria Cupareanu (AI Blew My Mind) — How I Created a Claude Skill So Every Doc Comes Out On-Brand
+
+**Total 25/35** · Tier A (support) · Use: `SUPPORT` · Discipline: `BRAND` · Type: `PRACTITIONER` · 2026
+
+**URL**: https://aiblewmymind.substack.com/p/how-to-create-claude-brand-skill
+
+**Author**: Daria Cupareanu (AI Blew My Mind Substack)
+
+**Role**: Solo practitioner / Substack publisher iterating on personal Claude workflows
+
+**Trust signals**: Named author with traceable Substack identity. Iterative process described ('showed Claude what I liked and didn't'). Specific outputs named: proposals, presentations, lead magnets, PDFs, one-pagers. AI Blew My Mind MCP shipped to make prompt accessible.
+
+**Key data extracted**:
+> Built personal brand-skill iteratively. Eliminates manual styling on proposals/presentations/PDFs/one-pagers. Works for any starting point (no brand → full brand). Approach: 'opinions, not design experience.'
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 3 | 4 | 4 | 5 | 3 | 4 | 2 | **25** |
+
+---
+
+### <a id="r054"></a>R054 · Toni (Vibe Product Marketing) — 3 Claude Cowork Workflows for Marketing
+
+**Total 25/35** · Tier A (support) · Use: `SUPPORT` · Discipline: `BRAND+CROSS` · Type: `PRACTITIONER` · 2026
+
+**URL**: https://vibeproductmarketing.substack.com/p/3-claude-cowork-workflows-for-marketing
+
+**Author**: Toni (Vibe Product Marketing Substack)
+
+**Role**: PMM consultant working with startups + enterprises
+
+**Trust signals**: First-name-only attribution (lower identity verification). But specific iterative usage described ('first brief was accurate but missed the point'), specific time/cost numbers, real tool costs. Personally built and uses workflows.
+
+**Key data extracted**:
+> Personal workflows: Monday Competitive Brief (8-10 hr/month saved), Friday Performance Report (30-45 min/week), Content Repurposing (4 hr/month). ~15 hr/month total. Tool cost $20-100/month. Cleanest personal ROI calc in dataset.
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 2 | 5 | 4 | 5 | 3 | 4 | 2 | **25** |
+
+---
+
 ### <a id="r022"></a>R022 · Stack and Scale — Claude Code Playbook for Marketers
 
 **Total 24/35** · Tier A (support) · Use: `SUPPORT` · Discipline: `BRAND+CROSS` · Type: `PRACTITIONER` · 2026
@@ -979,6 +1294,75 @@ Each card: identity → key data → scores. Identity columns first because they
 | AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
 |---:|---:|---:|---:|---:|---:|---:|---:|
 | 3 | 5 | 4 | 5 | 2 | 3 | 2 | **24** |
+
+---
+
+### <a id="r048"></a>R048 · Anthropic Economic Index — landing page
+
+**Total 24/35** · Tier A (support) · Use: `CONTEXT` · Discipline: `CROSS` · Type: `PRIMARY` · 2026 · Cluster: `ANTHROPIC-EI`
+
+**URL**: https://www.anthropic.com/economic-index
+
+**Author**: Anthropic (vendor landing)
+
+**Role**: Vendor program landing page (navigation hub for Economic Index reports)
+
+**Trust signals**: Anthropic primary. Last update Mar 24 2026. Provides access to underlying datasets and reports. Methodology + team not on landing page (only on individual reports).
+
+**Key data extracted**:
+> Landing page for Anthropic's Economic Index program. Datasets + reports accessible. Page itself contains no specific marketing data.
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 5 | 2 | 1 | 5 | 4 | 2 | 5 | **24** |
+
+---
+
+### <a id="r052"></a>R052 · Mike Thomson (The AI Solopreneur) — I Tried Claude Design's 4 New Features
+
+**Total 24/35** · Tier A (support) · Use: `SUPPORT` · Discipline: `CONTENT+BRAND` · Type: `PRACTITIONER` · 2026
+
+**URL**: https://aisolopreneurhub.substack.com/p/i-tried-claude-designs-4-new-features
+
+**Author**: Mike Thomson (The AI Solopreneur Substack)
+
+**Role**: Solo newsletter creator targeting newsletters with 0-500 subs scaling to 3000+
+
+**Trust signals**: Named author with hands-on test format. Tested 4 features end-to-end (Prototypes, Dashboards, Video Animations, Claude Code handoff). Notes specific limitations (screen recording for video export).
+
+**Key data extracted**:
+> Newsletter landing page prototype <10 min (vs '4 hours of work for something that should take 20 min'). Recommends Design Systems first, then prototype. Positions Claude Design as eliminating no-code-template-vs-developer-retainer choice.
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 3 | 4 | 4 | 5 | 3 | 3 | 2 | **24** |
+
+---
+
+### <a id="r049"></a>R049 · Adam Goyette — Free the Marketers (strategic essay on Claude Code adoption)
+
+**Total 23/35** · Tier A (support) · Use: `CONTEXT` · Discipline: `CROSS` · Type: `PRACTITIONER` · 2026
+
+**URL**: https://adamgoyette.substack.com/p/free-the-marketers
+
+**Author**: Adam Goyette (Founder, Growth Union)
+
+**Role**: Growth-consulting-firm founder; talks to 20–30 companies/month
+
+**Trust signals**: Named operator with verifiable consulting firm. Article is strategic commentary, not personal workflow. Argues marketers shouldn't all become engineers; competitive advantage = system quality not output volume.
+
+**Key data extracted**:
+> Thesis: 'Building one-off workflows is not the same thing as building scalable systems.' Advisory POV; no specific personal workflows; no quantified outcomes.
+
+**Scores**:
+
+| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 4 | 2 | 4 | 5 | 2 | 4 | 2 | **23** |
 
 ---
 
