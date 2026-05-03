@@ -141,6 +141,7 @@ const HTML = `<!doctype html>
             <tr><td class="col-key">IMPC</td><td class="col-label">Tác động</td><td class="col-desc"><strong>Impact (1–5)</strong> — tác động lên đề xuất áp dụng. 5 = trả lời trực tiếp "có nên áp dụng và áp dụng thế nào?". 4 = số liệu ROI/chi phí cho phần tài chính. 3 = template workflow để fork. 2 = bối cảnh thị trường. 1 = chỉ là thông tin nền.</td></tr>
             <tr><td class="col-key">Total</td><td class="col-label">Tổng</td><td class="col-desc">Tổng điểm 7 chiều (AUTH + SPEC + INDP + RCNT + VRFY + MTCH + IMPC). Tối đa 35. Quy ước: ≥ 28 đầu đề, 21–27 hỗ trợ, 14–20 yếu, ≤ 13 bỏ qua.</td></tr>
             <tr><td class="col-key">Use</td><td class="col-label">Sử dụng</td><td class="col-desc">Gợi ý dùng trong đề xuất. <strong>HEADLINE</strong> = nêu trong tóm tắt điều hành. <strong>SUPPORT</strong> = trích dẫn ở phần thân. <strong>CONTEXT</strong> = đọc nền, không trích. <strong>SKIP</strong> = không khuyến khích dùng.</td></tr>
+            <tr><td class="col-key">Cluster</td><td class="col-label">Cụm</td><td class="col-desc">Nhóm nguồn có nội dung <strong>tương tự</strong> (cùng tác giả, cùng sản phẩm, hoặc cùng chủ đề). Cùng cụm = MỘT điểm bằng chứng — không nên đếm gấp. Khi trích, lấy nguồn có Tổng cao nhất trong cụm làm đại diện. Cụm hiện tại: ANTHROPIC-EI, AGRICIDANIEL-SEO, ADVENTUREPPC, STORMY-AI, META-INTEGRATION, GA4-CLAUDE, MARKETING-DATA-CONNECTORS. Cột trống = nguồn độc lập, không trùng nội dung với nguồn khác.</td></tr>
           </tbody>
         </table>
       </div>
@@ -182,6 +183,7 @@ const COL_LABELS = {
   IMPC: 'Tác động',
   Total: 'Tổng',
   Use: 'Sử dụng',
+  Cluster: 'Cụm',
 };
 
 const COL_TIPS = {
@@ -204,6 +206,7 @@ const COL_TIPS = {
   IMPC: 'Impact (1–5) — tác động lên quyết định. 5 = trả lời "có nên áp dụng?". 1 = chỉ là thông tin nền.',
   Total: 'Tổng 7 chiều (max 35). Quy ước: ≥ 28 đầu đề, 21–27 hỗ trợ, 14–20 yếu, ≤ 13 bỏ qua.',
   Use: 'Gợi ý: HEADLINE / SUPPORT / CONTEXT / SKIP',
+  Cluster: 'Cụm — các nguồn có nội dung tương tự (cùng tác giả, cùng sản phẩm, hoặc cùng chủ đề). Khi trích dẫn, các nguồn cùng cụm tính là MỘT điểm bằng chứng; lấy nguồn có Tổng cao nhất làm đại diện.',
 };
 
 const NL = String.fromCharCode(10);

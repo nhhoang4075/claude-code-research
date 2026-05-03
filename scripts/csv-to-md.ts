@@ -44,7 +44,7 @@ const I = {
   Year: idx("Year"), URL: idx("URL"), KeyData: idx("KeyData"),
   AUTH: idx("AUTH"), SPEC: idx("SPEC"), INDP: idx("INDP"), RCNT: idx("RCNT"),
   VRFY: idx("VRFY"), MTCH: idx("MTCH"), IMPC: idx("IMPC"),
-  Total: idx("Total"), Use: idx("Use"),
+  Total: idx("Total"), Use: idx("Use"), Cluster: idx("Cluster"),
 };
 
 // Sort by Total descending, then by ID ascending for stability
@@ -64,12 +64,29 @@ const top = sorted.filter((r) => totalNum(r) >= 28).length;
 const mid = sorted.filter((r) => { const t = totalNum(r); return t >= 21 && t < 28; }).length;
 out += `**Total sources scored**: ${sorted.length} · **≥ 28 (headline-grade)**: ${top} · **21–27 (support)**: ${mid}\n\n`;
 out += "Read the rubric in [`assessment-framework.md`](assessment-framework.md) before relying on the scores. **TL;DR**: Total ≥ 28 = headline evidence; 21–27 = supporting; <21 = context.\n\n";
+// Track cluster primaries (highest Total per cluster). Used to flag derivatives.
+const clusterPrimary: Record<string, string> = {};
+for (const r of sorted) {
+  const cl = r[I.Cluster];
+  if (!cl) continue;
+  if (!clusterPrimary[cl] || totalNum(r) > totalNum(sorted.find((x) => x[I.ID] === clusterPrimary[cl])!)) {
+    clusterPrimary[cl] = r[I.ID];
+  }
+}
+const fmtCluster = (r: string[]) => {
+  const cl = r[I.Cluster];
+  if (!cl) return "—";
+  const isPrimary = clusterPrimary[cl] === r[I.ID];
+  return `\`${cl}\`${isPrimary ? " ★" : ""}`;
+};
+
 out += "---\n\n## Ranking table (click headers in GitHub to sort)\n\n";
-out += "| ID | Source | Discipline | Author | Total | AUTH | SPEC | INDP | RCNT | VRFY | MTCH | IMPC | Use |\n";
+out += "★ = highest-Total source within its cluster (use as primary citation).\n\n";
+out += "| ID | Source | Discipline | Cluster | Total | AUTH | SPEC | INDP | RCNT | VRFY | MTCH | IMPC | Use |\n";
 out += "|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---|\n";
 for (const r of sorted) {
   const sourceLink = `[${r[I.ID]}](#${r[I.ID].toLowerCase()}) [${r[I.Source].slice(0, 64)}${r[I.Source].length > 64 ? "…" : ""}](${r[I.URL]})`;
-  out += `| ${r[I.ID]} | ${sourceLink} | ${r[I.Discipline]} | ${truncate(r[I.Author], 40)} | ${formatTotal(r)} | ${r[I.AUTH]} | ${r[I.SPEC]} | ${r[I.INDP]} | ${r[I.RCNT]} | ${r[I.VRFY]} | ${r[I.MTCH]} | ${r[I.IMPC]} | ${r[I.Use]} |\n`;
+  out += `| ${r[I.ID]} | ${sourceLink} | ${r[I.Discipline]} | ${fmtCluster(r)} | ${formatTotal(r)} | ${r[I.AUTH]} | ${r[I.SPEC]} | ${r[I.INDP]} | ${r[I.RCNT]} | ${r[I.VRFY]} | ${r[I.MTCH]} | ${r[I.IMPC]} | ${r[I.Use]} |\n`;
 }
 
 // ── FULL DETAIL CARDS ───────────────────────────────────────────────
@@ -81,7 +98,8 @@ for (const r of sorted) {
   const t = totalNum(r);
   const grade = t >= 28 ? "**Headline-grade evidence**" : t >= 21 ? "Support-grade evidence" : t >= 14 ? "Context-only" : "Skip";
   out += `### <a id="${id.toLowerCase()}"></a>${id} · ${escapeMd(r[I.Source])}\n\n`;
-  out += `**Total ${r[I.Total]}/35** · ${grade} · Use: \`${r[I.Use]}\` · Discipline: \`${r[I.Discipline]}\` · Type: \`${r[I.Type]}\` · ${r[I.Year]}\n\n`;
+  const clusterPart = r[I.Cluster] ? ` · Cluster: \`${r[I.Cluster]}\`${clusterPrimary[r[I.Cluster]] === id ? " ★" : ""}` : "";
+  out += `**Total ${r[I.Total]}/35** · ${grade} · Use: \`${r[I.Use]}\` · Discipline: \`${r[I.Discipline]}\` · Type: \`${r[I.Type]}\` · ${r[I.Year]}${clusterPart}\n\n`;
   out += `**URL**: ${r[I.URL]}\n\n`;
   out += `**Author**: ${escapeMd(r[I.Author])}\n\n`;
   out += `**Role**: ${escapeMd(r[I.Role])}\n\n`;

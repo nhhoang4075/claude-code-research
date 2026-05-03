@@ -10,48 +10,50 @@ Read the rubric in [`assessment-framework.md`](assessment-framework.md) before r
 
 ## Ranking table (click headers in GitHub to sort)
 
-| ID | Source | Discipline | Author | Total | AUTH | SPEC | INDP | RCNT | VRFY | MTCH | IMPC | Use |
+★ = highest-Total source within its cluster (use as primary citation).
+
+| ID | Source | Discipline | Cluster | Total | AUTH | SPEC | INDP | RCNT | VRFY | MTCH | IMPC | Use |
 |---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| R004 | [R004](#r004) [AgriciDaniel/claude-ads (GitHub)](https://github.com/AgriciDaniel/claude-ads) | GADS+META | GitHub user "AgriciDaniel" | **33** | 4 | 5 | 4 | 5 | 5 | 5 | 5 | HEADLINE |
-| R005 | [R005](#r005) [AgriciDaniel/claude-seo (GitHub)](https://github.com/AgriciDaniel/claude-seo) | SEO | GitHub user "AgriciDaniel" | **33** | 4 | 5 | 4 | 5 | 5 | 5 | 5 | HEADLINE |
-| R007 | [R007](#r007) [aaron-he-zhu/seo-geo-claude-skills (GitHub)](https://github.com/aaron-he-zhu/seo-geo-claude-skills) | SEO | GitHub user "aaron-he-zhu" | **32** | 4 | 5 | 4 | 5 | 5 | 5 | 4 | HEADLINE |
-| R008 | [R008](#r008) [Ayima — Claude for Technical SEO programme](https://www.ayima.com/claude-seo/) | SEO | Ayima (UK SEO agency, founded 2007) | **32** | 5 | 5 | 4 | 5 | 3 | 5 | 5 | HEADLINE |
-| R006 | [R006](#r006) [inhouseseo/superseo-skills (GitHub)](https://github.com/inhouseseo/superseo-skills) | SEO+CONTENT | InhouseSEO agency (operating SEO agency… | **31** | 4 | 5 | 3 | 5 | 5 | 5 | 4 | HEADLINE |
-| R011 | [R011](#r011) [AdventurePPC — 6 Workflows That Replace Freelancer Contracts](https://www.adventureppc.com/blog/6-claude-code-workflows-that-replace-entire-freelancer-contracts-for-marketing-teams) | GADS+CROSS | AdventurePPC (independent PPC agency / … | **31** | 4 | 5 | 4 | 5 | 3 | 5 | 5 | HEADLINE |
-| R015 | [R015](#r015) [HeyOz — 10 Claude Code Skills for Meta Ads](https://heyoz.com/blogs/claude-code-skills-for-meta-ads) | META | HeyOz (practitioner publication focused… | **31** | 4 | 5 | 3 | 5 | 4 | 5 | 5 | HEADLINE |
-| R012 | [R012](#r012) [AdventurePPC — Claude Code for PPC Professionals](https://www.adventureppc.com/blog/claude-code-for-ppc-professionals-automating-campaign-management-with-ai) | GADS | AdventurePPC | **30** | 4 | 5 | 4 | 5 | 3 | 5 | 4 | HEADLINE |
-| R021 | [R021](#r021) [Emily Kramer (MKT1) — Build marketing strategy in Claude (7-step…](https://newsletter.mkt1.co/p/build-marketing-strategy-skill-in-claude-code) | BRAND | Emily Kramer (MKT1) | **30** | 4 | 5 | 4 | 5 | 4 | 4 | 4 | HEADLINE |
-| R032 | [R032](#r032) [Search Engine Land — Claude Skills for PPC](https://searchengineland.com/claude-skills-ppc-scalable-systems-474221) | GADS | Search Engine Land (industry pub, owned… | **30** | 5 | 4 | 4 | 5 | 3 | 5 | 4 | HEADLINE |
-| R033 | [R033](#r033) [Search Engine Land — Claude Code as SEO command center](https://searchengineland.com/claude-code-seo-work-470668) | SEO | Search Engine Land (same publisher as R… | **30** | 5 | 4 | 4 | 5 | 3 | 5 | 4 | HEADLINE |
-| R017 | [R017](#r017) [PorterMetrics — 5 ways to connect Meta Ads to Claude (no ban)](https://portermetrics.com/en/tutorial/claude/chat-meta-ads/) | META | PorterMetrics (established marketing-da… | **29** | 4 | 4 | 2 | 5 | 4 | 5 | 5 | HEADLINE |
-| R018 | [R018](#r018) [Michael Patrick Cortez — Claude AI for SEO 2026 Guide](https://michaelpatrickcortez.com/blog/claude-ai-for-seo/) | SEO | Michael Patrick Cortez (named SEO consu… | **29** | 3 | 5 | 4 | 5 | 2 | 5 | 5 | HEADLINE |
-| R019 | [R019](#r019) [SE Ranking — Claude Code & SE Ranking MCP](https://seranking.com/blog/claude-code-for-seo/) | SEO+ANALYTICS | SE Ranking (established SEO tool vendor… | **29** | 4 | 5 | 2 | 5 | 4 | 5 | 4 | HEADLINE |
-| R020 | [R020](#r020) [MKT1 — 4 Gen Marketers + Claude Code Builds](https://newsletter.mkt1.co/p/real-marketers-claude-code-builds) | CROSS+META | Emily Kramer (MKT1 newsletter; ex-Asana… | **29** | 4 | 5 | 4 | 5 | 3 | 4 | 4 | HEADLINE |
-| R027 | [R027](#r027) [measureu.com — GA4 Audit MCP in 4 Minutes](https://measureu.com/ga4-audit-mcp/) | ANALYTICS | measureu.com (Charles Farina or similar… | **29** | 3 | 5 | 4 | 5 | 4 | 4 | 4 | HEADLINE |
-| R036 | [R036](#r036) [rohitg00/awesome-claude-code-toolkit (marketing-analyst agent)](https://github.com/rohitg00/awesome-claude-code-toolkit) | ANALYTICS | GitHub user "rohitg00" | **29** | 3 | 4 | 5 | 5 | 5 | 4 | 3 | HEADLINE |
-| R001 | [R001](#r001) [Anthropic — How Anthropic teams use Claude Code (PDF)](https://www-cdn.anthropic.com/58284b19e702b49db9302d5b6f135ad8871e7658.pdf) | CROSS | Anthropic (interviews with internal Gro… | **28** | 5 | 5 | 1 | 4 | 3 | 5 | 5 | HEADLINE |
-| R013 | [R013](#r013) [Stormy AI — Performance Marketing Playbook](https://stormy.ai/blog/claude-code-for-performance-marketing-playbook) | GADS+META | Stormy AI (newer marketing-AI publicati… | **28** | 3 | 5 | 3 | 5 | 3 | 5 | 4 | HEADLINE |
-| R040 | [R040](#r040) [claude-seo.md — Free AI SEO Audit Tool](https://claude-seo.md/) | SEO | Tied to AgriciDaniel/claude-seo (R005);… | **28** | 3 | 4 | 4 | 5 | 4 | 5 | 3 | SUPPORT |
-| R009 | [R009](#r009) [HubSpot × Marketing Against the Grain — Master Claude Code for M…](https://offers.hubspot.com/claude-code-for-marketing-matg) | CROSS+CONTENT | HubSpot (NYSE: HUBS, ~$2B+ revenue MarT… | 27 | 5 | 4 | 2 | 5 | 3 | 4 | 4 | SUPPORT |
-| R010 | [R010](#r010) [HubSpot — Claude connector docs](https://knowledge.hubspot.com/integrations/set-up-and-use-the-hubspot-connector-for-claude) | MOPS | HubSpot Knowledge Base team (official p… | 27 | 5 | 3 | 2 | 5 | 5 | 4 | 3 | SUPPORT |
-| R014 | [R014](#r014) [Ryze AI — 10 Claude Code Marketing Workflows](https://www.get-ryze.ai/blog/claude-code-marketing-workflows-google-meta-ads) | GADS+META | Ryze AI (newer practitioner blog/tool b… | 27 | 3 | 5 | 3 | 5 | 2 | 5 | 4 | SUPPORT |
-| R023 | [R023](#r023) [Animalz — Claude Code for Content Marketers](https://www.animalz.co/blog/claude-code) | CONTENT | Animalz (established content marketing … | 27 | 4 | 5 | 4 | 5 | 3 | 3 | 3 | SUPPORT |
-| R034 | [R034](#r034) [getmarketingwithai — Marketer's Guide to Claude Code](https://getmarketingwithai.substack.com/p/the-marketers-guide-to-claude-code) | CROSS | Sarah Noel Block (named author with con… | 27 | 3 | 5 | 4 | 5 | 2 | 4 | 4 | SUPPORT |
-| R038 | [R038](#r038) [Stormy AI — Google Ads Automation Playbook](https://stormy.ai/blog/google-ads-automation-claude-code-playbook) | GADS | Stormy AI (same publisher as R013) | 27 | 3 | 5 | 3 | 5 | 3 | 5 | 3 | SUPPORT |
-| R039 | [R039](#r039) [AdventurePPC — Sarah's Story (zero-code marketer 8-week transfor…](https://www.adventureppc.com/blog/from-zero-to-ai-builder-how-one-marketer-learned-claude-code-and-automated-their-entire-workflow) | GADS | AdventurePPC (same publisher as R011/R0… | 27 | 4 | 4 | 4 | 5 | 2 | 4 | 4 | SUPPORT |
-| R016 | [R016](#r016) [Adspirer — Run Facebook & Instagram Ads with Claude Code Agent](https://www.adspirer.com/blog/meta-ads-claude-code-agent) | META | Adspirer (Meta MCP server vendor) | 26 | 3 | 4 | 2 | 5 | 4 | 5 | 3 | SUPPORT |
-| R022 | [R022](#r022) [Stack and Scale — Claude Code Playbook for Marketers](https://www.stackandscale.ai/p/the-claude-code-playbook-for-marketers) | BRAND+CROSS | "Brandon" (Stack and Scale; first-name … | 26 | 3 | 5 | 3 | 5 | 2 | 4 | 4 | SUPPORT |
-| R028 | [R028](#r028) [Lenny's Newsletter (Lenny Rachitsky + Dan Shipper)](https://www.lennysnewsletter.com/p/everyone-should-be-using-claude-code) | CROSS | Lenny Rachitsky (ex-Airbnb growth, ~600… | 26 | 5 | 4 | 4 | 5 | 2 | 3 | 3 | SUPPORT |
-| R031 | [R031](#r031) [nex.ad — How to make brand show up in Claude answers](https://nex.ad/blog/how-to-make-your-brand-show-up-in-claude-answers) | BRAND+SEO | nex.ad (newer GEO/AEO tool brand) | 26 | 3 | 4 | 4 | 5 | 3 | 4 | 3 | SUPPORT |
-| R037 | [R037](#r037) [Maven course catalog (Claude Code for non-engineers etc.)](https://maven.com/p/747df1/intro-to-claude-code-for-non-engineers) | CROSS | Maven (cohort-based course platform, Se… | 26 | 4 | 3 | 4 | 5 | 4 | 3 | 3 | CONTEXT |
-| R029 | [R029](#r029) [Lenny's Newsletter — Head of Claude Code (Boris Cherny)](https://www.lennysnewsletter.com/p/head-of-claude-code-what-happens) | CROSS | Boris Cherny (Head of Claude Code at An… | 25 | 5 | 5 | 1 | 5 | 4 | 2 | 3 | SUPPORT |
-| R030 | [R030](#r030) [Anthropic — Package brand guidelines in a skill](https://claude.com/resources/use-cases/package-your-brand-guidelines-in-a-skill) | BRAND | Anthropic (vendor use-case page) | 25 | 5 | 3 | 1 | 5 | 4 | 4 | 3 | SUPPORT |
-| R035 | [R035](#r035) [aimaker — Newsletter inside Claude Code](https://aimaker.substack.com/p/claude-code-newsletter-agentic-system) | CONTENT | aimaker.substack.com (newer practitione… | 25 | 3 | 5 | 4 | 5 | 2 | 3 | 3 | CONTEXT |
-| R002 | [R002](#r002) [Anthropic Economic Index Mar 2026 (Learning curves)](https://www.anthropic.com/research/economic-index-march-2026-report) | CROSS | Anthropic Economic Research team | 24 | 5 | 4 | 2 | 5 | 4 | 2 | 2 | CONTEXT |
-| R024 | [R024](#r024) [Improvado — Claude Marketing Skills](https://improvado.io/blog/claude-marketing-skills) | ANALYTICS+MOPS | Improvado (~$30M+ funded marketing-data… | 24 | 3 | 4 | 1 | 5 | 3 | 4 | 4 | SUPPORT |
-| R026 | [R026](#r026) [Windsor.ai — GA4 Connector for Claude](https://windsor.ai/connect/google-analytics-4-to-claude-integration/) | ANALYTICS | Windsor.ai (marketing data integration … | 24 | 3 | 4 | 1 | 5 | 4 | 4 | 3 | SUPPORT |
-| R003 | [R003](#r003) [Anthropic Economic Index Jan 2026 (Economic primitives)](https://www.anthropic.com/research/anthropic-economic-index-january-2026-report) | CROSS | Anthropic Economic Research team | 23 | 5 | 4 | 2 | 5 | 4 | 2 | 1 | CONTEXT |
-| R025 | [R025](#r025) [Coupler.io — Claude Code for Marketing Real Use Cases](https://blog.coupler.io/claude-code-for-marketing/) | CROSS | Coupler.io (Railsware product; establis… | 23 | 3 | 4 | 1 | 5 | 3 | 4 | 3 | SUPPORT |
+| R004 | [R004](#r004) [AgriciDaniel/claude-ads (GitHub)](https://github.com/AgriciDaniel/claude-ads) | GADS+META | — | **33** | 4 | 5 | 4 | 5 | 5 | 5 | 5 | HEADLINE |
+| R005 | [R005](#r005) [AgriciDaniel/claude-seo (GitHub)](https://github.com/AgriciDaniel/claude-seo) | SEO | `AGRICIDANIEL-SEO` ★ | **33** | 4 | 5 | 4 | 5 | 5 | 5 | 5 | HEADLINE |
+| R007 | [R007](#r007) [aaron-he-zhu/seo-geo-claude-skills (GitHub)](https://github.com/aaron-he-zhu/seo-geo-claude-skills) | SEO | — | **32** | 4 | 5 | 4 | 5 | 5 | 5 | 4 | HEADLINE |
+| R008 | [R008](#r008) [Ayima — Claude for Technical SEO programme](https://www.ayima.com/claude-seo/) | SEO | — | **32** | 5 | 5 | 4 | 5 | 3 | 5 | 5 | HEADLINE |
+| R006 | [R006](#r006) [inhouseseo/superseo-skills (GitHub)](https://github.com/inhouseseo/superseo-skills) | SEO+CONTENT | — | **31** | 4 | 5 | 3 | 5 | 5 | 5 | 4 | HEADLINE |
+| R011 | [R011](#r011) [AdventurePPC — 6 Workflows That Replace Freelancer Contracts](https://www.adventureppc.com/blog/6-claude-code-workflows-that-replace-entire-freelancer-contracts-for-marketing-teams) | GADS+CROSS | `ADVENTUREPPC` ★ | **31** | 4 | 5 | 4 | 5 | 3 | 5 | 5 | HEADLINE |
+| R015 | [R015](#r015) [HeyOz — 10 Claude Code Skills for Meta Ads](https://heyoz.com/blogs/claude-code-skills-for-meta-ads) | META | — | **31** | 4 | 5 | 3 | 5 | 4 | 5 | 5 | HEADLINE |
+| R012 | [R012](#r012) [AdventurePPC — Claude Code for PPC Professionals](https://www.adventureppc.com/blog/claude-code-for-ppc-professionals-automating-campaign-management-with-ai) | GADS | `ADVENTUREPPC` | **30** | 4 | 5 | 4 | 5 | 3 | 5 | 4 | HEADLINE |
+| R021 | [R021](#r021) [Emily Kramer (MKT1) — Build marketing strategy in Claude (7-step…](https://newsletter.mkt1.co/p/build-marketing-strategy-skill-in-claude-code) | BRAND | — | **30** | 4 | 5 | 4 | 5 | 4 | 4 | 4 | HEADLINE |
+| R032 | [R032](#r032) [Search Engine Land — Claude Skills for PPC](https://searchengineland.com/claude-skills-ppc-scalable-systems-474221) | GADS | — | **30** | 5 | 4 | 4 | 5 | 3 | 5 | 4 | HEADLINE |
+| R033 | [R033](#r033) [Search Engine Land — Claude Code as SEO command center](https://searchengineland.com/claude-code-seo-work-470668) | SEO | — | **30** | 5 | 4 | 4 | 5 | 3 | 5 | 4 | HEADLINE |
+| R017 | [R017](#r017) [PorterMetrics — 5 ways to connect Meta Ads to Claude (no ban)](https://portermetrics.com/en/tutorial/claude/chat-meta-ads/) | META | `META-INTEGRATION` ★ | **29** | 4 | 4 | 2 | 5 | 4 | 5 | 5 | HEADLINE |
+| R018 | [R018](#r018) [Michael Patrick Cortez — Claude AI for SEO 2026 Guide](https://michaelpatrickcortez.com/blog/claude-ai-for-seo/) | SEO | — | **29** | 3 | 5 | 4 | 5 | 2 | 5 | 5 | HEADLINE |
+| R019 | [R019](#r019) [SE Ranking — Claude Code & SE Ranking MCP](https://seranking.com/blog/claude-code-for-seo/) | SEO+ANALYTICS | — | **29** | 4 | 5 | 2 | 5 | 4 | 5 | 4 | HEADLINE |
+| R020 | [R020](#r020) [MKT1 — 4 Gen Marketers + Claude Code Builds](https://newsletter.mkt1.co/p/real-marketers-claude-code-builds) | CROSS+META | — | **29** | 4 | 5 | 4 | 5 | 3 | 4 | 4 | HEADLINE |
+| R027 | [R027](#r027) [measureu.com — GA4 Audit MCP in 4 Minutes](https://measureu.com/ga4-audit-mcp/) | ANALYTICS | `GA4-CLAUDE` ★ | **29** | 3 | 5 | 4 | 5 | 4 | 4 | 4 | HEADLINE |
+| R036 | [R036](#r036) [rohitg00/awesome-claude-code-toolkit (marketing-analyst agent)](https://github.com/rohitg00/awesome-claude-code-toolkit) | ANALYTICS | — | **29** | 3 | 4 | 5 | 5 | 5 | 4 | 3 | HEADLINE |
+| R001 | [R001](#r001) [Anthropic — How Anthropic teams use Claude Code (PDF)](https://www-cdn.anthropic.com/58284b19e702b49db9302d5b6f135ad8871e7658.pdf) | CROSS | — | **28** | 5 | 5 | 1 | 4 | 3 | 5 | 5 | HEADLINE |
+| R013 | [R013](#r013) [Stormy AI — Performance Marketing Playbook](https://stormy.ai/blog/claude-code-for-performance-marketing-playbook) | GADS+META | `STORMY-AI` ★ | **28** | 3 | 5 | 3 | 5 | 3 | 5 | 4 | HEADLINE |
+| R040 | [R040](#r040) [claude-seo.md — Free AI SEO Audit Tool](https://claude-seo.md/) | SEO | `AGRICIDANIEL-SEO` | **28** | 3 | 4 | 4 | 5 | 4 | 5 | 3 | SUPPORT |
+| R009 | [R009](#r009) [HubSpot × Marketing Against the Grain — Master Claude Code for M…](https://offers.hubspot.com/claude-code-for-marketing-matg) | CROSS+CONTENT | — | 27 | 5 | 4 | 2 | 5 | 3 | 4 | 4 | SUPPORT |
+| R010 | [R010](#r010) [HubSpot — Claude connector docs](https://knowledge.hubspot.com/integrations/set-up-and-use-the-hubspot-connector-for-claude) | MOPS | — | 27 | 5 | 3 | 2 | 5 | 5 | 4 | 3 | SUPPORT |
+| R014 | [R014](#r014) [Ryze AI — 10 Claude Code Marketing Workflows](https://www.get-ryze.ai/blog/claude-code-marketing-workflows-google-meta-ads) | GADS+META | — | 27 | 3 | 5 | 3 | 5 | 2 | 5 | 4 | SUPPORT |
+| R023 | [R023](#r023) [Animalz — Claude Code for Content Marketers](https://www.animalz.co/blog/claude-code) | CONTENT | — | 27 | 4 | 5 | 4 | 5 | 3 | 3 | 3 | SUPPORT |
+| R034 | [R034](#r034) [getmarketingwithai — Marketer's Guide to Claude Code](https://getmarketingwithai.substack.com/p/the-marketers-guide-to-claude-code) | CROSS | — | 27 | 3 | 5 | 4 | 5 | 2 | 4 | 4 | SUPPORT |
+| R038 | [R038](#r038) [Stormy AI — Google Ads Automation Playbook](https://stormy.ai/blog/google-ads-automation-claude-code-playbook) | GADS | `STORMY-AI` | 27 | 3 | 5 | 3 | 5 | 3 | 5 | 3 | SUPPORT |
+| R039 | [R039](#r039) [AdventurePPC — Sarah's Story (zero-code marketer 8-week transfor…](https://www.adventureppc.com/blog/from-zero-to-ai-builder-how-one-marketer-learned-claude-code-and-automated-their-entire-workflow) | GADS | `ADVENTUREPPC` | 27 | 4 | 4 | 4 | 5 | 2 | 4 | 4 | SUPPORT |
+| R016 | [R016](#r016) [Adspirer — Run Facebook & Instagram Ads with Claude Code Agent](https://www.adspirer.com/blog/meta-ads-claude-code-agent) | META | `META-INTEGRATION` | 26 | 3 | 4 | 2 | 5 | 4 | 5 | 3 | SUPPORT |
+| R022 | [R022](#r022) [Stack and Scale — Claude Code Playbook for Marketers](https://www.stackandscale.ai/p/the-claude-code-playbook-for-marketers) | BRAND+CROSS | — | 26 | 3 | 5 | 3 | 5 | 2 | 4 | 4 | SUPPORT |
+| R028 | [R028](#r028) [Lenny's Newsletter (Lenny Rachitsky + Dan Shipper)](https://www.lennysnewsletter.com/p/everyone-should-be-using-claude-code) | CROSS | — | 26 | 5 | 4 | 4 | 5 | 2 | 3 | 3 | SUPPORT |
+| R031 | [R031](#r031) [nex.ad — How to make brand show up in Claude answers](https://nex.ad/blog/how-to-make-your-brand-show-up-in-claude-answers) | BRAND+SEO | — | 26 | 3 | 4 | 4 | 5 | 3 | 4 | 3 | SUPPORT |
+| R037 | [R037](#r037) [Maven course catalog (Claude Code for non-engineers etc.)](https://maven.com/p/747df1/intro-to-claude-code-for-non-engineers) | CROSS | — | 26 | 4 | 3 | 4 | 5 | 4 | 3 | 3 | CONTEXT |
+| R029 | [R029](#r029) [Lenny's Newsletter — Head of Claude Code (Boris Cherny)](https://www.lennysnewsletter.com/p/head-of-claude-code-what-happens) | CROSS | — | 25 | 5 | 5 | 1 | 5 | 4 | 2 | 3 | SUPPORT |
+| R030 | [R030](#r030) [Anthropic — Package brand guidelines in a skill](https://claude.com/resources/use-cases/package-your-brand-guidelines-in-a-skill) | BRAND | — | 25 | 5 | 3 | 1 | 5 | 4 | 4 | 3 | SUPPORT |
+| R035 | [R035](#r035) [aimaker — Newsletter inside Claude Code](https://aimaker.substack.com/p/claude-code-newsletter-agentic-system) | CONTENT | — | 25 | 3 | 5 | 4 | 5 | 2 | 3 | 3 | CONTEXT |
+| R002 | [R002](#r002) [Anthropic Economic Index Mar 2026 (Learning curves)](https://www.anthropic.com/research/economic-index-march-2026-report) | CROSS | `ANTHROPIC-EI` ★ | 24 | 5 | 4 | 2 | 5 | 4 | 2 | 2 | CONTEXT |
+| R024 | [R024](#r024) [Improvado — Claude Marketing Skills](https://improvado.io/blog/claude-marketing-skills) | ANALYTICS+MOPS | `MARKETING-DATA-CONNECTORS` ★ | 24 | 3 | 4 | 1 | 5 | 3 | 4 | 4 | SUPPORT |
+| R026 | [R026](#r026) [Windsor.ai — GA4 Connector for Claude](https://windsor.ai/connect/google-analytics-4-to-claude-integration/) | ANALYTICS | `GA4-CLAUDE` | 24 | 3 | 4 | 1 | 5 | 4 | 4 | 3 | SUPPORT |
+| R003 | [R003](#r003) [Anthropic Economic Index Jan 2026 (Economic primitives)](https://www.anthropic.com/research/anthropic-economic-index-january-2026-report) | CROSS | `ANTHROPIC-EI` | 23 | 5 | 4 | 2 | 5 | 4 | 2 | 1 | CONTEXT |
+| R025 | [R025](#r025) [Coupler.io — Claude Code for Marketing Real Use Cases](https://blog.coupler.io/claude-code-for-marketing/) | CROSS | `MARKETING-DATA-CONNECTORS` | 23 | 3 | 4 | 1 | 5 | 3 | 4 | 3 | SUPPORT |
 
 
 ---
@@ -85,7 +87,7 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ### <a id="r005"></a>R005 · AgriciDaniel/claude-seo (GitHub)
 
-**Total 33/35** · **Headline-grade evidence** · Use: `HEADLINE` · Discipline: `SEO` · Type: `OPEN-SOURCE` · 2026
+**Total 33/35** · **Headline-grade evidence** · Use: `HEADLINE` · Discipline: `SEO` · Type: `OPEN-SOURCE` · 2026 · Cluster: `AGRICIDANIEL-SEO` ★
 
 **URL**: https://github.com/AgriciDaniel/claude-seo
 
@@ -177,7 +179,7 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ### <a id="r011"></a>R011 · AdventurePPC — 6 Workflows That Replace Freelancer Contracts
 
-**Total 31/35** · **Headline-grade evidence** · Use: `HEADLINE` · Discipline: `GADS+CROSS` · Type: `PRACTITIONER` · 2026
+**Total 31/35** · **Headline-grade evidence** · Use: `HEADLINE` · Discipline: `GADS+CROSS` · Type: `PRACTITIONER` · 2026 · Cluster: `ADVENTUREPPC` ★
 
 **URL**: https://www.adventureppc.com/blog/6-claude-code-workflows-that-replace-entire-freelancer-contracts-for-marketing-teams
 
@@ -223,7 +225,7 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ### <a id="r012"></a>R012 · AdventurePPC — Claude Code for PPC Professionals
 
-**Total 30/35** · **Headline-grade evidence** · Use: `HEADLINE` · Discipline: `GADS` · Type: `PRACTITIONER` · 2026
+**Total 30/35** · **Headline-grade evidence** · Use: `HEADLINE` · Discipline: `GADS` · Type: `PRACTITIONER` · 2026 · Cluster: `ADVENTUREPPC`
 
 **URL**: https://www.adventureppc.com/blog/claude-code-for-ppc-professionals-automating-campaign-management-with-ai
 
@@ -315,7 +317,7 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ### <a id="r017"></a>R017 · PorterMetrics — 5 ways to connect Meta Ads to Claude (no ban)
 
-**Total 29/35** · **Headline-grade evidence** · Use: `HEADLINE` · Discipline: `META` · Type: `VENDOR-BLOG` · 2026
+**Total 29/35** · **Headline-grade evidence** · Use: `HEADLINE` · Discipline: `META` · Type: `VENDOR-BLOG` · 2026 · Cluster: `META-INTEGRATION` ★
 
 **URL**: https://portermetrics.com/en/tutorial/claude/chat-meta-ads/
 
@@ -407,7 +409,7 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ### <a id="r027"></a>R027 · measureu.com — GA4 Audit MCP in 4 Minutes
 
-**Total 29/35** · **Headline-grade evidence** · Use: `HEADLINE` · Discipline: `ANALYTICS` · Type: `PRACTITIONER` · 2026
+**Total 29/35** · **Headline-grade evidence** · Use: `HEADLINE` · Discipline: `ANALYTICS` · Type: `PRACTITIONER` · 2026 · Cluster: `GA4-CLAUDE` ★
 
 **URL**: https://measureu.com/ga4-audit-mcp/
 
@@ -476,7 +478,7 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ### <a id="r013"></a>R013 · Stormy AI — Performance Marketing Playbook
 
-**Total 28/35** · **Headline-grade evidence** · Use: `HEADLINE` · Discipline: `GADS+META` · Type: `PRACTITIONER` · 2026
+**Total 28/35** · **Headline-grade evidence** · Use: `HEADLINE` · Discipline: `GADS+META` · Type: `PRACTITIONER` · 2026 · Cluster: `STORMY-AI` ★
 
 **URL**: https://stormy.ai/blog/claude-code-for-performance-marketing-playbook
 
@@ -499,7 +501,7 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ### <a id="r040"></a>R040 · claude-seo.md — Free AI SEO Audit Tool
 
-**Total 28/35** · **Headline-grade evidence** · Use: `SUPPORT` · Discipline: `SEO` · Type: `OPEN-SOURCE` · 2026
+**Total 28/35** · **Headline-grade evidence** · Use: `SUPPORT` · Discipline: `SEO` · Type: `OPEN-SOURCE` · 2026 · Cluster: `AGRICIDANIEL-SEO`
 
 **URL**: https://claude-seo.md/
 
@@ -637,7 +639,7 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ### <a id="r038"></a>R038 · Stormy AI — Google Ads Automation Playbook
 
-**Total 27/35** · Support-grade evidence · Use: `SUPPORT` · Discipline: `GADS` · Type: `PRACTITIONER` · 2026
+**Total 27/35** · Support-grade evidence · Use: `SUPPORT` · Discipline: `GADS` · Type: `PRACTITIONER` · 2026 · Cluster: `STORMY-AI`
 
 **URL**: https://stormy.ai/blog/google-ads-automation-claude-code-playbook
 
@@ -660,7 +662,7 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ### <a id="r039"></a>R039 · AdventurePPC — Sarah's Story (zero-code marketer 8-week transformation)
 
-**Total 27/35** · Support-grade evidence · Use: `SUPPORT` · Discipline: `GADS` · Type: `PRACTITIONER` · 2026
+**Total 27/35** · Support-grade evidence · Use: `SUPPORT` · Discipline: `GADS` · Type: `PRACTITIONER` · 2026 · Cluster: `ADVENTUREPPC`
 
 **URL**: https://www.adventureppc.com/blog/from-zero-to-ai-builder-how-one-marketer-learned-claude-code-and-automated-their-entire-workflow
 
@@ -683,7 +685,7 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ### <a id="r016"></a>R016 · Adspirer — Run Facebook & Instagram Ads with Claude Code Agent
 
-**Total 26/35** · Support-grade evidence · Use: `SUPPORT` · Discipline: `META` · Type: `VENDOR-BLOG` · 2026
+**Total 26/35** · Support-grade evidence · Use: `SUPPORT` · Discipline: `META` · Type: `VENDOR-BLOG` · 2026 · Cluster: `META-INTEGRATION`
 
 **URL**: https://www.adspirer.com/blog/meta-ads-claude-code-agent
 
@@ -867,7 +869,7 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ### <a id="r002"></a>R002 · Anthropic Economic Index Mar 2026 (Learning curves)
 
-**Total 24/35** · Support-grade evidence · Use: `CONTEXT` · Discipline: `CROSS` · Type: `PRIMARY` · 2026
+**Total 24/35** · Support-grade evidence · Use: `CONTEXT` · Discipline: `CROSS` · Type: `PRIMARY` · 2026 · Cluster: `ANTHROPIC-EI` ★
 
 **URL**: https://www.anthropic.com/research/economic-index-march-2026-report
 
@@ -890,7 +892,7 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ### <a id="r024"></a>R024 · Improvado — Claude Marketing Skills
 
-**Total 24/35** · Support-grade evidence · Use: `SUPPORT` · Discipline: `ANALYTICS+MOPS` · Type: `VENDOR-BLOG` · 2026
+**Total 24/35** · Support-grade evidence · Use: `SUPPORT` · Discipline: `ANALYTICS+MOPS` · Type: `VENDOR-BLOG` · 2026 · Cluster: `MARKETING-DATA-CONNECTORS` ★
 
 **URL**: https://improvado.io/blog/claude-marketing-skills
 
@@ -913,7 +915,7 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ### <a id="r026"></a>R026 · Windsor.ai — GA4 Connector for Claude
 
-**Total 24/35** · Support-grade evidence · Use: `SUPPORT` · Discipline: `ANALYTICS` · Type: `VENDOR-DOCS` · 2026
+**Total 24/35** · Support-grade evidence · Use: `SUPPORT` · Discipline: `ANALYTICS` · Type: `VENDOR-DOCS` · 2026 · Cluster: `GA4-CLAUDE`
 
 **URL**: https://windsor.ai/connect/google-analytics-4-to-claude-integration/
 
@@ -936,7 +938,7 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ### <a id="r003"></a>R003 · Anthropic Economic Index Jan 2026 (Economic primitives)
 
-**Total 23/35** · Support-grade evidence · Use: `CONTEXT` · Discipline: `CROSS` · Type: `PRIMARY` · 2026
+**Total 23/35** · Support-grade evidence · Use: `CONTEXT` · Discipline: `CROSS` · Type: `PRIMARY` · 2026 · Cluster: `ANTHROPIC-EI`
 
 **URL**: https://www.anthropic.com/research/anthropic-economic-index-january-2026-report
 
@@ -959,7 +961,7 @@ Each card: identity → key data → scores. Identity columns first because they
 
 ### <a id="r025"></a>R025 · Coupler.io — Claude Code for Marketing Real Use Cases
 
-**Total 23/35** · Support-grade evidence · Use: `SUPPORT` · Discipline: `CROSS` · Type: `VENDOR-BLOG` · 2026
+**Total 23/35** · Support-grade evidence · Use: `SUPPORT` · Discipline: `CROSS` · Type: `VENDOR-BLOG` · 2026 · Cluster: `MARKETING-DATA-CONNECTORS`
 
 **URL**: https://blog.coupler.io/claude-code-for-marketing/
 

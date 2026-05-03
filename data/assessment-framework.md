@@ -120,6 +120,30 @@ The score is a continuous signal, not a tier. Treat it as a guide:
 
 ---
 
+## Cluster — handling similar sources
+
+Several sources cover **similar or overlapping content** — same author, same product, same vendor segment, or same argument area. Citing 3 sources from the same cluster is not 3 independent evidence points; it's one. The `Cluster` column groups these so they don't double-count.
+
+**Convention**: when a claim depends on a clustered source, cite the **highest-Total source from the cluster as primary**. The others can be cited as corroborating ("X reports the same finding"), but should not be counted as additional independent evidence.
+
+**Current clusters** (7 clusters covering 15 sources; the other 25 are standalone):
+
+| Cluster ID | Members | Why grouped | Primary (highest Total) |
+|------------|---------|-------------|-------------------------|
+| `ANTHROPIC-EI` | R002, R003 | Anthropic Economic Index — same series, sequential reports | R002 (newer, supersedes) |
+| `AGRICIDANIEL-SEO` | R005, R040 | Same product (claude-seo) — GitHub repo + companion landing page | R005 |
+| `ADVENTUREPPC` | R011, R012, R039 | Same agency's PPC blog corpus with overlapping time-savings claims | R011 |
+| `STORMY-AI` | R013, R038 | Same publisher's paid-media playbooks with overlapping coverage | R013 |
+| `META-INTEGRATION` | R016, R017 | Both about Meta Ads ↔ Claude integration with compliance angle | R017 |
+| `GA4-CLAUDE` | R026, R027 | Both about GA4 + Claude (vendor connector + audit workflow) | R027 |
+| `MARKETING-DATA-CONNECTORS` | R024, R025 | Both vendor blogs about marketing-data integration (Improvado, Coupler.io) | R024 |
+
+**Empty Cluster** = standalone source (no overlap with others). Treat as fully independent evidence.
+
+**When the cluster's primary is not enough**: a derivative source can still be cited if it adds something the primary doesn't (e.g., R039 in ADVENTUREPPC has the single-marketer narrative; R012 in ADVENTUREPPC has the Python tooling specifics). The point is to be explicit when stacking sources from the same cluster.
+
+---
+
 ## Use classification
 
 Each source is tagged with how it will be used. Use is the practical "what do I do with this source" label — distinct from the score.
