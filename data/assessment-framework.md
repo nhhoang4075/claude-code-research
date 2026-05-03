@@ -1,6 +1,6 @@
 # Source Assessment Framework
 
-**Purpose**: Not every source we collected is equally useful for the SEONGON adoption decision. This framework grades each source on **7 dimensions**, produces a composite score (0–35), and assigns a tier (S/A/B/C). The proposal should be built primarily from S-tier and A-tier sources; B/C provide context.
+**Purpose**: Not every source we collected is equally useful for the SEONGON adoption decision. This framework grades each source on **7 dimensions** producing a composite score (0–35), and labels each source with a recommended **Use** (HEADLINE / SUPPORT / CONTEXT / SKIP). The proposal should be built primarily from sources with high composite scores and a HEADLINE or SUPPORT tag.
 
 The spreadsheet also includes **3 identity columns** so a reader can judge *who* is making each claim and *what reputation signals* support (or weaken) their voice — independent of the numerical scores I assigned.
 
@@ -103,24 +103,26 @@ Each dimension is scored **1 (worst) → 5 (best)**. The scoring rubric for each
 
 ---
 
-## Composite score and tier mapping
+## Composite score interpretation
 
 **Composite** = sum of 7 dimensions. Range: 7–35.
 
-| Tier | Range | Meaning | Recommended use |
-|------|-------|---------|-----------------|
-| **S** | 28–35 | High-confidence headline evidence | Lead the proposal with these. Cite by name in exec summary. |
-| **A** | 21–27 | Solid supporting evidence | Use in body sections. Triangulate against S-tier. |
-| **B** | 14–20 | Weak / context-only | Background reading; do not cite as primary evidence. |
-| **C** | 7–13 | Skip | Mention only if specifically asked; do not build claims on. |
+The score is a continuous signal, not a tier. Treat it as a guide:
 
-**No source is auto-disqualified by one low dimension.** A vendor publication (Independence=1) can still hit S-tier if Authority + Specificity + Recency + Verifiability are all high. Conversely, a high-Independence solo-practitioner anecdote (low on Specificity + Verifiability) won't make S even with 5s on Independence and Match.
+| Range | Quality of evidence | Recommended use |
+|-------|---------------------|-----------------|
+| **28–35** | High-confidence headline evidence | Lead the proposal with these. Cite by name in exec summary. |
+| **21–27** | Solid supporting evidence | Use in body sections. Triangulate against high scorers. |
+| **14–20** | Weak / context-only | Background reading; do not cite as primary evidence. |
+| **≤13** | Skip | Mention only if specifically asked; do not build claims on. |
+
+**No source is auto-disqualified by one low dimension.** A vendor publication (Independence=1) can still score high if Authority + Specificity + Recency + Verifiability are all 5s. Conversely, a high-Independence solo-practitioner anecdote (low on Specificity + Verifiability) won't reach 28 even with 5s on Independence and Match.
 
 ---
 
 ## Use classification
 
-In addition to tier, each source is tagged with how it will be used:
+Each source is tagged with how it will be used. Use is the practical "what do I do with this source" label — distinct from the score.
 
 | Tag | Meaning |
 |-----|---------|
@@ -129,7 +131,7 @@ In addition to tier, each source is tagged with how it will be used:
 | **CONTEXT** | Provides background for understanding the ecosystem; not cited as evidence |
 | **SKIP** | Not recommended for use; included for completeness |
 
-Most S-tier sources are HEADLINE. A-tier sources are typically SUPPORT. B-tier and below are CONTEXT or SKIP.
+Most sources scoring 28+ are HEADLINE. Sources scoring 21–27 are typically SUPPORT. Below that, CONTEXT or SKIP.
 
 ---
 
@@ -139,8 +141,8 @@ Most S-tier sources are HEADLINE. A-tier sources are typically SUPPORT. B-tier a
 2. **Read Author/Role/TrustSignals before the scores.** The numerical scores are summaries of those signals — you should be able to look at the identity columns and (mostly) predict the scores. Where the identity columns surprise you, that's where to dig deeper.
 3. **Sort by Total descending** to see the strongest evidence at the top.
 4. **Filter by Discipline = `SEO`** (or `GADS`, `META`, `BRAND`) to see what's available for each service-line claim.
-5. **Filter by Tier = S** to see the 10–15 sources the proposal should be primarily built on.
-6. **Don't trust a single source for a critical claim**. If a number anchors the proposal, verify it appears in at least 2 sources (one of which should be Tier S or A) and at least one of them should be a high-Independence source (≥3) so it isn't all vendor-derived.
+5. **Filter to Total ≥ 28** to see the ~10–15 sources the proposal should be primarily built on.
+6. **Don't trust a single source for a critical claim**. If a number anchors the proposal, verify it appears in at least 2 sources (one of which should score 21+) and at least one of them should be a high-Independence source (≥3) so it isn't all vendor-derived.
 
 ### When adding new sources
 

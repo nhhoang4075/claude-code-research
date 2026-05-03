@@ -93,10 +93,6 @@ const HTML = `<!doctype html>
     .num { text-align: right; font-variant-numeric: tabular-nums; }
     .truncate { max-width: 360px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block; vertical-align: top; }
     .truncate:hover { white-space: normal; word-break: break-word; }
-    .tier-S { background: #b91c1c; color: #fff; padding: 2px 8px; border-radius: 999px; font-weight: 600; font-size: 11px; }
-    .tier-A { background: #f59e0b; color: #fff; padding: 2px 8px; border-radius: 999px; font-weight: 600; font-size: 11px; }
-    .tier-B { background: #d6d3d1; color: #1c1917; padding: 2px 8px; border-radius: 999px; font-weight: 600; font-size: 11px; }
-    .tier-C { background: #f5f5f4; color: var(--text-3); padding: 2px 8px; border-radius: 999px; font-weight: 600; font-size: 11px; }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .empty { padding: 40px; text-align: center; color: var(--text-3); }
@@ -110,7 +106,7 @@ const HTML = `<!doctype html>
     <span id="status" class="pill live">trực tiếp</span>
     <span class="meta" id="rowcount"></span>
     <input id="filter" type="search" placeholder="Lọc theo mọi cột..." />
-    <label class="toggle"><input type="checkbox" id="onlyS"/> Chỉ hạng S</label>
+    <label class="toggle"><input type="checkbox" id="topOnly"/> Chỉ Tổng ≥ 28</label>
     <span class="meta" id="updated"></span>
   </header>
   <main>
@@ -143,8 +139,7 @@ const HTML = `<!doctype html>
             <tr><td class="col-key">VRFY</td><td class="col-label">Kiểm chứng</td><td class="col-desc"><strong>Verifiability (1–5)</strong> — khả năng kiểm chứng độc lập. 5 = mã nguồn mở / dataset công khai. 4 = sản phẩm sống có thể test. 3 = mô tả phương pháp chi tiết. 2 = tự khai báo, không có cách kiểm. 1 = giai thoại.</td></tr>
             <tr><td class="col-key">MTCH</td><td class="col-label">Phù hợp</td><td class="col-desc"><strong>Match (1–5)</strong> — mức phù hợp với dịch vụ SEONGON. 5 = trùng dịch vụ chính (SEO/Google Ads/FB Ads/Branding). 4 = xuyên suốt giúp mọi dịch vụ (analytics, ops). 3 = dịch vụ kế cận (content). 2 = tiếp tuyến. 1 = không liên quan.</td></tr>
             <tr><td class="col-key">IMPC</td><td class="col-label">Tác động</td><td class="col-desc"><strong>Impact (1–5)</strong> — tác động lên đề xuất áp dụng. 5 = trả lời trực tiếp "có nên áp dụng và áp dụng thế nào?". 4 = số liệu ROI/chi phí cho phần tài chính. 3 = template workflow để fork. 2 = bối cảnh thị trường. 1 = chỉ là thông tin nền.</td></tr>
-            <tr><td class="col-key">Total</td><td class="col-label">Tổng</td><td class="col-desc">Tổng điểm 7 chiều (AUTH + SPEC + INDP + RCNT + VRFY + MTCH + IMPC). Tối đa 35.</td></tr>
-            <tr><td class="col-key">Tier</td><td class="col-label">Hạng</td><td class="col-desc">Hạng tổng hợp. <strong>S (28–35)</strong> = bằng chứng đầu đề, dùng làm headline. <strong>A (21–27)</strong> = bằng chứng hỗ trợ trong các phần thân. <strong>B (14–20)</strong> = chỉ là context, không nên dựa vào để claim. <strong>C (≤13)</strong> = bỏ qua.</td></tr>
+            <tr><td class="col-key">Total</td><td class="col-label">Tổng</td><td class="col-desc">Tổng điểm 7 chiều (AUTH + SPEC + INDP + RCNT + VRFY + MTCH + IMPC). Tối đa 35. Quy ước: ≥ 28 đầu đề, 21–27 hỗ trợ, 14–20 yếu, ≤ 13 bỏ qua.</td></tr>
             <tr><td class="col-key">Use</td><td class="col-label">Sử dụng</td><td class="col-desc">Gợi ý dùng trong đề xuất. <strong>HEADLINE</strong> = nêu trong tóm tắt điều hành. <strong>SUPPORT</strong> = trích dẫn ở phần thân. <strong>CONTEXT</strong> = đọc nền, không trích. <strong>SKIP</strong> = không khuyến khích dùng.</td></tr>
           </tbody>
         </table>
@@ -156,7 +151,7 @@ const HTML = `<!doctype html>
 <script>
 const root = document.getElementById('root');
 const filterInput = document.getElementById('filter');
-const onlyS = document.getElementById('onlyS');
+const topOnly = document.getElementById('topOnly');
 const status = document.getElementById('status');
 const rowcountEl = document.getElementById('rowcount');
 const updatedEl = document.getElementById('updated');
@@ -186,7 +181,6 @@ const COL_LABELS = {
   MTCH: 'Phù hợp',
   IMPC: 'Tác động',
   Total: 'Tổng',
-  Tier: 'Hạng',
   Use: 'Sử dụng',
 };
 
@@ -208,8 +202,7 @@ const COL_TIPS = {
   VRFY: 'Verifiability (1–5) — khả năng kiểm chứng. 5 = mã nguồn mở. 1 = giai thoại.',
   MTCH: 'Match (1–5) — phù hợp dịch vụ SEONGON. 5 = SEO / Google Ads / FB Ads / Branding. 1 = không liên quan.',
   IMPC: 'Impact (1–5) — tác động lên quyết định. 5 = trả lời "có nên áp dụng?". 1 = chỉ là thông tin nền.',
-  Total: 'Tổng 7 chiều, tối đa 35',
-  Tier: 'Hạng tổng hợp: S (28–35) / A (21–27) / B (14–20) / C (≤13)',
+  Total: 'Tổng 7 chiều (max 35). Quy ước: ≥ 28 đầu đề, 21–27 hỗ trợ, 14–20 yếu, ≤ 13 bỏ qua.',
   Use: 'Gợi ý: HEADLINE / SUPPORT / CONTEXT / SKIP',
 };
 
@@ -252,11 +245,6 @@ function buildCell(col, val) {
     a.rel = 'noreferrer';
     a.textContent = stripProto(val);
     td.appendChild(a);
-  } else if (col === 'Tier') {
-    const sp = document.createElement('span');
-    sp.className = 'tier-' + val;
-    sp.textContent = val;
-    td.appendChild(sp);
   } else if (col === 'Total') {
     td.classList.add('total-cell');
     td.textContent = val;
@@ -300,9 +288,12 @@ function render() {
   if (!header.length) { root.className = 'empty'; root.textContent = 'Chưa có dữ liệu.'; return; }
 
   const q = filterInput.value.trim().toLowerCase();
-  const tierIdx = header.indexOf('Tier');
+  const totalIdx = header.indexOf('Total');
   const filtered = rows.filter(r => {
-    if (onlyS.checked && tierIdx >= 0 && r[tierIdx] !== 'S') return false;
+    if (topOnly.checked && totalIdx >= 0) {
+      const t = parseFloat(r[totalIdx]);
+      if (!Number.isFinite(t) || t < 28) return false;
+    }
     if (!q) return true;
     return r.some(c => (c || '').toLowerCase().includes(q));
   });
@@ -351,7 +342,7 @@ async function load() {
 }
 
 filterInput.addEventListener('input', render);
-onlyS.addEventListener('change', render);
+topOnly.addEventListener('change', render);
 
 const ev = new EventSource('/events');
 ev.addEventListener('reload', () => {
