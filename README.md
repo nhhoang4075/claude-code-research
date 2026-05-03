@@ -28,6 +28,21 @@ Compiled 2026-05-03. Evidence base for whether/how SEONGON should adopt Claude C
 - **[sources.md](sources.md)** — full source index, 100+ links, tier-ranked
 - **raw/** — extracted text from primary documents (Anthropic internal teams PDF)
 
+## Live CSV viewer
+
+For real-time editing of `data/source-assessment.csv` with a sortable, filterable browser view that hot-reloads on every save:
+
+```bash
+bun scripts/csv-viewer.ts
+# → http://localhost:4174
+
+# custom file/port:
+bun scripts/csv-viewer.ts data/workflows-table.md   # works for any CSV-ish file
+bun scripts/csv-viewer.ts data/source-assessment.csv 5000
+```
+
+Server-Sent Events push a reload signal whenever the file changes on disk, so editing the CSV in VS Code, Numbers, or via `vim` updates the browser within ~50 ms. Sortable columns (click any header), live filter box, S-tier-only toggle, tier-coloured badges.
+
 ## Top-line findings to remember
 
 1. **Anthropic's own Growth Marketing team is non-technical** and runs the same channel mix as SEONGON (paid search, paid social, mobile app, email, SEO). Documented impact: ad copy 2hr → 15min, 10x creative output. Strongest precedent.
