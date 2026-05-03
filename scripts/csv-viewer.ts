@@ -128,8 +128,7 @@ const HTML = `<!doctype html>
           <tbody>
             <tr><td class="col-key">ID</td><td class="col-label">Mã</td><td class="col-desc">Mã định danh nguồn (R001, R002…)</td></tr>
             <tr><td class="col-key">Source</td><td class="col-label">Nguồn</td><td class="col-desc">Tên bài viết, repo, hoặc tài liệu được trích dẫn</td></tr>
-            <tr><td class="col-key">Author</td><td class="col-label">Tác giả</td><td class="col-desc">Người hoặc tổ chức công bố nội dung. Khi chỉ có tên thương hiệu/handle, ghi nguyên handle (không tự bịa danh tính)</td></tr>
-            <tr><td class="col-key">Role</td><td class="col-label">Vai trò</td><td class="col-desc">Họ làm gì chuyên môn — vì sao có thẩm quyền nói về chủ đề này</td></tr>
+            <tr><td class="col-key">Who</td><td class="col-label">Tác giả</td><td class="col-desc">Người hoặc tổ chức công bố nội dung kết hợp với vai trò chuyên môn. Định dạng: "{Tên} · {Vai trò}". Nếu chỉ có handle/brand không định danh, ghi nguyên handle.</td></tr>
             <tr><td class="col-key">TrustSignals</td><td class="col-label">Tín hiệu uy tín</td><td class="col-desc">1–3 bằng chứng cụ thể về độ tin cậy: lịch sử hoạt động, mâu thuẫn lợi ích, khả năng kiểm chứng. Tách rời với điểm AUTH để người đọc tự đánh giá.</td></tr>
             <tr><td class="col-key">Type</td><td class="col-label">Loại</td><td class="col-desc">PRIMARY (vendor chính chủ) · VENDOR (vendor khác) · AGENCY-CASE (case study agency) · PRACTITIONER (blog thực hành) · OPEN-SOURCE (mã nguồn mở) · COURSE · PODCAST · INDUSTRY-PUB</td></tr>
             <tr><td class="col-key">Discipline</td><td class="col-label">Lĩnh vực</td><td class="col-desc">SEO · GADS (Google Ads) · META (Facebook/Instagram Ads) · BRAND (Digital Branding) · ANALYTICS · MOPS (Marketing Ops) · CONTENT · CROSS (xuyên suốt)</td></tr>
@@ -144,9 +143,7 @@ const HTML = `<!doctype html>
             <tr><td class="col-key">MTCH</td><td class="col-label">Phù hợp</td><td class="col-desc"><strong>Match (1–5)</strong> — mức phù hợp với dịch vụ SEONGON. 5 = trùng dịch vụ chính (SEO/Google Ads/FB Ads/Branding). 4 = xuyên suốt giúp mọi dịch vụ (analytics, ops). 3 = dịch vụ kế cận (content). 2 = tiếp tuyến. 1 = không liên quan.</td></tr>
             <tr><td class="col-key">ADOPT</td><td class="col-label">Phổ biến</td><td class="col-desc"><strong>Adoption (1–5) — chiều mới:</strong> mức độ được kiểm chứng bên ngoài. 5 = canonical / market-leading (3000+ GitHub stars, báo lớn, nền tảng top). 4 = adoption mạnh (200–2999 stars, vendor có khách hàng). 3 = mid (50–199 stars). 2 = niche/mới (<50 stars). 1 = chưa có traction. <em>Tách biệt với AUTH</em>: nhiều repo nổi tiếng có AUTH thấp (handle vô danh) nhưng ADOPT cao — và ngược lại.</td></tr>
             <tr><td class="col-key">Total</td><td class="col-label">Tổng</td><td class="col-desc">Tổng điểm 7 chiều (AUTH + SPEC + INDP + RCNT + VRFY + MTCH + ADOPT). Tối đa 35.</td></tr>
-            <tr><td class="col-key">Tier</td><td class="col-label">Hạng</td><td class="col-desc">Hạng tổng hợp suy ra từ Tổng. <strong>S (28–35)</strong> = bằng chứng đầu đề. <strong>A (21–27)</strong> = bằng chứng hỗ trợ. <strong>B (14–20)</strong> = chỉ là context. <strong>C (≤13)</strong> = bỏ qua. Tier = chất lượng nguồn; Use = vai trò trong đề xuất — hai chiều khác nhau.</td></tr>
-            <tr><td class="col-key">Use</td><td class="col-label">Sử dụng</td><td class="col-desc">Gợi ý dùng trong đề xuất. <strong>HEADLINE</strong> = nêu trong tóm tắt điều hành. <strong>SUPPORT</strong> = trích dẫn ở phần thân. <strong>CONTEXT</strong> = đọc nền, không trích. <strong>SKIP</strong> = không khuyến khích dùng.</td></tr>
-            <tr><td class="col-key">Cluster</td><td class="col-label">Cụm</td><td class="col-desc">Nhóm nguồn có nội dung <strong>tương tự</strong> (cùng tác giả, cùng sản phẩm, hoặc cùng chủ đề). Cùng cụm = MỘT điểm bằng chứng — không nên đếm gấp. Khi trích, lấy nguồn có Tổng cao nhất trong cụm làm đại diện. Cụm hiện tại: ANTHROPIC-EI, AGRICIDANIEL-SEO, ADVENTUREPPC, STORMY-AI, META-INTEGRATION, GA4-CLAUDE, MARKETING-DATA-CONNECTORS. Cột trống = nguồn độc lập, không trùng nội dung với nguồn khác.</td></tr>
+            <tr><td class="col-key">Tier</td><td class="col-label">Hạng</td><td class="col-desc">Hạng tổng hợp suy ra từ Tổng. <strong>S (28–35)</strong> = bằng chứng đầu đề. <strong>A (21–27)</strong> = bằng chứng hỗ trợ. <strong>B (14–20)</strong> = chỉ là context. <strong>C (≤13)</strong> = bỏ qua.</td></tr>
           </tbody>
         </table>
       </div>
@@ -166,13 +163,12 @@ let header = []; let rows = [];
 let sortCol = -1; let sortDir = 1;
 
 const NUMERIC_COLS = new Set(['AUTH','SPEC','INDP','RCNT','VRFY','MTCH','ADOPT','Total','Year']);
-const TRUNCATE_COLS = new Set(['TrustSignals','Role','KeyData','Author','Source']);
+const TRUNCATE_COLS = new Set(['TrustSignals','Who','KeyData','Source']);
 
 const COL_LABELS = {
   ID: 'Mã',
   Source: 'Nguồn',
-  Author: 'Tác giả',
-  Role: 'Vai trò',
+  Who: 'Tác giả',
   TrustSignals: 'Tín hiệu uy tín',
   Type: 'Loại',
   Discipline: 'Lĩnh vực',
@@ -188,15 +184,12 @@ const COL_LABELS = {
   ADOPT: 'Phổ biến',
   Total: 'Tổng',
   Tier: 'Hạng',
-  Use: 'Sử dụng',
-  Cluster: 'Cụm',
 };
 
 const COL_TIPS = {
   ID: 'Mã định danh nguồn (R001, R002...)',
   Source: 'Tên bài viết, repo, hoặc tài liệu',
-  Author: 'Người hoặc tổ chức công bố nội dung',
-  Role: 'Họ làm gì chuyên môn — cơ sở để đánh giá tiếng nói',
+  Who: 'Tác giả + vai trò chuyên môn (định dạng "Tên · Vai trò")',
   TrustSignals: 'Bằng chứng cụ thể về độ tin cậy (track record, mâu thuẫn lợi ích, khả năng kiểm chứng)',
   Type: 'Loại nguồn: PRIMARY / VENDOR / AGENCY-CASE / PRACTITIONER / OPEN-SOURCE / COURSE / PODCAST / INDUSTRY-PUB',
   Discipline: 'Lĩnh vực: SEO / GADS (Google Ads) / META / BRAND / ANALYTICS / MOPS / CONTENT / CROSS',
@@ -211,9 +204,7 @@ const COL_TIPS = {
   MTCH: 'Match (1–5) — phù hợp dịch vụ SEONGON. 5 = SEO / Google Ads / FB Ads / Branding. 1 = không liên quan.',
   ADOPT: 'Adoption (1–5) — mức độ phổ biến / được kiểm chứng bên ngoài. 5 = 3000+ GitHub stars hoặc báo lớn. 4 = 200–2999 stars hoặc vendor có khách. 3 = 50–199 stars. 2 = <50 stars hoặc brand mới. 1 = chưa có traction.',
   Total: 'Tổng 7 chiều (max 35).',
-  Tier: 'Hạng tổng hợp: S (28–35) / A (21–27) / B (14–20) / C (≤13). Tier = chất lượng; Use = vai trò trong đề xuất.',
-  Use: 'Gợi ý: HEADLINE / SUPPORT / CONTEXT / SKIP',
-  Cluster: 'Cụm — các nguồn có nội dung tương tự (cùng tác giả, cùng sản phẩm, hoặc cùng chủ đề). Khi trích dẫn, các nguồn cùng cụm tính là MỘT điểm bằng chứng; lấy nguồn có Tổng cao nhất làm đại diện.',
+  Tier: 'Hạng tổng hợp: S (28–35) / A (21–27) / B (14–20) / C (≤13).',
 };
 
 const NL = String.fromCharCode(10);

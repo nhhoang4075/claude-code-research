@@ -39,12 +39,12 @@ const [header, ...data] = all;
 const idx = (name: string) => header.indexOf(name);
 
 const I = {
-  ID: idx("ID"), Source: idx("Source"), Author: idx("Author"), Role: idx("Role"),
+  ID: idx("ID"), Source: idx("Source"), Who: idx("Who"),
   TrustSignals: idx("TrustSignals"), Type: idx("Type"), Discipline: idx("Discipline"),
   Year: idx("Year"), URL: idx("URL"), KeyData: idx("KeyData"),
   AUTH: idx("AUTH"), SPEC: idx("SPEC"), INDP: idx("INDP"), RCNT: idx("RCNT"),
   VRFY: idx("VRFY"), MTCH: idx("MTCH"), ADOPT: idx("ADOPT"),
-  Total: idx("Total"), Tier: idx("Tier"), Use: idx("Use"), Cluster: idx("Cluster"),
+  Total: idx("Total"), Tier: idx("Tier"),
 };
 
 // Sort by Total descending, then by ID ascending for stability
@@ -64,29 +64,12 @@ out += "Auto-generated from [`source-assessment.csv`](source-assessment.csv). So
 const tCount = (t: string) => sorted.filter((r) => r[I.Tier] === t).length;
 out += `**Total sources scored**: ${sorted.length} · **Tier S**: ${tCount("S")} · **Tier A**: ${tCount("A")} · **Tier B**: ${tCount("B")} · **Tier C**: ${tCount("C")}\n\n`;
 out += "Read the rubric in [`assessment-framework.md`](assessment-framework.md) before relying on the scores. **TL;DR**: Tier S = headline; A = supporting; B = context; C = skip. Composite is sum of 7 dimensions (max 35): AUTH, SPEC, INDP, RCNT, VRFY, MTCH, ADOPT. The 2026-05 strictness revision tightened AUTH for handle-only authors and added ADOPT (external validation: GitHub stars, citations, market traction).\n\n";
-// Track cluster primaries (highest Total per cluster). Used to flag derivatives.
-const clusterPrimary: Record<string, string> = {};
-for (const r of sorted) {
-  const cl = r[I.Cluster];
-  if (!cl) continue;
-  if (!clusterPrimary[cl] || totalNum(r) > totalNum(sorted.find((x) => x[I.ID] === clusterPrimary[cl])!)) {
-    clusterPrimary[cl] = r[I.ID];
-  }
-}
-const fmtCluster = (r: string[]) => {
-  const cl = r[I.Cluster];
-  if (!cl) return "—";
-  const isPrimary = clusterPrimary[cl] === r[I.ID];
-  return `\`${cl}\`${isPrimary ? " ★" : ""}`;
-};
-
 out += "---\n\n## Ranking table (click headers in GitHub to sort)\n\n";
-out += "★ = highest-Total source within its cluster (use as primary citation).\n\n";
-out += "| ID | Source | Discipline | Cluster | Tier | Total | AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | Use |\n";
-out += "|---|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---|\n";
+out += "| ID | Source | Discipline | Tier | Total | AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT |\n";
+out += "|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|\n";
 for (const r of sorted) {
   const sourceLink = `[${r[I.ID]}](#${r[I.ID].toLowerCase()}) [${r[I.Source].slice(0, 64)}${r[I.Source].length > 64 ? "…" : ""}](${r[I.URL]})`;
-  out += `| ${r[I.ID]} | ${sourceLink} | ${r[I.Discipline]} | ${fmtCluster(r)} | ${tierEmoji[r[I.Tier]] ?? r[I.Tier]} | ${formatTotal(r)} | ${r[I.AUTH]} | ${r[I.SPEC]} | ${r[I.INDP]} | ${r[I.RCNT]} | ${r[I.VRFY]} | ${r[I.MTCH]} | ${r[I.ADOPT]} | ${r[I.Use]} |\n`;
+  out += `| ${r[I.ID]} | ${sourceLink} | ${r[I.Discipline]} | ${tierEmoji[r[I.Tier]] ?? r[I.Tier]} | ${formatTotal(r)} | ${r[I.AUTH]} | ${r[I.SPEC]} | ${r[I.INDP]} | ${r[I.RCNT]} | ${r[I.VRFY]} | ${r[I.MTCH]} | ${r[I.ADOPT]} |\n`;
 }
 
 // ── FULL DETAIL CARDS ───────────────────────────────────────────────
@@ -97,11 +80,9 @@ for (const r of sorted) {
   const id = r[I.ID];
   out += `### <a id="${id.toLowerCase()}"></a>${id} · ${escapeMd(r[I.Source])}\n\n`;
   const tierLabel = r[I.Tier] === "S" ? "**Tier S** (headline-grade)" : r[I.Tier] === "A" ? "Tier A (support)" : r[I.Tier] === "B" ? "Tier B (context only)" : "Tier C (skip)";
-  const clusterPart = r[I.Cluster] ? ` · Cluster: \`${r[I.Cluster]}\`${clusterPrimary[r[I.Cluster]] === id ? " ★" : ""}` : "";
-  out += `**Total ${r[I.Total]}/35** · ${tierLabel} · Use: \`${r[I.Use]}\` · Discipline: \`${r[I.Discipline]}\` · Type: \`${r[I.Type]}\` · ${r[I.Year]}${clusterPart}\n\n`;
+  out += `**Total ${r[I.Total]}/35** · ${tierLabel} · Discipline: \`${r[I.Discipline]}\` · Type: \`${r[I.Type]}\` · ${r[I.Year]}\n\n`;
   out += `**URL**: ${r[I.URL]}\n\n`;
-  out += `**Author**: ${escapeMd(r[I.Author])}\n\n`;
-  out += `**Role**: ${escapeMd(r[I.Role])}\n\n`;
+  out += `**Who**: ${escapeMd(r[I.Who])}\n\n`;
   out += `**Trust signals**: ${escapeMd(r[I.TrustSignals])}\n\n`;
   out += `**Key data extracted**:\n> ${escapeMd(r[I.KeyData])}\n\n`;
   out += "**Scores**:\n\n";
