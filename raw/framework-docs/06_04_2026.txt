@@ -1,0 +1,118 @@
+06/04/2026
+1. Về giao diện AI Update mới:
+Tổng quan
+Phân chia hạng mục rõ ràng. Mục đích là để:
+	•	Với mỗi tool, giải pháp update được, mình biết gọi tên, phân loại, sắp xếp, định vị chúng vào trong bối cảnh marketing.
+	•	Mình nhìn được bức tranh tổng quan về công nghệ trong marketing và những lĩnh vực mình đang tổng hợp được ít/nhiều nhất.
+
+
+Nguyên lý phân chia
+
+Giao diện tool
+Các tool sẽ được sắp xếp bào bảng "Danh sách tool" và phân loại theo đúng định nghĩa trong tổng hợp hạng mục và chấm điểm.
+
+
+Có 3 tiêu chí chấm điểm:
+	•	1: Độ tân tiến về công nghệ (AI, công nghệ khó copy, hạ tầng đặc biệt,...)
+	•	2: Độ phổ biến trên thị trường
+	•	3: Sự phù hợp với mô hình của SEONGON
+
+2. Cập nhật tool nổi bật
+2.1 Keyword Insights
+Phân loại:
+2 - Kênh Marketing - SEO - Keyword Research
+[This type of content is unavailable for download at the moment.]
+Công nghệ
+Độ phổ biến
+Phù hợp với SEONGON
+4
+2
+5
+Tính năng (What)
+Tính năng keyword discovery để phân tích từ khóa cho 1 website kèm data như search volume, CPC,...
+
+
+Chia từ khóa theo search intent
+
+
+Phân chủ đề 
+
+
+Hỗ trợ lên content brief từ những cụm từ khóa đã chia
+
+
+Công cụ hỗ trợ draft bài viết hoàn chỉnh tích hợp AI
+
+
+AI viết content
+
+
+Đo lường mention của thương hiệu trên social
+
+
+Phân tích (So what)
+Đây là tool, về tính năng, đáp ứng rất tốt insights của team SEO hiện tại.
+Có thể giải quyết bài toán Dự án SEO 1 người. Bằng chuỗi giá trị full từ từ khóa đến content - Mình có thể chủ động tích hợp thêm việc đo lường, theo dõi.
+
+Những tool như này thường khó để mình đem về dùng luôn cho dự án của mình - vì vấn đề ngôn ngữ và quy mô. Nên dùng thử - tham khảo chuỗi giá trị và giao diện -> Đem về custom.
+Next-step (Now what)
+	•	Tham khảo ý kiến chị Vân.
+	•	Đem đi thiết kế thành giao diện sản phẩm sâu hơn cho team SEO.
+
+2.2 Frontify
+Phân loại:
+1 - Nền tảng - Branding - Digital Asset Management
+[This type of content is unavailable for download at the moment.]
+Công nghệ
+Độ phổ biến
+Phù hợp với SEONGON
+4
+4
+2
+Tính năng (What)
+Lưu trữ, phân loại và truy hồi tài sản điện tử (chủ yếu là hình ảnh) của doanh nghiệp tại 1 thư viện tập trung.
+
+
+Tích hợp AI để hỏi đáp và hành động dựa trên tài sản điện tử như là:
+	•	Check tuân thủ với brand guideline về màu sắc, bố cục,...
+	•	Tạo content dựa trên tài sản điện tử
+	•	Tạo ra campaign
+	•	Làm slides, website, landing page
+
+
+Phân tích (So what)
+Độ phù hợp với chính SEONGON thấp, nhưng phù hợp với những thương hiệu thường làm campaign marketing, quảng cáo, creatives,... cần yếu tố sáng tạo và visual cao.
+
+Tận dụng AI ở việc tổng hợp và tìm ra những hướng đi sáng tạo mới từ "noise" biến thành "signal". 
+Next-step (Now what)
+Có thể ứng dụng vào Agent làm ảnh hiện có của SEONGON - đang được sử dụng phổ biến cho các dự án. Và kết hợp với Agent content để tạo thành hệ giá trị sản xuất content SEO hoàn chỉnh:
+	•	Viết bài, lên kế hoạch bài viết.
+	•	Quản lý hình ảnh, yếu tố thương hiệu,.. cho từng dự án một cách thông minh.
+2.3 Dreamdata
+Là nền tảng phân tích và quản lý data dành riêng cho doanh nghiệp B2B.
+Phân loại:
+1 - Chiến lược - MMM - Phân tích đa điểm chạm (Multi-touch Attribution)
+[This type of content is unavailable for download at the moment.]
+Công nghệ
+Độ phổ biến
+Phù hợp với SEONGON
+4
+3
+3
+Tính năng (What)
+Tổng hợp các nguồn data về cùng một giao diện tập trung.
+
+
+Phân tích điểm chạm của thương hiệu với người dùng trên hành trình khách hàng.
+
+
+Phân tích hiệu quả hoạt động marketing.
+
+
+Phân tích (So what)
+Bên này khớp với insight của phòng Marketing SEONGON về việc phân tích hành trình của khách hàng. Đa phần các tool thị trường đã tìm hiểu đều không serve được tốt với mô hình B2B.
+
+Next-step (Now what)
+Việc frame giải pháp của mình là dành riêng cho một mô hình nhất định khá thú vị. Ở đây là việc nói rằng mình là giải pháp marketing dành riêng cho B2B.
+
+Có thể check lại với team Marketing để test xem có học được gì, takeaway được gì từ tool này không. Nếu ổn thì có thể sử dụng và triển khai và không phải tiêu tốn quá nhiều nguồn lực định vị những cái mới.

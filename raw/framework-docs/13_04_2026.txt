@@ -1,0 +1,131 @@
+13/04/2026
+1. Cập nhật từ buổi trước
+Buổi trước mình đi qua các tool:
+	•	Keyword Insight
+	•	Frontify
+	•	Dream Data
+	•	Vài tool của Việt Nam về content
+
+Trong đó, Dream Data đã được process tiếp với Marketing. 
+
+
+Các step tiếp theo:
+	•	Test một số tool cho Marketing
+	•	Giới thiệu TTS cho Marketing về nghiên cứu và ứng dụng MarTech: AI, công nghệ, công cụ, automation.
+	•	Sẽ được process trong tuần này.
+2. Cập nhật công nghệ nổi bật: Marketing Mix Modelling
+Công nghệ nổi bật của Marketing: 
+	•	Marketing Mix Modelling
+	•	Multi-touch Attribution
+2.1 What 
+[Marketing_Mix_Modeling_Guidebook.pdf]
+Marketing Mix Modelling là việc xây dựng mô hình xác suất thống kê giúp công ty hiểu hoạt động đầu tư vào Marketing đem lại hiệu quả kinh doanh (doanh thu, sales,...) như nào.
+
+Cách nó work là mình sẽ tổng hợp một loạt data lịch sử và hiện tại của doanh nghiệp, thông thường là data mỗi tháng trong suốt 2-3 năm trở lên; rồi phân bổ tổng doanh thu về các kênh Marketing và các hoạt động non-Marketing như tính mùa vụ.
+
+Hiệu quả của MMM đến từ việc đồ thị hóa ra đường cong bão hòa - thể hiện biên giảm dần (diminishing returns).
+
+Có nghĩa là, mỗi kênh Marketing đều có một đường thể hiện ROI - return dựa trên đồng đầu tư vào. Những đồng tiền đầu đem lại giá trị lớn, và các đồng tiếp theo có giá trị cộng thêm giảm dần, nên đường có dạng cong. Điều này có nghĩa là càng rót tiền thì ROI càng có xu hướng giảm dần ở từng kênh.
+
+Tuy vậy, mỗi kênh Marketing đều sẽ có đường cong này khác nhau.
+
+
+Nghĩa là với cùng một cục tiền, mình có thể cân đối sự phân bổ vào các kênh sao cho tổng giá trị doanh thu (returns) của mình nhận về là cao nhất nhờ vào MMM.
+
+
+Hình ở trên thể hiện khi mình "Mix" khác nhau để tối ưu phân bổ tiền thì sẽ đem về return tốt hơn trước tối ưu.
+
+MMM trả lời:
+	•	Kênh nào đang thực sự đem lại value?
+	•	Budget của mình tối ưu chưa, tiền có bị lãng phí không?
+	•	Đồng tiền tiếp theo nên đi vào kênh nào?
+
+MMM yêu cầu:
+	•	Phân bổ được doanh thu về các kênh (phân tích đa điểm chạm như anh Thiên đã từng trình bày)
+	•	Data đủ lớn và đáng tin cậy. Data chỉ gói gọn trong 1 năm sẽ không thể hiện điều gì cả, không đủ mẫu số để kết luận.
+	•	MMM chưa thực sự có nền tảng thương mại nào giải quyết triệt để tính năng này, nó hiện là một kỹ thuật khá nâng cao và nằm ở các đơn vị tư vấn, research,... nhiều hơn là thương mại hóa. Một phần cũng là do thị trường chưa sẵn sàng data cho kỹ thuật này.
+2.2 So what
+Phần này sẽ được thảo luận và nghiên cứu sâu hơn với thử nghiệm sắp tới với team Marketing của anh Thiên.
+Cần phải đảm bảo không chỉ về mặt đầu vào và kỹ thuật, mà còn là sau khi ứng dụng thì có đem lại hiệu quả hay không nữa. Nhưng đây là một bước cho data-driven trong Marketing.
+
+2.3 Next step
+
+Nghiên cứu và cập nhật bức tranh công nghệ này ở buổi tới một cách toàn diện.
+3. Cập nhật tool
+3.1 Morning Score
+Link: https://morningscore.io/features/#
+	•	Công nghệ: 5
+	•	Độ phổ biến: 2
+	•	Sự phù hợp với SEONGON: 5
+
+What
+Morning Score là một nền tảng SaaS cho SEO/GEO với thông điệp là All in One. 
+
+Các tính năng:
+Keywords
+
+
+Links
+
+
+Đo lường sức khỏe website
+
+
+Tính năng "Gamified" - Nhiệm vụ SEO đổi thưởng
+
+
+Reports SEO
+
+
+So sánh hệ giá trị
+
+
+Cơ cấu chi phí
+
+
+Gói đồng hành theo năm (mô hình Đồng hành + Platform)
+
+
+Phễu đầu vào dùng tool audit website để nhận trial:
+
+Next step
+Đẩy cho team R&D SEO sử dụng Free Trial.
+	•	Gửi anh Phúc, note là vẽ mô hình đào tạo SEO theo model mới
+	•	Gửi cả chị Linh
+
+3.2 Sight AI
+Link: https://www.trysight.ai/
+	•	Công nghệ: 4
+	•	Độ phổ biến: 2
+	•	Phù hợp với SEONGON: 5
+What
+Sight AI là nền tảng SEO AI chuyên về sản xuất content. 
+Chuỗi giá trị bao gồm:
+	•	Viết content kết hợp con người và AI
+
+	•	Tạo ảnh trong bài viết
+	•	Tối ưu SEO (tag, danh mục, meta description)
+	•	AI Agent và chỉ dẫn branding
+
+	•	Phát hiện cơ hội content cho chủ đề
+
+	•	Đo lường brand visibility trên AI
+
+
+	•	Tự phát hiện content gaps (khoảng trống về content có thể viết để rank tốt hơn)\
+	•	Đăng bài lên CMS (web flow, Wordpress,...)
+
+	•	Hỗ trợ Indexing với tự động cập nhật Sitemap trên Google và Bing
+
+
+Cơ cấu chi phí
+
+Subscription tính theo tháng và limit tính năng theo từng gói theo các tầng:
+	•	Giá trị về hiển thị trên AI
+	•	Giá trị về tạo và tối ưu content
+	•	Giá trị về website index
+
+Next step
+Free trial và test sâu hơn các tính năng với đội content và Bách. Tool cũng có quá trình onboard chi tiết khi trial.
+
+
