@@ -28,13 +28,19 @@
 function styleSheet() {
   const sheet = SpreadsheetApp.getActiveSheet();
   const lastRow = sheet.getLastRow();
-  const lastCol = sheet.getLastColumn();
+  // Read the full row 1 so we can locate "Tier" even if the legend already
+  // exists in columns R:S from a prior run.
+  const fullHeaderRow = sheet.getRange(1, 1, 1, sheet.getMaxColumns()).getValues()[0];
+  const tierColIdx = fullHeaderRow.indexOf("Tier") + 1;
+  // The data ends at the Tier column. If we can't find Tier, fall back to
+  // getLastColumn() (first run before the legend exists).
+  const lastCol = tierColIdx > 0 ? tierColIdx : sheet.getLastColumn();
   if (lastRow < 2 || lastCol < 2) {
     SpreadsheetApp.getUi().alert("Sheet appears empty.");
     return;
   }
 
-  // Build header → column-index map
+  // Build header → column-index map (data columns only, excluding the legend)
   const headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
   const colIdx = {};
   headers.forEach((h, i) => { colIdx[h] = i + 1; });
@@ -60,7 +66,7 @@ function styleSheet() {
     ID: 64, Source: 280, Who: 300, TrustSignals: 360,
     Type: 130, Discipline: 120, Year: 60, URL: 220,
     KeyData: 380,
-    AUTH: 60, SPEC: 60, INDP: 60, RCNT: 60, VRFY: 60, MTCH: 60, ADOPT: 70,
+    AUTH: 64, SPEC: 64, INDP: 64, VRFY: 64, ADOPT: 70,
     Total: 70, Tier: 70,
   };
   Object.keys(widths).forEach((col) => {
@@ -82,7 +88,7 @@ function styleSheet() {
   });
 
   // ── 5. Center-align numeric / short categorical columns ──────────
-  ["ID", "Year", "AUTH", "SPEC", "INDP", "RCNT", "VRFY", "MTCH", "ADOPT", "Total", "Tier", "Type", "Discipline"].forEach((col) => {
+  ["ID", "Year", "AUTH", "SPEC", "INDP", "VRFY", "ADOPT", "Total", "Tier", "Type", "Discipline"].forEach((col) => {
     if (colIdx[col]) {
       sheet.getRange(2, colIdx[col], lastRow - 1, 1).setHorizontalAlignment("center");
     }
@@ -111,7 +117,7 @@ function styleSheet() {
   }
 
   // 1–5 score heatmap
-  ["AUTH", "SPEC", "INDP", "RCNT", "VRFY", "MTCH", "ADOPT"].forEach((col) => {
+  ["AUTH", "SPEC", "INDP", "VRFY", "ADOPT"].forEach((col) => {
     if (colIdx[col]) {
       const r = sheet.getRange(2, colIdx[col], lastRow - 1, 1);
       rules.push(
@@ -124,14 +130,14 @@ function styleSheet() {
     }
   });
 
-  // Total heatmap (deeper, since 7–35 range)
+  // Total heatmap (max 25 now — calibrated to actual distribution)
   if (colIdx.Total) {
     const r = sheet.getRange(2, colIdx.Total, lastRow - 1, 1);
     rules.push(
       SpreadsheetApp.newConditionalFormatRule()
-        .setGradientMinpointWithValue("#fecaca", SpreadsheetApp.InterpolationType.NUMBER, "14")
-        .setGradientMidpointWithValue("#fef08a", SpreadsheetApp.InterpolationType.NUMBER, "24")
-        .setGradientMaxpointWithValue("#86efac", SpreadsheetApp.InterpolationType.NUMBER, "32")
+        .setGradientMinpointWithValue("#fecaca", SpreadsheetApp.InterpolationType.NUMBER, "10")
+        .setGradientMidpointWithValue("#fef08a", SpreadsheetApp.InterpolationType.NUMBER, "17")
+        .setGradientMaxpointWithValue("#86efac", SpreadsheetApp.InterpolationType.NUMBER, "23")
         .setRanges([r]).build()
     );
     sheet.getRange(2, colIdx.Total, lastRow - 1, 1).setFontWeight("bold");
@@ -162,34 +168,67 @@ function styleSheet() {
     urlRange.setFontColor("#b91c1c");
   }
 
-  // ── 11. Header hover-tooltip notes ───────────────────────────────
-  // Hover any column header to see what the column means. Same content
-  // as the local viewer's field guide.
-  const NOTES = {
-    ID: "Unique source identifier (R001, R002…). Stable across edits.",
-    Source: "Title of the article, repo, course, podcast episode, or document.",
-    Who: "Person/org that published it + their professional role.\nFormat: \"{Name} · {Role}\".\nThe \"why their voice matters\" column.",
-    TrustSignals: "1–3 concrete observable facts supporting (or qualifying) credibility — e.g. \"agency operating since 2007\", \"vendor of the MCP server they describe\", \"code-as-evidence — every claim verifiable in repo\". Distinct from the AUTH score.",
-    Type: "Source category:\nPRIMARY (Anthropic publishing about Claude)\nVENDOR-COURSE / VENDOR-DOCS / VENDOR-BLOG / VENDOR-RESOURCE (vendor selling something)\nINDUSTRY-PUB (Search Engine Land, MarTech.org)\nAGENCY-CASE (named agency case study)\nPRACTITIONER (individual blog/Substack)\nOPEN-SOURCE (GitHub repo)\nPODCAST · COURSE · PRIMARY-RESEARCH",
-    Discipline: "Marketing area:\nSEO · GADS (Google Ads) · META (Facebook/Instagram Ads) · BRAND (digital branding) · ANALYTICS · MOPS (marketing ops) · CONTENT · CROSS (cross-cutting).\nCompound values like GADS+META are allowed.",
-    Year: "Publication or measurement year.",
-    URL: "Direct link to the source.",
-    KeyData: "Headline data points extracted from the source — numbers, named workflows, case studies, methodologies.\nShould be readable on its own without opening the URL.",
-    AUTH: "Authority (1–5) — credibility of the source itself.\n5 = Anthropic primary / peer-reviewed / major industry pub (Search Engine Land, MarTech)\n4 = established agency with operating history (Ayima, Animalz, AdventurePPC) OR senior named operator (Emily Kramer)\n3 = named individual with verifiable professional context\n2 = pseudonymous handle / GitHub username with no verified institutional identity (AgriciDaniel, aaron-he-zhu, HeyOz) — even with rich repos\n1 = anonymous / no track record",
-    SPEC: "Specificity (1–5) — concreteness of the data.\n5 = exact metrics with methodology (e.g. \"ad copy 2h→15min, sub-agent architecture\")\n4 = specific named workflows with measured outcomes\n3 = specific named workflows without numbers\n2 = generic categorical claims\n1 = vague enthusiasm",
-    INDP: "Independence (1–5) — commercial interest in promoting Claude Code.\n5 = no stake (pure user case study)\n4 = industry observer (publication writing about the space)\n3 = practitioner who uses Claude but doesn't sell anything related\n2 = adjacent-tool vendor (HubSpot, Coupler, Improvado, Windsor)\n1 = vendor of the tool itself (Anthropic only)\nLow INDP doesn't disqualify a source — just read it more carefully.",
-    RCNT: "Recency (1–5) — how recent the data is.\n5 = 2026\n4 = late 2025 (Q3-Q4)\n3 = mid 2025 (Q2)\n2 = early 2025 (Q1)\n1 = ≤ 2024 (likely covers tooling that has changed)",
-    VRFY: "Verifiability (1–5) — can the claim be independently checked?\n5 = open-source code or public dataset\n4 = live demo / public artifact / accessible product\n3 = detailed methodology described\n2 = self-reported with no verification path\n1 = anecdotal with no specifics",
-    MTCH: "Match (1–5) — direct relevance to SEONGON's billable services.\n5 = SEO / Google Ads / Facebook Ads / Digital Branding\n4 = cross-cutting that compounds across services (analytics, ops)\n3 = adjacent service (content marketing, email)\n2 = tangential (CRM, ABM)\n1 = unrelated (personal use, software-eng only)",
-    ADOPT: "Adoption (1–5) — external validation / market traction.\n5 = canonical / market-leading: 3,000+ GitHub stars, major industry pub, top platform docs, top product newsletter\n4 = strong: 200–2,999 stars, established vendor, named industry observer\n3 = mid: 50–199 stars, established but smaller vendor\n2 = niche: <50 stars, newer practitioner brand\n1 = brand new / no traction\nFor non-repos: vendor revenue/funding, publication reach, citation count.\nDeliberately separate from AUTH — many high-ADOPT repos have anonymous handle authors (low AUTH, high ADOPT); many high-AUTH sources have low reach (high AUTH, low ADOPT).",
-    Total: "Sum of the 7 scores (AUTH + SPEC + INDP + RCNT + VRFY + MTCH + ADOPT). Range 7–35. The single quality-of-evidence number.",
-    Tier: "Bucket derived from Total:\nS = 28–35 → headline-grade evidence (anchor proposal claims)\nA = 21–27 → solid supporting evidence\nB = 14–20 → weak / context-only\nC = ≤ 13 → skip\nNo source is auto-disqualified by one low dimension.",
-  };
-  Object.keys(NOTES).forEach((col) => {
-    if (colIdx[col]) {
-      sheet.getRange(1, colIdx[col]).setNote(NOTES[col]);
-    }
-  });
+  // ── 11. Vietnamese compact field guide (legend) at columns R:S ───
+  // User preference: descriptions adjacent to data, not as hover-overlay.
+  // Compact Vietnamese — one line per cell, designed for quick scan.
+  const FIELD_GUIDE = [
+    ["Cột", "Mô tả (Vietnamese · compact)"],
+    ["ID", "Mã định danh nguồn (R001, R002…)"],
+    ["Source", "Tên bài viết / repo / khóa học / podcast"],
+    ["Who", "Tác giả + vai trò (định dạng \"Tên · Vai trò\")"],
+    ["TrustSignals", "1–3 bằng chứng cụ thể về độ tin cậy"],
+    ["Type", "PRIMARY · VENDOR-* · INDUSTRY-PUB · AGENCY-CASE · PRACTITIONER · OPEN-SOURCE · PODCAST · COURSE"],
+    ["Discipline", "SEO · GADS · META · BRAND · ANALYTICS · MOPS · CONTENT · CROSS"],
+    ["Year", "Năm xuất bản"],
+    ["URL", "Đường dẫn nguồn gốc"],
+    ["KeyData", "Số liệu / workflow / case study chính"],
+    ["AUTH", "Uy tín (1–5). 5=Anthropic/báo lớn. 4=agency lâu năm. 3=cá nhân tên thật. 2=handle GitHub. 1=ẩn danh."],
+    ["SPEC", "Cụ thể (1–5). 5=số liệu+phương pháp. 1=mơ hồ."],
+    ["INDP", "Độc lập (1–5). 5=không lợi ích. 2=vendor kế cận. 1=Anthropic."],
+    ["VRFY", "Kiểm chứng (1–5). 5=mã nguồn mở/dữ liệu công khai. 1=giai thoại."],
+    ["ADOPT", "Phổ biến (1–5). 5=3000+ stars. 4=200–2999. 3=50–199. 2=<50. 1=mới."],
+    ["Total", "Tổng (max 25) = AUTH+SPEC+INDP+VRFY+ADOPT"],
+    ["Tier", "S ≥ 21 · A 19–20 · B 15–18 · C ≤ 14"],
+  ];
+
+  const guideStartCol = lastCol + 2; // Leave one empty column between data and guide
+  // Spacer column
+  sheet.setColumnWidth(lastCol + 1, 24);
+  // Field-guide widths
+  sheet.setColumnWidth(guideStartCol, 110);
+  sheet.setColumnWidth(guideStartCol + 1, 480);
+
+  // Clear any old guide content first (covers wider area to be safe)
+  sheet.getRange(1, guideStartCol, 30, 2).clearContent().clearFormat();
+
+  // Write content
+  const guideRange = sheet.getRange(1, guideStartCol, FIELD_GUIDE.length, 2);
+  guideRange.setValues(FIELD_GUIDE);
+
+  // Style the guide header
+  const guideHeader = sheet.getRange(1, guideStartCol, 1, 2);
+  guideHeader.setBackground("#1c1917").setFontColor("#fafaf9").setFontWeight("bold")
+    .setHorizontalAlignment("center").setVerticalAlignment("middle");
+
+  // Style the guide body
+  const guideBody = sheet.getRange(2, guideStartCol, FIELD_GUIDE.length - 1, 2);
+  guideBody.setVerticalAlignment("top").setFontSize(10).setWrap(true);
+
+  // First column (Cột name) styling
+  const guideKeyCol = sheet.getRange(2, guideStartCol, FIELD_GUIDE.length - 1, 1);
+  guideKeyCol.setFontFamily("Roboto Mono, ui-monospace, monospace").setFontWeight("bold")
+    .setBackground("#fef2f2").setFontColor("#b91c1c").setHorizontalAlignment("center");
+
+  // Description column styling
+  const guideDescCol = sheet.getRange(2, guideStartCol + 1, FIELD_GUIDE.length - 1, 1);
+  guideDescCol.setBackground("#fafaf9").setFontColor("#1c1917");
+
+  // Borders around the guide
+  sheet.getRange(1, guideStartCol, FIELD_GUIDE.length, 2)
+    .setBorder(true, true, true, true, true, true, "#e7e5e4", SpreadsheetApp.BorderStyle.SOLID);
+
+  // Row heights for guide rows
+  sheet.setRowHeightsForced(2, FIELD_GUIDE.length - 1, 32);
 
   // Toast confirmation
   SpreadsheetApp.getActiveSpreadsheet().toast(
@@ -201,17 +240,19 @@ function styleSheet() {
 
 /**
  * Optional: sort the data rows by Total descending. Run after styleSheet().
+ * Constrains the sort range to data columns (A:Tier) so the field-guide
+ * legend in columns R:S stays in place.
  */
 function sortByTotalDesc() {
   const sheet = SpreadsheetApp.getActiveSheet();
   const lastRow = sheet.getLastRow();
-  const lastCol = sheet.getLastColumn();
-  const headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
-  const totalIdx = headers.indexOf("Total") + 1;
-  if (totalIdx <= 0) {
-    SpreadsheetApp.getUi().alert("No 'Total' column found.");
+  const headerRow = sheet.getRange(1, 1, 1, sheet.getMaxColumns()).getValues()[0];
+  const tierIdx = headerRow.indexOf("Tier") + 1;
+  const totalIdx = headerRow.indexOf("Total") + 1;
+  if (tierIdx <= 0 || totalIdx <= 0) {
+    SpreadsheetApp.getUi().alert("Couldn't find Total or Tier column.");
     return;
   }
-  sheet.getRange(2, 1, lastRow - 1, lastCol).sort({ column: totalIdx, ascending: false });
+  sheet.getRange(2, 1, lastRow - 1, tierIdx).sort({ column: totalIdx, ascending: false });
   SpreadsheetApp.getActiveSpreadsheet().toast("Sorted by Total ↓", "SEONGON sources", 3);
 }
