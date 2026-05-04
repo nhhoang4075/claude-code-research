@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Claude Code for Marketers — Adoption Evidence Pack for SEONGON</title>
-  <meta name="description" content="Research pack: ~85 documented Claude Code workflows across 7 marketing disciplines, weighted to SEONGON's services (SEO, Google Ads, Facebook Ads, Digital Branding). Static, fully cited." />
+  <meta name="description" content="Research pack v3: 56 sources scored on a CRAAP-derived 7-dimension framework, weighted to SEONGON's services (SEO, Google Ads, Facebook Ads, Digital Branding). AgriciDaniel ecosystem deep-dive included." />
   <style>
     /* ── reset + tokens ────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; }
@@ -15,6 +15,7 @@
       --accent-2: #dc2626;
       --accent-soft: #fef2f2;
       --good: #0f766e;
+      --good-soft: #ecfdf5;
       --bg: #fafaf9;
       --bg-2: #f5f5f4;
       --card: #ffffff;
@@ -51,7 +52,6 @@
     @keyframes flash { 0% { background-color: #fee2e2; } 100% { background-color: var(--card); } }
     .ref-target:target { animation: flash 1.6s ease; }
 
-    /* ── layout ────────────────────────────────────────────────────── */
     .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
     section { padding: 64px 0; border-bottom: 1px solid var(--border); }
     @media (min-width: 768px) { section { padding: 80px 0; } }
@@ -65,7 +65,6 @@
     .row { display: flex; flex-wrap: wrap; gap: 16px; }
     .row.between { justify-content: space-between; align-items: baseline; }
 
-    /* ── nav ───────────────────────────────────────────────────────── */
     .nav { position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
     .nav .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; padding-bottom: 12px; }
     .nav-brand { font-weight: 600; text-decoration: none; letter-spacing: -0.01em; }
@@ -75,7 +74,6 @@
     .nav-links a:hover { color: var(--text); }
     @media (min-width: 768px) { .nav-links { display: flex; } }
 
-    /* ── hero ──────────────────────────────────────────────────────── */
     .hero { background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%); padding: 80px 0; }
     @media (min-width: 768px) { .hero { padding: 120px 0; } }
     .hero h1 { max-width: 26ch; margin-top: 16px; }
@@ -91,13 +89,11 @@
     .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
     .btn.primary:hover { background: var(--accent-2); }
 
-    /* ── panels ────────────────────────────────────────────────────── */
     .panel { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
     @media (min-width: 768px) { .panel { padding: 28px; } }
     .grid-2 { display: grid; gap: 24px; grid-template-columns: 1fr; }
     @media (min-width: 768px) { .grid-2 { grid-template-columns: 5fr 7fr; } }
 
-    /* ── chart shells ──────────────────────────────────────────────── */
     .chart-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 16px 16px 12px; }
     @media (min-width: 768px) { .chart-card { padding: 24px 24px 16px; } }
     .chart-title { font-weight: 600; }
@@ -114,17 +110,53 @@
     .dot-after { fill: var(--good); }
     .lien { stroke: var(--text-muted); stroke-width: 1.25; stroke-linecap: round; }
 
-    /* ecosystem horizontal bars */
-    .eco-row { display: grid; grid-template-columns: 240px 1fr 70px; gap: 12px; align-items: center; padding: 8px 0; border-top: 1px dashed var(--border); }
-    .eco-row:first-child { border-top: 0; }
-    .eco-row .ename { color: var(--text); font-weight: 500; font-size: 0.92rem; text-decoration: none; }
-    .eco-row .ename:hover { color: var(--accent); }
-    .eco-row .esub { display: block; color: var(--text-3); font-size: 12px; font-weight: 400; margin-top: 2px; }
-    .eco-bar { height: 18px; background: var(--bg-2); border-radius: 10px; overflow: hidden; }
-    .eco-bar > span { display: block; height: 100%; border-radius: 10px; }
-    .eco-num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+    /* AgriciDaniel ecosystem grid */
+    .eco-grid { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: 32px; }
+    @media (min-width: 640px) { .eco-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1000px) { .eco-grid { grid-template-columns: repeat(3, 1fr); } }
+    .tool { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 10px; transition: transform .15s ease, border-color .15s ease; }
+    .tool:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .tool.tier-1 { border-left: 4px solid var(--accent); }
+    .tool.tier-2 { border-left: 4px solid var(--c-anly); }
+    .tool.tier-3 { border-left: 4px solid var(--text-muted); }
+    .tool .head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+    .tool .name { font-weight: 600; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.95rem; color: var(--text); text-decoration: none; }
+    .tool .name:hover { color: var(--accent); }
+    .tool .stars { font-size: 12px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+    .tool .desc { font-size: 13px; color: var(--text-2); line-height: 1.45; }
+    .tool .scores { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 4px; }
+    .tool .score { background: var(--bg-2); border-radius: 6px; padding: 6px 8px; text-align: center; }
+    .tool .score-label { font-size: 10px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.05em; }
+    .tool .score-val { font-size: 18px; font-weight: 600; color: var(--text); margin-top: 2px; }
+    .tool .score.high .score-val { color: var(--good); }
+    .tool .score.mid .score-val { color: var(--c-anly); }
+    .tool .score.low .score-val { color: var(--text-muted); }
 
-    /* ── disciplines grid ──────────────────────────────────────────── */
+    /* tier band labels */
+    .tier-band { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+    .tier-band.t1 { background: var(--accent-soft); color: var(--accent); }
+    .tier-band.t2 { background: #fef3c7; color: #b45309; }
+    .tier-band.t3 { background: var(--bg-2); color: var(--text-3); }
+
+    /* personal practitioner cards */
+    .pp-grid { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: 32px; }
+    @media (min-width: 640px) { .pp-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1000px) { .pp-grid { grid-template-columns: repeat(3, 1fr); } }
+    .pp { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .pp .name { font-weight: 600; }
+    .pp .role { color: var(--text-3); font-size: 12px; margin-top: 2px; }
+    .pp .quote { margin-top: 12px; padding: 12px; background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; font-style: italic; font-size: 13px; line-height: 1.5; color: var(--text-2); }
+    .pp .stat { margin-top: 12px; font-size: 13px; color: var(--text); }
+    .pp .stat strong { color: var(--accent); font-size: 14px; }
+
+    /* tier distribution bar */
+    .tier-dist { display: flex; height: 32px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+    .tier-dist .seg { display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 600; font-size: 12px; }
+    .tier-dist .seg.s { background: var(--accent); }
+    .tier-dist .seg.a { background: #f59e0b; }
+    .tier-dist .seg.b { background: #94a3b8; }
+    .tier-dist .seg.c { background: #cbd5e1; color: var(--text-3); }
+
     .disc-grid { display: grid; grid-template-columns: 1fr; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; background: var(--card); }
     @media (min-width: 768px) { .disc-grid { grid-template-columns: repeat(3, 1fr); } }
     .disc { padding: 24px; border-top: 1px solid var(--border); }
@@ -138,13 +170,11 @@
     .disc .marker .ball { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
     .disc .marker .ball.muted { background: var(--text-muted); }
 
-    /* ── tables ────────────────────────────────────────────────────── */
     .table-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
     table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
     thead th { text-align: left; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); background: var(--bg-2); padding: 12px 16px; font-weight: 500; }
     tbody td { padding: 12px 16px; border-top: 1px solid var(--border); vertical-align: top; }
 
-    /* ── adoption tiers ────────────────────────────────────────────── */
     .tier { border: 1px solid var(--border); border-radius: 16px; padding: 18px 22px; margin: 0 auto; }
     .tier + .tier { margin-top: 16px; }
     .tier.t1 { background: var(--bg-2); max-width: 720px; }
@@ -153,19 +183,16 @@
     .tier .head { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: baseline; }
     .tier .body { margin-top: 8px; font-size: 0.92rem; color: var(--text-2); }
 
-    /* ── upside ────────────────────────────────────────────────────── */
     .upside-grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
     @media (min-width: 640px) { .upside-grid { grid-template-columns: 1fr 1fr; } }
     .up-card { background: var(--bg-2); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
     .up-card .tag { font-size: 13px; font-weight: 500; color: var(--accent); }
     .up-card.muted .tag { color: var(--text-3); }
 
-    /* ── open questions ────────────────────────────────────────────── */
     .q-grid { display: grid; gap: 14px; grid-template-columns: 1fr; list-style: none; padding: 0; margin: 32px 0 0; }
     @media (min-width: 768px) { .q-grid { grid-template-columns: 1fr 1fr; } }
     .q-grid li { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
 
-    /* ── references ────────────────────────────────────────────────── */
     .ref-list { list-style: none; padding: 0; margin: 24px 0 0; counter-reset: ref; display: grid; gap: 8px; }
     .ref-list li { counter-increment: ref; padding: 10px 12px 10px 44px; position: relative; border: 1px solid var(--border); border-radius: 8px; background: var(--card); font-size: 0.92rem; }
     .ref-list li::before { content: counter(ref); position: absolute; top: 10px; left: 12px; width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: 0.78rem; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; }
@@ -173,7 +200,6 @@
     .ref-list a:hover { text-decoration: underline; }
     .ref-list .meta { display: block; color: var(--text-3); font-size: 0.78rem; margin-top: 2px; }
 
-    /* ── footer ────────────────────────────────────────────────────── */
     footer { background: var(--card); }
     footer .wrap { padding-top: 48px; padding-bottom: 48px; }
     footer .grid { display: grid; gap: 32px; grid-template-columns: 1fr; font-size: 0.9rem; color: var(--text-2); }
@@ -182,7 +208,7 @@
 
     @media print {
       .nav, .no-print { display: none !important; }
-      section, .panel, .tier, .disc, .chart-card, .ref-list li { break-inside: avoid; page-break-inside: avoid; }
+      section, .panel, .tier, .disc, .chart-card, .ref-list li, .tool, .pp { break-inside: avoid; page-break-inside: avoid; }
       body { background: #fff; }
     }
   </style>
@@ -195,30 +221,32 @@
       <div class="nav-links">
         <a href="#numbers">Numbers</a>
         <a href="#precedent">Precedent</a>
-        <a href="#workflows">Ecosystem</a>
-        <a href="#disciplines">Disciplines</a>
+        <a href="#people">People</a>
+        <a href="#ecosystem">Tools</a>
         <a href="#adoption">Adoption</a>
         <a href="#pilot">Pilot</a>
-        <a href="#references">References</a>
+        <a href="#framework">Framework</a>
+        <a href="#references">Refs</a>
       </div>
     </div>
   </nav>
 
   <header id="top" class="hero">
     <div class="wrap">
-      <div class="eyebrow">Adoption evidence pack · 2026-05</div>
+      <div class="eyebrow">Adoption evidence pack v3 · 2026-05</div>
       <h1>Claude Code is already in production at <span class="accent">non-technical marketing teams</span> running SEONGON's exact channel mix.</h1>
-      <p class="lede">~85 documented workflows across 7 disciplines. ~30 sources. The most decision-relevant precedent is Anthropic's own Growth Marketing team — a non-technical team of one covering paid search, paid social, mobile app, email, and SEO<sup class="cite"><a href="#ref-1">[1]</a></sup> — the same channels SEONGON delivers.</p>
+      <p class="lede">56 sources scored on a CRAAP-derived 7-dimension framework<sup class="cite"><a href="#ref-13">[13]</a></sup>. The 5 strongest (Tier S, top 9%) anchor this case. AgriciDaniel's open-source ecosystem alone has <strong>5,961 stars on claude-seo</strong> and <strong>4,159 on claude-ads</strong> — practitioner ecosystem is mature, not bleeding-edge.</p>
 
       <div class="stat-grid">
         <div class="stat"><div class="stat-num">10×</div><div class="stat-label">creative output, Anthropic Growth Mktg<sup class="cite"><a href="#ref-1">[1]</a></sup></div></div>
         <div class="stat"><div class="stat-num">87%</div><div class="stat-label">ad copy time saved (2 h → 15 min)<sup class="cite"><a href="#ref-1">[1]</a></sup></div></div>
-        <div class="stat"><div class="stat-num">25–30 hr</div><div class="stat-label">recovered/wk per ad-ops staffer<sup class="cite"><a href="#ref-15">[15]</a></sup></div></div>
-        <div class="stat"><div class="stat-num">73%</div><div class="stat-label">monthly SEO billable hours saved<sup class="cite"><a href="#ref-18">[18]</a></sup></div></div>
+        <div class="stat"><div class="stat-num">2×</div><div class="stat-label">sales/outreach API workflows Nov '25 → Feb '26<sup class="cite"><a href="#ref-7">[7]</a></sup></div></div>
+        <div class="stat"><div class="stat-num">73%</div><div class="stat-label">monthly SEO billable hours saved<sup class="cite"><a href="#ref-9">[9]</a></sup></div></div>
       </div>
       <div class="cta-row">
         <a href="#numbers" class="btn primary">See the numbers</a>
-        <a href="#adoption" class="btn">Read the recommendation</a>
+        <a href="#ecosystem" class="btn">AgriciDaniel ecosystem</a>
+        <a href="#adoption" class="btn">Recommendation</a>
         <a href="https://github.com/nhhoang4075/claude-code-research" target="_blank" rel="noreferrer" class="btn">Source repo →</a>
       </div>
     </div>
@@ -230,7 +258,7 @@
         <h2>Documented time savings — across SEONGON's service lines</h2>
         <span class="muted">15 workflows · sorted by % saved · log-scale x</span>
       </div>
-      <p class="lede">Each row is one documented before/after for a specific marketing workflow. <strong>Red ring</strong> = manual baseline. <strong>Green dot</strong> = with Claude Code. The line is the gap; the right-edge number is % saved. Where a source reported a range, the midpoint is shown.</p>
+      <p class="lede">Each row is one documented before/after for a specific marketing workflow. <strong>Red ring</strong> = manual baseline. <strong>Green dot</strong> = with Claude Code. The line is the gap; the right-edge number is % saved.</p>
 
       <div class="chart-card" style="margin-top: 32px;">
         <div class="row between">
@@ -250,15 +278,13 @@
       </div>
       <p class="muted small" style="margin-top: 12px;">
         Per-row sources:
-        Michael Patrick Cortez<sup class="cite"><a href="#ref-18">[18]</a></sup>,
-        Ayima<sup class="cite"><a href="#ref-8">[8]</a></sup>,
-        AdventurePPC<sup class="cite"><a href="#ref-11">[11]</a></sup>,
-        SE Ranking<sup class="cite"><a href="#ref-19">[19]</a></sup>,
+        Michael Patrick Cortez<sup class="cite"><a href="#ref-9">[9]</a></sup>,
+        Ayima<sup class="cite"><a href="#ref-4">[4]</a></sup>,
+        AdventurePPC<sup class="cite"><a href="#ref-6">[6]</a></sup>,
         Anthropic Growth Mktg<sup class="cite"><a href="#ref-1">[1]</a></sup>,
-        Stormy AI<sup class="cite"><a href="#ref-13">[13]</a></sup>,
-        HeyOz Meta suite<sup class="cite"><a href="#ref-15">[15]</a></sup>,
-        Stack and Scale<sup class="cite"><a href="#ref-22">[22]</a></sup>,
-        measureu.com<sup class="cite"><a href="#ref-27">[27]</a></sup>.
+        HeyOz Meta suite<sup class="cite"><a href="#ref-8">[8]</a></sup>,
+        Stack and Scale<sup class="cite"><a href="#ref-11">[11]</a></sup>,
+        measureu.com<sup class="cite"><a href="#ref-12">[12]</a></sup>.
       </p>
     </div>
   </section>
@@ -269,7 +295,7 @@
         <div>
           <div class="eyebrow accent">The strongest single precedent</div>
           <h2 style="margin-top: 12px;">Anthropic's own Growth Marketing team is non-technical — and runs SEONGON's exact channel mix.</h2>
-          <p class="lede">From <em>How Anthropic teams use Claude Code</em><sup class="cite"><a href="#ref-1">[1]</a></sup>, their internal-team interview report. The precedent matters because Anthropic owns the tool and has no incentive to over-promise its usefulness in an internal report.</p>
+          <p class="lede">From <em>How Anthropic teams use Claude Code</em><sup class="cite"><a href="#ref-1">[1]</a></sup>. Anthropic owns the tool and has no incentive to over-promise its usefulness in an internal interview report. Boris Cherny (Head of Claude Code) confirms <strong>4% of public GitHub commits</strong> are now Claude Code-driven and <strong>DAU is doubling</strong><sup class="cite"><a href="#ref-2">[2]</a></sup>.</p>
         </div>
         <div class="panel" style="background: var(--bg);">
           <div class="muted small" style="margin-bottom: 8px;">Anthropic Growth Marketing team — documented profile</div>
@@ -290,143 +316,136 @@
     </div>
   </section>
 
-  <section id="workflows">
+  <section id="people">
     <div class="wrap">
-      <h2>A mature ecosystem to fork — not bleeding-edge risk</h2>
-      <p class="lede">SEONGON wouldn't be building from scratch. Production-grade open-source skill kits already cover paid media and SEO with hundreds of pre-built checks and dozens of specialized agents.</p>
+      <div class="eyebrow accent">What individual marketers are actually doing</div>
+      <h2 style="margin-top: 12px;">Real people, real personal workflows — including a counter-data-point worth more than its weight</h2>
+      <p class="lede">Beyond the case studies, individual marketers are publicly documenting their own workflows. The standout: <strong>Ruben Hassid (290k+ subs)</strong> — top AI-content creator — explicitly says he and his audience <em>don't use Claude Code</em>. They use Cowork. That's the calibration anchor for SEONGON's tiered adoption.</p>
 
-      <div class="grid-2" style="margin-top: 32px; align-items: start;">
-        <div class="chart-card">
-          <div class="chart-title">Skill / check density per open-source kit</div>
-          <div class="chart-sub">Color-coded by category</div>
-          <div style="margin-top: 16px;">
-            <div class="eco-row">
-              <div>
-                <a class="ename" href="https://github.com/AgriciDaniel/claude-ads" target="_blank" rel="noreferrer">claude-ads<sup class="cite"><a href="#ref-4">[4]</a></sup></a>
-                <span class="esub">Paid ads · 7 platforms (Google, Meta, LinkedIn, TikTok, MS, Apple)</span>
-              </div>
-              <div class="eco-bar"><span style="width: 100%; background: var(--c-gads);"></span></div>
-              <div class="eco-num">250</div>
-            </div>
-            <div class="eco-row">
-              <div>
-                <a class="ename" href="https://improvado.io/blog/claude-marketing-skills" target="_blank" rel="noreferrer">Improvado Marketing Skills<sup class="cite"><a href="#ref-24">[24]</a></sup></a>
-                <span class="esub">4-stage funnel · 1,000+ data sources</span>
-              </div>
-              <div class="eco-bar"><span style="width: 21.6%; background: var(--c-anly);"></span></div>
-              <div class="eco-num">54</div>
-            </div>
-            <div class="eco-row">
-              <div>
-                <a class="ename" href="https://github.com/AgriciDaniel/claude-seo" target="_blank" rel="noreferrer">claude-seo<sup class="cite"><a href="#ref-5">[5]</a></sup></a>
-                <span class="esub">21 sub-skills + 15 subagents + 3 extensions</span>
-              </div>
-              <div class="eco-bar"><span style="width: 14.4%; background: var(--c-seo);"></span></div>
-              <div class="eco-num">36</div>
-            </div>
-            <div class="eco-row">
-              <div>
-                <a class="ename" href="https://github.com/aaron-he-zhu/seo-geo-claude-skills" target="_blank" rel="noreferrer">seo-geo-claude-skills<sup class="cite"><a href="#ref-7">[7]</a></sup></a>
-                <span class="esub">CORE-EEAT (80) + CITE (40) frameworks</span>
-              </div>
-              <div class="eco-bar"><span style="width: 9.6%; background: var(--c-seo);"></span></div>
-              <div class="eco-num">24</div>
-            </div>
-            <div class="eco-row">
-              <div>
-                <a class="ename" href="https://github.com/inhouseseo/superseo-skills" target="_blank" rel="noreferrer">superseo-skills<sup class="cite"><a href="#ref-6">[6]</a></sup></a>
-                <span class="esub">Production-tested at agency · anti-AI-slop layer</span>
-              </div>
-              <div class="eco-bar"><span style="width: 4.4%; background: var(--c-seo);"></span></div>
-              <div class="eco-num">11</div>
-            </div>
-            <div class="eco-row">
-              <div>
-                <a class="ename" href="https://heyoz.com/blogs/claude-code-skills-for-meta-ads" target="_blank" rel="noreferrer">HeyOz Meta Ads suite<sup class="cite"><a href="#ref-15">[15]</a></sup></a>
-                <span class="esub">10 slash commands · ~25–30 hr/wk recovered</span>
-              </div>
-              <div class="eco-bar"><span style="width: 4%; background: var(--c-meta);"></span></div>
-              <div class="eco-num">10</div>
-            </div>
-          </div>
+      <div class="pp-grid">
+        <div class="pp">
+          <div class="name">Ruben Hassid</div>
+          <div class="role">Founder, How to AI · 290,000+ subscribers · 3 yrs AI content</div>
+          <div class="quote">"Claude Code is not on my list because my audience (myself included) does not code."</div>
+          <div class="stat">Personal stack: <strong>markdown files as style/brand DNA</strong> + Claude Cowork + Claude in Excel + connectors for Slack/GDrive/Notion. Confirms terminal CLI is too dev-coded for the typical marketer; <strong>Cowork is the consumption layer</strong>.<sup class="cite"><a href="#ref-15">[15]</a></sup></div>
         </div>
-        <div style="display: grid; gap: 12px;">
-          <div class="panel" style="padding: 18px;">
-            <div class="eyebrow">Agency precedent · UK</div>
-            <div style="margin-top: 6px; font-weight: 600;">Ayima — 4-week Claude-for-SEO programme<sup class="cite"><a href="#ref-8">[8]</a></sup></div>
-            <p class="small" style="margin-top: 6px; color: var(--text-2);">Two tracks (Efficiency + Build). Targets account managers and analysts, not just technical SEOs. Closest analog to SEONGON's adoption shape.</p>
-          </div>
-          <div class="panel" style="padding: 18px;">
-            <div class="eyebrow">Agency precedent · in-house SEO</div>
-            <div style="margin-top: 6px; font-weight: 600;">InhouseSEO — production-tested skill kit<sup class="cite"><a href="#ref-6">[6]</a></sup></div>
-            <p class="small" style="margin-top: 6px; color: var(--text-2);">11 SEO skills shipped to GitHub by an operating agency, including a tiered anti-AI-slop ruleset (the "Horoscope Test").</p>
-          </div>
-          <div class="panel" style="padding: 18px;">
-            <div class="eyebrow">Vendor endorsement</div>
-            <div style="margin-top: 6px; font-weight: 600;">HubSpot × Marketing Against the Grain<sup class="cite"><a href="#ref-9">[9]</a></sup></div>
-            <p class="small" style="margin-top: 6px; color: var(--text-2);">Major MarTech vendor co-brands a "Master Claude Code for Marketing" course. Signals that role-fit for marketers is real, not theoretical.</p>
-          </div>
-          <div class="panel" style="padding: 18px;">
-            <div class="eyebrow">Compliance reference</div>
-            <div style="margin-top: 6px; font-weight: 600;">PorterMetrics — 5 ways to connect Meta Ads to Claude (no ban)<sup class="cite"><a href="#ref-17">[17]</a></sup></div>
-            <p class="small" style="margin-top: 6px; color: var(--text-2);">Mandatory reading for Facebook Ads adoption. Documents which connection paths are safe vs. ban-risky for production agency use.</p>
-          </div>
+        <div class="pp">
+          <div class="name">Toni (Vibe Product Marketing)</div>
+          <div class="role">PMM consultant · works with startups + enterprises</div>
+          <div class="quote">"The first brief it produced was technically accurate but completely missed the point on one competitor."</div>
+          <div class="stat">3 personal Cowork workflows · <strong>15 hr/month saved</strong> · tool cost $20–100/month. Cleanest personal-ROI report in dataset: Mon competitive brief (8–10 hr/mo), Fri perf report (30–45 min/wk), content repurposing (4 hr/mo).<sup class="cite"><a href="#ref-16">[16]</a></sup></div>
         </div>
+        <div class="pp">
+          <div class="name">MKT1 (Emily Kramer)</div>
+          <div class="role">Ex-Asana CMO · ex-Carta head of marketing · MKT1 newsletter</div>
+          <div class="quote">"100 B2B startups, mostly venture-backed, from seed to IPO. 84% of marketing JDs mention 'AI'."</div>
+          <div class="stat">Most-named tools in JDs: OpenAI 10% · <strong>Claude 7%</strong> · Anthropic 6% · ChatGPT 5%. Median marketing team 13 people. Methodology used Claude Code with MCP servers (Figma, Clay, Attio, Airtable) to do the research itself.<sup class="cite"><a href="#ref-17">[17]</a></sup></div>
+        </div>
+        <div class="pp">
+          <div class="name">Dan Renyi (Klear)</div>
+          <div class="role">Founder, Klear · 6 yrs operating GTM consultancy · Electric B2B podcast</div>
+          <div class="quote">"Pipeline/sales response significantly larger than any new service/offering I've ever launched for Klear over the past 6 years."</div>
+          <div class="stat">Built "Growth OS" productized GTM service via Claude Code. Stack: Clay + Fullenrich + n8n + CRMs.<sup class="cite"><a href="#ref-18">[18]</a></sup></div>
+        </div>
+        <div class="pp">
+          <div class="name">Anthony Lee (LinkedIn)</div>
+          <div class="role">Marketing-focused technologist · LinkedIn handle aimarketerguy</div>
+          <div class="quote">"Built GA Claude Code skill personally. 8 report types. Validated by commenter: 'works perfect'."</div>
+          <div class="stat">Real Python code shared, GA service-account auth, file structure. Engagement: 12 likes, 11 comments. 4-phase setup: Google Cloud SA → GA4 viewer → Python env → local skill files.<sup class="cite"><a href="#ref-19">[19]</a></sup></div>
+        </div>
+        <div class="pp">
+          <div class="name">Daria Cupareanu (AI Blew My Mind)</div>
+          <div class="role">Solo practitioner · Substack publisher</div>
+          <div class="quote">"Showed Claude what I liked and didn't" — iterative brand-skill build for proposals/decks/PDFs.</div>
+          <div class="stat">Personal brand-skill that <strong>eliminates manual styling</strong> across proposals, presentations, lead magnets, PDFs, one-pagers. Approach: "opinions, not design experience". Works for any starting point (no brand → full brand).<sup class="cite"><a href="#ref-20">[20]</a></sup></div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top: 32px; background: var(--accent-soft); border-color: #fee2e2;">
+        <div class="eyebrow accent">Implication for SEONGON's three-tier adoption</div>
+        <p style="margin-top: 8px; font-size: 0.95rem; color: var(--text);">If a creator with 290k subs <em>can't get his audience into Claude Code</em>, SEONGON can't put 100+ marketers there either. <strong>Cowork is the consumption layer for Tier 3</strong> (production marketers). Claude Code CLI stays at Tier 1 (engineering) and Tier 2 (~15 senior power users who build skills).</p>
       </div>
     </div>
   </section>
 
-  <section id="disciplines" class="alt">
+  <section id="ecosystem" class="alt">
     <div class="wrap">
       <div class="row between">
-        <h2>Discipline-by-discipline fit for SEONGON</h2>
-        <span class="muted">Weighted to SEONGON's actual service mix</span>
+        <h2>AgriciDaniel ecosystem — ready-to-use Claude Code skills for marketers</h2>
+        <span class="muted">9 marketing-relevant repos · ~10,000+ aggregate stars · maintained Q1–Q2 2026</span>
       </div>
-      <div class="disc-grid" style="margin-top: 32px;">
-        <div class="disc">
-          <div class="marker"><span class="ball"></span><span class="eyebrow">Service line</span></div>
-          <div style="margin-top: 8px; font-weight: 600;">SEO <span class="muted" style="font-weight:400;">· largest</span></div>
-          <div class="small" style="margin-top: 10px;"><strong>Fit:</strong> <span class="accent">Strong</span></div>
-          <p class="small" style="margin-top: 6px; color: var(--text-2);">3 production-grade open-source kits<sup class="cite"><a href="#ref-5">[5]</a><a href="#ref-6">[6]</a><a href="#ref-7">[7]</a></sup>. 50+ skills, 27+ subagents combined. 20-30 → 6-8 monthly billable hr per account documented<sup class="cite"><a href="#ref-18">[18]</a></sup>.</p>
-        </div>
-        <div class="disc">
-          <div class="marker"><span class="ball"></span><span class="eyebrow">Service line</span></div>
-          <div style="margin-top: 8px; font-weight: 600;">Google Ads <span class="muted" style="font-weight:400;">· 2nd largest</span></div>
-          <div class="small" style="margin-top: 10px;"><strong>Fit:</strong> <span class="accent">Strong</span></div>
-          <p class="small" style="margin-top: 6px; color: var(--text-2);">Direct Anthropic precedent<sup class="cite"><a href="#ref-1">[1]</a></sup>. <code>claude-ads</code><sup class="cite"><a href="#ref-4">[4]</a></sup> covers 80 Google checks. Ad copy 2 h → 15 min.</p>
-        </div>
-        <div class="disc">
-          <div class="marker"><span class="ball"></span><span class="eyebrow">Service line</span></div>
-          <div style="margin-top: 8px; font-weight: 600;">Facebook Ads <span class="muted" style="font-weight:400;">· 3rd largest</span></div>
-          <div class="small" style="margin-top: 10px;"><strong>Fit:</strong> <span class="accent">Strong, with compliance design</span></div>
-          <p class="small" style="margin-top: 6px; color: var(--text-2);">HeyOz 10-skill suite recovers $2,500–4,500/wk per staffer<sup class="cite"><a href="#ref-15">[15]</a></sup>. Compliance is approval-gate-controllable<sup class="cite"><a href="#ref-17">[17]</a></sup>.</p>
-        </div>
-        <div class="disc">
-          <div class="marker"><span class="ball muted"></span><span class="eyebrow">Service line</span></div>
-          <div style="margin-top: 8px; font-weight: 600;">Digital Branding</div>
-          <div class="small" style="margin-top: 10px;"><strong>Fit:</strong> Medium — productize as Brand Strategy Sprint</div>
-          <p class="small" style="margin-top: 6px; color: var(--text-2);">MKT1's 7-step strategy skill<sup class="cite"><a href="#ref-21">[21]</a></sup> is a portable template. Brand-as-Skill<sup class="cite"><a href="#ref-30">[30]</a></sup> is a sticky client deliverable.</p>
-        </div>
-        <div class="disc">
-          <div class="marker"><span class="ball muted"></span><span class="eyebrow">Cross-cutting</span></div>
-          <div style="margin-top: 8px; font-weight: 600;">Analytics &amp; Attribution</div>
-          <div class="small" style="margin-top: 10px;"><strong>Fit:</strong> Compounds across retainers</div>
-          <p class="small" style="margin-top: 6px; color: var(--text-2);">GA4 audit in 4 minutes<sup class="cite"><a href="#ref-27">[27]</a></sup>. Improvado: Chacka Marketing 90% reporting time reduction; analyst saves 38 hr/wk<sup class="cite"><a href="#ref-24">[24]</a></sup>.</p>
-        </div>
-        <div class="disc">
-          <div class="marker"><span class="ball muted"></span><span class="eyebrow">Cross-cutting</span></div>
-          <div style="margin-top: 8px; font-weight: 600;">MarTech &amp; Content</div>
-          <div class="small" style="margin-top: 10px;"><strong>Fit:</strong> Compounds across retainers</div>
-          <p class="small" style="margin-top: 6px; color: var(--text-2);">HubSpot first-party connector<sup class="cite"><a href="#ref-10">[10]</a></sup>. Anti-slop content layer<sup class="cite"><a href="#ref-6">[6]</a></sup> ports to Vietnamese.</p>
-        </div>
+      <p class="lede">Single-author open-source ecosystem. Each repo is a self-contained Claude Code skill kit. SEONGON wouldn't be building from scratch — fork these, localize for Vietnamese market, layer custom logic on top. <strong>Author is a GitHub handle, not a verified institution</strong> — fork, audit, then deploy.</p>
+
+      <div style="margin-top: 24px;">
+        <span class="tier-band t1">Tier 1 — trùng dịch vụ chính</span>
+        <span class="tier-band t2" style="margin-left: 8px;">Tier 2 — content production / distribution</span>
+        <span class="tier-band t3" style="margin-left: 8px;">Tier 3 — cân nhắc thấp</span>
+      </div>
+
+      <div class="eco-grid">
+        <a class="tool tier-1" href="https://claude-seo.md" target="_blank" rel="noreferrer">
+          <div class="head"><span class="name">claude-seo</span><span class="stars">5,961 ⭐</span></div>
+          <div class="desc">Universal SEO skill: 21 sub-skills, 12 subagents, 3 extensions (DataForSEO, Firecrawl, Banana). Technical SEO, E-E-A-T, schema, GEO, local SEO, backlinks.</div>
+          <div class="scores"><div class="score mid"><div class="score-label">Công nghệ</div><div class="score-val">4</div></div><div class="score mid"><div class="score-label">Phổ biến</div><div class="score-val">4</div></div><div class="score high"><div class="score-label">Phù hợp</div><div class="score-val">5</div></div></div>
+        </a>
+        <a class="tool tier-1" href="https://github.com/AgriciDaniel/claude-ads" target="_blank" rel="noreferrer">
+          <div class="head"><span class="name">claude-ads</span><span class="stars">4,159 ⭐</span></div>
+          <div class="desc">Paid advertising audit: 250+ checks across 7 platforms (Google, Meta, LinkedIn, TikTok, Microsoft, Apple). 12 industry templates, AI creative generation.</div>
+          <div class="scores"><div class="score high"><div class="score-label">Công nghệ</div><div class="score-val">5</div></div><div class="score high"><div class="score-label">Phổ biến</div><div class="score-val">5</div></div><div class="score high"><div class="score-label">Phù hợp</div><div class="score-val">5</div></div></div>
+        </a>
+        <a class="tool tier-1" href="https://github.com/AgriciDaniel/claude-blog" target="_blank" rel="noreferrer">
+          <div class="head"><span class="name">claude-blog</span><span class="stars">662 ⭐</span></div>
+          <div class="desc">Blog content lifecycle: 14 commands + 14 sub-skills. <strong>Dual-optimized for Google + AI citation</strong> (ChatGPT, Perplexity, AI Overviews). Fact-check pipeline.</div>
+          <div class="scores"><div class="score high"><div class="score-label">Công nghệ</div><div class="score-val">5</div></div><div class="score mid"><div class="score-label">Phổ biến</div><div class="score-val">4</div></div><div class="score high"><div class="score-label">Phù hợp</div><div class="score-val">5</div></div></div>
+        </a>
+        <a class="tool tier-2" href="https://github.com/AgriciDaniel/claude-email" target="_blank" rel="noreferrer">
+          <div class="head"><span class="name">claude-email</span><span class="stars">40 ⭐</span></div>
+          <div class="desc">6 sub-skills: inbox triage, composition (PAS/AIDA/BAB), quality review (0-100), deliverability audit (SPF/DKIM/DMARC), automation sequences, marketing strategy.</div>
+          <div class="scores"><div class="score mid"><div class="score-label">Công nghệ</div><div class="score-val">4</div></div><div class="score low"><div class="score-label">Phổ biến</div><div class="score-val">2</div></div><div class="score mid"><div class="score-label">Phù hợp</div><div class="score-val">4</div></div></div>
+        </a>
+        <a class="tool tier-2" href="https://github.com/AgriciDaniel/claude-youtube" target="_blank" rel="noreferrer">
+          <div class="head"><span class="name">claude-youtube</span><span class="stars">80 ⭐</span></div>
+          <div class="desc">YouTube growth consultant. 14 sub-skills: channel audits, retention scripts, video SEO, Shorts opt, monetization across 7 income streams.</div>
+          <div class="scores"><div class="score mid"><div class="score-label">Công nghệ</div><div class="score-val">4</div></div><div class="score low"><div class="score-label">Phổ biến</div><div class="score-val">2</div></div><div class="score mid"><div class="score-label">Phù hợp</div><div class="score-val">4</div></div></div>
+        </a>
+        <a class="tool tier-2" href="https://github.com/AgriciDaniel/claude-shorts" target="_blank" rel="noreferrer">
+          <div class="head"><span class="name">claude-shorts</span><span class="stars">78 ⭐</span></div>
+          <div class="desc">Long-form → vertical clips for Shorts/TikTok/Reels. Remotion-rendered animated captions, AI segment scoring (5-dim rubric), audio-aware boundary snapping.</div>
+          <div class="scores"><div class="score high"><div class="score-label">Công nghệ</div><div class="score-val">5</div></div><div class="score low"><div class="score-label">Phổ biến</div><div class="score-val">2</div></div><div class="score mid"><div class="score-label">Phù hợp</div><div class="score-val">4</div></div></div>
+        </a>
+        <a class="tool tier-2" href="https://github.com/AgriciDaniel/claude-repurpose" target="_blank" rel="noreferrer">
+          <div class="head"><span class="name">claude-repurpose</span><span class="stars">32 ⭐</span></div>
+          <div class="desc">1 content piece → 18 platform-optimized posts. Twitter, LinkedIn, IG, TikTok, FB, YouTube Community, Skool, Reddit, newsletters, etc.</div>
+          <div class="scores"><div class="score mid"><div class="score-label">Công nghệ</div><div class="score-val">4</div></div><div class="score low"><div class="score-label">Phổ biến</div><div class="score-val">2</div></div><div class="score mid"><div class="score-label">Phù hợp</div><div class="score-val">4</div></div></div>
+        </a>
+        <a class="tool tier-3" href="https://github.com/AgriciDaniel/claude-video" target="_blank" rel="noreferrer">
+          <div class="head"><span class="name">claude-video</span><span class="stars">9 ⭐</span></div>
+          <div class="desc">AI video production suite: edit, transcode (NVIDIA NVENC), caption (Whisper), generate (Google Veo 3.x). Stock footage promos with contrast-aware text.</div>
+          <div class="scores"><div class="score mid"><div class="score-label">Công nghệ</div><div class="score-val">4</div></div><div class="score low"><div class="score-label">Phổ biến</div><div class="score-val">1</div></div><div class="score low"><div class="score-label">Phù hợp</div><div class="score-val">3</div></div></div>
+        </a>
+        <a class="tool tier-3" href="https://github.com/AgriciDaniel/claude-music" target="_blank" rel="noreferrer">
+          <div class="head"><span class="name">claude-music</span><span class="stars">5 ⭐</span></div>
+          <div class="desc">AI music generation via ACE-Step 1.5. Songs, covers, remixes, stem separation, custom LoRA training. Local GPU. 50+ languages. Likely <strong>skip</strong> for SEONGON.</div>
+          <div class="scores"><div class="score mid"><div class="score-label">Công nghệ</div><div class="score-val">4</div></div><div class="score low"><div class="score-label">Phổ biến</div><div class="score-val">1</div></div><div class="score low"><div class="score-label">Phù hợp</div><div class="score-val">2</div></div></div>
+        </a>
+      </div>
+
+      <div class="panel" style="margin-top: 32px;">
+        <div class="eyebrow">Recommendation</div>
+        <p style="margin-top: 8px; font-size: 0.95rem; color: var(--text);">
+          <strong>Tier 1 — test ngay (Q2 2026)</strong>: claude-seo + claude-ads + claude-blog. Direct service-line match.<br>
+          <strong>Tier 2 — sau khi Tier 1 ổn định</strong>: claude-email (email mkt add-on), claude-shorts + claude-repurpose (content distribution), claude-youtube (nếu client làm YouTube).<br>
+          <strong>Tier 3 — cân nhắc thấp</strong>: claude-video, claude-music — alternative tốt hơn (Suno/Udio for music, direct Veo API for video). Có thể skip Q2 2026.
+        </p>
+        <p style="margin-top: 12px; font-size: 0.9rem; color: var(--text-2);">Full per-tool deep-dives in Vietnamese: <a href="https://github.com/nhhoang4075/claude-code-research/tree/main/agricidaniel-ecosystem" target="_blank" rel="noreferrer" style="color: var(--accent);">/agricidaniel-ecosystem</a> (WHAT / SO WHAT / NOW WHAT framework per tool, with localization roadmap and decision-makers).</p>
       </div>
     </div>
   </section>
 
-  <section class="alt-2">
+  <section>
     <div class="wrap">
       <h2>What Claude Code workflows displace — agency margin upside</h2>
-      <p class="lede">For an agency that <em>sells these services to clients</em>, the implication isn't "fire the contractor" — it's <strong>increased per-client margin and faster fulfillment</strong>. Going rates below are US market reference<sup class="cite"><a href="#ref-11">[11]</a></sup>; SEONGON's local cost basis differs but the relative shape holds.</p>
+      <p class="lede">For an agency that <em>sells these services to clients</em>, the implication isn't "fire the contractor" — it's <strong>increased per-client margin and faster fulfillment</strong>. Going rates below are US market reference<sup class="cite"><a href="#ref-6">[6]</a></sup>; SEONGON's local cost basis differs but the relative shape holds.</p>
       <div class="table-card" style="margin-top: 28px; overflow-x: auto;">
         <table>
           <thead>
@@ -453,7 +472,7 @@
   <section id="adoption" class="alt">
     <div class="wrap">
       <h2>Three-tier adoption shape</h2>
-      <p class="lede">Adoption is <strong>not all-staff</strong>. Different roles need different tooling and different access. The leverage compounds when Tier 2 builds skills that Tier 3 reuses.</p>
+      <p class="lede">Adoption is <strong>not all-staff</strong>. Different roles need different tooling. The leverage compounds when Tier 2 builds skills that Tier 3 reuses — confirmed by Ruben Hassid's 290k-subs counter-data-point above.</p>
       <div style="margin-top: 40px;">
         <div class="tier t1">
           <div class="head">
@@ -461,9 +480,9 @@
               <div class="eyebrow">Tier 1 · ~5 people</div>
               <div style="margin-top: 4px; font-weight: 600;">Engineering / AI team</div>
             </div>
-            <div class="small muted">Tooling: Claude Code CLI + API · Cost: API-based</div>
+            <div class="small muted">Claude Code CLI + API · Cost: API-based</div>
           </div>
-          <div class="body">Builds SEONGON-internal infrastructure: shared skill repo, internal MCP servers, training materials, governance tooling. Already exists; extends to internal infra builder role.</div>
+          <div class="body">Builds SEONGON-internal infrastructure: shared skill repo, internal MCP servers, AgriciDaniel forks, governance tooling. Already exists; extends to internal infra builder role.</div>
         </div>
         <div class="tier t2">
           <div class="head">
@@ -471,9 +490,9 @@
               <div class="eyebrow accent">Tier 2 · ~10–20 people · highest leverage</div>
               <div style="margin-top: 4px; font-weight: 600;">Senior power users — 1–2 leads per discipline</div>
             </div>
-            <div class="small muted">Tooling: Claude Code CLI + IDE · Cost: Team plan + meaningful API</div>
+            <div class="small muted">Claude Code CLI + IDE · Cost: Team plan + meaningful API</div>
           </div>
-          <div class="body">Builds the agency's Claude Skills as Git-versioned <code>.md</code> files. QA's outputs from Tier 3. Localizes open-source skills to Vietnamese-market specifics. <strong>This is where compounding agency IP gets created.</strong></div>
+          <div class="body">Forks AgriciDaniel kits + builds agency Skills as Git-versioned <code>.md</code> files. QAs Tier 3 outputs. Localizes to Vietnamese-market specifics. <strong>This is where compounding agency IP gets created.</strong></div>
         </div>
         <div class="tier t3">
           <div class="head">
@@ -481,9 +500,9 @@
               <div class="eyebrow">Tier 3 · ~100+ people</div>
               <div style="margin-top: 4px; font-weight: 600;">Production marketers — ad ops, junior SEOs, content writers, AMs</div>
             </div>
-            <div class="small muted">Tooling: Claude.ai Team plan + Claude Cowork · Cost: per-seat</div>
+            <div class="small muted">Claude.ai Team plan + <strong>Claude Cowork</strong> · Cost: per-seat</div>
           </div>
-          <div class="body">Consume the skills Tier 2 builds. Don't write new skills; run existing ones, request fixes when outputs miss. Terminal/CLI is a graduation path, not a default.</div>
+          <div class="body">Consume the skills Tier 2 builds via <strong>Cowork</strong> (Ruben's pattern). Don't write new skills; run existing ones, request fixes when outputs miss. Terminal/CLI is a graduation path, not a default.</div>
         </div>
       </div>
     </div>
@@ -492,7 +511,7 @@
   <section id="pilot" class="alt-2">
     <div class="wrap">
       <h2>90-day pilot sequence</h2>
-      <p class="lede">Priority disciplines first (highest documented ROI, mature open-source ecosystem). Compliance-sensitive disciplines second. Productize new service lines last.</p>
+      <p class="lede">Priority: SEO + Google Ads first (highest ROI, mature ecosystem incl. AgriciDaniel). Compliance-sensitive disciplines second. Productize new service lines last.</p>
       <div class="chart-card" style="margin-top: 32px;">
         <div class="chart-title">12-week Gantt — phases &amp; tasks</div>
         <div class="chart-sub">Each bar is a task; phases stacked top→bottom</div>
@@ -512,7 +531,7 @@
         <div>
           <div class="eyebrow accent">Strategic upside · beyond efficiency</div>
           <h2 style="margin-top: 12px;">GEO is a service line, not a side note.</h2>
-          <p class="lede">Generative Engine Optimization — getting brands to surface inside Claude / ChatGPT / Perplexity / Gemini / Google AI Overviews — appears as a first-class capability in every serious SEO Claude Code resource we reviewed<sup class="cite"><a href="#ref-5">[5]</a><a href="#ref-7">[7]</a><a href="#ref-19">[19]</a></sup>. <strong>Few Vietnamese agencies have productized GEO yet.</strong> SEONGON has a first-mover window.</p>
+          <p class="lede">Generative Engine Optimization — getting brands to surface inside Claude / ChatGPT / Perplexity / Gemini / Google AI Overviews — appears as a first-class capability in every serious SEO Claude Code resource (claude-seo includes a dedicated <code>seo-geo</code> subagent). <strong>Few Vietnamese agencies have productized GEO yet.</strong> SEONGON has a first-mover window.</p>
         </div>
         <div class="upside-grid">
           <div class="up-card">
@@ -523,19 +542,72 @@
           <div class="up-card">
             <div class="tag">Offensive</div>
             <div style="margin-top: 4px; font-weight: 600;">Productize GEO consulting</div>
-            <p class="small" style="margin-top: 6px; color: var(--text-2);">Use the open-source GEO skill libraries (<code>claude-seo</code>'s seo-geo subagent<sup class="cite"><a href="#ref-5">[5]</a></sup>, aaron-he-zhu's CORE-EEAT + CITE frameworks<sup class="cite"><a href="#ref-7">[7]</a></sup>) as the technical base.</p>
+            <p class="small" style="margin-top: 6px; color: var(--text-2);">Use <code>claude-seo</code>'s seo-geo subagent + aaron-he-zhu's CORE-EEAT (80-item) + CITE (40-item) frameworks as the technical base. Localize for Vietnamese.</p>
           </div>
           <div class="up-card muted">
             <div class="tag">Adjacent service</div>
             <div style="margin-top: 4px; font-weight: 600;">AI Search Visibility Dashboard</div>
-            <p class="small" style="margin-top: 6px; color: var(--text-2);">Recurring deliverable per client; tracks brand presence across Claude/ChatGPT/Perplexity/Gemini/AIO<sup class="cite"><a href="#ref-31">[31]</a></sup>.</p>
+            <p class="small" style="margin-top: 6px; color: var(--text-2);">Recurring deliverable per client; tracks brand presence across Claude/ChatGPT/Perplexity/Gemini/AIO. Daily or weekly cadence.</p>
           </div>
           <div class="up-card muted">
             <div class="tag">Adjacent service</div>
             <div style="margin-top: 4px; font-weight: 600;">Brand-as-Skill</div>
-            <p class="small" style="margin-top: 6px; color: var(--text-2);">Package each client's brand guidelines as a reusable Claude Skill<sup class="cite"><a href="#ref-30">[30]</a></sup> — sticky deliverable that recurs across the client lifecycle.</p>
+            <p class="small" style="margin-top: 6px; color: var(--text-2);">Package each client's brand guidelines as a reusable Claude Skill — sticky deliverable that recurs across the client lifecycle.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="framework">
+    <div class="wrap">
+      <div class="row between">
+        <h2>Source-assessment framework — how the 56 sources were graded</h2>
+        <span class="muted">CRAAP-derived · 7 dimensions · max 35 · stricter v3 thresholds</span>
+      </div>
+      <p class="lede">The framework follows the standard <strong>CRAAP test</strong> (Currency, Relevance, Authority, Accuracy, Purpose) used in academic information literacy<sup class="cite"><a href="#ref-13">[13]</a></sup>, extended with <strong>ADOPT</strong> (external validation / market traction) — a domain-specific addition for the open-source ecosystem where adoption velocity matters.</p>
+
+      <div class="grid-2" style="margin-top: 32px; align-items: start;">
+        <div class="panel">
+          <div class="chart-title">Tier distribution (n=56)</div>
+          <div class="chart-sub">Stricter v3: only top ~9% reach S</div>
+          <div class="tier-dist" style="margin-top: 16px;">
+            <div class="seg s" style="flex: 5;" title="S = 5 sources (≥31)">S · 5</div>
+            <div class="seg a" style="flex: 18;" title="A = 18 sources (28-30)">A · 18</div>
+            <div class="seg b" style="flex: 32;" title="B = 32 sources (24-27)">B · 32</div>
+            <div class="seg c" style="flex: 1;" title="C = 1 source (≤23)">C</div>
+          </div>
+          <div style="margin-top: 16px; font-size: 0.9rem; color: var(--text-2); line-height: 1.7;">
+            <strong>Tier S (5 sources)</strong> — anchor proposal claims. Currently: claude-ads, claude-seo, Ayima, Search Engine Land × 2.<br>
+            <strong>Tier A (18 sources)</strong> — solid supporting evidence.<br>
+            <strong>Tier B (32 sources)</strong> — context only.<br>
+            <strong>Tier C (1 source)</strong> — skip.
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="chart-title">7 scoring dimensions (1–5 each)</div>
+          <div style="margin-top: 12px; font-size: 0.9rem; color: var(--text-2); display: grid; gap: 10px;">
+            <div><strong>AUTH</strong> · Authority — credibility of the source itself. AgriciDaniel (handle) = 2. Anthropic primary = 5.</div>
+            <div><strong>SPEC</strong> · Specificity — exact metrics with methodology vs. vague enthusiasm.</div>
+            <div><strong>INDP</strong> · Independence — commercial interest in promoting Claude Code (vendor = 1, observer = 4).</div>
+            <div><strong>RCNT</strong> · Recency — 2026 = 5, ≤ 2024 = 1.</div>
+            <div><strong>VRFY</strong> · Verifiability — open-source/dataset = 5, anecdotal = 1.</div>
+            <div><strong>MTCH</strong> · SEONGON service match — direct = 5, unrelated = 1.</div>
+            <div><strong>ADOPT</strong> · Adoption — 3,000+ stars / canonical = 5, &lt; 50 = 2 (the GitHub-handle vs market-acceptance split).</div>
+          </div>
+          <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-3);">
+            Framework lineage: CRAAP (library science) + ADOPT (OSS-era extension). Adjacent: GRADE (medical evidence), Cochrane risk-of-bias tool, ACRL Information Literacy Framework. No published market-research source-grading framework — this is custom but standards-rooted.
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top: 24px;">
+        <p style="margin: 0; font-size: 0.95rem; color: var(--text);">
+          <strong>Open this in Google Sheets</strong> for filtering, sorting, and team review:
+          <a href="https://docs.google.com/spreadsheets/d/1atysKbfsTNNPMUkONAXFjgLp8RX0OmFxVcjf5g-9_sk/edit" target="_blank" rel="noreferrer" class="accent" style="margin-left: 6px;">SEONGON — Claude Code Source Assessment (v3) →</a>
+        </p>
+        <p style="margin-top: 8px; font-size: 0.85rem; color: var(--text-3);">Apply <code>scripts/style-google-sheet.gs</code> from the repo for color-coded heatmaps, frozen header, and a Vietnamese side-legend explaining each column. Local CSV viewer (<code>bun scripts/csv-viewer.ts</code>) auto-reloads on edit.</p>
       </div>
     </div>
   </section>
@@ -570,6 +642,11 @@
           <div style="margin-top: 4px; font-weight: 600;">Senior time available for skill-building vs. running current accounts</div>
           <p class="small" style="margin-top: 6px; color: var(--text-2);">Drives realistic pilot timeline. Tier 2 work is meaningful upfront investment.</p>
         </li>
+        <li>
+          <div class="eyebrow">Q6 · Cowork policy</div>
+          <div style="margin-top: 4px; font-weight: 600;">Privacy + compliance posture for Cowork desktop sandbox</div>
+          <p class="small" style="margin-top: 6px; color: var(--text-2);">Tier 3 (100+ marketers) consumes via Cowork. Need IT/legal policy on what data can flow through it before mass onboarding.</p>
+        </li>
       </ol>
     </div>
   </section>
@@ -578,141 +655,91 @@
     <div class="wrap">
       <div class="row between">
         <h2>References</h2>
-        <span class="muted">Cited inline · click any number to jump back; targets flash on arrival</span>
+        <span class="muted">Cited inline · top sources from the v3 56-source set</span>
       </div>
       <ol class="ref-list">
         <li id="ref-1" class="ref-target">
-          Anthropic — <em>How Anthropic teams use Claude Code</em> (PDF, internal-team interview report).
-          <a href="https://www-cdn.anthropic.com/58284b19e702b49db9302d5b6f135ad8871e7658.pdf" target="_blank" rel="noreferrer">https://www-cdn.anthropic.com/58284b19e702b49db9302d5b6f135ad8871e7658.pdf</a>
-          <span class="meta">Primary source for Anthropic Growth Marketing team profile, ad copy 2h→15min, 10× creative output.</span>
+          <strong>R001</strong> · Anthropic — <em>How Anthropic teams use Claude Code</em> (PDF). <a href="https://www-cdn.anthropic.com/58284b19e702b49db9302d5b6f135ad8871e7658.pdf" target="_blank" rel="noreferrer">link</a>
+          <span class="meta">Tier A · Total 28 · Primary source for Anthropic Growth Mktg team profile, ad copy 2h→15min, 10× creative output via Figma plugin.</span>
         </li>
         <li id="ref-2" class="ref-target">
-          Anthropic — <em>Economic Index Mar 2026 (Learning curves)</em>.
-          <a href="https://www.anthropic.com/research/economic-index-march-2026-report" target="_blank" rel="noreferrer">https://www.anthropic.com/research/economic-index-march-2026-report</a>
+          <strong>R029</strong> · Lenny's Newsletter — <em>Head of Claude Code (Boris Cherny interview)</em>. <a href="https://www.lennysnewsletter.com/p/head-of-claude-code-what-happens" target="_blank" rel="noreferrer">link</a>
+          <span class="meta">Tier B · Total 27 · Source for "4% of public GitHub commits" + DAU doubling stats.</span>
         </li>
         <li id="ref-3" class="ref-target">
-          Anthropic — <em>Economic Index Jan 2026 (Economic primitives)</em>.
-          <a href="https://www.anthropic.com/research/anthropic-economic-index-january-2026-report" target="_blank" rel="noreferrer">https://www.anthropic.com/research/anthropic-economic-index-january-2026-report</a>
+          <strong>R004</strong> · AgriciDaniel — <em>claude-ads</em> (GitHub). <a href="https://github.com/AgriciDaniel/claude-ads" target="_blank" rel="noreferrer">link</a>
+          <span class="meta">Tier S · Total 31 · 4,159 stars · 250+ paid-ads checks across 7 platforms. Direct fork target.</span>
         </li>
         <li id="ref-4" class="ref-target">
-          AgriciDaniel — <em>claude-ads</em> (250+ paid-ads checks across 7 platforms; GitHub).
-          <a href="https://github.com/AgriciDaniel/claude-ads" target="_blank" rel="noreferrer">https://github.com/AgriciDaniel/claude-ads</a>
+          <strong>R008</strong> · Ayima — <em>Claude for Technical SEO programme</em>. <a href="https://www.ayima.com/claude-seo/" target="_blank" rel="noreferrer">link</a>
+          <span class="meta">Tier S · Total 31 · UK SEO agency formalizing Claude Code training. Closest agency analog. Tech brief 3-5h→20min, schema 30-60min→3min.</span>
         </li>
         <li id="ref-5" class="ref-target">
-          AgriciDaniel — <em>claude-seo</em> (21 sub-skills, 15 subagents, 3 extensions; GitHub).
-          <a href="https://github.com/AgriciDaniel/claude-seo" target="_blank" rel="noreferrer">https://github.com/AgriciDaniel/claude-seo</a>
+          <strong>R005</strong> · AgriciDaniel — <em>claude-seo</em> (GitHub) / <em>claude-seo.md</em>. <a href="https://claude-seo.md" target="_blank" rel="noreferrer">link</a>
+          <span class="meta">Tier S · Total 31 · 5,961 stars · 21 sub-skills, 12 subagents, 3 extensions.</span>
         </li>
         <li id="ref-6" class="ref-target">
-          inhouseseo — <em>superseo-skills</em> (production-tested at agency; anti-AI-slop ruleset).
-          <a href="https://github.com/inhouseseo/superseo-skills" target="_blank" rel="noreferrer">https://github.com/inhouseseo/superseo-skills</a>
+          <strong>R011</strong> · AdventurePPC — <em>6 Workflows That Replace Freelancer Contracts</em>. <a href="https://www.adventureppc.com/blog/6-claude-code-workflows-that-replace-entire-freelancer-contracts-for-marketing-teams" target="_blank" rel="noreferrer">link</a>
+          <span class="meta">Tier A · Total 29 · Source for cost-replacement table.</span>
         </li>
         <li id="ref-7" class="ref-target">
-          aaron-he-zhu — <em>seo-geo-claude-skills</em> (CORE-EEAT 80-item + CITE 40-item frameworks).
-          <a href="https://github.com/aaron-he-zhu/seo-geo-claude-skills" target="_blank" rel="noreferrer">https://github.com/aaron-he-zhu/seo-geo-claude-skills</a>
+          <strong>R042</strong> · Built In — <em>Anthropic's Economic Index Shows the AI Skills Gap Is Growing</em>. <a href="https://builtin.com/articles/anthropic-economic-index-2026-ai-jobs-report" target="_blank" rel="noreferrer">link</a>
+          <span class="meta">Tier A · Total 30 · Industry-pub coverage of Anthropic EI. Source for "API workflows for sales/outreach doubled Nov 2025 → Feb 2026".</span>
         </li>
         <li id="ref-8" class="ref-target">
-          Ayima — <em>Claude for Technical SEO programme</em> (UK SEO agency).
-          <a href="https://www.ayima.com/claude-seo/" target="_blank" rel="noreferrer">https://www.ayima.com/claude-seo/</a>
-          <span class="meta">Closest agency analog for SEONGON adoption; 4-week programme with 2 tracks.</span>
+          <strong>R015</strong> · HeyOz — <em>10 Claude Code Skills for Meta Ads</em>. <a href="https://heyoz.com/blogs/claude-code-skills-for-meta-ads" target="_blank" rel="noreferrer">link</a>
+          <span class="meta">Tier B · Total 26 · Practitioner-detailed Meta Ads slash-command suite.</span>
         </li>
         <li id="ref-9" class="ref-target">
-          HubSpot × Marketing Against the Grain — <em>Master Claude Code for Marketing</em>.
-          <a href="https://offers.hubspot.com/claude-code-for-marketing-matg" target="_blank" rel="noreferrer">https://offers.hubspot.com/claude-code-for-marketing-matg</a>
+          <strong>R018</strong> · Michael Patrick Cortez — <em>Claude AI for SEO 2026 Guide</em>. <a href="https://michaelpatrickcortez.com/blog/claude-ai-for-seo/" target="_blank" rel="noreferrer">link</a>
+          <span class="meta">Tier B · Total 26 · Source for monthly SEO billable hours benchmark (20–30 → 6–8 = 73% saved) and per-task savings.</span>
         </li>
         <li id="ref-10" class="ref-target">
-          HubSpot — official Claude connector docs.
-          <a href="https://knowledge.hubspot.com/integrations/set-up-and-use-the-hubspot-connector-for-claude" target="_blank" rel="noreferrer">https://knowledge.hubspot.com/integrations/set-up-and-use-the-hubspot-connector-for-claude</a>
+          <strong>R032 + R033</strong> · Search Engine Land — <em>Claude Skills for PPC</em> + <em>Claude Code as SEO command center</em>. <a href="https://searchengineland.com/claude-skills-ppc-scalable-systems-474221" target="_blank" rel="noreferrer">PPC</a> · <a href="https://searchengineland.com/claude-code-seo-work-470668" target="_blank" rel="noreferrer">SEO</a>
+          <span class="meta">Tier S · Total 31 each · Top trade publication for search marketing (~20-yr history, owned by Semrush). Editorial review.</span>
         </li>
         <li id="ref-11" class="ref-target">
-          AdventurePPC — <em>6 Claude Code Workflows That Replace Entire Freelancer Contracts</em>.
-          <a href="https://www.adventureppc.com/blog/6-claude-code-workflows-that-replace-entire-freelancer-contracts-for-marketing-teams" target="_blank" rel="noreferrer">https://www.adventureppc.com/blog/6-claude-code-workflows-that-replace-entire-freelancer-contracts-for-marketing-teams</a>
-          <span class="meta">Source of cost-replacement table.</span>
+          <strong>R022</strong> · Stack and Scale — <em>Claude Code Playbook for Marketers</em>. <a href="https://www.stackandscale.ai/p/the-claude-code-playbook-for-marketers" target="_blank" rel="noreferrer">link</a>
+          <span class="meta">Tier B · Total 24 · Source for "47 marketing automations" + CAC -28% / ad spend -23% + Brand workflows.</span>
         </li>
         <li id="ref-12" class="ref-target">
-          AdventurePPC — <em>Claude Code for PPC Professionals: Automating Campaign Management</em>.
-          <a href="https://www.adventureppc.com/blog/claude-code-for-ppc-professionals-automating-campaign-management-with-ai" target="_blank" rel="noreferrer">https://www.adventureppc.com/blog/claude-code-for-ppc-professionals-automating-campaign-management-with-ai</a>
+          <strong>R027</strong> · measureu.com — <em>GA4 Audit MCP in 4 Minutes</em>. <a href="https://measureu.com/ga4-audit-mcp/" target="_blank" rel="noreferrer">link</a>
+          <span class="meta">Tier B · Total 27 · Detailed GA4 audit workflow via analytics-mcp + Chrome extension.</span>
         </li>
         <li id="ref-13" class="ref-target">
-          Stormy AI — <em>Claude Code for Performance Marketing: Step-by-Step Playbook</em>.
-          <a href="https://stormy.ai/blog/claude-code-for-performance-marketing-playbook" target="_blank" rel="noreferrer">https://stormy.ai/blog/claude-code-for-performance-marketing-playbook</a>
+          <strong>Framework</strong> · CRAAP test (Currency, Relevance, Authority, Accuracy, Purpose). <a href="https://en.wikipedia.org/wiki/CRAAP_test" target="_blank" rel="noreferrer">overview</a>
+          <span class="meta">Standard library/academic source-evaluation framework. Adjacent: GRADE (medical evidence), Cochrane risk-of-bias tool, ACRL Information Literacy.</span>
         </li>
         <li id="ref-14" class="ref-target">
-          Ryze AI — <em>10 Claude Code Marketing Workflows for Google &amp; Meta Ads</em>.
-          <a href="https://www.get-ryze.ai/blog/claude-code-marketing-workflows-google-meta-ads" target="_blank" rel="noreferrer">https://www.get-ryze.ai/blog/claude-code-marketing-workflows-google-meta-ads</a>
+          <strong>Internal</strong> · SEONGON team framework docs (06_04_2026.docx + 13_04_2026.docx)
+          <span class="meta">Internal team framework: WHAT / SO WHAT / NOW WHAT structure with 3-dimension scoring (Công nghệ, Độ phổ biến, Phù hợp với SEONGON). Applied to AgriciDaniel deep-dives.</span>
         </li>
         <li id="ref-15" class="ref-target">
-          HeyOz — <em>10 Claude Code Skills for Meta Ads</em> (slash-command suite).
-          <a href="https://heyoz.com/blogs/claude-code-skills-for-meta-ads" target="_blank" rel="noreferrer">https://heyoz.com/blogs/claude-code-skills-for-meta-ads</a>
-          <span class="meta">Source of "25–30 hr/wk recovered, $2,500–4,500/wk in agency billing rates."</span>
+          <strong>R050</strong> · Ruben Hassid — <em>Claude</em> (How to AI newsletter, 290k+ subs). <a href="https://ruben.substack.com/p/claude" target="_blank" rel="noreferrer">link</a>
+          <span class="meta">Tier A · Total 28 · Critical counter-data-point: top AI influencer with non-coding marketer audience uses Cowork, not Claude Code.</span>
         </li>
         <li id="ref-16" class="ref-target">
-          Adspirer — <em>Run Facebook &amp; Instagram Ads with Your Claude Code AI Agent</em>.
-          <a href="https://www.adspirer.com/blog/meta-ads-claude-code-agent" target="_blank" rel="noreferrer">https://www.adspirer.com/blog/meta-ads-claude-code-agent</a>
+          <strong>R054</strong> · Toni (Vibe Product Marketing) — <em>3 Claude Cowork Workflows for Marketing</em>. <a href="https://vibeproductmarketing.substack.com/p/3-claude-cowork-workflows-for-marketing" target="_blank" rel="noreferrer">link</a>
+          <span class="meta">Tier B · Total 25 · Cleanest personal ROI report: 15 hr/month saved at $20-100/month tool cost.</span>
         </li>
         <li id="ref-17" class="ref-target">
-          PorterMetrics — <em>5 ways to connect Meta Ads to Claude in 2026 (without getting banned)</em>.
-          <a href="https://portermetrics.com/en/tutorial/claude/chat-meta-ads/" target="_blank" rel="noreferrer">https://portermetrics.com/en/tutorial/claude/chat-meta-ads/</a>
-          <span class="meta">Mandatory compliance reference for Meta Ads adoption.</span>
+          <strong>R045</strong> · MKT1 — <em>State of Marketing Report (100 B2B teams)</em>. <a href="https://newsletter.mkt1.co/p/state-of-marketing-report-teams-part-1" target="_blank" rel="noreferrer">link</a>
+          <span class="meta">Tier A · Total 29 · Emily Kramer primary research. 7% of B2B marketing JDs mention Claude. Methodology used Claude Code itself.</span>
         </li>
         <li id="ref-18" class="ref-target">
-          Michael Patrick Cortez — <em>Claude AI for SEO: The Complete Workflow Guide (2026)</em>.
-          <a href="https://michaelpatrickcortez.com/blog/claude-ai-for-seo/" target="_blank" rel="noreferrer">https://michaelpatrickcortez.com/blog/claude-ai-for-seo/</a>
-          <span class="meta">Source of monthly SEO billable hours benchmark (20–30 → 6–8) and per-task time-savings.</span>
+          <strong>R053</strong> · Dan Renyi (Klear / Electric B2B) — <em>Is Claude Code Changing Go-To-Market?</em>. <a href="https://electricb2b.substack.com/p/is-claude-code-changing-go-to-market" target="_blank" rel="noreferrer">link</a>
+          <span class="meta">Tier B · Total 26 · Founder of 6-yr-old GTM consultancy. "Growth OS" service has biggest pipeline response in 6 years.</span>
         </li>
         <li id="ref-19" class="ref-target">
-          SE Ranking — <em>Claude Code &amp; SE Ranking MCP: 3 Ways to Use Them for SEO</em>.
-          <a href="https://seranking.com/blog/claude-code-for-seo/" target="_blank" rel="noreferrer">https://seranking.com/blog/claude-code-for-seo/</a>
+          <strong>R055</strong> · Anthony Lee — <em>How to Set Up Google Analytics as a Claude Code Skill</em> (LinkedIn Pulse). <a href="https://www.linkedin.com/pulse/how-set-up-google-analytics-claude-code-skill-anthony-lee-r0n4e" target="_blank" rel="noreferrer">link</a>
+          <span class="meta">Tier B · Total 27 · Real Python code shared. 12 likes, 11 comments. Validated by commenter.</span>
         </li>
         <li id="ref-20" class="ref-target">
-          MKT1 — <em>What 4 Gen Marketers Are Building with Claude Code</em>.
-          <a href="https://newsletter.mkt1.co/p/real-marketers-claude-code-builds" target="_blank" rel="noreferrer">https://newsletter.mkt1.co/p/real-marketers-claude-code-builds</a>
-        </li>
-        <li id="ref-21" class="ref-target">
-          Emily Kramer (MKT1) — <em>How to build your marketing strategy in Claude</em> (7-step skill).
-          <a href="https://newsletter.mkt1.co/p/build-marketing-strategy-skill-in-claude-code" target="_blank" rel="noreferrer">https://newsletter.mkt1.co/p/build-marketing-strategy-skill-in-claude-code</a>
-        </li>
-        <li id="ref-22" class="ref-target">
-          Stack and Scale — <em>How I Turn Claude Code (Desktop) Into a Full Marketing Team</em>.
-          <a href="https://www.stackandscale.ai/p/the-claude-code-playbook-for-marketers" target="_blank" rel="noreferrer">https://www.stackandscale.ai/p/the-claude-code-playbook-for-marketers</a>
-        </li>
-        <li id="ref-23" class="ref-target">
-          Animalz — <em>Claude Code for Content Marketers</em>.
-          <a href="https://www.animalz.co/blog/claude-code" target="_blank" rel="noreferrer">https://www.animalz.co/blog/claude-code</a>
-        </li>
-        <li id="ref-24" class="ref-target">
-          Improvado — <em>Claude Marketing Skills: How to Build Custom AI Tools for Campaign Analysis in 2026</em>.
-          <a href="https://improvado.io/blog/claude-marketing-skills" target="_blank" rel="noreferrer">https://improvado.io/blog/claude-marketing-skills</a>
-        </li>
-        <li id="ref-25" class="ref-target">
-          Coupler.io — <em>Claude Code for Marketing: Real Use Cases</em>.
-          <a href="https://blog.coupler.io/claude-code-for-marketing/" target="_blank" rel="noreferrer">https://blog.coupler.io/claude-code-for-marketing/</a>
-        </li>
-        <li id="ref-26" class="ref-target">
-          Windsor.ai — <em>Connect Google Analytics 4 to Claude (1 Minute)</em>.
-          <a href="https://windsor.ai/connect/google-analytics-4-to-claude-integration/" target="_blank" rel="noreferrer">https://windsor.ai/connect/google-analytics-4-to-claude-integration/</a>
-        </li>
-        <li id="ref-27" class="ref-target">
-          measureu.com — <em>How to Audit Google Analytics 4 in 4 Minutes Using Claude MCP</em>.
-          <a href="https://measureu.com/ga4-audit-mcp/" target="_blank" rel="noreferrer">https://measureu.com/ga4-audit-mcp/</a>
-        </li>
-        <li id="ref-28" class="ref-target">
-          Lenny's Newsletter (Lenny Rachitsky + Dan Shipper) — <em>Everyone should be using Claude Code more</em>.
-          <a href="https://www.lennysnewsletter.com/p/everyone-should-be-using-claude-code" target="_blank" rel="noreferrer">https://www.lennysnewsletter.com/p/everyone-should-be-using-claude-code</a>
-        </li>
-        <li id="ref-29" class="ref-target">
-          Lenny's Newsletter (Boris Cherny, Head of Claude Code) — <em>What happens after coding is solved</em>.
-          <a href="https://www.lennysnewsletter.com/p/head-of-claude-code-what-happens" target="_blank" rel="noreferrer">https://www.lennysnewsletter.com/p/head-of-claude-code-what-happens</a>
-        </li>
-        <li id="ref-30" class="ref-target">
-          Anthropic — <em>Package your brand guidelines in a skill</em> (vendor reference).
-          <a href="https://claude.com/resources/use-cases/package-your-brand-guidelines-in-a-skill" target="_blank" rel="noreferrer">https://claude.com/resources/use-cases/package-your-brand-guidelines-in-a-skill</a>
-        </li>
-        <li id="ref-31" class="ref-target">
-          nex.ad — <em>How to make your brand show up in Claude answers</em> (GEO reference).
-          <a href="https://nex.ad/blog/how-to-make-your-brand-show-up-in-claude-answers" target="_blank" rel="noreferrer">https://nex.ad/blog/how-to-make-your-brand-show-up-in-claude-answers</a>
+          <strong>R051</strong> · Daria Cupareanu (AI Blew My Mind) — <em>Claude Brand Skill</em>. <a href="https://aiblewmymind.substack.com/p/how-to-create-claude-brand-skill" target="_blank" rel="noreferrer">link</a>
+          <span class="meta">Tier B · Total 25 · Iteratively-built personal brand-skill for proposals/decks/PDFs. Approach: "opinions, not design experience".</span>
         </li>
       </ol>
-      <p class="muted small" style="margin-top: 24px;">Full source index (100+ entries) lives in <a href="https://github.com/nhhoang4075/claude-code-research/blob/main/sources.md" target="_blank" rel="noreferrer">sources.md</a> in the repo.</p>
+      <p class="muted small" style="margin-top: 24px;">Full 56-source assessment with all dimensions: <a href="https://docs.google.com/spreadsheets/d/1atysKbfsTNNPMUkONAXFjgLp8RX0OmFxVcjf5g-9_sk/edit" target="_blank" rel="noreferrer">Google Sheet (v3)</a> · CSV in repo: <a href="https://github.com/nhhoang4075/claude-code-research/blob/main/data/source-assessment.csv" target="_blank" rel="noreferrer">data/source-assessment.csv</a></p>
     </div>
   </section>
 
@@ -721,27 +748,26 @@
       <div class="grid">
         <div>
           <div style="font-weight: 600; color: var(--text);">Research repository</div>
-          <p class="small" style="margin-top: 8px;">Full evidence base — per-discipline deep dives, master workflows table, source index, raw extracts.</p>
+          <p class="small" style="margin-top: 8px;">Full evidence base — per-discipline deep dives, master workflows table, source-assessment framework, AgriciDaniel ecosystem deep-dives in Vietnamese.</p>
           <a href="https://github.com/nhhoang4075/claude-code-research" target="_blank" rel="noreferrer" class="accent" style="margin-top: 8px; display: inline-block; text-decoration: none;">github.com/nhhoang4075/claude-code-research →</a>
         </div>
         <div>
-          <div style="font-weight: 600; color: var(--text);">Top sources</div>
+          <div style="font-weight: 600; color: var(--text);">Top S-tier sources (Total ≥ 31)</div>
           <ul>
-            <li>Anthropic — <em>How Anthropic teams use Claude Code</em><sup class="cite"><a href="#ref-1">[1]</a></sup></li>
-            <li>Anthropic Economic Index<sup class="cite"><a href="#ref-2">[2]</a><a href="#ref-3">[3]</a></sup></li>
-            <li>Ayima programme<sup class="cite"><a href="#ref-8">[8]</a></sup></li>
-            <li>HubSpot × MATG<sup class="cite"><a href="#ref-9">[9]</a></sup></li>
-            <li>MKT1<sup class="cite"><a href="#ref-20">[20]</a></sup>, AdventurePPC<sup class="cite"><a href="#ref-11">[11]</a></sup>, HeyOz<sup class="cite"><a href="#ref-15">[15]</a></sup>, Stormy AI<sup class="cite"><a href="#ref-13">[13]</a></sup></li>
-            <li>GitHub: claude-ads<sup class="cite"><a href="#ref-4">[4]</a></sup>, claude-seo<sup class="cite"><a href="#ref-5">[5]</a></sup>, superseo-skills<sup class="cite"><a href="#ref-6">[6]</a></sup></li>
+            <li>Anthropic — How Anthropic teams use Claude Code (PDF)</li>
+            <li>AgriciDaniel/claude-ads · 4,159 ⭐</li>
+            <li>AgriciDaniel/claude-seo · 5,961 ⭐</li>
+            <li>Ayima — Claude for Technical SEO programme</li>
+            <li>Search Engine Land × 2 articles (PPC + SEO)</li>
           </ul>
         </div>
         <div>
           <div style="font-weight: 600; color: var(--text);">Methodology</div>
-          <p class="small" style="margin-top: 8px;">~30 sources extracted via structured prompts. Time-savings reported as sources stated; ranges normalized to midpoints. Anthropic PDF extracted via <code>pdftotext</code>; raw text in <code>raw/</code>.</p>
+          <p class="small" style="margin-top: 8px;">CRAAP-derived 7-dimension scoring (max 35). Stricter v3 thresholds (S ≥ 31 = top 9%). 56 sources extracted via structured prompts; time-savings reported as sources stated; ranges normalized to midpoints. Anthropic PDF extracted via <code>pdftotext</code>.</p>
         </div>
       </div>
       <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; font-size: 0.8rem; color: var(--text-3);">
-        <span>Compiled 2026-05 · for SEONGON-internal use</span>
+        <span>Compiled 2026-05 · v3 · for SEONGON-internal use</span>
         <span>Not a finished proposal — an evidence base for one.</span>
       </div>
     </div>
