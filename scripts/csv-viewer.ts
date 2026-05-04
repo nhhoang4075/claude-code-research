@@ -129,7 +129,6 @@ const HTML = `<!doctype html>
             <tr><td class="col-key">ID</td><td class="col-label">Mã</td><td class="col-desc">Mã định danh nguồn (R001, R002…)</td></tr>
             <tr><td class="col-key">Source</td><td class="col-label">Nguồn</td><td class="col-desc">Tên bài viết, repo, hoặc tài liệu được trích dẫn</td></tr>
             <tr><td class="col-key">Who</td><td class="col-label">Tác giả</td><td class="col-desc">Người hoặc tổ chức công bố nội dung kết hợp với vai trò chuyên môn. Định dạng: "{Tên} · {Vai trò}". Nếu chỉ có handle/brand không định danh, ghi nguyên handle.</td></tr>
-            <tr><td class="col-key">TrustSignals</td><td class="col-label">Tín hiệu uy tín</td><td class="col-desc">1–3 bằng chứng cụ thể về độ tin cậy: lịch sử hoạt động, mâu thuẫn lợi ích, khả năng kiểm chứng. Tách rời với điểm AUTH để người đọc tự đánh giá.</td></tr>
             <tr><td class="col-key">Type</td><td class="col-label">Loại</td><td class="col-desc">PRIMARY (vendor chính chủ) · VENDOR (vendor khác) · AGENCY-CASE (case study agency) · PRACTITIONER (blog thực hành) · OPEN-SOURCE (mã nguồn mở) · COURSE · PODCAST · INDUSTRY-PUB</td></tr>
             <tr><td class="col-key">Discipline</td><td class="col-label">Lĩnh vực</td><td class="col-desc">SEO · GADS (Google Ads) · META (Facebook/Instagram Ads) · BRAND (Digital Branding) · ANALYTICS · MOPS (Marketing Ops) · CONTENT · CROSS (xuyên suốt)</td></tr>
             <tr><td class="col-key">Year</td><td class="col-label">Năm</td><td class="col-desc">Năm xuất bản hoặc đo đạc dữ liệu</td></tr>
@@ -140,8 +139,8 @@ const HTML = `<!doctype html>
             <tr><td class="col-key">INDP</td><td class="col-label">Độc lập</td><td class="col-desc"><strong>Independence (1–5)</strong> — không có lợi ích thương mại trong việc quảng bá Claude Code. 5 = không lợi ích. 4 = báo chí ngành. 3 = practitioner dùng nhưng không bán. 2 = vendor công cụ kế cận (HubSpot, Coupler). 1 = vendor chính (Anthropic). Lưu ý: INDP thấp KHÔNG loại trừ nguồn — chỉ cần biết để đọc cẩn thận.</td></tr>
             <tr><td class="col-key">VRFY</td><td class="col-label">Kiểm chứng</td><td class="col-desc"><strong>Verifiability (1–5)</strong> — khả năng kiểm chứng độc lập. 5 = mã nguồn mở / dataset công khai. 4 = sản phẩm sống có thể test. 3 = mô tả phương pháp chi tiết. 2 = tự khai báo, không có cách kiểm. 1 = giai thoại.</td></tr>
             <tr><td class="col-key">ADOPT</td><td class="col-label">Phổ biến</td><td class="col-desc"><strong>Adoption (1–5) — chiều mới:</strong> mức độ được kiểm chứng bên ngoài. 5 = canonical / market-leading (3000+ GitHub stars, báo lớn, nền tảng top). 4 = adoption mạnh (200–2999 stars, vendor có khách hàng). 3 = mid (50–199 stars). 2 = niche/mới (<50 stars). 1 = chưa có traction. <em>Tách biệt với AUTH</em>: nhiều repo nổi tiếng có AUTH thấp (handle vô danh) nhưng ADOPT cao — và ngược lại.</td></tr>
-            <tr><td class="col-key">Total</td><td class="col-label">Tổng</td><td class="col-desc">Tổng 5 chiều (AUTH + SPEC + INDP + VRFY + ADOPT). Tối đa 25.</td></tr>
-            <tr><td class="col-key">Tier</td><td class="col-label">Hạng</td><td class="col-desc">Hạng tổng hợp suy ra từ Tổng. <strong>S (≥21)</strong> = bằng chứng đầu đề. <strong>A (19–20)</strong> = bằng chứng hỗ trợ. <strong>B (15–18)</strong> = chỉ là context. <strong>C (≤14)</strong> = bỏ qua.</td></tr>
+            <tr><td class="col-key">Total</td><td class="col-label">Tổng</td><td class="col-desc">Tổng 7 chiều (AUTH + SPEC + INDP + RCNT + VRFY + MTCH + ADOPT). Tối đa 35.</td></tr>
+            <tr><td class="col-key">Tier</td><td class="col-label">Hạng</td><td class="col-desc">Hạng tổng hợp suy ra từ Tổng. <strong>S (≥31)</strong> = bằng chứng đầu đề (top ~9%). <strong>A (28–30)</strong> = bằng chứng hỗ trợ. <strong>B (24–27)</strong> = chỉ là context. <strong>C (≤23)</strong> = bỏ qua.</td></tr>
           </tbody>
         </table>
       </div>
@@ -160,14 +159,13 @@ const updatedEl = document.getElementById('updated');
 let header = []; let rows = [];
 let sortCol = -1; let sortDir = 1;
 
-const NUMERIC_COLS = new Set(['AUTH','SPEC','INDP','VRFY','ADOPT','Total','Year']);
-const TRUNCATE_COLS = new Set(['TrustSignals','Who','KeyData','Source']);
+const NUMERIC_COLS = new Set(['AUTH','SPEC','INDP','RCNT','VRFY','MTCH','ADOPT','Total','Year']);
+const TRUNCATE_COLS = new Set(['Who','KeyData','Source']);
 
 const COL_LABELS = {
   ID: 'Mã',
   Source: 'Nguồn',
   Who: 'Tác giả',
-  TrustSignals: 'Tín hiệu uy tín',
   Type: 'Loại',
   Discipline: 'Lĩnh vực',
   Year: 'Năm',
@@ -176,7 +174,9 @@ const COL_LABELS = {
   AUTH: 'Uy tín',
   SPEC: 'Cụ thể',
   INDP: 'Độc lập',
+  RCNT: 'Mới',
   VRFY: 'Kiểm chứng',
+  MTCH: 'Phù hợp',
   ADOPT: 'Phổ biến',
   Total: 'Tổng',
   Tier: 'Hạng',
@@ -186,7 +186,6 @@ const COL_TIPS = {
   ID: 'Mã định danh nguồn (R001, R002...)',
   Source: 'Tên bài viết, repo, hoặc tài liệu',
   Who: 'Tác giả + vai trò chuyên môn (định dạng "Tên · Vai trò")',
-  TrustSignals: 'Bằng chứng cụ thể về độ tin cậy (track record, mâu thuẫn lợi ích, khả năng kiểm chứng)',
   Type: 'Loại nguồn: PRIMARY / VENDOR / AGENCY-CASE / PRACTITIONER / OPEN-SOURCE / COURSE / PODCAST / INDUSTRY-PUB',
   Discipline: 'Lĩnh vực: SEO / GADS (Google Ads) / META / BRAND / ANALYTICS / MOPS / CONTENT / CROSS',
   Year: 'Năm xuất bản',
@@ -197,8 +196,10 @@ const COL_TIPS = {
   INDP: 'Independence (1–5) — không có lợi ích thương mại. 5 = không lợi ích. 1 = vendor chính (Anthropic).',
   VRFY: 'Verifiability (1–5) — khả năng kiểm chứng. 5 = mã nguồn mở. 1 = giai thoại.',
   ADOPT: 'Adoption (1–5) — mức độ phổ biến / được kiểm chứng bên ngoài. 5 = 3000+ GitHub stars hoặc báo lớn. 4 = 200–2999 stars hoặc vendor có khách. 3 = 50–199 stars. 2 = <50 stars hoặc brand mới. 1 = chưa có traction.',
-  Total: 'Tổng 5 chiều (max 25).',
-  Tier: 'Hạng: S ≥ 21 · A 19–20 · B 15–18 · C ≤ 14',
+  RCNT: 'Recency (1–5). 5 = 2026. 1 = ≤2024.',
+  MTCH: 'Match (1–5). Phù hợp dịch vụ SEONGON. 5 = SEO/Google Ads/FB Ads/Branding. 1 = không liên quan.',
+  Total: 'Tổng 7 chiều (max 35).',
+  Tier: 'S ≥ 31 (top ~9%) · A 28–30 · B 24–27 · C ≤ 23',
 };
 
 const NL = String.fromCharCode(10);

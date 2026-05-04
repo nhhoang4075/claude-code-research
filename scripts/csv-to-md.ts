@@ -40,10 +40,10 @@ const idx = (name: string) => header.indexOf(name);
 
 const I = {
   ID: idx("ID"), Source: idx("Source"), Who: idx("Who"),
-  TrustSignals: idx("TrustSignals"), Type: idx("Type"), Discipline: idx("Discipline"),
+  Type: idx("Type"), Discipline: idx("Discipline"),
   Year: idx("Year"), URL: idx("URL"), KeyData: idx("KeyData"),
-  AUTH: idx("AUTH"), SPEC: idx("SPEC"), INDP: idx("INDP"),
-  VRFY: idx("VRFY"), ADOPT: idx("ADOPT"),
+  AUTH: idx("AUTH"), SPEC: idx("SPEC"), INDP: idx("INDP"), RCNT: idx("RCNT"),
+  VRFY: idx("VRFY"), MTCH: idx("MTCH"), ADOPT: idx("ADOPT"),
   Total: idx("Total"), Tier: idx("Tier"),
 };
 
@@ -63,13 +63,13 @@ out += "# Source Assessment — Scored Spreadsheet\n\n";
 out += "Auto-generated from [`source-assessment.csv`](source-assessment.csv). Sorted by composite score descending.\n\n";
 const tCount = (t: string) => sorted.filter((r) => r[I.Tier] === t).length;
 out += `**Total sources scored**: ${sorted.length} · **Tier S**: ${tCount("S")} · **Tier A**: ${tCount("A")} · **Tier B**: ${tCount("B")} · **Tier C**: ${tCount("C")}\n\n`;
-out += "Read the rubric in [`assessment-framework.md`](assessment-framework.md) before relying on the scores. **TL;DR**: Tier S (≥21) = headline; A (19–20) = supporting; B (15–18) = context; C (≤14) = skip. Composite is sum of 5 dimensions (max 25): AUTH, SPEC, INDP, VRFY, ADOPT. RCNT and MTCH were removed because they didn't differentiate (most sources are 2026, all are SEONGON-relevant by curation).\n\n";
+out += "Read the rubric in [`assessment-framework.md`](assessment-framework.md) before relying on the scores. **TL;DR**: Tier S (≥31) = headline; A (28–30) = supporting; B (24–27) = context; C (≤23) = skip. Composite is sum of 7 dimensions (max 35): AUTH, SPEC, INDP, RCNT, VRFY, MTCH, ADOPT. Stricter v3 thresholds — only top ~9% reach S.\n\n";
 out += "---\n\n## Ranking table (click headers in GitHub to sort)\n\n";
-out += "| ID | Source | Discipline | Tier | Total | AUTH | SPEC | INDP | VRFY | ADOPT |\n";
-out += "|---|---|---|---|---:|---:|---:|---:|---:|---:|\n";
+out += "| ID | Source | Discipline | Tier | Total | AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT |\n";
+out += "|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|\n";
 for (const r of sorted) {
   const sourceLink = `[${r[I.ID]}](#${r[I.ID].toLowerCase()}) [${r[I.Source].slice(0, 64)}${r[I.Source].length > 64 ? "…" : ""}](${r[I.URL]})`;
-  out += `| ${r[I.ID]} | ${sourceLink} | ${r[I.Discipline]} | ${tierEmoji[r[I.Tier]] ?? r[I.Tier]} | ${formatTotal(r)} | ${r[I.AUTH]} | ${r[I.SPEC]} | ${r[I.INDP]} | ${r[I.VRFY]} | ${r[I.ADOPT]} |\n`;
+  out += `| ${r[I.ID]} | ${sourceLink} | ${r[I.Discipline]} | ${tierEmoji[r[I.Tier]] ?? r[I.Tier]} | ${formatTotal(r)} | ${r[I.AUTH]} | ${r[I.SPEC]} | ${r[I.INDP]} | ${r[I.RCNT]} | ${r[I.VRFY]} | ${r[I.MTCH]} | ${r[I.ADOPT]} |\n`;
 }
 
 // ── FULL DETAIL CARDS ───────────────────────────────────────────────
@@ -80,15 +80,14 @@ for (const r of sorted) {
   const id = r[I.ID];
   out += `### <a id="${id.toLowerCase()}"></a>${id} · ${escapeMd(r[I.Source])}\n\n`;
   const tierLabel = r[I.Tier] === "S" ? "**Tier S** (headline-grade)" : r[I.Tier] === "A" ? "Tier A (support)" : r[I.Tier] === "B" ? "Tier B (context only)" : "Tier C (skip)";
-  out += `**Total ${r[I.Total]}/25** · ${tierLabel} · Discipline: \`${r[I.Discipline]}\` · Type: \`${r[I.Type]}\` · ${r[I.Year]}\n\n`;
+  out += `**Total ${r[I.Total]}/35** · ${tierLabel} · Discipline: \`${r[I.Discipline]}\` · Type: \`${r[I.Type]}\` · ${r[I.Year]}\n\n`;
   out += `**URL**: ${r[I.URL]}\n\n`;
   out += `**Who**: ${escapeMd(r[I.Who])}\n\n`;
-  out += `**Trust signals**: ${escapeMd(r[I.TrustSignals])}\n\n`;
   out += `**Key data extracted**:\n> ${escapeMd(r[I.KeyData])}\n\n`;
   out += "**Scores**:\n\n";
-  out += "| AUTH | SPEC | INDP | VRFY | ADOPT | **Total** |\n";
-  out += "|---:|---:|---:|---:|---:|---:|\n";
-  out += `| ${r[I.AUTH]} | ${r[I.SPEC]} | ${r[I.INDP]} | ${r[I.VRFY]} | ${r[I.ADOPT]} | **${r[I.Total]}** |\n\n`;
+  out += "| AUTH | SPEC | INDP | RCNT | VRFY | MTCH | ADOPT | **Total** |\n";
+  out += "|---:|---:|---:|---:|---:|---:|---:|---:|\n";
+  out += `| ${r[I.AUTH]} | ${r[I.SPEC]} | ${r[I.INDP]} | ${r[I.RCNT]} | ${r[I.VRFY]} | ${r[I.MTCH]} | ${r[I.ADOPT]} | **${r[I.Total]}** |\n\n`;
   out += "---\n\n";
 }
 

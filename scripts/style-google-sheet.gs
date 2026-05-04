@@ -15,7 +15,7 @@
  *   • Header row: dark background, white bold text, centered, frozen
  *   • Column 1 (ID) + Column 2 (Source) frozen for horizontal scroll
  *   • Column widths sized per content type (narrow for IDs, wide for descriptions)
- *   • Long-text columns (Source, Who, TrustSignals, KeyData) wrap text
+ *   • Long-text columns (Source, Who, KeyData) wrap text
  *   • Score columns (AUTH..ADOPT) get red→yellow→green heatmap (1..5)
  *   • Total column gets a deeper heatmap (14→24→32)
  *   • Tier column: S=red, A=amber, B=grey, C=light grey — with white bold text
@@ -63,10 +63,10 @@ function styleSheet() {
 
   // ── 2. Column widths ─────────────────────────────────────────────
   const widths = {
-    ID: 64, Source: 280, Who: 300, TrustSignals: 360,
-    Type: 130, Discipline: 120, Year: 60, URL: 220,
+    ID: 64, Source: 280, Who: 320,
+    Type: 110, Discipline: 120, Year: 60, URL: 220,
     KeyData: 380,
-    AUTH: 64, SPEC: 64, INDP: 64, VRFY: 64, ADOPT: 70,
+    AUTH: 60, SPEC: 60, INDP: 60, RCNT: 60, VRFY: 60, MTCH: 60, ADOPT: 70,
     Total: 70, Tier: 70,
   };
   Object.keys(widths).forEach((col) => {
@@ -81,14 +81,14 @@ function styleSheet() {
     .setFontFamily("Inter");
 
   // ── 4. Wrap long-text columns ────────────────────────────────────
-  ["Source", "Who", "TrustSignals", "KeyData"].forEach((col) => {
+  ["Source", "Who", "KeyData"].forEach((col) => {
     if (colIdx[col]) {
       sheet.getRange(2, colIdx[col], lastRow - 1, 1).setWrap(true);
     }
   });
 
   // ── 5. Center-align numeric / short categorical columns ──────────
-  ["ID", "Year", "AUTH", "SPEC", "INDP", "VRFY", "ADOPT", "Total", "Tier", "Type", "Discipline"].forEach((col) => {
+  ["ID", "Year", "AUTH", "SPEC", "INDP", "RCNT", "VRFY", "MTCH", "ADOPT", "Total", "Tier", "Type", "Discipline"].forEach((col) => {
     if (colIdx[col]) {
       sheet.getRange(2, colIdx[col], lastRow - 1, 1).setHorizontalAlignment("center");
     }
@@ -117,7 +117,7 @@ function styleSheet() {
   }
 
   // 1–5 score heatmap
-  ["AUTH", "SPEC", "INDP", "VRFY", "ADOPT"].forEach((col) => {
+  ["AUTH", "SPEC", "INDP", "RCNT", "VRFY", "MTCH", "ADOPT"].forEach((col) => {
     if (colIdx[col]) {
       const r = sheet.getRange(2, colIdx[col], lastRow - 1, 1);
       rules.push(
@@ -130,14 +130,14 @@ function styleSheet() {
     }
   });
 
-  // Total heatmap (max 25 now — calibrated to actual distribution)
+  // Total heatmap (max 35 with all 7 dims; calibrated to v3 distribution 23-31)
   if (colIdx.Total) {
     const r = sheet.getRange(2, colIdx.Total, lastRow - 1, 1);
     rules.push(
       SpreadsheetApp.newConditionalFormatRule()
-        .setGradientMinpointWithValue("#fecaca", SpreadsheetApp.InterpolationType.NUMBER, "10")
-        .setGradientMidpointWithValue("#fef08a", SpreadsheetApp.InterpolationType.NUMBER, "17")
-        .setGradientMaxpointWithValue("#86efac", SpreadsheetApp.InterpolationType.NUMBER, "23")
+        .setGradientMinpointWithValue("#fecaca", SpreadsheetApp.InterpolationType.NUMBER, "23")
+        .setGradientMidpointWithValue("#fef08a", SpreadsheetApp.InterpolationType.NUMBER, "27")
+        .setGradientMaxpointWithValue("#86efac", SpreadsheetApp.InterpolationType.NUMBER, "31")
         .setRanges([r]).build()
     );
     sheet.getRange(2, colIdx.Total, lastRow - 1, 1).setFontWeight("bold");
@@ -176,8 +176,7 @@ function styleSheet() {
     ["ID", "Mã định danh nguồn (R001, R002…)"],
     ["Source", "Tên bài viết / repo / khóa học / podcast"],
     ["Who", "Tác giả + vai trò (định dạng \"Tên · Vai trò\")"],
-    ["TrustSignals", "1–3 bằng chứng cụ thể về độ tin cậy"],
-    ["Type", "PRIMARY · VENDOR-* · INDUSTRY-PUB · AGENCY-CASE · PRACTITIONER · OPEN-SOURCE · PODCAST · COURSE"],
+    ["Type", "6 nhóm: PRIMARY (Anthropic) · VENDOR (bán công cụ) · MEDIA (báo/podcast/khóa học) · PRACTITIONER (cá nhân) · OPEN-SOURCE (GitHub) · AGENCY (case study agency)"],
     ["Discipline", "SEO · GADS · META · BRAND · ANALYTICS · MOPS · CONTENT · CROSS"],
     ["Year", "Năm xuất bản"],
     ["URL", "Đường dẫn nguồn gốc"],
@@ -185,10 +184,12 @@ function styleSheet() {
     ["AUTH", "Uy tín (1–5). 5=Anthropic/báo lớn. 4=agency lâu năm. 3=cá nhân tên thật. 2=handle GitHub. 1=ẩn danh."],
     ["SPEC", "Cụ thể (1–5). 5=số liệu+phương pháp. 1=mơ hồ."],
     ["INDP", "Độc lập (1–5). 5=không lợi ích. 2=vendor kế cận. 1=Anthropic."],
+    ["RCNT", "Mới (1–5). 5=2026. 4=cuối 2025. 1=≤2024."],
     ["VRFY", "Kiểm chứng (1–5). 5=mã nguồn mở/dữ liệu công khai. 1=giai thoại."],
+    ["MTCH", "Phù hợp SEONGON (1–5). 5=SEO/Google Ads/FB Ads/Branding. 4=cross-cutting. 1=không liên quan."],
     ["ADOPT", "Phổ biến (1–5). 5=3000+ stars. 4=200–2999. 3=50–199. 2=<50. 1=mới."],
-    ["Total", "Tổng (max 25) = AUTH+SPEC+INDP+VRFY+ADOPT"],
-    ["Tier", "S ≥ 21 · A 19–20 · B 15–18 · C ≤ 14"],
+    ["Total", "Tổng (max 35) = AUTH+SPEC+INDP+RCNT+VRFY+MTCH+ADOPT"],
+    ["Tier", "S ≥ 31 (top ~9%) · A 28–30 · B 24–27 · C ≤ 23"],
   ];
 
   const guideStartCol = lastCol + 2; // Leave one empty column between data and guide
