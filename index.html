@@ -93,6 +93,8 @@
     @media (min-width: 768px) { .panel { padding: 28px; } }
     .grid-2 { display: grid; gap: 24px; grid-template-columns: 1fr; }
     @media (min-width: 768px) { .grid-2 { grid-template-columns: 5fr 7fr; } }
+    .grid-3 { display: grid; gap: 24px; grid-template-columns: 1fr; }
+    @media (min-width: 768px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
 
     .chart-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 16px 16px 12px; }
     @media (min-width: 768px) { .chart-card { padding: 24px 24px 16px; } }
@@ -226,6 +228,7 @@
         <a href="#adoption">Adoption</a>
         <a href="#pilot">Pilot</a>
         <a href="#framework">Framework</a>
+        <a href="#practices">Practices</a>
         <a href="#references">Refs</a>
       </div>
     </div>
@@ -608,6 +611,45 @@
           <a href="https://docs.google.com/spreadsheets/d/1atysKbfsTNNPMUkONAXFjgLp8RX0OmFxVcjf5g-9_sk/edit" target="_blank" rel="noreferrer" class="accent" style="margin-left: 6px;">SEONGON — Claude Code Source Assessment (v3) →</a>
         </p>
         <p style="margin-top: 8px; font-size: 0.85rem; color: var(--text-3);">Apply <code>scripts/style-google-sheet.gs</code> from the repo for color-coded heatmaps, frozen header, and a Vietnamese side-legend explaining each column. Local CSV viewer (<code>bun scripts/csv-viewer.ts</code>) auto-reloads on edit.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="practices" class="alt">
+    <div class="wrap">
+      <div class="row between">
+        <h2>Best-practice playbook — adoption guides for SEONGON</h2>
+        <span class="muted">Vietnamese · 3 deep-dives · synthesis of Anthropic docs + practitioner essays</span>
+      </div>
+      <p class="lede">Three companion documents written for the rollout team. Each answers one question every tier (CLI / Cowork / Claude.ai) faces. Sourced from Anthropic engineering, practitioner essays (Addy Osmani, Martin Fowler, Anthropic Engineering blog), and four Vietnamese practitioner voices (vietnamlab.vn, AZDIGI, ongboit.com, A Realistic Dreamer).</p>
+
+      <div class="grid-3" style="margin-top: 32px;">
+        <a href="https://github.com/nhhoang4075/claude-code-research/blob/main/best-practices/01-performance.md" target="_blank" rel="noreferrer" class="panel" style="text-decoration: none; color: inherit;">
+          <div class="eyebrow">01 · Hiệu suất</div>
+          <div style="margin-top: 8px; font-weight: 700; font-size: 1.05rem;">Tối ưu output chất lượng</div>
+          <p class="small" style="margin-top: 10px; color: var(--text-2); line-height: 1.55;">Model selection (Sonnet default, Opus escalate, Haiku batch), plan mode, subagent delegation, parallel tool calls, TDD verification loop, custom skills, CLAUDE.md hierarchy, IDE integration, hooks, MCP servers. 11 patterns cho marketing task.</p>
+          <div style="margin-top: 12px; font-size: 0.85rem; color: var(--text-3);">→ <span class="accent">best-practices/01-performance.md</span></div>
+        </a>
+
+        <a href="https://github.com/nhhoang4075/claude-code-research/blob/main/best-practices/02-cost-optimization.md" target="_blank" rel="noreferrer" class="panel" style="text-decoration: none; color: inherit;">
+          <div class="eyebrow">02 · Chi phí</div>
+          <div style="margin-top: 8px; font-weight: 700; font-size: 1.05rem;">Cost optimization khi scale agency</div>
+          <p class="small" style="margin-top: 10px; color: var(--text-2); line-height: 1.55;">Cache 5-min TTL (silent regression 2026-03), 80/10/10 model mix, /compact vs /clear, subagent isolation, plan-first ROI, Pro/Max/API break-even, token budgeting, Read offset/limit, Edit vs Write. Mục tiêu: $50-150/người/tháng cho power user.</p>
+          <div style="margin-top: 12px; font-size: 0.85rem; color: var(--text-3);">→ <span class="accent">best-practices/02-cost-optimization.md</span></div>
+        </a>
+
+        <a href="https://github.com/nhhoang4075/claude-code-research/blob/main/best-practices/03-personal-development.md" target="_blank" rel="noreferrer" class="panel" style="text-decoration: none; color: inherit;">
+          <div class="eyebrow">03 · Phát triển cá nhân</div>
+          <div style="margin-top: 8px; font-weight: 700; font-size: 1.05rem;">Tư duy & kiến thức cho non-developer</div>
+          <p class="small" style="margin-top: 10px; color: var(--text-2); line-height: 1.55;">Doing → directing, đọc code/output thành core skill, trust-but-verify, skill atrophy, spec-first thinking, blast-radius mindset, override khi Claude bịa số liệu SEO, learning loop, lộ trình 4 tuần onboarding marketer, anti-patterns. 10 mindset shifts.</p>
+          <div style="margin-top: 12px; font-size: 0.85rem; color: var(--text-3);">→ <span class="accent">best-practices/03-personal-development.md</span></div>
+        </a>
+      </div>
+
+      <div class="panel" style="margin-top: 24px;">
+        <p style="margin: 0; font-size: 0.95rem;">
+          <strong>5 takeaway nếu chỉ đọc 5 phút</strong>: (1) mặc định Sonnet 4.6, escalate Opus 4.7 cho việc khó, drop Haiku 4.5 cho batch · (2) plan trước task lớn, 2K token plan cứu 50K token sai hướng · (3) cache TTL 5 phút — đừng để session idle quá lâu · (4) đọc diff/output, đừng accept mù — đặc biệt với marketer · (5) kỹ năng cốt lõi mới = viết spec/brief tốt + đọc output Claude tạo, không phải gõ code.
+        </p>
       </div>
     </div>
   </section>

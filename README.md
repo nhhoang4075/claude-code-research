@@ -20,6 +20,10 @@ Compiled 2026-05-03. Evidence base for whether/how SEONGON should adopt Claude C
 **Foundational evidence:**
 - **[08-cross-cutting-evidence.md](08-cross-cutting-evidence.md)** — Anthropic's own teams report, Economic Index data, demand signals
 
+**Tool ecosystem & best practices (Vietnamese):**
+- **[agricidaniel-ecosystem/](agricidaniel-ecosystem/)** — deep-dive on AgriciDaniel's marketing-related claude-* tools (claude-seo, claude-ads, claude-blog, claude-email, claude-shorts, etc.) using WHAT/SO WHAT/NOW WHAT framework
+- **[best-practices/](best-practices/)** — adoption playbook in Vietnamese: performance optimization, cost optimization, personal-development mindset shifts for non-developers
+
 **Reference:**
 - **[data/assessment-framework.md](data/assessment-framework.md)** — 7-dimension grading rubric (Authority, Specificity, Independence, Recency, Verifiability, Match, Impact) plus identity columns (Author, Role, TrustSignals)
 - **[data/source-assessment.csv](data/source-assessment.csv)** — 40 sources scored, spreadsheet-ready (open in Excel/Numbers/Sheets)
