@@ -97,44 +97,6 @@
       <span class="eyebrow">02 · Chi phí</span>
       <h2 style="margin-top: 12px;">4 hành vi user — <span class="hl hl-yellow">tối ưu token</span></h2>
 
-      <div class="callout warn" style="margin-top: 32px;">
-        <div class="label">⚠ Cảnh báo lớn nhất 2026</div>
-        <p><strong>Cache TTL 5 phút mặc định</strong> (1h khi dùng option extended). Cache write 1.25× input · cache read 0.1× input — reuse cache <strong>rẻ hơn 90%</strong>. Idle &gt; 5 phút = cache chết.</p>
-        <p style="margin-top: 8px; font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--muted);">platform.claude.com/docs/en/build-with-claude/prompt-caching</p>
-      </div>
-
-      <div class="grid-2" style="margin-top: 32px;">
-        <div class="brutal">
-          <h3>80/10/10 model mix</h3>
-          <svg class="svg-fluid" viewBox="0 0 460 200" preserveAspectRatio="xMidYMid meet" style="margin-top: 20px;">
-            <rect x="20" y="60" width="320" height="44" fill="#7c3aed" stroke="#18181b" stroke-width="2.5"/>
-            <rect x="340" y="60" width="40" height="44" fill="#b91c1c" stroke="#18181b" stroke-width="2.5"/>
-            <rect x="380" y="60" width="40" height="44" fill="#059669" stroke="#18181b" stroke-width="2.5"/>
-            <text x="180" y="87" text-anchor="middle" font-size="15" font-weight="800" fill="white">80% Sonnet</text>
-            <text x="360" y="87" text-anchor="middle" font-size="12" font-weight="800" fill="white">10%</text>
-            <text x="400" y="87" text-anchor="middle" font-size="12" font-weight="800" fill="white">10%</text>
-            <text x="180" y="40" text-anchor="middle" font-size="11" fill="#18181b" font-weight="600">DEFAULT</text>
-            <text x="360" y="40" text-anchor="middle" font-size="11" fill="#b91c1c" font-weight="800">Opus</text>
-            <text x="400" y="40" text-anchor="middle" font-size="11" fill="#059669" font-weight="800">Haiku</text>
-            <text x="220" y="150" text-anchor="middle" font-size="14" fill="#18181b" font-weight="600">Sonnet <tspan font-weight="800" fill="#7c3aed">5× rẻ</tspan> output, ~1pt SWE-bench gap</text>
-            <text x="220" y="172" text-anchor="middle" font-size="11" fill="#71717a">Ronacher (Flask creator) ưu tiên Sonnet hơn Opus</text>
-          </svg>
-        </div>
-        <div class="brutal">
-          <h3>Cache warm vs cold · 100K tokens</h3>
-          <svg class="svg-fluid" viewBox="0 0 460 200" preserveAspectRatio="xMidYMid meet" style="margin-top: 20px;">
-            <text x="20" y="40" font-size="13" fill="#18181b" font-weight="700">Warm · cache read 0.1×</text>
-            <rect x="20" y="50" width="60" height="36" fill="#16a34a" stroke="#18181b" stroke-width="2.5"/>
-            <text x="50" y="74" text-anchor="middle" font-size="14" font-weight="800" fill="white">$0.03</text>
-
-            <text x="20" y="120" font-size="13" fill="#18181b" font-weight="700">Cold · full input rate</text>
-            <rect x="20" y="130" width="220" height="36" fill="#b91c1c" stroke="#18181b" stroke-width="2.5"/>
-            <text x="130" y="154" text-anchor="middle" font-size="14" font-weight="800" fill="white">$0.30</text>
-            <text x="252" y="154" font-size="12" fill="#b91c1c" font-weight="800">10× chênh lệch</text>
-          </svg>
-        </div>
-      </div>
-
       <h2 style="margin-top: 56px;">4 hành vi user</h2>
       <div class="grid-2" style="margin-top: 24px;">
 
