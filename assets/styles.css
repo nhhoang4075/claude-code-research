@@ -306,7 +306,21 @@ section.dark .eyebrow { color: var(--muted-2); }
 .pattern .evidence .strength.strong { background: var(--good-soft); color: var(--good); }
 .pattern .evidence .strength.medium { background: var(--warn-soft); color: var(--warn); }
 .pattern .evidence .strength.weak { background: var(--surface-2); color: var(--muted); }
-.pattern .evidence .num { color: var(--fg); font-weight: 700; }
+.pattern .evidence .num {
+  /* full reset — must override .pattern .num block badge */
+  display: inline;
+  width: auto;
+  height: auto;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--fg);
+  font-weight: 700;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0;
+  flex-shrink: initial;
+}
 .pattern .evidence a {
   display: block;
   color: var(--primary);
