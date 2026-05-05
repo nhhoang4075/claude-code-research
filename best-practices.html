@@ -21,7 +21,7 @@
         <a href="#mindset">Tư duy</a>
         <a href="#counter">Counter-evidence</a>
         <a href="#numbers">Numbers</a>
-        <a href="people.html">People →</a>
+        <a href="people.html">People</a>
         <a href="index.html">← Main</a>
       </div>
     </div>
@@ -33,8 +33,8 @@
       <h1>23 hành vi dùng Claude Code <span class="hl">hiệu quả hơn</span></h1>
       <p class="lede">Chia thành 3 nhóm: hiệu suất, chi phí, và tư duy. Mỗi pattern có nguồn dẫn chứng cụ thể. Phần cuối có số liệu cho thấy AI không phải lúc nào cũng giúp ích — để bạn dùng đúng chỗ hơn.</p>
       <div class="cta-row">
-        <a href="#performance" class="btn primary">Hiệu suất →</a>
-        <a href="#cost" class="btn">Chi phí →</a>
+        <a href="#performance" class="btn primary">Hiệu suất</a>
+        <a href="#cost" class="btn">Chi phí</a>
         <a href="#counter" class="btn ghost">Khi AI không giúp được ↓</a>
       </div>
     </div>
@@ -59,7 +59,7 @@
       <!-- Pricing chart with SWE-bench overlay -->
       <div class="brutal" style="margin-top: 36px; padding: 28px;">
         <h3>Pricing + SWE-bench Verified · Anthropic published</h3>
-        <p class="muted small" style="margin-top: 4px;">Sonnet 5× rẻ hơn Opus output cho ~1pt SWE-bench gap → default Sonnet</p>
+        <p class="muted small" style="margin-top: 4px;">Sonnet 5× rẻ hơn Opus output cho ~1pt SWE-bench gap — default Sonnet</p>
         <svg class="svg-fluid" viewBox="0 0 940 320" preserveAspectRatio="xMidYMid meet" style="margin-top: 24px;">
           <g stroke="#e4e4e7"><line x1="120" x2="920" y1="40" y2="40"/><line x1="120" x2="920" y1="80" y2="80"/><line x1="120" x2="920" y1="120" y2="120"/><line x1="120" x2="920" y1="160" y2="160"/><line x1="120" x2="920" y1="200" y2="200"/><line x1="120" x2="920" y1="240" y2="240" stroke="#18181b" stroke-width="2"/></g>
           <g fill="#71717a" font-family="JetBrains Mono" font-size="11">
@@ -100,37 +100,37 @@
 
         <div class="pattern">
           <div class="head-row"><div class="num">01</div><div class="title">Chọn model đúng</div></div>
-          <div class="desc">Sonnet default · Opus escalate · Haiku batch.</div>
+          <div class="desc">Dùng Sonnet cho hầu hết công việc hàng ngày. Chuyển sang Opus khi task đòi hỏi phán đoán chiến lược phức tạp. Dùng Haiku khi cần xử lý hàng loạt với ngân sách thấp.</div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">02</div><div class="title">Plan trước task lớn</div></div>
-          <div class="desc">Shift+Tab. Tách exploration khỏi execution.</div>
+          <div class="desc">Trước khi Claude bắt đầu làm, nhấn Shift+Tab để vào plan mode và yêu cầu Claude trình bày kế hoạch trước. Đọc kỹ, sửa nếu cần, rồi mới xác nhận cho chạy.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">03</div><div class="title">Cho Claude verify</div></div>
-          <div class="desc">Test case · expected output · regex check · success criteria.</div>
+          <div class="head-row"><div class="num">03</div><div class="title">Cho Claude tự kiểm tra</div></div>
+          <div class="desc">Sau khi Claude hoàn thành, yêu cầu Claude kiểm tra kết quả theo tiêu chí cụ thể bạn đặt ra — ví dụ tiêu đề phải dưới 60 ký tự, link phải trỏ đúng trang. Claude sẽ phát hiện lỗi trước khi bạn cần duyệt.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">04</div><div class="title">Systemize bằng skill</div></div>
-          <div class="desc">Prompt chạy ≥3 lần → biến thành skill (slash command).</div>
+          <div class="head-row"><div class="num">04</div><div class="title">Biến prompt lặp thành lệnh</div></div>
+          <div class="desc">Khi bạn dùng cùng một đoạn prompt từ 3 lần trở lên, hãy lưu thành slash command — ví dụ /audit-seo hoặc /brief-content. Lần sau gõ lệnh ngắn thay vì viết lại từ đầu.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">05</div><div class="title">CLAUDE.md tốt</div></div>
-          <div class="desc">User · project · subdir level. &lt;30 dòng/file effective.</div>
+          <div class="head-row"><div class="num">05</div><div class="title">Cấu hình CLAUDE.md</div></div>
+          <div class="desc">Tạo file CLAUDE.md trong thư mục project để Claude hiểu ngữ cảnh ngay từ đầu mà không cần giải thích lại mỗi lần. Ghi rõ stack đang dùng, quy ước đặt tên, lệnh build và deploy. Giữ dưới 30 dòng.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">06</div><div class="title">Đọc diff trước accept</div></div>
-          <div class="desc">Junior "Ask before edits". Senior "Edit auto" cho task quen.</div>
+          <div class="head-row"><div class="num">06</div><div class="title">Đọc kỹ trước khi Accept</div></div>
+          <div class="desc">Trước khi nhấn Accept, đọc phần thay đổi Claude đề xuất. Nếu bạn chưa quen với loại task đó, bật chế độ Ask before edits để Claude xin phép trước mỗi thay đổi.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">07</div><div class="title">Prompt scope hẹp</div></div>
-          <div class="desc">"Đọc dòng 50-100", không "đọc cả file". Edit thay Write.</div>
+          <div class="head-row"><div class="num">07</div><div class="title">Yêu cầu cụ thể hơn</div></div>
+          <div class="desc">Chỉ định rõ phần Claude cần xem thay vì để Claude đọc toàn bộ file. Yêu cầu chỉnh sửa đoạn cụ thể thay vì viết lại từ đầu. Yêu cầu càng hẹp thì kết quả càng chính xác và chi phí càng thấp.</div>
         </div>
 
       </div>
@@ -150,8 +150,8 @@
 
       <div class="callout warn" style="margin-top: 32px;">
         <div class="label">⚠ Cảnh báo lớn nhất 2026</div>
-        <p><strong>Cache TTL 5 phút mặc định</strong> (1h khi dùng option extended). Cache write 1.25× input · cache read 0.1× input → reuse cache <strong>rẻ hơn 90%</strong>. Idle &gt; 5 phút = cache chết.</p>
-        <p style="margin-top: 8px; font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--muted);">→ platform.claude.com/docs/en/build-with-claude/prompt-caching</p>
+        <p><strong>Cache TTL 5 phút mặc định</strong> (1h khi dùng option extended). Cache write 1.25× input · cache read 0.1× input — reuse cache <strong>rẻ hơn 90%</strong>. Idle &gt; 5 phút = cache chết.</p>
+        <p style="margin-top: 8px; font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--muted);">platform.claude.com/docs/en/build-with-claude/prompt-caching</p>
       </div>
 
       <div class="grid-2" style="margin-top: 32px;">
@@ -190,33 +190,33 @@
       <div class="grid-3" style="margin-top: 24px;">
 
         <div class="pattern">
-          <div class="head-row"><div class="num">01</div><div class="title">Default Sonnet</div></div>
-          <div class="desc">Mặc định Sonnet. Opus chỉ khi thật cần. Haiku cho batch.</div>
+          <div class="head-row"><div class="num">01</div><div class="title">Mặc định Sonnet</div></div>
+          <div class="desc">Sonnet rẻ hơn Opus 5 lần với chất lượng gần tương đương. Chỉ chuyển sang Opus khi task thực sự phức tạp như phân tích chiến lược hoặc viết tài liệu chuyên sâu. Không cần Opus cho email, tóm tắt, hay code thông thường.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">02</div><div class="title">/clear vs /compact</div></div>
-          <div class="desc">Còn cache (idle &lt;5p) → /compact. Cache chết → /clear rẻ hơn.</div>
+          <div class="head-row"><div class="num">02</div><div class="title">Dọn conversation đúng lúc</div></div>
+          <div class="desc">Khi chuyển sang task hoàn toàn khác, gõ /clear để bắt đầu lại từ đầu, tránh Claude mất thời gian đọc lịch sử không liên quan. Dùng /compact khi muốn tiếp tục cùng task nhưng cần giải phóng bộ nhớ.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">03</div><div class="title">Plan-first ROI</div></div>
-          <div class="desc">Plan trước → tránh "code solves the wrong problem".</div>
+          <div class="head-row"><div class="num">03</div><div class="title">Luôn plan trước khi làm</div></div>
+          <div class="desc">Yêu cầu Claude trình bày kế hoạch trước khi thực hiện. Nếu Claude hiểu sai yêu cầu, bạn phát hiện ngay và sửa — thay vì phải làm lại từ đầu sau khi Claude đã hoàn thành sai hướng.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">04</div><div class="title">Subscription đúng vai trò</div></div>
-          <div class="desc">Pro $20 · Max 5× $100 · Max 20× $200 · API + cap.</div>
+          <div class="head-row"><div class="num">04</div><div class="title">Chọn gói phù hợp</div></div>
+          <div class="desc">Pro ($20/tháng) đủ dùng cho công việc nhẹ. Nếu bạn thường xuyên chạm giới hạn, nâng lên Max ($100 hoặc $200). Dùng API khi cần chạy tự động không có người theo dõi trực tiếp.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">05</div><div class="title">Token budget + abort</div></div>
-          <div class="desc">Nhỏ &lt;10K · Vừa 20-50K · Lớn 50-200K. Vượt 1.5× → abort.</div>
+          <div class="head-row"><div class="num">05</div><div class="title">Theo dõi mức tiêu thụ</div></div>
+          <div class="desc">Task đơn giản như viết email dùng dưới 10K token. Task phức tạp như phân tích codebase lớn có thể dùng đến 200K token. Nếu Claude đang chạy mà tiêu thụ nhiều hơn dự kiến, dừng lại và kiểm tra Claude có đang đi đúng hướng không.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">06</div><div class="title">Tránh waste vặt</div></div>
-          <div class="desc">Đừng đọc lại file. Đừng search redundant. Đừng idle session.</div>
+          <div class="head-row"><div class="num">06</div><div class="title">Tránh lãng phí không cần thiết</div></div>
+          <div class="desc">Đóng session khi xong việc. Khi cần Claude xem lại thông tin đã cung cấp, hãy trích dẫn thẳng thay vì để Claude tự tìm lại. Tránh để Claude đọc đi đọc lại cùng một file trong cùng conversation.</div>
         </div>
 
       </div>
@@ -249,53 +249,53 @@
       <div class="grid-2" style="margin-top: 32px;">
 
         <div class="pattern">
-          <div class="head-row"><div class="num">01</div><div class="title">Doing → Directing</div></div>
-          <div class="desc">30% spec + 50% review + 20% intervene. Ngừng cố làm typist.</div>
+          <div class="head-row"><div class="num">01</div><div class="title">Vai trò của bạn là giao việc</div></div>
+          <div class="desc">Dành nhiều thời gian hơn cho việc viết yêu cầu rõ ràng và kiểm tra kết quả, không phải nhập liệu từng bước cùng Claude. Người dùng Claude Code hiệu quả là người biết điều phối, không phải người gõ phím nhanh nhất.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">02</div><div class="title">Đọc code thành core skill</div></div>
-          <div class="desc">Test "narrate-back": kể lại được từng block làm gì → mới accept.</div>
+          <div class="head-row"><div class="num">02</div><div class="title">Hiểu trước khi chấp nhận</div></div>
+          <div class="desc">Trước khi nhấn Accept bất kỳ kết quả nào, hãy đọc và tự giải thích nó làm gì. Nếu bạn không giải thích được, hãy yêu cầu Claude giải thích từng phần trước khi áp dụng.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">03</div><div class="title">Trust-but-verify</div></div>
-          <div class="desc">70% problem (Osmani). Review output mệt hơn review work của con người.</div>
+          <div class="head-row"><div class="num">03</div><div class="title">Luôn kiểm tra trước khi gửi</div></div>
+          <div class="desc">Claude thường cho ra kết quả gần đúng nhưng không hoàn toàn chính xác, đặc biệt với số liệu, tên riêng và logic phức tạp. Luôn xác minh những phần có thể gây hậu quả trước khi gửi cho khách hàng hay đăng lên.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">04</div><div class="title">Skill atrophy mitigation</div></div>
-          <div class="desc">No-AI sprint định kỳ. Junior 6 tháng đầu hạn chế Claude cho fundamentals.</div>
+          <div class="head-row"><div class="num">04</div><div class="title">Giữ kỹ năng tự làm được</div></div>
+          <div class="desc">Thỉnh thoảng hoàn thành một task quen thuộc mà không dùng Claude, để giữ khả năng tự làm. Nếu bạn không thể làm việc gì đó mà không có Claude, đó là dấu hiệu cần luyện lại kỹ năng đó.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">05</div><div class="title">Spec-first thinking</div></div>
-          <div class="desc">Brief 500-1500 từ với constraint, ví dụ, anti-pattern. Brief &lt;200 từ chưa đủ.</div>
+          <div class="head-row"><div class="num">05</div><div class="title">Viết yêu cầu đủ rõ</div></div>
+          <div class="desc">Kết quả của Claude tốt hay xấu phụ thuộc vào mức độ rõ ràng của yêu cầu bạn đưa ra. Trước task quan trọng, viết rõ mục tiêu là gì, đối tượng là ai, những gì cần tránh, và một ví dụ về kết quả tốt.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">06</div><div class="title">Blast radius mindset</div></div>
-          <div class="desc">Không bao giờ Claude trực tiếp đụng prod. Staging → verify → apply.</div>
+          <div class="head-row"><div class="num">06</div><div class="title">Không để Claude chạm hệ thống thật</div></div>
+          <div class="desc">Không để Claude thực hiện thay đổi trực tiếp trên môi trường đang hoạt động — dù là database, tài khoản quảng cáo hay website đang chạy. Luôn kiểm tra kết quả trên môi trường test trước, sau đó mới áp dụng thật.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">07</div><div class="title">Override khi Claude bịa</div></div>
-          <div class="desc">Số liệu SEO phải trace về MCP source thực.</div>
+          <div class="head-row"><div class="num">07</div><div class="title">Xác minh số liệu trước khi dùng</div></div>
+          <div class="desc">Khi Claude đưa ra số liệu hoặc dẫn nguồn, hãy tìm và kiểm tra nguồn gốc thực tế. Claude đôi khi tạo ra số liệu nghe có vẻ hợp lý nhưng không có thật. Không gửi bất kỳ số liệu nào cho khách hàng mà chưa kiểm chứng.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">08</div><div class="title">Learning loop hàng ngày</div></div>
-          <div class="desc">Mentor Loop (Fowler): goal nhỏ → plan → check → reflect tradeoff.</div>
+          <div class="head-row"><div class="num">08</div><div class="title">Nhìn lại sau mỗi task</div></div>
+          <div class="desc">Sau mỗi task quan trọng, dành 5 phút để xem lại: Claude đã làm đúng chỗ nào, sai chỗ nào, và bạn có thể viết yêu cầu rõ hơn lần sau như thế nào. Cải thiện dần từng ngày thay vì chỉ dùng mà không học.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">09</div><div class="title">Non-dev cần học gì</div></div>
-          <div class="desc">Terminal · git · JSON/YAML · Markdown · prompt design. KHÔNG cần Python/JS.</div>
+          <div class="head-row"><div class="num">09</div><div class="title">Không cần biết lập trình</div></div>
+          <div class="desc">Bạn không cần biết code để dùng Claude Code hiệu quả. Nhưng nên biết đọc hiểu terminal output, hiểu cấu trúc file JSON và YAML cơ bản, và dùng được Markdown. Kỹ năng quan trọng nhất vẫn là viết yêu cầu rõ ràng.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">10</div><div class="title">Không thành button-pusher</div></div>
-          <div class="desc">Treat Claude như "OS for knowledge work", không "magic answer machine".</div>
+          <div class="head-row"><div class="num">10</div><div class="title">Dùng để suy nghĩ tốt hơn</div></div>
+          <div class="desc">Dùng Claude như công cụ đòi hỏi bạn suy nghĩ, không phải để thay thế suy nghĩ. Nếu bạn chỉ nhấn nút mà không hiểu kết quả, bạn đang tích lũy rủi ro. Khi Claude sai, bạn sẽ không phát hiện được.</div>
         </div>
       </div>
 
@@ -304,7 +304,7 @@
         <div class="brutal" style="background: var(--warn-soft);"><div class="eyebrow" style="color: var(--warn);">Bước 1</div><h3 style="margin-top: 6px; color: var(--danger);">Over-trust</h3><p class="small" style="margin-top: 6px;">Accept vì "có vẻ đúng".</p></div>
         <div class="brutal" style="background: var(--warn-soft);"><div class="eyebrow" style="color: var(--warn);">Bước 2</div><h3 style="margin-top: 6px; color: var(--danger);">Learned helplessness</h3><p class="small" style="margin-top: 6px;">Copy-paste error vào Claude.</p></div>
         <div class="brutal" style="background: var(--warn-soft);"><div class="eyebrow" style="color: var(--warn);">Bước 3</div><h3 style="margin-top: 6px; color: var(--danger);">Prompt-hoarding</h3><p class="small" style="margin-top: 6px;">500 prompt thay vì xây judgment.</p></div>
-        <div class="brutal" style="background: var(--danger-soft);"><div class="eyebrow" style="color: var(--danger);">Bước 4</div><h3 style="margin-top: 6px; color: var(--danger);">Button-pusher</h3><p class="small" style="margin-top: 6px;">Claude xuống → tê liệt.</p></div>
+        <div class="brutal" style="background: var(--danger-soft);"><div class="eyebrow" style="color: var(--danger);">Bước 4</div><h3 style="margin-top: 6px; color: var(--danger);">Button-pusher</h3><p class="small" style="margin-top: 6px;">Claude xuống — tê liệt.</p></div>
       </div>
 
       <h2 style="margin-top: 56px;">Onboarding 4 tuần — non-dev marketer</h2>
@@ -317,9 +317,9 @@
 
       <h2 style="margin-top: 56px;">5 câu tự kiểm tra hàng tuần</h2>
       <ul class="checklist" style="margin-top: 20px;">
-        <li><strong>Narrate-back được output Claude?</strong> Không → button-push.</li>
-        <li><strong>Verify ≥1 con số / fact / citation?</strong> Không → đặt cược danh tiếng client.</li>
-        <li><strong>Làm 1 task without Claude?</strong> Không → cẩn thận skill atrophy.</li>
+        <li><strong>Narrate-back được output Claude?</strong> Không — button-push.</li>
+        <li><strong>Verify ≥1 con số / fact / citation?</strong> Không — đặt cược danh tiếng client.</li>
+        <li><strong>Làm 1 task without Claude?</strong> Không — cẩn thận skill atrophy.</li>
         <li><strong>Cải thiện 1 spec/brief?</strong> Brief code-quality nâng dần.</li>
         <li><strong>Review 1 hành động blast-radius?</strong> Một câu "không" = một rủi ro thực.</li>
       </ul>
@@ -354,7 +354,7 @@
         <div class="brutal" style="background: white; color: var(--fg);">
           <span class="eyebrow" style="color: var(--danger);">Adoption ≠ satisfaction</span>
           <h3 style="margin-top: 8px;">SO 2025 — adoption up, trust down</h3>
-          <p style="margin-top: 12px; font-size: 14px; line-height: 1.6;">Stack Overflow 2025: AI tool adoption <strong>76% → 84%</strong>. Cùng năm trust drop <strong style="color: var(--danger);">40% → 29%</strong>. <strong>3% "high trust"</strong>. <strong>46% actively distrust</strong>. <strong>66%</strong> report "almost right but not quite". <strong>45%</strong> lose significant time debugging AI code.</p>
+          <p style="margin-top: 12px; font-size: 14px; line-height: 1.6;">Stack Overflow 2025: AI tool adoption <strong>76% — 84%</strong>. Cùng năm trust drop <strong style="color: var(--danger);">40% — 29%</strong>. <strong>3% "high trust"</strong>. <strong>46% actively distrust</strong>. <strong>66%</strong> report "almost right but not quite". <strong>45%</strong> lose significant time debugging AI code.</p>
           <p style="margin-top: 8px; font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--muted);">survey.stackoverflow.co/2025/ai/</p>
         </div>
 
@@ -369,7 +369,7 @@
 
       <div class="callout" style="margin-top: 32px; background: var(--primary); color: white; border-color: var(--fg);">
         <div class="label" style="color: white;">⚑ Implication</div>
-        <p style="color: white;">Adoption Claude Code <strong>không tự động → productivity gain</strong>. Counter-evidence cho thấy cần kèm: verification loop (P3), review discipline (P6), skill atrophy mitigation (M4), blast radius guardrail (M6). Skip những điều này → đi vào "vibe coding hangover".</p>
+        <p style="color: white;">Adoption Claude Code <strong>không tự động — productivity gain</strong>. Counter-evidence cho thấy cần kèm: verification loop (P3), review discipline (P6), skill atrophy mitigation (M4), blast radius guardrail (M6). Skip những điều này — đi vào "vibe coding hangover".</p>
       </div>
     </div>
   </section>
@@ -399,7 +399,7 @@
             <tr><td><strong>Read tool token limit</strong></td><td><span class="num">25,000 tokens/read</span></td><td>github.com/anthropics/claude-code #14888</td><td><span class="chip good">Strong</span></td></tr>
             <tr><td><strong>Cache cost reduction</strong> reuse vs cold</td><td><span class="num">90% cheaper</span></td><td>platform.claude.com/.../prompt-caching</td><td><span class="chip good">Strong</span></td></tr>
             <tr><td><strong>Hooks pre-filter</strong> context reduction</td><td><span class="num">2-3 orders of magnitude</span></td><td>code.claude.com/docs/en/costs</td><td><span class="chip good">Strong</span></td></tr>
-            <tr><td><strong>Karpathy shift</strong> (Jan 2026)</td><td><span class="num">80% manual → 80% agent</span> in weeks</td><td>x.com/karpathy/status/2015883857489522876</td><td><span class="chip good">Strong</span></td></tr>
+            <tr><td><strong>Karpathy shift</strong> (Jan 2026)</td><td><span class="num">80% manual — 80% agent</span> in weeks</td><td>x.com/karpathy/status/2015883857489522876</td><td><span class="chip good">Strong</span></td></tr>
             <tr><td><strong>Garry Tan gstack</strong></td><td><span class="num">66K stars</span> trong vài tuần</td><td>github.com/garrytan/gstack</td><td><span class="chip warn">Medium</span></td></tr>
             <tr><td><strong>Harness</strong> · AI-gen delivery stability</td><td><span class="num">−7.2%</span></td><td>atomicrobot.com (verify primary)</td><td><span class="chip warn">Medium</span></td></tr>
           </tbody>
@@ -437,8 +437,8 @@
         <li><a href="https://anthropic.com/research/anthropic-economic-index-january-2026-report" target="_blank">anthropic.com/research/anthropic-economic-index-january-2026-report</a><span class="meta">STRONG · Coding 35% conversations / 44% API · heavy-tail</span></li>
         <li><a href="https://www-cdn.anthropic.com/58284b19e702b49db9302d5b6f135ad8871e7658.pdf" target="_blank">anthropic.com/.../How Anthropic Teams Use Claude Code (PDF)</a><span class="meta">STRONG · "lawyers built phone trees, marketers ad variations, data scientists viz without JS"</span></li>
         <li><a href="https://x.com/bcherny/status/2007179861115511237" target="_blank">x.com/bcherny/status/2007179861115511237</a><span class="meta">STRONG · Cherny "feedback loop 2-3× quality" verbatim</span></li>
-        <li><a href="https://x.com/karpathy/status/2015883857489522876" target="_blank">x.com/karpathy/status/2015883857489522876</a><span class="meta">STRONG · Karpathy "80% manual → 80% agent... biggest change in 2 decades"</span></li>
-        <li><a href="https://addyo.substack.com/p/the-70-problem-hard-truths-about" target="_blank">addyo.substack.com/p/the-70-problem-hard-truths-about</a><span class="meta">STRONG · Osmani 70% problem · favorable views 70→60% in 2 years</span></li>
+        <li><a href="https://x.com/karpathy/status/2015883857489522876" target="_blank">x.com/karpathy/status/2015883857489522876</a><span class="meta">STRONG · Karpathy "80% manual — 80% agent... biggest change in 2 decades"</span></li>
+        <li><a href="https://addyo.substack.com/p/the-70-problem-hard-truths-about" target="_blank">addyo.substack.com/p/the-70-problem-hard-truths-about</a><span class="meta">STRONG · Osmani 70% problem · favorable views 7060% in 2 years</span></li>
         <li><a href="https://martinfowler.com/articles/llm-learning-loop.html" target="_blank">martinfowler.com/articles/llm-learning-loop.html</a><span class="meta">STRONG · Fowler "ultimate Maintenance Cliff" · don't shortcut learning loop</span></li>
         <li><a href="https://blog.railway.com/p/your-ai-wants-to-nuke-your-database" target="_blank">blog.railway.com/p/your-ai-wants-to-nuke-your-database</a><span class="meta">STRONG · PocketOS: prod DB deleted in 9 seconds, backups gone</span></li>
         <li><a href="https://lucumr.pocoo.org/2025/06/12/agentic-coding/" target="_blank">lucumr.pocoo.org/2025/06/12/agentic-coding</a><span class="meta">STRONG · Ronacher: "exclusively use Sonnet... prefer over Opus"</span></li>
@@ -473,7 +473,7 @@
           <h4>Other</h4>
           <ul>
             <li><a href="index.html">Main landing</a></li>
-            <li><a href="people.html">People research →</a></li>
+            <li><a href="people.html">People research</a></li>
             <li><a href="https://github.com/nhhoang4075/claude-code-research">Source repo</a></li>
           </ul>
         </div>
