@@ -44,7 +44,7 @@
     <div class="wrap">
       <div class="stat-grid cols-3">
         <div class="stat"><div class="stat-num violet">7</div><div class="stat-label"><strong>Hiệu suất</strong> · model · plan · verify · skill · CLAUDE.md · diff · prompt scope</div></div>
-        <div class="stat"><div class="stat-num violet">6</div><div class="stat-label"><strong>Chi phí</strong> · default Sonnet · /clear · plan-first · subscription · budget · waste</div></div>
+        <div class="stat"><div class="stat-num violet">4</div><div class="stat-label"><strong>Chi phí</strong> · chọn model · xóa context · theo dõi token · tránh đọc lại</div></div>
         <div class="stat"><div class="stat-num violet">4</div><div class="stat-label"><strong>Tư duy</strong> · giao việc · an toàn · nhìn lại · hiểu khái niệm</div></div>
       </div>
     </div>
@@ -146,7 +146,7 @@
   <section id="cost" class="white">
     <div class="wrap">
       <span class="eyebrow">02 · Chi phí</span>
-      <h2 style="margin-top: 12px;">6 hành vi user — scale agency mà <span class="hl hl-yellow">không bùng cost</span></h2>
+      <h2 style="margin-top: 12px;">4 hành vi user — <span class="hl hl-yellow">tối ưu token</span></h2>
 
       <div class="callout warn" style="margin-top: 32px;">
         <div class="label">⚠ Cảnh báo lớn nhất 2026</div>
@@ -186,56 +186,29 @@
         </div>
       </div>
 
-      <h2 style="margin-top: 56px;">6 hành vi user</h2>
-      <div class="grid-3" style="margin-top: 24px;">
+      <h2 style="margin-top: 56px;">4 hành vi user</h2>
+      <div class="grid-2" style="margin-top: 24px;">
 
         <div class="pattern">
-          <div class="head-row"><div class="num">01</div><div class="title">Mặc định Sonnet</div></div>
-          <div class="desc">Sonnet rẻ hơn Opus 5 lần với chất lượng gần tương đương. Chỉ chuyển sang Opus khi task thực sự phức tạp như phân tích chiến lược hoặc viết tài liệu chuyên sâu. Không cần Opus cho email, tóm tắt, hay code thông thường.</div>
-        </div>
-
-        <div class="pattern">
-          <div class="head-row"><div class="num">02</div><div class="title">Dọn conversation đúng lúc</div></div>
-          <div class="desc">Khi chuyển sang task hoàn toàn khác, gõ /clear để bắt đầu lại từ đầu, tránh Claude mất thời gian đọc lịch sử không liên quan. Dùng /compact khi muốn tiếp tục cùng task nhưng cần giải phóng bộ nhớ.</div>
+          <div class="head-row"><div class="num">01</div><div class="title">Chọn model phù hợp với task</div></div>
+          <div class="desc">Mỗi model tính phí theo token — Opus đắt hơn Sonnet 5 lần, Haiku rẻ nhất. Dùng Sonnet cho hầu hết công việc. Opus chỉ khi cần phán đoán phức tạp. Haiku khi xử lý hàng loạt. Chọn sai model là lãng phí token trực tiếp.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">03</div><div class="title">Luôn plan trước khi làm</div></div>
-          <div class="desc">Yêu cầu Claude trình bày kế hoạch trước khi thực hiện. Nếu Claude hiểu sai yêu cầu, bạn phát hiện ngay và sửa — thay vì phải làm lại từ đầu sau khi Claude đã hoàn thành sai hướng.</div>
+          <div class="head-row"><div class="num">02</div><div class="title">Xóa context không còn cần thiết</div></div>
+          <div class="desc">Mỗi lượt Claude đọc lại toàn bộ lịch sử conversation — context càng dài, token đầu vào càng nhiều. Khi chuyển sang task khác, gõ /clear để bắt đầu lại. Dùng /compact khi muốn giữ context nhưng rút gọn.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">04</div><div class="title">Chọn gói phù hợp</div></div>
-          <div class="desc">Pro ($20/tháng) đủ dùng cho công việc nhẹ. Nếu bạn thường xuyên chạm giới hạn, nâng lên Max ($100 hoặc $200). Dùng API khi cần chạy tự động không có người theo dõi trực tiếp.</div>
+          <div class="head-row"><div class="num">03</div><div class="title">Theo dõi token khi task chạy lâu</div></div>
+          <div class="desc">Task đơn giản như viết email dùng dưới 10K token. Task phức tạp như phân tích codebase lớn có thể dùng đến 200K token. Nếu Claude tiêu thụ nhiều hơn dự kiến, dừng lại và kiểm tra Claude có đang đi đúng hướng không.</div>
         </div>
 
         <div class="pattern">
-          <div class="head-row"><div class="num">05</div><div class="title">Theo dõi mức tiêu thụ</div></div>
-          <div class="desc">Task đơn giản như viết email dùng dưới 10K token. Task phức tạp như phân tích codebase lớn có thể dùng đến 200K token. Nếu Claude đang chạy mà tiêu thụ nhiều hơn dự kiến, dừng lại và kiểm tra Claude có đang đi đúng hướng không.</div>
+          <div class="head-row"><div class="num">04</div><div class="title">Không để Claude đọc lại thứ đã đọc</div></div>
+          <div class="desc">Đóng session khi xong việc. Khi cần Claude xem lại thông tin đã cung cấp, trích dẫn thẳng đoạn cụ thể thay vì để Claude tự tìm. Tránh để Claude đọc lại cùng một file nhiều lần trong cùng một conversation.</div>
         </div>
 
-        <div class="pattern">
-          <div class="head-row"><div class="num">06</div><div class="title">Tránh lãng phí không cần thiết</div></div>
-          <div class="desc">Đóng session khi xong việc. Khi cần Claude xem lại thông tin đã cung cấp, hãy trích dẫn thẳng thay vì để Claude tự tìm lại. Tránh để Claude đọc đi đọc lại cùng một file trong cùng conversation.</div>
-        </div>
-
-      </div>
-
-      <!-- Pricing reference -->
-      <div class="brutal" style="margin-top: 40px; padding: 0; overflow: hidden;">
-        <div style="padding: 20px 24px; border-bottom: 2px solid var(--fg);">
-          <h3>Subscription tiers · official pricing</h3>
-          <p class="muted small" style="margin-top: 4px;">Source: claude.com/pricing · Max 20× = "20× more usage per session vs Pro"</p>
-        </div>
-        <table>
-          <thead><tr><th>Plan</th><th>$/tháng</th><th>Note</th></tr></thead>
-          <tbody>
-            <tr><td><span class="chip violet">Pro</span></td><td><strong>$20</strong></td><td>Standard usage</td></tr>
-            <tr><td><span class="chip warn">Max 5×</span></td><td><strong>$100</strong></td><td>5× usage vs Pro</td></tr>
-            <tr><td><span class="chip danger">Max 20×</span></td><td><strong>$200</strong></td><td>20× usage vs Pro</td></tr>
-            <tr><td><span class="chip">API + cap</span></td><td><strong>variable</strong></td><td>Pay-per-token + spend cap</td></tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </section>
