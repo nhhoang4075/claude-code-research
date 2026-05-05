@@ -3,217 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Best-Practice Playbook — Claude Code cho SEONGON</title>
-  <meta name="description" content="Visual playbook tiếng Việt — 3 hướng best-practice khi rollout Claude Code: tối ưu hiệu suất, tối ưu chi phí, phát triển cá nhân (tư duy & kiến thức)." />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #1c1917; background: #fafaf9; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-    :root {
-      --accent: #b91c1c;
-      --accent-2: #dc2626;
-      --accent-soft: #fef2f2;
-      --good: #0f766e;
-      --good-soft: #ecfdf5;
-      --warn: #b45309;
-      --warn-soft: #fef3c7;
-      --bg: #fafaf9;
-      --bg-2: #f5f5f4;
-      --card: #ffffff;
-      --border: #e7e5e4;
-      --text: #1c1917;
-      --text-2: #44403c;
-      --text-3: #78716c;
-      --text-muted: #a8a29e;
-      --c-perf: #2563eb;
-      --c-cost: #16a34a;
-      --c-mind: #7c3aed;
-      --max: 1180px;
-      color-scheme: light;
-    }
-    a { color: inherit; }
-    p { margin: 0 0 0.75rem; }
-    h1, h2, h3 { margin: 0; letter-spacing: -0.01em; }
-    h1 { font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight: 600; line-height: 1.1; }
-    h2 { font-size: clamp(1.4rem, 2.5vw, 1.75rem); font-weight: 600; line-height: 1.2; }
-    h3 { font-size: 1.05rem; font-weight: 600; }
-    code { background: var(--bg-2); padding: 0 0.25rem; border-radius: 4px; font: 0.88em/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; }
-    .num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }
-
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
-    section { padding: 64px 0; border-bottom: 1px solid var(--border); }
-    @media (min-width: 768px) { section { padding: 80px 0; } }
-    .alt { background: var(--card); }
-    .alt-2 { background: var(--bg-2); }
-    .eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-3); }
-    .eyebrow.perf { color: var(--c-perf); }
-    .eyebrow.cost { color: var(--c-cost); }
-    .eyebrow.mind { color: var(--c-mind); }
-    .lede { font-size: 1.05rem; color: var(--text-2); max-width: 64ch; margin: 12px 0 0; }
-    .muted { color: var(--text-3); font-size: 0.9rem; }
-    .small { font-size: 0.85rem; }
-    .row { display: flex; flex-wrap: wrap; gap: 16px; }
-    .row.between { justify-content: space-between; align-items: baseline; }
-
-    .nav { position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
-    .nav .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; padding-bottom: 12px; }
-    .nav-brand { font-weight: 600; text-decoration: none; }
-    .nav-brand .x { color: var(--text-muted); }
-    .nav-links { display: none; gap: 22px; font-size: 14px; color: var(--text-2); }
-    .nav-links a { text-decoration: none; }
-    .nav-links a:hover { color: var(--text); }
-    @media (min-width: 768px) { .nav-links { display: flex; } }
-
-    .hero { background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%); padding: 80px 0 64px; }
-    @media (min-width: 768px) { .hero { padding: 100px 0 80px; } }
-    .hero h1 { max-width: 24ch; margin-top: 16px; }
-    .hero .lede { font-size: clamp(1.05rem, 1.5vw, 1.2rem); max-width: 70ch; margin-top: 24px; }
-
-    .stat-grid { display: grid; gap: 16px; margin-top: 40px; grid-template-columns: repeat(2, 1fr); }
-    @media (min-width: 768px) { .stat-grid { grid-template-columns: repeat(3, 1fr); } }
-    .stat { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px; border-left: 4px solid var(--accent); }
-    .stat.perf { border-left-color: var(--c-perf); }
-    .stat.cost { border-left-color: var(--c-cost); }
-    .stat.mind { border-left-color: var(--c-mind); }
-    .stat-num { font-size: clamp(1.35rem, 2.6vw, 1.85rem); font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
-    .stat-label { color: var(--text-3); font-size: 13px; margin-top: 8px; line-height: 1.4; }
-
-    .cta-row { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; font-size: 14px; }
-    .btn { display: inline-flex; align-items: center; padding: 10px 16px; border-radius: 8px; text-decoration: none; border: 1px solid var(--border); background: var(--card); transition: background-color .15s ease; }
-    .btn:hover { background: var(--bg-2); }
-    .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
-    .btn.primary:hover { background: var(--accent-2); }
-
-    .panel { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
-    @media (min-width: 768px) { .panel { padding: 28px; } }
-    .panel.bordered-perf { border-left: 4px solid var(--c-perf); }
-    .panel.bordered-cost { border-left: 4px solid var(--c-cost); }
-    .panel.bordered-mind { border-left: 4px solid var(--c-mind); }
-    .grid-3 { display: grid; gap: 18px; grid-template-columns: 1fr; }
-    @media (min-width: 700px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 1000px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
-    .grid-2 { display: grid; gap: 24px; grid-template-columns: 1fr; }
-    @media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
-
-    .pattern { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; transition: transform .15s ease, border-color .15s ease; height: 100%; display: flex; flex-direction: column; }
-    .pattern:hover { transform: translateY(-2px); }
-    .pattern.perf:hover { border-color: var(--c-perf); }
-    .pattern.cost:hover { border-color: var(--c-cost); }
-    .pattern.mind:hover { border-color: var(--c-mind); }
-    .pattern .num-circle { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #fff; flex-shrink: 0; }
-    .pattern.perf .num-circle { background: var(--c-perf); }
-    .pattern.cost .num-circle { background: var(--c-cost); }
-    .pattern.mind .num-circle { background: var(--c-mind); }
-    .pattern .head-row { display: flex; gap: 12px; align-items: center; }
-    .pattern .title { font-weight: 700; font-size: 0.98rem; line-height: 1.3; flex: 1; }
-    .pattern .desc { margin-top: 12px; font-size: 13.5px; color: var(--text-2); line-height: 1.55; flex: 1; }
-    .pattern .apply { margin-top: 12px; padding: 10px 12px; background: var(--bg-2); border-radius: 8px; font-size: 12px; color: var(--text); line-height: 1.5; }
-    .pattern .apply strong { color: var(--text); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 4px; }
-
-    table.cmp { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
-    table.cmp thead th { text-align: left; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); background: var(--bg-2); padding: 10px 14px; font-weight: 500; }
-    table.cmp tbody td { padding: 12px 14px; border-top: 1px solid var(--border); vertical-align: top; }
-    table.cmp tbody td.numcol { font-variant-numeric: tabular-nums; }
-    .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
-    .pill.haiku { background: #ecfdf5; color: #047857; }
-    .pill.sonnet { background: #eff6ff; color: #1d4ed8; }
-    .pill.opus { background: #fef2f2; color: #b91c1c; }
-    .pill.warn { background: var(--warn-soft); color: var(--warn); }
-    .pill.good { background: var(--good-soft); color: var(--good); }
-
-    .chart-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
-    .chart-title { font-weight: 600; }
-    .chart-sub { color: var(--text-3); font-size: 13px; margin-top: 2px; }
-    .svg-fluid { width: 100%; height: auto; display: block; }
-    .axis text { fill: var(--text-3); font-size: 11px; }
-    .axis line { stroke: var(--border); }
-    .grid line { stroke: var(--bg-2); }
-
-    .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--text-2); margin-top: 12px; }
-    .legend .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
-
-    /* warning callout */
-    .callout { border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
-    .callout.warn { background: var(--warn-soft); border-color: #fde68a; }
-    .callout.warn strong { color: var(--warn); }
-    .callout.good { background: var(--good-soft); border-color: #a7f3d0; }
-    .callout.good strong { color: var(--good); }
-    .callout .label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; }
-
-    /* role table */
-    .roletable { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-    .roletable .row-r { display: grid; grid-template-columns: 1fr 0.7fr 0.5fr; padding: 12px 16px; align-items: baseline; border-top: 1px solid var(--border); font-size: 0.92rem; }
-    .roletable .row-r:first-child { border-top: 0; background: var(--bg-2); font-weight: 600; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); }
-    .roletable .row-r .role { font-weight: 600; }
-    .roletable .row-r .plan { color: var(--text-2); }
-    .roletable .row-r .cost { font-variant-numeric: tabular-nums; color: var(--accent); font-weight: 600; }
-
-    /* mind anti-pattern flow */
-    .flow { display: grid; gap: 14px; margin-top: 24px; grid-template-columns: 1fr; }
-    @media (min-width: 768px) { .flow { grid-template-columns: repeat(4, 1fr); position: relative; } }
-    .flow .step { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; position: relative; }
-    .flow .step .order { font-size: 11px; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; }
-    .flow .step .name { font-weight: 700; margin-top: 6px; color: var(--accent); }
-    .flow .step .what { font-size: 12.5px; color: var(--text-2); margin-top: 6px; line-height: 1.5; }
-
-    /* mindset cards */
-    .mind-grid { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: 24px; }
-    @media (min-width: 700px) { .mind-grid { grid-template-columns: repeat(2, 1fr); } }
-    .mind-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; border-left: 4px solid var(--c-mind); }
-    .mind-card .badge { font-size: 11px; color: var(--c-mind); letter-spacing: 0.06em; font-weight: 600; text-transform: uppercase; }
-    .mind-card .h { font-weight: 700; margin-top: 4px; font-size: 1rem; line-height: 1.3; }
-    .mind-card .body { font-size: 13.5px; color: var(--text-2); margin-top: 8px; line-height: 1.55; }
-
-    /* checklist */
-    .checklist { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 8px; }
-    .checklist li { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; padding-left: 40px; position: relative; font-size: 13.5px; line-height: 1.5; color: var(--text-2); }
-    .checklist li::before { content: "✓"; position: absolute; left: 14px; top: 12px; width: 18px; height: 18px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
-    .checklist.done li::before { content: "✓"; background: var(--good-soft); color: var(--good); }
-    .checklist.warn li::before { content: "✕"; background: var(--accent-soft); color: var(--accent); }
-
-    /* VN voice cards */
-    .vn-grid { display: grid; gap: 14px; margin-top: 20px; grid-template-columns: 1fr; }
-    @media (min-width: 700px) { .vn-grid { grid-template-columns: repeat(2, 1fr); } }
-    .vn { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: inherit; transition: border-color .15s ease, transform .15s ease; }
-    .vn:hover { border-color: var(--c-mind); transform: translateY(-1px); }
-    .vn .flag { font-size: 11px; color: var(--c-mind); letter-spacing: 0.06em; font-weight: 700; text-transform: uppercase; }
-    .vn .name { font-weight: 700; }
-    .vn .role { font-size: 12.5px; color: var(--text-3); }
-    .vn .url { font-size: 11.5px; color: var(--c-mind); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; word-break: break-all; }
-
-    /* timeline / 4-week onboarding */
-    .timeline { display: grid; gap: 12px; margin-top: 16px; grid-template-columns: 1fr; }
-    @media (min-width: 768px) { .timeline { grid-template-columns: repeat(4, 1fr); } }
-    .week { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; border-top: 4px solid var(--c-mind); }
-    .week .w-num { font-size: 11px; color: var(--c-mind); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-    .week .w-title { font-weight: 700; margin-top: 4px; font-size: 0.95rem; }
-    .week .w-body { font-size: 12.5px; color: var(--text-2); margin-top: 6px; line-height: 1.5; }
-
-    .ref-list { list-style: none; padding: 0; margin: 24px 0 0; counter-reset: ref; display: grid; gap: 8px; }
-    .ref-list li { counter-increment: ref; padding: 10px 12px 10px 44px; position: relative; border: 1px solid var(--border); border-radius: 8px; background: var(--card); font-size: 0.9rem; }
-    .ref-list li::before { content: counter(ref); position: absolute; top: 10px; left: 12px; width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: 0.78rem; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; }
-    .ref-list a { color: var(--accent); word-break: break-all; }
-    .ref-list a:hover { text-decoration: underline; }
-    .ref-list .meta { display: block; color: var(--text-3); font-size: 0.78rem; margin-top: 2px; }
-
-    footer { background: var(--card); }
-    footer .wrap { padding-top: 36px; padding-bottom: 36px; }
-    footer .grid { display: grid; gap: 24px; grid-template-columns: 1fr; font-size: 0.9rem; color: var(--text-2); }
-    @media (min-width: 768px) { footer .grid { grid-template-columns: repeat(3, 1fr); } }
-    footer ul { padding: 0; margin: 8px 0 0; list-style: none; display: grid; gap: 4px; color: var(--text-3); }
-
-    @media print {
-      .nav, .no-print { display: none !important; }
-      section, .panel, .pattern, .mind-card, .vn, .week, .stat { break-inside: avoid; page-break-inside: avoid; }
-      body { background: #fff; }
-    }
-  </style>
+  <title>Best-Practice Playbook · Claude Code × SEONGON</title>
+  <meta name="description" content="Visual playbook tiếng Việt — 32 best-practice pattern chia 3 hướng: tối ưu hiệu suất (11), tối ưu chi phí (11), phát triển cá nhân tư duy & kiến thức (10)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
 
   <nav class="nav no-print">
     <div class="wrap">
-      <a href="#top" class="nav-brand">Best-Practice Playbook <span class="x">·</span> Claude Code × SEONGON</a>
+      <a href="#top" class="nav-brand">Best-Practice <span class="x">×</span> Claude Code · SEONGON</a>
       <div class="nav-links">
         <a href="#performance">Hiệu suất</a>
         <a href="#cost">Chi phí</a>
@@ -226,240 +27,124 @@
   </nav>
 
   <header id="top" class="hero">
-    <div class="wrap">
-      <div class="eyebrow">Adoption playbook · 2026-05-05 · Tiếng Việt</div>
-      <h1>Ba câu hỏi mọi tier rollout phải trả lời.</h1>
-      <p class="lede">Synthesis từ Anthropic engineering docs + practitioner essays (Addy Osmani, Martin Fowler, Sanity) + 4 Vietnamese voice (vietnamlab.vn, AZDIGI, ongboit.com, A Realistic Dreamer). 32 best-practice patterns chia 3 hướng. Mỗi pattern có pattern + cách làm + áp dụng SEONGON.</p>
-
-      <div class="stat-grid">
-        <div class="stat perf">
-          <div class="stat-num">11 patterns</div>
-          <div class="stat-label"><strong>Hiệu suất</strong> — model selection, plan mode, subagent, parallel tool, TDD, skills, CLAUDE.md, IDE, hooks, MCP, 2026 updates</div>
-        </div>
-        <div class="stat cost">
-          <div class="stat-num">11 patterns</div>
-          <div class="stat-label"><strong>Chi phí</strong> — cache 5-min TTL, 80/10/10 model mix, /compact vs /clear, plan-first ROI, Pro/Max/API break-even, token budget</div>
-        </div>
-        <div class="stat mind">
-          <div class="stat-num">10 shifts</div>
-          <div class="stat-label"><strong>Tư duy</strong> — directing > doing, đọc-code skill mới, trust-but-verify, skill atrophy, spec-first, blast-radius, 4-tuần onboarding marketer</div>
-        </div>
+    <div class="wrap-narrow">
+      <div class="eyebrow-pill">
+        <span class="dot"></span>
+        Adoption playbook · 2026-05-05 · Tiếng Việt
       </div>
+      <h1>Ba câu hỏi mọi tier <span class="hl">rollout phải trả lời.</span></h1>
+      <p class="lede">Synthesis từ Anthropic engineering docs + practitioner essay (Addy Osmani, Martin Fowler, Sanity) + 4 Vietnamese voice (vietnamlab.vn, AZDIGI, ongboit.com, A Realistic Dreamer). 32 best-practice pattern chia 3 hướng. Mỗi pattern có nguyên tắc + cách làm + áp dụng SEONGON.</p>
 
       <div class="cta-row">
         <a href="#performance" class="btn primary">Hiệu suất →</a>
         <a href="#cost" class="btn">Chi phí →</a>
-        <a href="#mindset" class="btn">Tư duy →</a>
-        <a href="https://github.com/nhhoang4075/claude-code-research/tree/main/best-practices" target="_blank" rel="noreferrer" class="btn">Repo →</a>
+        <a href="#mindset" class="btn ghost">Tư duy →</a>
       </div>
     </div>
   </header>
 
+  <section class="white">
+    <div class="wrap">
+      <div class="stat-grid cols-3">
+        <div class="stat">
+          <div class="stat-num violet">11 patterns</div>
+          <div class="stat-label"><strong>Hiệu suất</strong> — model selection, plan mode, subagent, parallel tool, TDD, skills, CLAUDE.md, IDE, hooks, MCP, 2026 updates</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num violet">11 patterns</div>
+          <div class="stat-label"><strong>Chi phí</strong> — cache 5-min TTL, 80/10/10 model mix, /compact vs /clear, plan-first ROI, Pro/Max/API break-even, token budget</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num violet">10 shifts</div>
+          <div class="stat-label"><strong>Tư duy</strong> — directing &gt; doing, đọc-code skill mới, trust-but-verify, skill atrophy, spec-first, blast-radius, 4-tuần onboarding</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════════════════════════════════════════════ PERFORMANCE -->
   <section id="performance">
     <div class="wrap">
-      <div class="eyebrow perf">01 · Hiệu suất</div>
-      <h2 style="margin-top: 8px;">Lấy output chất lượng cao nhất — không phải code nhanh hơn, mà suy nghĩ đúng hơn</h2>
-      <p class="lede">Output Claude Code tốt hay tệ phụ thuộc 80% vào pattern bạn dùng — không phải model. Default Sonnet 4.6 cho 80% việc, escalate Opus 4.7 khi cần lý luận sâu, Haiku 4.5 cho task cơ học.</p>
+      <span class="eyebrow">01 · Hiệu suất</span>
+      <h2 style="margin-top: 12px;">Output chất lượng cao nhất — không phải code nhanh hơn, <span class="hl">suy nghĩ đúng hơn</span></h2>
+      <p class="lede" style="margin-top: 16px;">Output Claude Code tốt hay tệ phụ thuộc 80% vào pattern bạn dùng — không phải model. Default Sonnet 4.6 cho 80% việc, escalate Opus 4.7 khi cần lý luận sâu, Haiku 4.5 cho task cơ học.</p>
 
-      <!-- Model comparison chart -->
-      <div class="chart-card" style="margin-top: 32px;">
-        <div class="row between">
-          <div>
-            <div class="chart-title">Pricing 3 model — per 1M tokens</div>
-            <div class="chart-sub">Tỷ lệ: Sonnet ≈ 3× Haiku · Opus ≈ 5× Haiku · 2026-Q1 pricing</div>
-          </div>
-        </div>
-        <div style="margin-top: 16px;">
-          <svg class="svg-fluid" viewBox="0 0 940 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Model pricing comparison chart">
-            <g class="grid">
-              <line x1="120" x2="920" y1="40" y2="40"/>
-              <line x1="120" x2="920" y1="80" y2="80"/>
-              <line x1="120" x2="920" y1="120" y2="120"/>
-              <line x1="120" x2="920" y1="160" y2="160"/>
-              <line x1="120" x2="920" y1="200" y2="200"/>
-              <line x1="120" x2="920" y1="240" y2="240" stroke="#a8a29e" stroke-width="1.5"/>
-            </g>
-            <g class="axis">
-              <text x="116" y="44" text-anchor="end">$25</text>
-              <text x="116" y="84" text-anchor="end">$20</text>
-              <text x="116" y="124" text-anchor="end">$15</text>
-              <text x="116" y="164" text-anchor="end">$10</text>
-              <text x="116" y="204" text-anchor="end">$5</text>
-              <text x="116" y="244" text-anchor="end">$0</text>
-              <text x="116" y="262" text-anchor="end" fill="#a8a29e" font-size="10">$/1M tok</text>
-            </g>
-
-            <!-- Haiku group: input $1, output $5 -->
-            <g>
-              <text x="220" y="278" text-anchor="middle" font-size="13" font-weight="600" fill="#1c1917">Haiku 4.5</text>
-              <text x="220" y="294" text-anchor="middle" font-size="11" fill="#a8a29e">batch tasks · mechanical</text>
-              <rect x="170" y="232" width="40" height="8" fill="#10b981" opacity="0.85" rx="2"/>
-              <text x="190" y="226" text-anchor="middle" font-size="11" font-weight="600" fill="#1c1917">$1</text>
-              <rect x="220" y="200" width="40" height="40" fill="#059669" opacity="0.85" rx="2"/>
-              <text x="240" y="194" text-anchor="middle" font-size="11" font-weight="600" fill="#1c1917">$5</text>
-            </g>
-
-            <!-- Sonnet group: input $3, output $15 -->
-            <g>
-              <text x="490" y="278" text-anchor="middle" font-size="13" font-weight="600" fill="#1d4ed8">Sonnet 4.6 ★ DEFAULT</text>
-              <text x="490" y="294" text-anchor="middle" font-size="11" fill="#a8a29e">daily driver · 80% việc</text>
-              <rect x="440" y="216" width="40" height="24" fill="#3b82f6" opacity="0.85" rx="2"/>
-              <text x="460" y="210" text-anchor="middle" font-size="11" font-weight="600" fill="#1c1917">$3</text>
-              <rect x="490" y="120" width="40" height="120" fill="#1d4ed8" opacity="0.85" rx="2"/>
-              <text x="510" y="114" text-anchor="middle" font-size="11" font-weight="600" fill="#1c1917">$15</text>
-            </g>
-
-            <!-- Opus group: input $5, output $25 -->
-            <g>
-              <text x="760" y="278" text-anchor="middle" font-size="13" font-weight="600" fill="#1c1917">Opus 4.7</text>
-              <text x="760" y="294" text-anchor="middle" font-size="11" fill="#a8a29e">escalate cho việc khó</text>
-              <rect x="710" y="200" width="40" height="40" fill="#dc2626" opacity="0.85" rx="2"/>
-              <text x="730" y="194" text-anchor="middle" font-size="11" font-weight="600" fill="#1c1917">$5</text>
-              <rect x="760" y="40" width="40" height="200" fill="#b91c1c" opacity="0.85" rx="2"/>
-              <text x="780" y="34" text-anchor="middle" font-size="11" font-weight="600" fill="#1c1917">$25</text>
-            </g>
-
-            <text x="170" y="22" font-size="11" fill="#a8a29e">input</text>
-            <text x="220" y="22" font-size="11" fill="#a8a29e">output</text>
-          </svg>
-        </div>
-        <div class="legend">
-          <span><i class="swatch" style="background: #10b981;"></i>Haiku — input</span>
-          <span><i class="swatch" style="background: #059669;"></i>Haiku — output</span>
-          <span><i class="swatch" style="background: #3b82f6;"></i>Sonnet — input</span>
-          <span><i class="swatch" style="background: #1d4ed8;"></i>Sonnet — output</span>
-          <span><i class="swatch" style="background: #dc2626;"></i>Opus — input</span>
-          <span><i class="swatch" style="background: #b91c1c;"></i>Opus — output</span>
-        </div>
-        <p style="margin-top: 14px; font-size: 13px; color: var(--text-3);"><strong>Caveat tokenizer Opus 4.7</strong>: Pricing per token không đổi nhưng tokenizer mới có thể generate ~30-35% nhiều token hơn cho cùng input. Cost thực có thể cao hơn pricing list 30-40%. Sonnet 4.6 vẫn là daily driver tốt nhất về ROI cho marketing task lặp lại.</p>
+      <!-- Model pricing chart -->
+      <div class="brutal" style="margin-top: 36px; padding: 28px;">
+        <h3>Pricing 3 model — per 1M tokens</h3>
+        <p class="muted small" style="margin-top: 4px;">Tỷ lệ: Sonnet ≈ 3× Haiku · Opus ≈ 5× Haiku · 2026-Q1 pricing</p>
+        <svg class="svg-fluid" viewBox="0 0 940 320" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Model pricing comparison" style="margin-top: 24px;">
+          <g stroke="#e4e4e7"><line x1="120" x2="920" y1="40" y2="40"/><line x1="120" x2="920" y1="80" y2="80"/><line x1="120" x2="920" y1="120" y2="120"/><line x1="120" x2="920" y1="160" y2="160"/><line x1="120" x2="920" y1="200" y2="200"/><line x1="120" x2="920" y1="240" y2="240" stroke="#18181b" stroke-width="2"/></g>
+          <g fill="#71717a" font-family="JetBrains Mono" font-size="11">
+            <text x="116" y="44" text-anchor="end">$25</text><text x="116" y="84" text-anchor="end">$20</text><text x="116" y="124" text-anchor="end">$15</text><text x="116" y="164" text-anchor="end">$10</text><text x="116" y="204" text-anchor="end">$5</text><text x="116" y="244" text-anchor="end">$0</text><text x="116" y="262" text-anchor="end" fill="#a1a1aa" font-size="10">$/1M</text>
+          </g>
+          <!-- Haiku -->
+          <g>
+            <text x="220" y="284" text-anchor="middle" font-size="14" font-weight="800" fill="#18181b">Haiku 4.5</text>
+            <text x="220" y="302" text-anchor="middle" font-size="11" fill="#71717a">batch · mechanical</text>
+            <rect x="170" y="232" width="40" height="8" fill="#10b981" stroke="#18181b" stroke-width="2"/>
+            <text x="190" y="226" text-anchor="middle" font-size="11" font-weight="800" fill="#18181b">$1</text>
+            <rect x="220" y="200" width="40" height="40" fill="#059669" stroke="#18181b" stroke-width="2"/>
+            <text x="240" y="194" text-anchor="middle" font-size="11" font-weight="800" fill="#18181b">$5</text>
+          </g>
+          <!-- Sonnet -->
+          <g>
+            <text x="490" y="284" text-anchor="middle" font-size="14" font-weight="800" fill="#7c3aed">Sonnet 4.6 ★ DEFAULT</text>
+            <text x="490" y="302" text-anchor="middle" font-size="11" fill="#71717a">daily driver · 80% việc</text>
+            <rect x="440" y="216" width="40" height="24" fill="#a78bfa" stroke="#18181b" stroke-width="2"/>
+            <text x="460" y="210" text-anchor="middle" font-size="11" font-weight="800" fill="#18181b">$3</text>
+            <rect x="490" y="120" width="40" height="120" fill="#7c3aed" stroke="#18181b" stroke-width="2"/>
+            <text x="510" y="114" text-anchor="middle" font-size="11" font-weight="800" fill="#18181b">$15</text>
+          </g>
+          <!-- Opus -->
+          <g>
+            <text x="760" y="284" text-anchor="middle" font-size="14" font-weight="800" fill="#18181b">Opus 4.7</text>
+            <text x="760" y="302" text-anchor="middle" font-size="11" fill="#71717a">escalate cho việc khó</text>
+            <rect x="710" y="200" width="40" height="40" fill="#f87171" stroke="#18181b" stroke-width="2"/>
+            <text x="730" y="194" text-anchor="middle" font-size="11" font-weight="800" fill="#18181b">$5</text>
+            <rect x="760" y="40" width="40" height="200" fill="#b91c1c" stroke="#18181b" stroke-width="2"/>
+            <text x="780" y="34" text-anchor="middle" font-size="11" font-weight="800" fill="#18181b">$25</text>
+          </g>
+          <text x="170" y="22" font-size="11" fill="#71717a" font-family="JetBrains Mono">input</text>
+          <text x="220" y="22" font-size="11" fill="#71717a" font-family="JetBrains Mono">output</text>
+        </svg>
+        <p class="small muted" style="margin-top: 16px;"><strong>Caveat tokenizer Opus 4.7</strong>: Pricing per token không đổi nhưng tokenizer mới có thể generate ~30-35% nhiều token hơn cho cùng input. Cost thực có thể cao hơn pricing list 30-40%. Sonnet 4.6 vẫn là daily driver tốt nhất cho marketing task lặp lại.</p>
       </div>
 
-      <!-- 11 patterns grid -->
       <h2 style="margin-top: 56px;">11 pattern hiệu suất</h2>
-      <div class="grid-3" style="margin-top: 20px;">
-        <div class="pattern perf">
-          <div class="head-row"><div class="num-circle">1</div><div class="title">Chọn model đúng</div></div>
-          <div class="desc">Default Sonnet 4.6. Escalate Opus 4.7 cho lý luận sâu, dữ liệu lớn. Drop Haiku 4.5 cho batch task.</div>
-          <div class="apply"><strong>SEONGON</strong>SEO senior chiến lược cluster 50 keyword → Opus. Junior viết 10 meta-desc → Sonnet. Bulk rephrase 200 RSA → Haiku.</div>
-        </div>
-        <div class="pattern perf">
-          <div class="head-row"><div class="num-circle">2</div><div class="title">Plan mode trước task lớn</div></div>
-          <div class="desc">Shift+Tab vào plan mode. Claude khảo sát read-only, đề xuất plan, bạn duyệt rồi mới execute. 2K plan cứu 50K sai hướng.</div>
-          <div class="apply"><strong>SEONGON</strong>Mọi việc chạm client account thật (Ads, GSC, GA4, WordPress prod) — bắt buộc plan mode trước.</div>
-        </div>
-        <div class="pattern perf">
-          <div class="head-row"><div class="num-circle">3</div><div class="title">Delegate cho subagent</div></div>
-          <div class="desc">Subagent có context riêng, chỉ trả summary. Dùng để khảo sát / research / review — không làm bẩn main session.</div>
-          <div class="apply"><strong>SEONGON</strong>5 subagent song song research 5 đối thủ. Code-reviewer subagent audit security trước deploy.</div>
-        </div>
-        <div class="pattern perf">
-          <div class="head-row"><div class="num-circle">4</div><div class="title">Gọi tool song song</div></div>
-          <div class="desc">Tool độc lập → batch trong 1 message. Mỗi vòng serial mất 2-5s latency. Dùng cho Read, Grep, Bash, MCP.</div>
-          <div class="apply"><strong>SEONGON</strong>"Fetch đồng thời GSC + GA4 + Ahrefs cho domain X" thay vì 3 round trip serial.</div>
-        </div>
-        <div class="pattern perf">
-          <div class="head-row"><div class="num-circle">5</div><div class="title">TDD / verification loop</div></div>
-          <div class="desc">Cho Claude cách kiểm chứng — test case, expected output, schema validator. Output tốt hơn rõ rệt.</div>
-          <div class="apply"><strong>SEONGON</strong>RSA headline ≤ 30 char — cho Claude regex check, fail thì tự rút ngắn.</div>
-        </div>
-        <div class="pattern perf">
-          <div class="head-row"><div class="num-circle">6</div><div class="title">Skill & slash command</div></div>
-          <div class="desc">Cùng prompt chạy ≥3 lần → biến thành skill. Lazy-load, không phá context. Hệ sinh thái sẵn có (claude-seo, claude-ads).</div>
-          <div class="apply"><strong>SEONGON</strong><code>/audit-seo</code>, <code>/brief-content</code>, <code>/qa-rsa</code> — share qua git repo nội bộ.</div>
-        </div>
-        <div class="pattern perf">
-          <div class="head-row"><div class="num-circle">7</div><div class="title">CLAUDE.md hierarchy</div></div>
-          <div class="desc">User-level / project-level / subdir-level. Mỗi file &lt; 30 dòng effective. Auto-memory persists qua session.</div>
-          <div class="apply"><strong>SEONGON</strong>Đã có <code>~/Work/CLAUDE.md</code> — Bun, multi-project. Project-level cho từng repo riêng.</div>
-        </div>
-        <div class="pattern perf">
-          <div class="head-row"><div class="num-circle">8</div><div class="title">IDE diff review</div></div>
-          <div class="desc">VS Code / JetBrains diff preview. Junior dùng "Ask before edits". Senior quen code base có thể "Edit auto" cho task quen.</div>
-          <div class="apply"><strong>SEONGON</strong>Marketer dùng Cowork: "review" = đọc plan + output trước khi click Apply.</div>
-        </div>
-        <div class="pattern perf">
-          <div class="head-row"><div class="num-circle">9</div><div class="title">Hooks deterministic</div></div>
-          <div class="desc">PreToolUse, PostToolUse, UserPromptSubmit. Khác CLAUDE.md (advisory), hook chạy 100% theo config.</div>
-          <div class="apply"><strong>SEONGON</strong>Hook chặn Write vào <code>migrations/</code>, log mọi Bash, IT setup chuẩn deploy qua dotfiles.</div>
-        </div>
-        <div class="pattern perf">
-          <div class="head-row"><div class="num-circle">10</div><div class="title">MCP server thay Bash</div></div>
-          <div class="desc">MCP có cấu trúc, ít token 30-70% so với curl/shell. GitHub, Drive, GSC, GA4, DataForSEO, Ahrefs đều có MCP.</div>
-          <div class="apply"><strong>SEONGON</strong>GSC MCP cho keyword performance. Custom MCP wrap dashboard nội bộ.</div>
-        </div>
-        <div class="pattern perf">
-          <div class="head-row"><div class="num-circle">11</div><div class="title">2025-2026 updates</div></div>
-          <div class="desc">Opus 4.7 step-change agentic + tokenizer +35%. Adaptive thinking. Cache TTL drop 1h→5min. April postmortem fix v2.1.116.</div>
-          <div class="apply"><strong>SEONGON</strong>Theo dõi Anthropic status page — regression đột ngột check trước khi đổ lỗi prompt.</div>
-        </div>
+      <div class="grid-3" style="margin-top: 24px;">
+        <div class="pattern"><div class="head-row"><div class="num">01</div><div class="title">Chọn model đúng</div></div><div class="desc">Default Sonnet 4.6. Escalate Opus 4.7 cho lý luận sâu. Drop Haiku 4.5 cho batch task.</div><div class="apply"><strong>SEONGON</strong>SEO senior chiến lược cluster 50 keyword → Opus. Junior 10 meta-desc → Sonnet. Bulk 200 RSA → Haiku.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">02</div><div class="title">Plan mode trước task lớn</div></div><div class="desc">Shift+Tab vào plan mode. Read-only khảo sát → đề xuất plan → bạn duyệt → execute. 2K plan cứu 50K sai hướng.</div><div class="apply"><strong>SEONGON</strong>Mọi việc chạm client account thật (Ads, GSC, GA4, WordPress prod) — bắt buộc plan mode trước.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">03</div><div class="title">Delegate cho subagent</div></div><div class="desc">Subagent context riêng, chỉ trả summary. Khảo sát / research / review — không làm bẩn main session.</div><div class="apply"><strong>SEONGON</strong>5 subagent song song research 5 đối thủ. Code-reviewer subagent audit security trước deploy.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">04</div><div class="title">Gọi tool song song</div></div><div class="desc">Tool độc lập → batch trong 1 message. Mỗi vòng serial mất 2-5s latency. Read, Grep, Bash, MCP.</div><div class="apply"><strong>SEONGON</strong>"Fetch đồng thời GSC + GA4 + Ahrefs cho domain X" — 1 round trip, không 3.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">05</div><div class="title">TDD / verification loop</div></div><div class="desc">Cho Claude cách kiểm chứng — test case, schema validator, regex check. Output tốt hơn rõ rệt.</div><div class="apply"><strong>SEONGON</strong>RSA headline ≤30 char — Claude regex check, fail thì tự rút ngắn.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">06</div><div class="title">Skill &amp; slash command</div></div><div class="desc">Cùng prompt chạy ≥3 lần → biến thành skill. Lazy-load, không phá context. Sẵn có claude-seo / claude-ads.</div><div class="apply"><strong>SEONGON</strong><code>/audit-seo</code>, <code>/brief-content</code>, <code>/qa-rsa</code> — share qua git nội bộ.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">07</div><div class="title">CLAUDE.md hierarchy</div></div><div class="desc">User / project / subdir level. Mỗi file &lt;30 dòng effective. Auto-memory persists qua session.</div><div class="apply"><strong>SEONGON</strong><code>~/Work/CLAUDE.md</code> đã có — Bun, multi-project. Project-level cho từng repo riêng.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">08</div><div class="title">IDE diff review</div></div><div class="desc">VS Code / JetBrains diff preview. Junior dùng "Ask before edits". Senior quen code base có thể "Edit auto".</div><div class="apply"><strong>SEONGON</strong>Marketer dùng Cowork: review = đọc plan + output trước khi click Apply.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">09</div><div class="title">Hooks deterministic</div></div><div class="desc">PreToolUse, PostToolUse, UserPromptSubmit. Khác CLAUDE.md (advisory), hook chạy 100% theo config.</div><div class="apply"><strong>SEONGON</strong>Hook chặn Write vào <code>migrations/</code>, log mọi Bash, IT setup chuẩn deploy.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">10</div><div class="title">MCP server thay Bash</div></div><div class="desc">MCP có cấu trúc, ít token 30-70%. GitHub, Drive, GSC, GA4, DataForSEO, Ahrefs đều có MCP.</div><div class="apply"><strong>SEONGON</strong>GSC MCP cho keyword performance. Custom MCP wrap dashboard nội bộ.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">11</div><div class="title">2025-2026 updates</div></div><div class="desc">Opus 4.7 step-change agentic + tokenizer +35%. Adaptive thinking. Cache TTL 1h→5min. April postmortem fix.</div><div class="apply"><strong>SEONGON</strong>Theo dõi Anthropic status page — regression đột ngột check trước khi đổ lỗi prompt.</div></div>
       </div>
 
-      <!-- Task → Model matrix -->
-      <div class="chart-card" style="margin-top: 40px;">
-        <div class="chart-title">Task marketing → Model · Mode · Delegation</div>
-        <div class="chart-sub">Decision matrix cho rollout team</div>
-        <div style="margin-top: 16px; overflow-x: auto;">
-          <table class="cmp">
+      <!-- Decision matrix table -->
+      <div class="brutal" style="margin-top: 40px; padding: 0; overflow: hidden;">
+        <div style="padding: 22px 24px; border-bottom: 2px solid var(--fg);">
+          <h3>Task marketing → Model · Mode · Delegation</h3>
+          <p class="muted small" style="margin-top: 4px;">Decision matrix cho rollout team</p>
+        </div>
+        <div style="overflow-x: auto;">
+          <table>
             <thead>
-              <tr>
-                <th>Task marketing</th>
-                <th>Model</th>
-                <th>Mode</th>
-                <th>Delegate?</th>
-                <th>Ví dụ prompt</th>
-              </tr>
+              <tr><th>Task marketing</th><th>Model</th><th>Mode</th><th>Delegate?</th><th>Ví dụ prompt</th></tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Audit SEO 1 client</td>
-                <td><span class="pill sonnet">Sonnet</span></td>
-                <td>Plan + execute</td>
-                <td>Subagent từng category</td>
-                <td>"Plan mode: audit kỹ thuật SEO 9 category cho domain X"</td>
-              </tr>
-              <tr>
-                <td>10 ad headline</td>
-                <td><span class="pill sonnet">Sonnet</span></td>
-                <td>Direct + verify</td>
-                <td>Không</td>
-                <td>"Generate 10 RSA headline, regex check ≤30 char"</td>
-              </tr>
-              <tr>
-                <td>Audit competitive 20 brand</td>
-                <td><span class="pill opus">Opus</span></td>
-                <td>Plan + parallel</td>
-                <td>1 subagent / brand</td>
-                <td>"Spawn 20 subagent research song song, JSON output"</td>
-              </tr>
-              <tr>
-                <td>Bulk rewrite 500 meta-desc</td>
-                <td><span class="pill haiku">Haiku</span></td>
-                <td>Direct + loop</td>
-                <td>Không</td>
-                <td>"Rewrite 500 meta-desc theo template, batch 50"</td>
-              </tr>
-              <tr>
-                <td>Custom analytics integration</td>
-                <td><span class="pill sonnet">Sonnet</span></td>
-                <td>Plan first</td>
-                <td>Không</td>
-                <td>"Plan: GA4 → Postgres sync với daily cron"</td>
-              </tr>
-              <tr>
-                <td>Code review trước deploy</td>
-                <td><span class="pill sonnet">Sonnet</span></td>
-                <td>—</td>
-                <td>code-reviewer subagent</td>
-                <td>"Spawn code-reviewer audit XSS / SQLi"</td>
-              </tr>
-              <tr>
-                <td>Daily / weekly recurring</td>
-                <td><span class="pill sonnet">Sonnet</span></td>
-                <td>Skill + cron</td>
-                <td>—</td>
-                <td><code>/weekly-report</code> theo cron</td>
-              </tr>
+              <tr><td>Audit SEO 1 client</td><td><span class="chip violet">Sonnet</span></td><td>Plan + execute</td><td>Subagent từng category</td><td>"Plan mode: audit kỹ thuật SEO 9 category cho domain X"</td></tr>
+              <tr><td>10 ad headline</td><td><span class="chip violet">Sonnet</span></td><td>Direct + verify</td><td>Không</td><td>"Generate 10 RSA, regex check ≤30 char"</td></tr>
+              <tr><td>Audit competitive 20 brand</td><td><span class="chip danger">Opus</span></td><td>Plan + parallel</td><td>1 subagent / brand</td><td>"Spawn 20 subagent research song song, JSON output"</td></tr>
+              <tr><td>Bulk rewrite 500 meta-desc</td><td><span class="chip good">Haiku</span></td><td>Direct + loop</td><td>Không</td><td>"Rewrite 500 meta-desc theo template, batch 50"</td></tr>
+              <tr><td>Custom analytics integration</td><td><span class="chip violet">Sonnet</span></td><td>Plan first</td><td>Không</td><td>"Plan: GA4 → Postgres sync với daily cron"</td></tr>
+              <tr><td>Code review trước deploy</td><td><span class="chip violet">Sonnet</span></td><td>—</td><td>code-reviewer subagent</td><td>"Spawn code-reviewer audit XSS / SQLi"</td></tr>
+              <tr><td>Daily / weekly recurring</td><td><span class="chip violet">Sonnet</span></td><td>Skill + cron</td><td>—</td><td><code>/weekly-report</code> theo cron</td></tr>
             </tbody>
           </table>
         </div>
@@ -468,165 +153,92 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════ COST -->
-  <section id="cost" class="alt">
+  <section id="cost" class="white">
     <div class="wrap">
-      <div class="eyebrow cost">02 · Chi phí</div>
-      <h2 style="margin-top: 8px;">Scale agency mà không bùng cost — mục tiêu $50-150/người/tháng cho power user</h2>
-      <p class="lede">Nếu mỗi người để Claude chạy Opus mặc định + idle session quá 5 phút thì agency margin sẽ chết. 11 pattern dưới giúp giảm cost 60-75% mà chất lượng không giảm rõ rệt.</p>
+      <span class="eyebrow">02 · Chi phí</span>
+      <h2 style="margin-top: 12px;">Scale agency mà <span class="hl hl-yellow">không bùng cost</span> — mục tiêu $50-150/người/tháng power user</h2>
+      <p class="lede" style="margin-top: 16px;">Nếu mỗi người để Claude chạy Opus mặc định + idle session quá 5 phút thì agency margin sẽ chết. 11 pattern dưới giúp giảm cost 60-75% mà chất lượng không giảm rõ rệt.</p>
 
-      <!-- Cache TTL warning -->
-      <div class="callout warn" style="margin-top: 28px;">
+      <div class="callout warn" style="margin-top: 32px;">
         <div class="label">⚠ Cảnh báo lớn nhất 2026</div>
-        <p style="margin: 8px 0 0; font-size: 0.95rem;"><strong>Cache TTL silently drop từ 1h xuống 5 phút (2026-03)</strong>. Workflow nào dựa vào cache 1h hiện tăng cost 20-32%. Idle session > 5 phút = cache chết = lần dùng sau coi như session mới. Verify lại trên <code>platform.claude.com/docs/en/build-with-claude/prompt-caching</code> trước khi quyết định plan đắt.</p>
+        <p><strong>Cache TTL silently drop từ 1h xuống 5 phút (2026-03)</strong>. Workflow nào dựa vào cache 1h hiện tăng cost 20-32%. Idle session &gt; 5 phút = cache chết = lần dùng sau coi như session mới. Verify lại trên <code>platform.claude.com/docs/en/build-with-claude/prompt-caching</code> trước khi quyết định plan đắt.</p>
       </div>
 
-      <!-- 80/10/10 visualization -->
       <div class="grid-2" style="margin-top: 32px;">
-        <div class="chart-card">
-          <div class="chart-title">Quy tắc 80/10/10 — model mix lý tưởng</div>
-          <div class="chart-sub">Ép Sonnet làm default qua CLAUDE.md hoặc setting</div>
-          <div style="margin-top: 20px;">
-            <svg class="svg-fluid" viewBox="0 0 460 200" preserveAspectRatio="xMidYMid meet" role="img" aria-label="80/10/10 model mix">
-              <rect x="20" y="80" width="320" height="40" fill="#1d4ed8" rx="6"/>
-              <rect x="340" y="80" width="40" height="40" fill="#b91c1c"/>
-              <rect x="380" y="80" width="40" height="40" fill="#059669" rx="0"/>
-              <text x="180" y="105" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">80% Sonnet</text>
-              <text x="360" y="105" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">10%</text>
-              <text x="400" y="105" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">10%</text>
-              <text x="180" y="60" text-anchor="middle" font-size="11" fill="#1c1917">Default · daily driver</text>
-              <text x="360" y="60" text-anchor="middle" font-size="11" fill="#b91c1c" font-weight="600">Opus</text>
-              <text x="400" y="60" text-anchor="middle" font-size="11" fill="#059669" font-weight="600">Haiku</text>
-              <text x="360" y="48" text-anchor="middle" font-size="10" fill="#a8a29e">khó</text>
-              <text x="400" y="48" text-anchor="middle" font-size="10" fill="#a8a29e">batch</text>
-
-              <!-- savings annotation -->
-              <text x="220" y="160" text-anchor="middle" font-size="13" fill="#1c1917">Giảm cost <tspan font-weight="700" fill="#16a34a">40-60%</tspan> so với "mọi người Opus mặc định"</text>
-              <text x="220" y="180" text-anchor="middle" font-size="11" fill="#a8a29e">Chất lượng marketing task giảm không rõ rệt (Sonnet ≈ 95-99% Opus)</text>
-            </svg>
-          </div>
+        <div class="brutal">
+          <h3>Quy tắc 80/10/10 — model mix</h3>
+          <p class="muted small" style="margin-top: 4px;">Ép Sonnet làm default qua CLAUDE.md hoặc setting</p>
+          <svg class="svg-fluid" viewBox="0 0 460 220" preserveAspectRatio="xMidYMid meet" style="margin-top: 20px;">
+            <rect x="20" y="80" width="320" height="44" fill="#7c3aed" stroke="#18181b" stroke-width="2.5"/>
+            <rect x="340" y="80" width="40" height="44" fill="#b91c1c" stroke="#18181b" stroke-width="2.5"/>
+            <rect x="380" y="80" width="40" height="44" fill="#059669" stroke="#18181b" stroke-width="2.5"/>
+            <text x="180" y="107" text-anchor="middle" font-size="15" font-weight="800" fill="#18181b">80% Sonnet</text>
+            <text x="360" y="107" text-anchor="middle" font-size="12" font-weight="800" fill="#18181b">10%</text>
+            <text x="400" y="107" text-anchor="middle" font-size="12" font-weight="800" fill="#18181b">10%</text>
+            <text x="180" y="60" text-anchor="middle" font-size="11" fill="#18181b" font-weight="600">Default · daily driver</text>
+            <text x="360" y="60" text-anchor="middle" font-size="11" fill="#b91c1c" font-weight="800">Opus</text>
+            <text x="400" y="60" text-anchor="middle" font-size="11" fill="#059669" font-weight="800">Haiku</text>
+            <text x="220" y="170" text-anchor="middle" font-size="13" fill="#18181b">Giảm cost <tspan font-weight="800" fill="#7c3aed">40-60%</tspan> so với "Opus mặc định"</text>
+            <text x="220" y="190" text-anchor="middle" font-size="11" fill="#71717a">Sonnet ≈ 95-99% Opus cho marketing task</text>
+          </svg>
         </div>
 
-        <div class="chart-card">
-          <div class="chart-title">Cache warm vs cold — 100K tokens</div>
-          <div class="chart-sub">Sonnet 4.6 · re-read trong vs sau 5 phút TTL</div>
-          <div style="margin-top: 20px;">
-            <svg class="svg-fluid" viewBox="0 0 460 200" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Cache cost comparison">
-              <text x="20" y="50" font-size="12" fill="#1c1917" font-weight="600">Warm (idle &lt; 5 phút)</text>
-              <rect x="20" y="60" width="60" height="32" fill="#16a34a" rx="4"/>
-              <text x="50" y="80" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">$0.03</text>
-              <text x="90" y="80" font-size="11" fill="#a8a29e">cache hit · 0.1× input rate</text>
+        <div class="brutal">
+          <h3>Cache warm vs cold — 100K tokens</h3>
+          <p class="muted small" style="margin-top: 4px;">Sonnet 4.6 · re-read trong vs sau 5 phút TTL</p>
+          <svg class="svg-fluid" viewBox="0 0 460 220" preserveAspectRatio="xMidYMid meet" style="margin-top: 20px;">
+            <text x="20" y="50" font-size="13" fill="#18181b" font-weight="700">Warm (idle &lt; 5 phút)</text>
+            <rect x="20" y="60" width="60" height="36" fill="#16a34a" stroke="#18181b" stroke-width="2.5"/>
+            <text x="50" y="84" text-anchor="middle" font-size="14" font-weight="800" fill="white">$0.03</text>
+            <text x="92" y="84" font-size="11" fill="#71717a">cache hit · 0.1× input rate</text>
 
-              <text x="20" y="130" font-size="12" fill="#1c1917" font-weight="600">Cold (idle &gt; 5 phút)</text>
-              <rect x="20" y="140" width="220" height="32" fill="#dc2626" rx="4"/>
-              <text x="130" y="160" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">$0.30</text>
-              <text x="250" y="160" font-size="11" fill="#a8a29e">cache miss · full input rate</text>
-              <text x="250" y="174" font-size="11" fill="#dc2626" font-weight="600">10× chênh lệch</text>
-            </svg>
-          </div>
+            <text x="20" y="140" font-size="13" fill="#18181b" font-weight="700">Cold (idle &gt; 5 phút)</text>
+            <rect x="20" y="150" width="220" height="36" fill="#b91c1c" stroke="#18181b" stroke-width="2.5"/>
+            <text x="130" y="174" text-anchor="middle" font-size="14" font-weight="800" fill="white">$0.30</text>
+            <text x="252" y="170" font-size="11" fill="#71717a">cache miss · full input rate</text>
+            <text x="252" y="184" font-size="11" fill="#b91c1c" font-weight="800">10× chênh lệch</text>
+          </svg>
         </div>
       </div>
 
-      <!-- 11 cost patterns -->
       <h2 style="margin-top: 56px;">11 pattern chi phí</h2>
-      <div class="grid-3" style="margin-top: 20px;">
-        <div class="pattern cost">
-          <div class="head-row"><div class="num-circle">1</div><div class="title">Cache 5-min TTL</div></div>
-          <div class="desc">Cache write 1.25× input. Read 0.1× input. Break-even: ≥3 read trong 5 phút. Quá 5 phút idle → cache chết.</div>
-          <div class="apply"><strong>SEONGON</strong>Tránh idle &gt; 5 phút giữa session. Team 10 người dùng cache đúng cách ~$200/tháng tiết kiệm.</div>
-        </div>
-        <div class="pattern cost">
-          <div class="head-row"><div class="num-circle">2</div><div class="title">80/10/10 model mix</div></div>
-          <div class="desc">Sonnet $3/$15. Opus $5/$25. Haiku $1/$5. Tỷ lệ Sonnet 3× Haiku, Opus 5×. Mặc định Sonnet.</div>
-          <div class="apply"><strong>SEONGON</strong>Junior bị ép Sonnet qua CLAUDE.md. Senior strategy được phép Opus, review monthly cost.</div>
-        </div>
-        <div class="pattern cost">
-          <div class="head-row"><div class="num-circle">3</div><div class="title">/compact vs /clear</div></div>
-          <div class="desc">Còn cache (idle &lt;5p) + cần giữ context → /compact. Cache chết (&gt;5p) → /clear thường rẻ hơn /compact cold.</div>
-          <div class="apply"><strong>SEONGON</strong>Trước break: /compact nếu còn cache. Trước task không liên quan: luôn /clear.</div>
-        </div>
-        <div class="pattern cost">
-          <div class="head-row"><div class="num-circle">4</div><div class="title">Subagent isolation</div></div>
-          <div class="desc">Subagent context riêng. Trả về summary. Cha không gánh transcript. Tiết kiệm 90% main context cho research task.</div>
-          <div class="apply"><strong>SEONGON</strong>Research 50K token → subagent → cha chỉ tốn 5K cho summary. Tiết kiệm 90%.</div>
-        </div>
-        <div class="pattern cost">
-          <div class="head-row"><div class="num-circle">5</div><div class="title">Plan-first ROI</div></div>
-          <div class="desc">Plan 2K token vs sai hướng 50K token. ROI 10-30× cho task phức tạp. Skip cho task &lt; 1h hoặc 1 file.</div>
-          <div class="apply"><strong>SEONGON</strong>Audit SEO budget 30K. Vượt 50K → cái gì sai. Dừng plan lại, không cố một chút nữa.</div>
-        </div>
-        <div class="pattern cost">
-          <div class="head-row"><div class="num-circle">6</div><div class="title">Subscription plans</div></div>
-          <div class="desc">Pro $20/m. Max $100/m (5×). Max $200/m (20×). API pay-per-use. Break-even: 50M+ token/m → Max thắng.</div>
-          <div class="apply"><strong>SEONGON</strong>Junior: Pro. Senior heavy: Max $100. Strategy + Opus: Max $200. Pipeline 24/7: API + cap.</div>
-        </div>
-        <div class="pattern cost">
-          <div class="head-row"><div class="num-circle">7</div><div class="title">Token budget per task</div></div>
-          <div class="desc">Nhỏ &lt;10K. Vừa 20-50K. Lớn 50-200K. Vượt 1.5× budget → abort, không "cố một chút". /cost xem usage.</div>
-          <div class="apply"><strong>SEONGON</strong>Hook PostToolUse log token cumulative → tuần kiểm tra ai burn nhiều bất thường.</div>
-        </div>
-        <div class="pattern cost">
-          <div class="head-row"><div class="num-circle">8</div><div class="title">Read offset/limit + Edit</div></div>
-          <div class="desc">Đọc 50 dòng = 50 token, không phải 5000. Edit gửi diff, Write gửi cả file. Tiết kiệm 30-50% session cost.</div>
-          <div class="apply"><strong>SEONGON</strong>"Đọc auth section dòng 50-100" thay vì cả file. Edit content brief từng đoạn, không Write lại.</div>
-        </div>
-        <div class="pattern cost">
-          <div class="head-row"><div class="num-circle">9</div><div class="title">Background agent</div></div>
-          <div class="desc">Parallelization × N agent = × N cost (không chia). Tiết kiệm thời gian, không tiết kiệm tiền. Limit 4-8 worktree.</div>
-          <div class="apply"><strong>SEONGON</strong>Research 10 đối thủ trước deadline khách → đáng. Chia nhỏ 1 task → vô nghĩa.</div>
-        </div>
-        <div class="pattern cost">
-          <div class="head-row"><div class="num-circle">10</div><div class="title">Tránh waste vặt</div></div>
-          <div class="desc">Đừng đọc lại file đã đọc. Đừng search redundant. Đừng Write lại sửa 5 dòng. Đừng để session idle.</div>
-          <div class="apply"><strong>SEONGON</strong>Onboarding 1h dạy 5 quy tắc → tiết kiệm $20-50/người/tháng. Train 1 lần, lợi mãi.</div>
-        </div>
-        <div class="pattern cost">
-          <div class="head-row"><div class="num-circle">11</div><div class="title">Pricing changes 2026</div></div>
-          <div class="desc">Cache TTL drop. Opus 4.7 tokenizer +35%. Workspace cache isolation. Đáng quan tâm nhất là TTL silent change.</div>
-          <div class="apply"><strong>SEONGON</strong>Default Sonnet 4.6 cho đến khi Opus 4.7 tokenizer ổn định. Track actual token, không pricing list.</div>
-        </div>
+      <div class="grid-3" style="margin-top: 24px;">
+        <div class="pattern"><div class="head-row"><div class="num">01</div><div class="title">Cache 5-min TTL</div></div><div class="desc">Cache write 1.25× input. Read 0.1× input. Break-even: ≥3 read trong 5 phút. Idle &gt; 5 phút → cache chết.</div><div class="apply"><strong>SEONGON</strong>Tránh idle &gt; 5 phút giữa session. Team 10 dùng đúng ~$200/tháng tiết kiệm.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">02</div><div class="title">80/10/10 model mix</div></div><div class="desc">Sonnet $3/$15. Opus $5/$25. Haiku $1/$5. Tỷ lệ Sonnet 3× Haiku, Opus 5×. Mặc định Sonnet.</div><div class="apply"><strong>SEONGON</strong>Junior bị ép Sonnet qua CLAUDE.md. Senior strategy được Opus, review monthly cost.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">03</div><div class="title">/compact vs /clear</div></div><div class="desc">Còn cache (idle &lt;5p) → /compact. Cache chết (&gt;5p) → /clear thường rẻ hơn /compact cold.</div><div class="apply"><strong>SEONGON</strong>Trước break: /compact nếu còn cache. Trước task không liên quan: luôn /clear.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">04</div><div class="title">Subagent isolation</div></div><div class="desc">Subagent context riêng. Trả về summary. Cha không gánh transcript. Tiết kiệm 90% main context.</div><div class="apply"><strong>SEONGON</strong>Research 50K → subagent → cha tốn 5K cho summary. Tiết kiệm 90%.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">05</div><div class="title">Plan-first ROI</div></div><div class="desc">Plan 2K vs sai hướng 50K. ROI 10-30× cho task phức tạp. Skip cho task &lt; 1h hoặc 1 file.</div><div class="apply"><strong>SEONGON</strong>Audit budget 30K. Vượt 50K → cái gì sai. Dừng plan lại, không "cố một chút".</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">06</div><div class="title">Subscription plans</div></div><div class="desc">Pro $20/m. Max $100/m (5×). Max $200/m (20×). API pay-per-use. Break-even: 50M+ token/m → Max thắng.</div><div class="apply"><strong>SEONGON</strong>Junior: Pro. Senior heavy: Max $100. Strategy + Opus: Max $200. Pipeline 24/7: API + cap.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">07</div><div class="title">Token budget per task</div></div><div class="desc">Nhỏ &lt;10K. Vừa 20-50K. Lớn 50-200K. Vượt 1.5× budget → abort. /cost xem usage.</div><div class="apply"><strong>SEONGON</strong>Hook PostToolUse log token cumulative → tuần kiểm tra ai burn nhiều bất thường.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">08</div><div class="title">Read offset/limit + Edit</div></div><div class="desc">Đọc 50 dòng = 50 token. Edit gửi diff, Write gửi cả file. Tiết kiệm 30-50% session cost.</div><div class="apply"><strong>SEONGON</strong>"Đọc auth section dòng 50-100" thay vì cả file. Edit từng đoạn brief.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">09</div><div class="title">Background agent</div></div><div class="desc">Parallelization × N agent = × N cost (không chia). Tiết kiệm thời gian, không tiền. Limit 4-8 worktree.</div><div class="apply"><strong>SEONGON</strong>Research 10 đối thủ trước deadline → đáng. Chia nhỏ 1 task → vô nghĩa.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">10</div><div class="title">Tránh waste vặt</div></div><div class="desc">Đừng đọc lại file. Đừng search redundant. Đừng Write lại sửa 5 dòng. Đừng để session idle.</div><div class="apply"><strong>SEONGON</strong>Onboarding 1h dạy 5 quy tắc → tiết kiệm $20-50/người/tháng.</div></div>
+        <div class="pattern"><div class="head-row"><div class="num">11</div><div class="title">Pricing changes 2026</div></div><div class="desc">Cache TTL drop. Opus 4.7 tokenizer +35%. Workspace cache isolation. TTL silent change đáng quan tâm nhất.</div><div class="apply"><strong>SEONGON</strong>Default Sonnet 4.6 cho đến khi Opus 4.7 tokenizer ổn định. Track actual token.</div></div>
       </div>
 
       <!-- Subscription recommendation -->
-      <div class="chart-card" style="margin-top: 40px;">
-        <div class="chart-title">Khuyến nghị plan SEONGON theo vai trò</div>
-        <div class="chart-sub">Tổng dự kiến team 30 người mix ~$2000-3000/tháng vs $8000-15000 nếu không kiểm soát</div>
-        <div class="roletable" style="margin-top: 16px;">
-          <div class="row-r">
-            <div>Vai trò</div>
-            <div>Plan đề xuất</div>
-            <div>Cost / tháng</div>
-          </div>
-          <div class="row-r">
-            <div class="role">AM, junior creator (casual)</div>
-            <div class="plan">Pro $20</div>
-            <div class="cost">$20</div>
-          </div>
-          <div class="row-r">
-            <div class="role">Junior SEO/Ads (regular)</div>
-            <div class="plan">Pro $20</div>
-            <div class="cost">$20</div>
-          </div>
-          <div class="row-r">
-            <div class="role">Senior SEO/Ads (heavy)</div>
-            <div class="plan">Max $100 (5×)</div>
-            <div class="cost">$100</div>
-          </div>
-          <div class="row-r">
-            <div class="role">Strategy lead (very heavy + Opus)</div>
-            <div class="plan">Max $200 (20×)</div>
-            <div class="cost">$200</div>
-          </div>
-          <div class="row-r">
-            <div class="role">Automation pipeline 24/7</div>
-            <div class="plan">API + budget cap</div>
-            <div class="cost">Cap $200/pipeline</div>
-          </div>
+      <div class="brutal" style="margin-top: 40px; padding: 0; overflow: hidden;">
+        <div style="padding: 22px 24px; border-bottom: 2px solid var(--fg);">
+          <h3>Khuyến nghị plan SEONGON theo vai trò</h3>
+          <p class="muted small" style="margin-top: 4px;">Tổng dự kiến team 30 người mix ~$2000-3000/tháng vs $8000-15000 nếu không kiểm soát</p>
         </div>
+        <table>
+          <thead>
+            <tr><th>Vai trò</th><th>Plan đề xuất</th><th>Cost / tháng</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>AM, junior creator</strong> (casual)</td><td><span class="chip violet">Pro $20</span></td><td><strong>$20</strong></td></tr>
+            <tr><td><strong>Junior SEO/Ads</strong> (regular)</td><td><span class="chip violet">Pro $20</span></td><td><strong>$20</strong></td></tr>
+            <tr><td><strong>Senior SEO/Ads</strong> (heavy)</td><td><span class="chip warn">Max $100 (5×)</span></td><td><strong>$100</strong></td></tr>
+            <tr><td><strong>Strategy lead</strong> (very heavy + Opus)</td><td><span class="chip danger">Max $200 (20×)</span></td><td><strong>$200</strong></td></tr>
+            <tr><td><strong>Automation pipeline</strong> 24/7</td><td><span class="chip">API + budget cap</span></td><td><strong>Cap $200/pipeline</strong></td></tr>
+          </tbody>
+        </table>
       </div>
 
       <div class="callout good" style="margin-top: 24px;">
         <div class="label">✓ Tiết kiệm tổng dự kiến</div>
-        <p style="margin: 8px 0 0; font-size: 0.95rem;">So sánh 2 kịch bản: <strong>"Mọi người Opus mặc định, không kiểm soát"</strong>: $8,000-15,000/tháng cho team 30 người. <strong>"80/10/10 + Pro/Max + cache discipline"</strong>: $2,000-3,000/tháng. Tiết kiệm <strong>60-75%</strong> mà output marketing không giảm rõ rệt.</p>
+        <p>So sánh 2 kịch bản: <strong>"Mọi người Opus mặc định, không kiểm soát"</strong>: $8,000-15,000/tháng cho team 30 người. <strong>"80/10/10 + Pro/Max + cache discipline"</strong>: $2,000-3,000/tháng. Tiết kiệm <strong>60-75%</strong> mà output marketing không giảm rõ rệt.</p>
       </div>
     </div>
   </section>
@@ -634,120 +246,47 @@
   <!-- ═══════════════════════════════════════════════════ MINDSET -->
   <section id="mindset">
     <div class="wrap">
-      <div class="eyebrow mind">03 · Phát triển cá nhân</div>
-      <h2 style="margin-top: 8px;">Tư duy & kiến thức — đừng để Claude làm thui chột nghề</h2>
-      <p class="lede">Đặc biệt quan trọng cho non-developer ở SEONGON: SEO, paid media, content, analyst, AM. Cùng lý luận áp dụng cho dev junior. Mục tiêu: Claude khuếch đại năng lực, không thay thế nó.</p>
+      <span class="eyebrow">03 · Phát triển cá nhân</span>
+      <h2 style="margin-top: 12px;">Tư duy &amp; kiến thức — đừng để Claude <span class="hl hl-pink">làm thui chột nghề</span></h2>
+      <p class="lede" style="margin-top: 16px;">Đặc biệt quan trọng cho non-developer ở SEONGON: SEO, paid media, content, analyst, AM. Cùng lý luận áp dụng cho dev junior. Mục tiêu: Claude khuếch đại năng lực, không thay thế nó.</p>
 
-      <!-- 10 mindset shifts -->
-      <div class="mind-grid">
-        <div class="mind-card">
-          <div class="badge">01 · The big shift</div>
-          <div class="h">Doing → Directing</div>
-          <div class="body">Ngừng gõ, bắt đầu chỉ huy. Daily practice mới: 30% viết spec/brief + 50% review output + 20% intervene. Force multiplier chỉ kick-in khi bạn ngừng cố làm typist.</div>
-        </div>
-        <div class="mind-card">
-          <div class="badge">02 · Core skill</div>
-          <div class="h">Đọc code/output thành kỹ năng cốt lõi</div>
-          <div class="body">Không gõ thì phải đọc giỏi. Đọc mọi SQL, regex, JSON, n8n config Claude tạo. Test "narrate-back": kể lại được từng block làm gì → mới hiểu, mới accept.</div>
-        </div>
-        <div class="mind-card">
-          <div class="badge">03 · Daily habit</div>
-          <div class="h">Trust-but-verify</div>
-          <div class="body">"Understand before approving". 70% problem (Addy Osmani): AI tới 70%, 30% còn lại cần human judgment. Review output mệt hơn review work của con người, không phải dễ hơn.</div>
-        </div>
-        <div class="mind-card">
-          <div class="badge">04 · Avoid atrophy</div>
-          <div class="h">Skill atrophy mitigation</div>
-          <div class="body">No-AI sprint định kỳ. SEO lead làm 1 audit thủ công/quý. Junior 6 tháng đầu hạn chế Claude cho fundamentals. Mục đích không phải hiệu suất — giữ "muscle" để biết khi Claude sai.</div>
-        </div>
-        <div class="mind-card">
-          <div class="badge">05 · Quality input</div>
-          <div class="h">Spec-first thinking</div>
-          <div class="body">Spec/brief tốt = output tốt 5×. Brief 500-1500 từ với constraint, ví dụ, anti-pattern. Brief &lt; 200 từ — chưa đủ. Side effect: brief tốt → đồng nghiệp con người cũng hiểu nhanh hơn.</div>
-        </div>
-        <div class="mind-card">
-          <div class="badge">06 · Risk awareness</div>
-          <div class="h">Blast radius mindset</div>
-          <div class="body">Không bao giờ Claude trực tiếp đụng prod (WordPress, Ads, GA4, GMB). Workflow chuẩn: staging clone → Claude làm → human verify → human apply lên prod. 2s delete = 2 ngày phục hồi.</div>
-        </div>
-        <div class="mind-card">
-          <div class="badge">07 · Override</div>
-          <div class="h">Critical thinking — biết khi nào override</div>
-          <div class="body">Claude bịa số liệu SEO rất tự tin: keyword volume, backlink count, citation. Mọi số phải trace về MCP source thực (Ahrefs, GSC, GA4). Plausible-but-wrong là failure mode nguy hiểm nhất ở marketing.</div>
-        </div>
-        <div class="mind-card">
-          <div class="badge">08 · Compounding</div>
-          <div class="h">Learning loop — đọc Claude output mỗi ngày</div>
-          <div class="body">Mentor Loop (Martin Fowler): goal nhỏ → Claude plan → check → reflect tradeoff. Đọc Claude diff = reverse mentorship at scale. Khác biệt: actively narrate vs passively bấm enter.</div>
-        </div>
-        <div class="mind-card">
-          <div class="badge">09 · Specifically</div>
-          <div class="h">Non-dev cần học gì cụ thể</div>
-          <div class="body">Terminal cơ bản, git cơ bản, JSON/YAML literacy, Markdown, prompt design, plan mode. KHÔNG cần Python/JS/CSS như ngôn ngữ — chỉ cần nhận diện hình dạng đủ để spot khi Claude sai.</div>
-        </div>
-        <div class="mind-card">
-          <div class="badge">10 · Anti-patterns</div>
-          <div class="h">Không trở thành button-pusher</div>
-          <div class="body">4 failure mode: over-trust, learned helplessness, prompt-hoarding, Claude-button-pusher. Cure: treat Claude như "OS for knowledge work", không phải "magic answer machine". Build skill, không build prompt library.</div>
-        </div>
+      <div class="grid-2" style="margin-top: 32px;">
+        <div class="pat-row"><div class="pat-num">01</div><div class="body"><strong>Doing → Directing</strong>Ngừng gõ, bắt đầu chỉ huy. Daily practice mới: 30% viết spec/brief + 50% review output + 20% intervene. Force multiplier chỉ kick-in khi bạn ngừng cố làm typist.</div></div>
+        <div class="pat-row"><div class="pat-num">02</div><div class="body"><strong>Đọc code/output thành core skill</strong>Không gõ thì phải đọc giỏi. Đọc mọi SQL, regex, JSON, n8n config Claude tạo. Test "narrate-back": kể lại được từng block làm gì → mới hiểu, mới accept.</div></div>
+        <div class="pat-row"><div class="pat-num">03</div><div class="body"><strong>Trust-but-verify</strong>"Understand before approving". 70% problem (Addy Osmani): AI tới 70%, 30% cần human judgment. Review output mệt hơn review work của con người, không dễ hơn.</div></div>
+        <div class="pat-row"><div class="pat-num">04</div><div class="body"><strong>Skill atrophy mitigation</strong>No-AI sprint định kỳ. SEO lead làm 1 audit thủ công/quý. Junior 6 tháng đầu hạn chế Claude cho fundamentals. Giữ "muscle" để biết khi Claude sai.</div></div>
+        <div class="pat-row"><div class="pat-num">05</div><div class="body"><strong>Spec-first thinking</strong>Spec/brief tốt = output tốt 5×. Brief 500-1500 từ với constraint, ví dụ, anti-pattern. Brief &lt;200 từ — chưa đủ. Side effect: đồng nghiệp con người cũng hiểu nhanh hơn.</div></div>
+        <div class="pat-row"><div class="pat-num">06</div><div class="body"><strong>Blast radius mindset</strong>Không bao giờ Claude trực tiếp đụng prod (WordPress, Ads, GA4, GMB). Workflow chuẩn: staging clone → Claude làm → human verify → human apply lên prod.</div></div>
+        <div class="pat-row"><div class="pat-num">07</div><div class="body"><strong>Override khi Claude bịa</strong>Claude bịa số liệu SEO rất tự tin: keyword volume, backlink count, citation. Mọi số phải trace về MCP source thực. Plausible-but-wrong là failure mode nguy hiểm nhất.</div></div>
+        <div class="pat-row"><div class="pat-num">08</div><div class="body"><strong>Learning loop hàng ngày</strong>Mentor Loop (Martin Fowler): goal nhỏ → Claude plan → check → reflect tradeoff. Đọc Claude diff = reverse mentorship at scale. Khác biệt: actively narrate vs passively bấm enter.</div></div>
+        <div class="pat-row"><div class="pat-num">09</div><div class="body"><strong>Non-dev cần học gì cụ thể</strong>Terminal, git, JSON/YAML, Markdown, prompt design, plan mode. KHÔNG cần Python/JS/CSS như ngôn ngữ — chỉ cần nhận diện hình dạng đủ để spot khi Claude sai.</div></div>
+        <div class="pat-row"><div class="pat-num">10</div><div class="body"><strong>Không trở thành button-pusher</strong>4 failure mode: over-trust, learned helplessness, prompt-hoarding, button-pusher. Cure: treat Claude như "OS for knowledge work", không phải "magic answer machine".</div></div>
       </div>
 
       <!-- Anti-pattern flow -->
       <h2 style="margin-top: 56px;">Anti-pattern: vòng xoáy thành button-pusher</h2>
-      <p class="lede">Mỗi bước "có vẻ vô hại" nhưng cộng dồn → không còn tự suy nghĩ được khi Claude xuống service hoặc sai.</p>
-      <div class="flow">
-        <div class="step">
-          <div class="order">Bước 1</div>
-          <div class="name">Over-trust</div>
-          <div class="what">Accept output vì "có vẻ đúng". Không đọc kỹ. Áp lực deadline. Tin Claude hơn tin bản thân.</div>
-        </div>
-        <div class="step">
-          <div class="order">Bước 2</div>
-          <div class="name">Learned helplessness</div>
-          <div class="what">Có vấn đề là copy-paste error vào Claude. Không tự đọc, không tự suy nghĩ. Khả năng debug giảm dần.</div>
-        </div>
-        <div class="step">
-          <div class="order">Bước 3</div>
-          <div class="name">Prompt-hoarding</div>
-          <div class="what">Sưu tập 500 prompt template "khéo". Coi đó là asset. Thực ra là thay thế judgment bằng template.</div>
-        </div>
-        <div class="step">
-          <div class="order">Bước 4</div>
-          <div class="name">Button-pusher</div>
-          <div class="what">Chỉ biết bấm enter. Không hiểu output ra như vậy tại sao. Khi Claude xuống / model đổi → tê liệt.</div>
-        </div>
+      <p class="lede" style="margin-top: 12px;">Mỗi bước "có vẻ vô hại" nhưng cộng dồn → không còn tự suy nghĩ được khi Claude xuống service hoặc sai.</p>
+      <div class="grid-4" style="margin-top: 24px;">
+        <div class="brutal" style="background: var(--warn-soft);"><div class="eyebrow" style="color: var(--warn);">Bước 1</div><h3 style="margin-top: 6px; color: var(--danger);">Over-trust</h3><p class="small" style="margin-top: 8px;">Accept output vì "có vẻ đúng". Không đọc kỹ. Áp lực deadline. Tin Claude hơn tin bản thân.</p></div>
+        <div class="brutal" style="background: var(--warn-soft);"><div class="eyebrow" style="color: var(--warn);">Bước 2</div><h3 style="margin-top: 6px; color: var(--danger);">Learned helplessness</h3><p class="small" style="margin-top: 8px;">Có vấn đề là copy-paste error vào Claude. Không tự đọc, không tự suy nghĩ. Khả năng debug giảm dần.</p></div>
+        <div class="brutal" style="background: var(--warn-soft);"><div class="eyebrow" style="color: var(--warn);">Bước 3</div><h3 style="margin-top: 6px; color: var(--danger);">Prompt-hoarding</h3><p class="small" style="margin-top: 8px;">Sưu tập 500 prompt template "khéo". Coi đó là asset. Thực ra là thay thế judgment bằng template.</p></div>
+        <div class="brutal" style="background: var(--danger-soft);"><div class="eyebrow" style="color: var(--danger);">Bước 4</div><h3 style="margin-top: 6px; color: var(--danger);">Button-pusher</h3><p class="small" style="margin-top: 8px;">Chỉ biết bấm enter. Không hiểu output ra như vậy tại sao. Khi Claude xuống / model đổi → tê liệt.</p></div>
       </div>
 
       <!-- 4-week onboarding -->
       <h2 style="margin-top: 56px;">Lộ trình 4 tuần onboarding marketer non-dev</h2>
-      <p class="lede">Từ "tôi không biết terminal là gì" đến "đủ năng lực dùng Claude Code basic". Sau 3 tháng — power user.</p>
-      <div class="timeline">
-        <div class="week">
-          <div class="w-num">Week 1</div>
-          <div class="w-title">Terminal cơ bản</div>
-          <div class="w-body"><code>cd</code>, <code>ls</code>, <code>cat</code>, <code>grep</code>, pipe. Hiểu file path, ENV var. Cài Claude Code, /help.</div>
-        </div>
-        <div class="week">
-          <div class="w-num">Week 2</div>
-          <div class="w-title">Git cơ bản</div>
-          <div class="w-body"><code>commit</code>, <code>branch</code>, <code>diff</code>, <code>revert</code>. Đọc diff, hiểu staged/unstaged. Push tới GitHub repo.</div>
-        </div>
-        <div class="week">
-          <div class="w-num">Week 3</div>
-          <div class="w-title">JSON/YAML/Markdown</div>
-          <div class="w-body">Đọc & sửa được, biết khi sai cú pháp. Markdown spec/brief. Recognize TS/Python output (không cần viết).</div>
-        </div>
-        <div class="week">
-          <div class="w-num">Week 4</div>
-          <div class="w-title">Prompt design + plan mode</div>
-          <div class="w-body">Viết spec/brief tốt. Plan mode workflow. Slash command. Subagent delegate. CLAUDE.md project-level.</div>
-        </div>
+      <p class="lede" style="margin-top: 12px;">Từ "tôi không biết terminal là gì" đến "đủ năng lực dùng Claude Code basic". Sau 3 tháng — power user.</p>
+      <div class="timeline" style="margin-top: 24px;">
+        <div class="step"><div class="step-num">Week 01</div><div class="step-title">Terminal cơ bản</div><div class="step-body"><code>cd</code>, <code>ls</code>, <code>cat</code>, <code>grep</code>, pipe. Hiểu file path, ENV var. Cài Claude Code, /help.</div></div>
+        <div class="step"><div class="step-num">Week 02</div><div class="step-title">Git cơ bản</div><div class="step-body"><code>commit</code>, <code>branch</code>, <code>diff</code>, <code>revert</code>. Đọc diff, hiểu staged/unstaged. Push GitHub repo.</div></div>
+        <div class="step"><div class="step-num">Week 03</div><div class="step-title">JSON/YAML/Markdown</div><div class="step-body">Đọc &amp; sửa được, biết khi sai cú pháp. Markdown spec/brief. Recognize TS/Python output.</div></div>
+        <div class="step"><div class="step-num">Week 04</div><div class="step-title">Prompt design + plan mode</div><div class="step-body">Viết spec/brief tốt. Plan mode workflow. Slash command. Subagent delegate. CLAUDE.md project.</div></div>
       </div>
 
-      <!-- Weekly self-check checklist -->
+      <!-- Weekly self-check -->
       <h2 style="margin-top: 56px;">5 câu hỏi tự kiểm tra hàng tuần</h2>
-      <p class="lede">Mỗi nhân viên SEONGON dùng Claude Code nên trả lời 5 câu này hàng tuần. Một câu "không" = một rủi ro thực.</p>
-      <ul class="checklist done">
+      <p class="lede" style="margin-top: 12px;">Mỗi nhân viên dùng Claude Code nên trả lời 5 câu này hàng tuần. Một câu "không" = một rủi ro thực.</p>
+      <ul class="checklist" style="margin-top: 24px;">
         <li><strong>Tôi có narrate-back được output Claude tuần này không?</strong> Nếu không → tôi đang button-push.</li>
         <li><strong>Tôi có verify ít nhất 1 con số / fact / citation Claude state không?</strong> Nếu không → tôi đang đặt cược danh tiếng client.</li>
         <li><strong>Tôi có làm 1 task without Claude tuần này không?</strong> (kể cả task nhỏ) Nếu không → cẩn thận skill atrophy.</li>
@@ -756,139 +295,108 @@
       </ul>
 
       <!-- Vietnamese voices -->
-      <h2 style="margin-top: 56px;">4 Vietnamese practitioner voices</h2>
-      <p class="lede">Thị trường Việt Nam đã có người viết sâu về Claude Code. Đáng đọc đối chiếu trước khi cite trong deck nội bộ. <strong>Cảnh báo</strong>: 4 URL dưới chưa được verify từng cái — trace lại trước khi citation.</p>
-      <div class="vn-grid">
-        <a href="https://blog.vietnamlab.vn/claude-code-best-practice/" target="_blank" rel="noreferrer" class="vn">
-          <div class="flag">VN voice · best-practice translation</div>
-          <div class="name">GMO-Z.com Vietnam Lab Center</div>
-          <div class="role">Dev-leaning. Best practice translation cho dev VN. Lead với planning, CLAUDE.md, Plan Mode.</div>
-          <div class="url">blog.vietnamlab.vn/claude-code-best-practice</div>
+      <h2 style="margin-top: 56px;">4 Vietnamese practitioner voice</h2>
+      <p class="lede" style="margin-top: 12px;">Thị trường VN đã có người viết sâu về Claude Code. Đáng đọc đối chiếu trước khi cite. <strong>Cảnh báo</strong>: 4 URL chưa verify từng cái — trace lại trước khi citation.</p>
+      <div class="grid-2" style="margin-top: 24px;">
+        <a href="https://blog.vietnamlab.vn/claude-code-best-practice/" target="_blank" rel="noreferrer" class="brutal hover-lift" style="text-decoration: none;">
+          <div class="eyebrow" style="color: var(--c-vn);">VN voice · best-practice</div>
+          <h3 style="margin-top: 6px;">GMO-Z.com Vietnam Lab Center</h3>
+          <p class="small muted" style="margin-top: 8px;">Dev-leaning. Best practice translation cho dev VN. Lead với planning, CLAUDE.md, Plan Mode.</p>
+          <div class="source-link" style="margin-top: 10px;">blog.vietnamlab.vn/claude-code-best-practice →</div>
         </a>
-        <a href="https://azdigi.com/blog/tri-tue-nhan-tao/20-kinh-nghiem-khi-su-dung-claude-code" target="_blank" rel="noreferrer" class="vn">
-          <div class="flag">VN voice · 20 kinh nghiệm</div>
-          <div class="name">AZDIGI Blog</div>
-          <div class="role">Practical, accessible. "20 kinh nghiệm khi sử dụng Claude Code" cho audience VN rộng hơn.</div>
-          <div class="url">azdigi.com/blog/.../20-kinh-nghiem-claude-code</div>
+        <a href="https://azdigi.com/blog/tri-tue-nhan-tao/20-kinh-nghiem-khi-su-dung-claude-code" target="_blank" rel="noreferrer" class="brutal hover-lift" style="text-decoration: none;">
+          <div class="eyebrow" style="color: var(--c-vn);">VN voice · 20 kinh nghiệm</div>
+          <h3 style="margin-top: 6px;">AZDIGI Blog</h3>
+          <p class="small muted" style="margin-top: 8px;">Practical, accessible. "20 kinh nghiệm khi sử dụng Claude Code" cho audience VN rộng hơn.</p>
+          <div class="source-link" style="margin-top: 10px;">azdigi.com/blog/.../20-kinh-nghiem-claude-code →</div>
         </a>
-        <a href="https://arealisticdreamer.com/claude-in-action-sai-gon-01-recap" target="_blank" rel="noreferrer" class="vn">
-          <div class="flag">VN voice · workshop recap</div>
-          <div class="name">A Realistic Dreamer</div>
-          <div class="role">Recap workshop "Claude in Action Saigon". Treat Claude như "OS for knowledge work". Hữu ích nắm community VN.</div>
-          <div class="url">arealisticdreamer.com/claude-in-action-sai-gon-01-recap</div>
+        <a href="https://arealisticdreamer.com/claude-in-action-sai-gon-01-recap" target="_blank" rel="noreferrer" class="brutal hover-lift" style="text-decoration: none;">
+          <div class="eyebrow" style="color: var(--c-vn);">VN voice · workshop recap</div>
+          <h3 style="margin-top: 6px;">A Realistic Dreamer</h3>
+          <p class="small muted" style="margin-top: 8px;">Recap workshop "Claude in Action Saigon". "OS for knowledge work". Hữu ích nắm community VN.</p>
+          <div class="source-link" style="margin-top: 10px;">arealisticdreamer.com/claude-in-action-sai-gon-01-recap →</div>
         </a>
-        <a href="https://ongboit.com/auto-memory-claude-code/" target="_blank" rel="noreferrer" class="vn">
-          <div class="flag">VN voice · personal workflow</div>
-          <div class="name">ongboit.com</div>
-          <div class="role">DevOps engineer VN. Viết về auto-memory + workflow personal. Practical, có code thật.</div>
-          <div class="url">ongboit.com/auto-memory-claude-code</div>
+        <a href="https://ongboit.com/auto-memory-claude-code/" target="_blank" rel="noreferrer" class="brutal hover-lift" style="text-decoration: none;">
+          <div class="eyebrow" style="color: var(--c-vn);">VN voice · personal workflow</div>
+          <h3 style="margin-top: 6px;">ongboit.com</h3>
+          <p class="small muted" style="margin-top: 8px;">DevOps engineer VN. Auto-memory + workflow personal. Practical, có code thật.</p>
+          <div class="source-link" style="margin-top: 10px;">ongboit.com/auto-memory-claude-code →</div>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════ REFERENCES -->
-  <section id="refs" class="alt-2">
+  <!-- ═══════════════════════════════════════════════════ REFS -->
+  <section id="refs" class="white">
     <div class="wrap">
       <div class="row between">
-        <h2>References — top sources</h2>
-        <span class="muted">Verify từng URL trước khi cite external · raw research ở <code>raw/best-practices-research/</code></span>
+        <div>
+          <span class="eyebrow">Refs</span>
+          <h2 style="margin-top: 8px;">Top references</h2>
+        </div>
+        <span class="muted small">Verify từng URL trước khi cite external · raw research ở <code>raw/best-practices-research/</code></span>
       </div>
       <ol class="ref-list">
-        <li>
-          <a href="https://www.anthropic.com/engineering/claude-code-best-practices" target="_blank" rel="noreferrer">anthropic.com/engineering/claude-code-best-practices</a>
-          <span class="meta">Anthropic Engineering · canonical best-practice essay · cited across 3 docs</span>
-        </li>
-        <li>
-          <a href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noreferrer">code.claude.com/docs/en/best-practices</a>
-          <span class="meta">Official Claude Code docs · best practices reference</span>
-        </li>
-        <li>
-          <a href="https://platform.claude.com/docs/en/about-claude/models/overview" target="_blank" rel="noreferrer">platform.claude.com/docs/en/about-claude/models/overview</a>
-          <span class="meta">Anthropic models overview · pricing + capabilities · Opus 4.7 / Sonnet 4.6 / Haiku 4.5</span>
-        </li>
-        <li>
-          <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching" target="_blank" rel="noreferrer">platform.claude.com/docs/en/build-with-claude/prompt-caching</a>
-          <span class="meta">Prompt caching docs · authoritative for cache TTL behavior</span>
-        </li>
-        <li>
-          <a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noreferrer">platform.claude.com/docs/en/about-claude/pricing</a>
-          <span class="meta">Authoritative pricing · verify all $/1M numbers here before citing</span>
-        </li>
-        <li>
-          <a href="https://addyo.substack.com/p/the-70-problem-hard-truths-about" target="_blank" rel="noreferrer">addyo.substack.com/p/the-70-problem-hard-truths-about</a>
-          <span class="meta">Addy Osmani · "70% problem" — foundation for trust-but-verify mindset</span>
-        </li>
-        <li>
-          <a href="https://addyo.substack.com/p/avoiding-skill-atrophy-in-the-age" target="_blank" rel="noreferrer">addyo.substack.com/p/avoiding-skill-atrophy-in-the-age</a>
-          <span class="meta">Addy Osmani · skill atrophy + mitigation</span>
-        </li>
-        <li>
-          <a href="https://martinfowler.com/articles/llm-learning-loop.html" target="_blank" rel="noreferrer">martinfowler.com/articles/llm-learning-loop.html</a>
-          <span class="meta">Martin Fowler · Learning Loop and LLMs — Mentor Loop pattern</span>
-        </li>
-        <li>
-          <a href="https://blog.railway.com/p/your-ai-wants-to-nuke-your-database" target="_blank" rel="noreferrer">blog.railway.com/p/your-ai-wants-to-nuke-your-database</a>
-          <span class="meta">Railway · concrete blast-radius cautionary tale</span>
-        </li>
-        <li>
-          <a href="https://searchengineland.com/claude-code-seo-work-470668" target="_blank" rel="noreferrer">searchengineland.com/claude-code-seo-work-470668</a>
-          <span class="meta">Search Engine Land · Claude Code for SEO + fabricated-data warning</span>
-        </li>
-        <li>
-          <a href="https://www.sanity.io/blog/first-attempt-will-be-95-garbage" target="_blank" rel="noreferrer">sanity.io/blog/first-attempt-will-be-95-garbage</a>
-          <span class="meta">Sanity engineer · 6-week reflection · doing → directing</span>
-        </li>
-        <li>
-          <a href="https://blog.vietnamlab.vn/claude-code-best-practice/" target="_blank" rel="noreferrer">blog.vietnamlab.vn/claude-code-best-practice</a>
-          <span class="meta">Vietnamese voice · GMO-Z.com Vietnam Lab Center</span>
-        </li>
-        <li>
-          <a href="https://azdigi.com/blog/tri-tue-nhan-tao/20-kinh-nghiem-khi-su-dung-claude-code" target="_blank" rel="noreferrer">azdigi.com/blog/.../20-kinh-nghiem-claude-code</a>
-          <span class="meta">Vietnamese voice · AZDIGI 20 kinh nghiệm</span>
-        </li>
-        <li>
-          <a href="https://arealisticdreamer.com/claude-in-action-sai-gon-01-recap" target="_blank" rel="noreferrer">arealisticdreamer.com/claude-in-action-sai-gon-01-recap</a>
-          <span class="meta">Vietnamese voice · Saigon Claude Code workshop recap</span>
-        </li>
-        <li>
-          <a href="https://ongboit.com/auto-memory-claude-code/" target="_blank" rel="noreferrer">ongboit.com/auto-memory-claude-code</a>
-          <span class="meta">Vietnamese voice · DevOps engineer VN, auto-memory workflow</span>
-        </li>
+        <li><a href="https://www.anthropic.com/engineering/claude-code-best-practices" target="_blank" rel="noreferrer">anthropic.com/engineering/claude-code-best-practices</a><span class="meta">Anthropic Engineering · canonical best-practice essay · cited across 3 docs</span></li>
+        <li><a href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noreferrer">code.claude.com/docs/en/best-practices</a><span class="meta">Official Claude Code docs · best practices reference</span></li>
+        <li><a href="https://platform.claude.com/docs/en/about-claude/models/overview" target="_blank" rel="noreferrer">platform.claude.com/docs/en/about-claude/models/overview</a><span class="meta">Models overview · Opus 4.7 / Sonnet 4.6 / Haiku 4.5</span></li>
+        <li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching" target="_blank" rel="noreferrer">platform.claude.com/docs/en/build-with-claude/prompt-caching</a><span class="meta">Prompt caching docs · authoritative for cache TTL behavior</span></li>
+        <li><a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noreferrer">platform.claude.com/docs/en/about-claude/pricing</a><span class="meta">Authoritative pricing · verify all $/1M numbers here</span></li>
+        <li><a href="https://addyo.substack.com/p/the-70-problem-hard-truths-about" target="_blank" rel="noreferrer">addyo.substack.com/p/the-70-problem-hard-truths-about</a><span class="meta">Addy Osmani · 70% problem · trust-but-verify foundation</span></li>
+        <li><a href="https://addyo.substack.com/p/avoiding-skill-atrophy-in-the-age" target="_blank" rel="noreferrer">addyo.substack.com/p/avoiding-skill-atrophy-in-the-age</a><span class="meta">Addy Osmani · skill atrophy + mitigation</span></li>
+        <li><a href="https://martinfowler.com/articles/llm-learning-loop.html" target="_blank" rel="noreferrer">martinfowler.com/articles/llm-learning-loop.html</a><span class="meta">Martin Fowler · Learning Loop and LLMs · Mentor Loop</span></li>
+        <li><a href="https://blog.railway.com/p/your-ai-wants-to-nuke-your-database" target="_blank" rel="noreferrer">blog.railway.com/p/your-ai-wants-to-nuke-your-database</a><span class="meta">Railway · concrete blast-radius cautionary tale</span></li>
+        <li><a href="https://searchengineland.com/claude-code-seo-work-470668" target="_blank" rel="noreferrer">searchengineland.com/claude-code-seo-work-470668</a><span class="meta">SEL · Claude Code for SEO + fabricated-data warning</span></li>
+        <li><a href="https://www.sanity.io/blog/first-attempt-will-be-95-garbage" target="_blank" rel="noreferrer">sanity.io/blog/first-attempt-will-be-95-garbage</a><span class="meta">Sanity engineer · doing → directing</span></li>
+        <li><a href="https://blog.vietnamlab.vn/claude-code-best-practice/" target="_blank" rel="noreferrer">blog.vietnamlab.vn/claude-code-best-practice</a><span class="meta">Vietnamese voice · GMO-Z.com Vietnam Lab Center</span></li>
+        <li><a href="https://azdigi.com/blog/tri-tue-nhan-tao/20-kinh-nghiem-khi-su-dung-claude-code" target="_blank" rel="noreferrer">azdigi.com/blog/.../20-kinh-nghiem-claude-code</a><span class="meta">Vietnamese voice · AZDIGI 20 kinh nghiệm</span></li>
+        <li><a href="https://arealisticdreamer.com/claude-in-action-sai-gon-01-recap" target="_blank" rel="noreferrer">arealisticdreamer.com/claude-in-action-sai-gon-01-recap</a><span class="meta">Vietnamese voice · Saigon Claude Code workshop recap</span></li>
+        <li><a href="https://ongboit.com/auto-memory-claude-code/" target="_blank" rel="noreferrer">ongboit.com/auto-memory-claude-code</a><span class="meta">Vietnamese voice · DevOps engineer VN · auto-memory workflow</span></li>
       </ol>
 
-      <div class="callout warn" style="margin-top: 24px;">
-        <div class="label">⚠ Verify trước khi cite external</div>
-        <p style="margin: 8px 0 0; font-size: 0.95rem;">15 URL trên là <strong>top references</strong>. Full list 25+ URL ở <code>raw/best-practices-research/03-personal-development-raw.md</code>. Một số URL — đặc biệt small blog (paddo.dev, tskulbru.dev, agiinprogress.substack.com) và 4 Vietnamese voice — chưa verify từng cái. WebFetch test trước khi đem ra deck client / handbook chính thức.</p>
+      <div class="callout warn" style="margin-top: 32px;">
+        <div class="label">⚠ Verify trước cite external</div>
+        <p>15 URL trên là <strong>top references</strong>. Full list 25+ URL ở <code>raw/best-practices-research/03-personal-development-raw.md</code>. Một số URL — đặc biệt small blog (paddo.dev, tskulbru.dev, agiinprogress.substack.com) và 4 Vietnamese voice — chưa verify từng cái.</p>
       </div>
     </div>
   </section>
 
-  <footer>
+  <footer class="brutal-footer">
     <div class="wrap">
-      <div class="grid">
+      <div class="top">
         <div>
-          <div style="font-weight: 600;">Best-Practice Playbook · v1</div>
-          <div style="color: var(--text-3); font-size: 13px; margin-top: 4px;">Synthesized 2026-05-05 · 3 research agents · Vietnamese</div>
+          <div class="brand">Best-Practice Playbook <span class="accent">·</span> v1</div>
+          <p class="blurb">Synthesis tiếng Việt về Claude Code adoption — 32 pattern chia 3 hướng. Compiled 2026-05-05 từ Anthropic engineering, practitioner essay, 4 Vietnamese voice. SEONGON internal research.</p>
         </div>
         <div>
-          <strong>Companion docs (markdown)</strong>
+          <h4>Companion docs</h4>
           <ul>
             <li><a href="best-practices/01-performance.md">01-performance.md</a></li>
             <li><a href="best-practices/02-cost-optimization.md">02-cost-optimization.md</a></li>
             <li><a href="best-practices/03-personal-development.md">03-personal-development.md</a></li>
-            <li><a href="best-practices/README.md">README.md</a></li>
+            <li><a href="best-practices/README.md">README</a></li>
           </ul>
         </div>
         <div>
-          <strong>Raw research (audit trail)</strong>
+          <h4>Raw audit trail</h4>
           <ul>
             <li><a href="raw/best-practices-research/01-performance-raw.md">01-performance-raw.md</a></li>
             <li><a href="raw/best-practices-research/02-cost-optimization-raw.md">02-cost-optimization-raw.md</a></li>
             <li><a href="raw/best-practices-research/03-personal-development-raw.md">03-personal-development-raw.md</a></li>
-            <li><a href="index.html">← Main landing page</a></li>
           </ul>
         </div>
+        <div>
+          <h4>Other landing</h4>
+          <ul>
+            <li><a href="index.html">Main landing</a></li>
+            <li><a href="people.html">People research →</a></li>
+            <li><a href="https://github.com/nhhoang4075/claude-code-research">Source repo</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="bottom">
+        <span>Build với Claude Code · 2026-05-05</span>
+        <span>Design ref: claude-code-2.seongonai.com</span>
       </div>
     </div>
   </footer>
