@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How People Actually Use Claude Code — for SEONGON</title>
+  <meta name="description" content="15 named individuals with first-person quotes about how they use Claude Code. 8 technical luminaries (Karpathy, Simon Willison, Boris Cherny...) + 7 non-engineer leaders using it for non-marketing work (Mullenweg, Casey Newton, Lenny Rachitsky, Garry Tan, Sahil Lavingia, Pieter Levels, Aravind Srinivas)." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #1c1917; background: #fafaf9; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    :root {
+      --accent: #b91c1c;
+      --accent-2: #dc2626;
+      --accent-soft: #fef2f2;
+      --good: #0f766e;
+      --good-soft: #ecfdf5;
+      --warn: #b45309;
+      --warn-soft: #fef3c7;
+      --bg: #fafaf9;
+      --bg-2: #f5f5f4;
+      --card: #ffffff;
+      --border: #e7e5e4;
+      --text: #1c1917;
+      --text-2: #44403c;
+      --text-3: #78716c;
+      --text-muted: #a8a29e;
+      --c-tech: #1d4ed8;
+      --c-tech-soft: #dbeafe;
+      --c-lead: #7c3aed;
+      --c-lead-soft: #ede9fe;
+      --c-vn: #be185d;
+      --c-vn-soft: #fce7f3;
+      --max: 1180px;
+      color-scheme: light;
+    }
+    a { color: inherit; }
+    p { margin: 0 0 0.75rem; }
+    h1, h2, h3 { margin: 0; letter-spacing: -0.01em; }
+    h1 { font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight: 600; line-height: 1.1; }
+    h2 { font-size: clamp(1.4rem, 2.5vw, 1.75rem); font-weight: 600; line-height: 1.2; }
+    h3 { font-size: 1.05rem; font-weight: 600; }
+    code { background: var(--bg-2); padding: 0 0.25rem; border-radius: 4px; font: 0.88em/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+    @media (min-width: 768px) { section { padding: 80px 0; } }
+    .alt { background: var(--card); }
+    .alt-2 { background: var(--bg-2); }
+    .eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-3); }
+    .eyebrow.tech { color: var(--c-tech); }
+    .eyebrow.lead { color: var(--c-lead); }
+    .eyebrow.vn { color: var(--c-vn); }
+    .lede { font-size: 1.05rem; color: var(--text-2); max-width: 70ch; margin: 12px 0 0; }
+    .muted { color: var(--text-3); font-size: 0.9rem; }
+    .row { display: flex; flex-wrap: wrap; gap: 16px; }
+    .row.between { justify-content: space-between; align-items: baseline; }
+
+    .nav { position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; padding-bottom: 12px; }
+    .nav-brand { font-weight: 600; text-decoration: none; }
+    .nav-brand .x { color: var(--text-muted); }
+    .nav-links { display: none; gap: 22px; font-size: 14px; color: var(--text-2); }
+    .nav-links a { text-decoration: none; }
+    .nav-links a:hover { color: var(--text); }
+    @media (min-width: 768px) { .nav-links { display: flex; } }
+
+    .hero { background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%); padding: 80px 0 64px; }
+    @media (min-width: 768px) { .hero { padding: 100px 0 80px; } }
+    .hero h1 { max-width: 26ch; margin-top: 16px; }
+    .hero .lede { font-size: clamp(1.05rem, 1.5vw, 1.2rem); max-width: 72ch; margin-top: 24px; }
+
+    .stat-grid { display: grid; gap: 16px; margin-top: 40px; grid-template-columns: 1fr; }
+    @media (min-width: 700px) { .stat-grid { grid-template-columns: repeat(3, 1fr); } }
+    .stat { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px; }
+    .stat.tech { border-left: 4px solid var(--c-tech); }
+    .stat.lead { border-left: 4px solid var(--c-lead); }
+    .stat.vn { border-left: 4px solid var(--c-vn); }
+    .stat-num { font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .stat-label { color: var(--text-3); font-size: 13px; margin-top: 8px; line-height: 1.5; }
+
+    .cta-row { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; font-size: 14px; }
+    .btn { display: inline-flex; align-items: center; padding: 10px 16px; border-radius: 8px; text-decoration: none; border: 1px solid var(--border); background: var(--card); transition: background-color .15s ease; }
+    .btn:hover { background: var(--bg-2); }
+    .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn.primary:hover { background: var(--accent-2); }
+
+    .grid-2 { display: grid; gap: 24px; grid-template-columns: 1fr; }
+    @media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+    .grid-3 { display: grid; gap: 18px; grid-template-columns: 1fr; }
+    @media (min-width: 700px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1000px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+
+    /* PERSON CARD */
+    .person { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 12px; transition: transform .15s ease, border-color .15s ease; }
+    .person:hover { transform: translateY(-2px); }
+    .person.tech { border-top: 4px solid var(--c-tech); }
+    .person.tech:hover { border-color: var(--c-tech); border-top-color: var(--c-tech); }
+    .person.lead { border-top: 4px solid var(--c-lead); }
+    .person.lead:hover { border-color: var(--c-lead); border-top-color: var(--c-lead); }
+    .person.flagged { border-top: 4px solid var(--warn); }
+    .person.flagged:hover { border-color: var(--warn); border-top-color: var(--warn); }
+    .person .head-row { display: flex; flex-direction: column; gap: 2px; }
+    .person .name { font-weight: 700; font-size: 1.15rem; line-height: 1.25; color: var(--text); }
+    .person .role { color: var(--text-3); font-size: 12.5px; line-height: 1.4; }
+    .person .tier-pill { display: inline-block; align-self: flex-start; padding: 2px 9px; border-radius: 999px; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 4px; }
+    .person.tech .tier-pill.a { background: var(--c-tech-soft); color: var(--c-tech); }
+    .person.tech .tier-pill.b { background: var(--bg-2); color: var(--text-2); }
+    .person.lead .tier-pill.a { background: var(--c-lead-soft); color: var(--c-lead); }
+    .person.flagged .tier-pill.flag { background: var(--warn-soft); color: var(--warn); }
+
+    .quote { padding: 14px 16px; background: var(--bg-2); border-radius: 8px; font-style: italic; font-size: 13.5px; line-height: 1.55; color: var(--text); position: relative; border-left: 3px solid var(--text-muted); }
+    .person.tech .quote { border-left-color: var(--c-tech); }
+    .person.lead .quote { border-left-color: var(--c-lead); }
+    .person.flagged .quote { border-left-color: var(--warn); }
+    .quote::before { content: "\201C"; position: absolute; top: 0; left: 8px; font-size: 32px; color: var(--text-muted); line-height: 1; opacity: 0.4; }
+
+    .person .what { font-size: 13.5px; color: var(--text-2); line-height: 1.5; }
+    .person .what strong { color: var(--text); }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+    .chip { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 500; background: var(--bg-2); color: var(--text-2); border: 1px solid var(--border); white-space: nowrap; }
+    .chip.cli { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+    .chip.web { background: #eff6ff; color: #1e40af; border-color: #bfdbfe; }
+    .chip.vps { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+    .chip.skill { background: #ede9fe; color: #5b21b6; border-color: #ddd6fe; }
+    .chip.mobile { background: #fdf2f8; color: #9d174d; border-color: #fbcfe8; }
+    .chip.parallel { background: var(--accent-soft); color: var(--accent); border-color: #fecaca; }
+
+    .insight { padding: 12px 14px; background: var(--accent-soft); border-radius: 8px; font-size: 12.5px; color: var(--text); line-height: 1.5; border-left: 3px solid var(--accent); }
+    .insight strong { color: var(--accent); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-bottom: 3px; }
+
+    .source-link { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-3); text-decoration: none; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; word-break: break-all; }
+    .source-link:hover { color: var(--c-tech); }
+    .person.lead .source-link:hover { color: var(--c-lead); }
+
+    /* PATTERNS PANEL */
+    .patterns { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: 32px; }
+    @media (min-width: 768px) { .patterns { grid-template-columns: repeat(2, 1fr); } }
+    .pat { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; display: flex; gap: 14px; }
+    .pat .num { font-size: 1.75rem; font-weight: 700; line-height: 1; flex-shrink: 0; min-width: 36px; }
+    .pat.tech .num { color: var(--c-tech); }
+    .pat.lead .num { color: var(--c-lead); }
+    .pat .body { font-size: 13.5px; line-height: 1.55; color: var(--text-2); }
+    .pat .body strong { color: var(--text); display: block; margin-bottom: 4px; font-size: 14px; }
+
+    /* PARALLELISM SPECTRUM */
+    .spectrum-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-top: 32px; }
+    .spectrum-title { font-weight: 600; }
+    .spectrum-sub { color: var(--text-3); font-size: 13px; margin-top: 2px; }
+    .svg-fluid { width: 100%; height: auto; display: block; }
+
+    /* NULL FINDINGS */
+    .null-grid { display: grid; gap: 18px; grid-template-columns: 1fr; margin-top: 24px; }
+    @media (min-width: 900px) { .null-grid { grid-template-columns: repeat(3, 1fr); } }
+    .null-card { padding: 20px; border-radius: 12px; border: 1px solid var(--border); background: var(--card); }
+    .null-card.priority { border-left: 4px solid var(--c-vn); background: var(--c-vn-soft); }
+    .null-card.priority .label { color: var(--c-vn); }
+    .null-card .label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: var(--text-3); }
+    .null-card .h { font-weight: 700; margin-top: 8px; font-size: 1rem; line-height: 1.3; }
+    .null-card .body { font-size: 13.5px; color: var(--text-2); margin-top: 10px; line-height: 1.55; }
+    .null-card .body strong { color: var(--text); }
+
+    /* DROPPED LIST */
+    .dropped { background: var(--bg-2); border-radius: 12px; padding: 20px; margin-top: 24px; }
+    .dropped h3 { font-size: 1rem; font-weight: 700; }
+    .dropped .lede { font-size: 13px; margin-top: 6px; }
+    .dropped-grid { display: grid; gap: 8px; grid-template-columns: 1fr; margin-top: 14px; }
+    @media (min-width: 600px) { .dropped-grid { grid-template-columns: 1fr 1fr; } }
+    .dropped .item { background: var(--card); border-radius: 8px; padding: 10px 12px; font-size: 13px; line-height: 1.45; border: 1px solid var(--border); }
+    .dropped .item strong { font-weight: 600; color: var(--text); }
+    .dropped .item span { color: var(--text-3); font-size: 12px; }
+
+    /* CALLOUT */
+    .callout { border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+    .callout.warn { background: var(--warn-soft); border-color: #fde68a; }
+    .callout.warn strong { color: var(--warn); }
+    .callout .label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; }
+
+    .ref-list { list-style: none; padding: 0; margin: 24px 0 0; counter-reset: ref; display: grid; gap: 8px; }
+    .ref-list li { counter-increment: ref; padding: 10px 12px 10px 44px; position: relative; border: 1px solid var(--border); border-radius: 8px; background: var(--card); font-size: 0.9rem; }
+    .ref-list li::before { content: counter(ref); position: absolute; top: 10px; left: 12px; width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: 0.78rem; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; }
+    .ref-list a { color: var(--accent); word-break: break-all; }
+    .ref-list a:hover { text-decoration: underline; }
+    .ref-list .meta { display: block; color: var(--text-3); font-size: 0.78rem; margin-top: 2px; }
+
+    footer { background: var(--card); }
+    footer .wrap { padding-top: 36px; padding-bottom: 36px; }
+    footer .grid { display: grid; gap: 24px; grid-template-columns: 1fr; font-size: 0.9rem; color: var(--text-2); }
+    @media (min-width: 768px) { footer .grid { grid-template-columns: repeat(3, 1fr); } }
+    footer ul { padding: 0; margin: 8px 0 0; list-style: none; display: grid; gap: 4px; color: var(--text-3); }
+
+    @media print {
+      .nav, .no-print { display: none !important; }
+      section, .person, .pat, .null-card, .stat { break-inside: avoid; page-break-inside: avoid; }
+      body { background: #fff; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav no-print">
+    <div class="wrap">
+      <a href="#top" class="nav-brand">How People Use Claude Code <span class="x">·</span> SEONGON</a>
+      <div class="nav-links">
+        <a href="#technical">Technical</a>
+        <a href="#leaders">Leaders</a>
+        <a href="#nulls">Null findings</a>
+        <a href="#refs">Refs</a>
+        <a href="index.html">← Main</a>
+      </div>
+    </div>
+  </nav>
+
+  <header id="top" class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Practitioner research · 2026-05-05</div>
+      <h1>15 named people. First-person quotes. No hand-waving.</h1>
+      <p class="lede">Bằng chứng "ai thực sự dùng Claude Code và dùng cho cái gì" — chia 2 nhóm: <strong>8 technical luminary</strong> (researcher, OSS author, ex-FAANG) + <strong>7 non-engineer leader</strong> dùng cho việc <strong>không phải marketing</strong> (personal infrastructure, strategy coaching, side project, ops automation). Mỗi entry có direct quote + URL + workflow + insight bất ngờ. Anyone không có evidence first-person — drop, không hand-wave.</p>
+
+      <div class="stat-grid">
+        <div class="stat tech">
+          <div class="stat-num">8 luminary</div>
+          <div class="stat-label">Technical: Karpathy, Simon Willison, Mitchell Hashimoto, Boris Cherny (creator of Claude Code), Geoffrey Litt, Armin Ronacher, Steve Yegge, Edward Z. Yang</div>
+        </div>
+        <div class="stat lead">
+          <div class="stat-num">7 leader</div>
+          <div class="stat-label">Non-engineer leader dùng cho NON-marketing: Mullenweg (Sonos!), Casey Newton, Lenny Rachitsky, Garry Tan, Sahil Lavingia, Pieter Levels, Aravind Srinivas. + Drew Houston flagged.</div>
+        </div>
+        <div class="stat vn">
+          <div class="stat-num">3 null finding</div>
+          <div class="stat-label">No Vietnamese C-level mention · F500 CEOs talk AI but không name Claude Code · Non-engineer adopters skew indie không phải F500</div>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <a href="#technical" class="btn primary">Technical luminaries →</a>
+        <a href="#leaders" class="btn">Non-engineer leaders →</a>
+        <a href="#nulls" class="btn">Null findings →</a>
+        <a href="https://github.com/nhhoang4075/claude-code-research/tree/main/raw/people-using-claude-code" target="_blank" rel="noreferrer" class="btn">Raw research →</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════ TECHNICAL LUMINARIES -->
+  <section id="technical">
+    <div class="wrap">
+      <div class="eyebrow tech">01 · Technical luminaries</div>
+      <h2 style="margin-top: 8px;">Researcher, OSS author, ex-FAANG — first-person quote về workflow Claude Code</h2>
+      <p class="lede">5 Tier A (highest priority) + 3 Tier B. Mỗi entry verify được trực tiếp từ post / podcast / blog của chính họ. Đáng chú ý: sự bất đồng giữa Yang ("read every line") và Yegge ("20-30 parallel agents") — không có industry consensus về parallelization.</p>
+
+      <!-- 8 person cards -->
+      <div class="grid-3" style="margin-top: 32px;">
+
+        <!-- Karpathy -->
+        <article class="person tech">
+          <div class="head-row">
+            <span class="tier-pill a">Tier A</span>
+            <div class="name">Andrej Karpathy</div>
+            <div class="role">ex-Tesla AI · OpenAI co-founder · Eureka Labs</div>
+          </div>
+          <div class="quote">I rapidly went from about 80% manual+autocomplete coding and 20% agents in November to 80% agent coding and 20% edits+touchups in December. I really am mostly programming in English now.</div>
+          <div class="what"><strong>What for</strong>: General agentic coding for personal projects. <strong>NOTE</strong>: explicitly excluded nanochat training pipeline — agents "net unhelpful" for hardest work.</div>
+          <div class="chips">
+            <span class="chip cli">CLI</span>
+            <span class="chip">CLAUDE.md</span>
+            <span class="chip">declarative</span>
+          </div>
+          <div class="insight"><strong>Surprising</strong>Calls it "a hit to the ego," admits manual coding ability "slowly atrophying." 80/20 shift applies to most work, NOT the hardest. Nuance matters for SEONGON pitch.</div>
+          <a href="https://x.com/karpathy/status/2015883857489522876" target="_blank" rel="noreferrer" class="source-link">x.com/karpathy/status/2015883857489522876 →</a>
+        </article>
+
+        <!-- Simon Willison -->
+        <article class="person tech">
+          <div class="head-row">
+            <span class="tier-pill a">Tier A</span>
+            <div class="name">Simon Willison</div>
+            <div class="role">Datasette author · prolific LLM blogger</div>
+          </div>
+          <div class="quote">These days I'm writing significantly more code via Claude Code than by typing text into a text editor myself. Being able to have an idea on a walk and turn that into working, tested and documented code from a couple of prompts on my phone is a truly science fiction way of working.</div>
+          <div class="what"><strong>What for</strong>: General computer automation (not just code). Datasette plugins. Codes from his iPhone via Claude app.</div>
+          <div class="chips">
+            <span class="chip cli">CLI</span>
+            <span class="chip mobile">mobile</span>
+            <span class="chip skill">Skills</span>
+          </div>
+          <div class="insight"><strong>Surprising</strong>"Claude Skills are awesome, maybe a bigger deal than MCP." Public reversal — downgraded MCP after taking coding agents seriously. Reframes Claude Code as "tool for general computer automation."</div>
+          <a href="https://simonwillison.net/2025/Dec/25/claude-code-transcripts/" target="_blank" rel="noreferrer" class="source-link">simonwillison.net/2025/Dec/25/claude-code-transcripts →</a>
+        </article>
+
+        <!-- Mitchell Hashimoto -->
+        <article class="person tech">
+          <div class="head-row">
+            <span class="tier-pill a">Tier A</span>
+            <div class="name">Mitchell Hashimoto</div>
+            <div class="role">HashiCorp co-founder · Ghostty author</div>
+          </div>
+          <div class="quote">I'm more or less the architect of the software project. I give tooling that guidance... I want you to achieve this end goal, but using this shape.</div>
+          <div class="what"><strong>What for</strong>: Architectural-level delegation. Refactors, library comparisons, edge-case analysis, deep research. Ghostty terminal feature substantially built via Claude Code.</div>
+          <div class="chips">
+            <span class="chip cli">CLI</span>
+            <span class="chip parallel">always-on bg agent</span>
+          </div>
+          <div class="insight"><strong>Surprising</strong>On-ramp advice for skeptics: "start by reproducing your research, not your code" — delegate library compare + edge-case analysis BEFORE actual code. Unusually safe entry path.</div>
+          <a href="https://zed.dev/blog/agentic-engineering-with-mitchell-hashimoto" target="_blank" rel="noreferrer" class="source-link">zed.dev/blog/agentic-engineering-with-mitchell-hashimoto →</a>
+        </article>
+
+        <!-- Boris Cherny -->
+        <article class="person tech">
+          <div class="head-row">
+            <span class="tier-pill a">Tier A · creator</span>
+            <div class="name">Boris Cherny</div>
+            <div class="role">Creator of Claude Code · Anthropic</div>
+          </div>
+          <div class="quote">If my goal is to write a Pull Request, I will use Plan mode, and go back and forth with Claude until I like its plan. Probably the most important thing — give Claude a way to verify its work. If Claude has that feedback loop, it will 2-3× the quality of the final result.</div>
+          <div class="what"><strong>What for</strong>: Building Claude Code with Claude Code. 20-30 PR/day. Has not written SQL by hand in 6+ months.</div>
+          <div class="chips">
+            <span class="chip cli">5 CLI</span>
+            <span class="chip web">5-10 web</span>
+            <span class="chip mobile">iOS</span>
+            <span class="chip parallel">10-15 concurrent</span>
+          </div>
+          <div class="insight"><strong>Surprising</strong>Author of the tool runs 10-15 concurrent agents but NEVER lets Claude write a line of code until plan approved. Discipline opposite of "vibe coding." Verification > speed.</div>
+          <a href="https://howborisusesclaudecode.com/" target="_blank" rel="noreferrer" class="source-link">howborisusesclaudecode.com →</a>
+        </article>
+
+        <!-- Geoffrey Litt -->
+        <article class="person tech">
+          <div class="head-row">
+            <span class="tier-pill a">Tier A</span>
+            <div class="name">Geoffrey Litt</div>
+            <div class="role">Researcher · Ink &amp; Switch</div>
+          </div>
+          <div class="quote">Personally, I'm trying to code like a surgeon. A surgeon isn't a manager, they do the actual work!</div>
+          <div class="what"><strong>What for</strong>: Oversees parallel agents via Notion kanban board (Notion MCP + custom slash command). Voice-notes-to-tasks pipeline.</div>
+          <div class="chips">
+            <span class="chip cli">CLI</span>
+            <span class="chip">Notion MCP</span>
+            <span class="chip">/implement #N</span>
+          </div>
+          <div class="insight"><strong>Surprising</strong>Explicitly rejects "AI makes you a manager" framing. Delegates PREP work (codebase guides, TS errors, exploratory spikes) but does central work himself. Most credible counter-narrative to maximalist agent-only workflows.</div>
+          <a href="https://x.com/geoffreylitt/status/1975957752804450513" target="_blank" rel="noreferrer" class="source-link">x.com/geoffreylitt/status/1975957752804450513 →</a>
+        </article>
+
+        <!-- Armin Ronacher -->
+        <article class="person tech">
+          <div class="head-row">
+            <span class="tier-pill b">Tier B</span>
+            <div class="name">Armin Ronacher</div>
+            <div class="role">Flask creator · Sentry CTO emeritus</div>
+          </div>
+          <div class="quote">Where I used to spend most of my time in Cursor, I now mostly use Claude Code, almost entirely hands-off. From the very beginning I became a religious user of what is colloquially called YOLO mode.</div>
+          <div class="what"><strong>What for</strong>: Almost entirely Claude Code now. Regression debugging, blog migrations to markdown, Advent of Code with custom web-browser skill.</div>
+          <div class="chips">
+            <span class="chip cli">CLI</span>
+            <span class="chip">YOLO mode</span>
+            <span class="chip">Sonnet · Max $100/mo</span>
+          </div>
+          <div class="insight"><strong>Surprising</strong>"I quite vocally shared my lack of success with MCP." Prefers Sonnet over Opus. Two common best-practices (use Opus, use MCP) rejected by heavy user.</div>
+          <a href="https://lucumr.pocoo.org/2025/12/22/a-year-of-vibes/" target="_blank" rel="noreferrer" class="source-link">lucumr.pocoo.org/2025/12/22/a-year-of-vibes →</a>
+        </article>
+
+        <!-- Steve Yegge -->
+        <article class="person tech">
+          <div class="head-row">
+            <span class="tier-pill b">Tier B</span>
+            <div class="name">Steve Yegge</div>
+            <div class="role">ex-Google · ex-Amazon · ex-Sourcegraph</div>
+          </div>
+          <div class="quote">Factory farming code... the days of coding by hand are over.</div>
+          <div class="what"><strong>What for</strong>: Built Gas Town — Go-based Claude Code orchestrator running 20-30 agents in parallel with shared task queue, coordinator, crash-resume. Co-author of book <em>Vibe Coding</em>.</div>
+          <div class="chips">
+            <span class="chip cli">CLI</span>
+            <span class="chip parallel">20-30 parallel</span>
+            <span class="chip">custom orchestrator</span>
+          </div>
+          <div class="insight"><strong>Surprising</strong>30-year veteran of "Stevey rants" claims hand-coding era over. "Revenge of the Junior Developer" essay quoted by Dario Amodei. Most aggressive workflow on this list.</div>
+          <a href="https://newsletter.pragmaticengineer.com/p/steve-yegge-on-ai-agents-and-the" target="_blank" rel="noreferrer" class="source-link">pragmaticengineer.com/p/steve-yegge-on-ai-agents →</a>
+        </article>
+
+        <!-- Edward Z. Yang -->
+        <article class="person tech">
+          <div class="head-row">
+            <span class="tier-pill b">Tier B</span>
+            <div class="name">Edward Z. Yang</div>
+            <div class="role">Meta · PyTorch core</div>
+          </div>
+          <div class="quote">This is NOT a workflow for letting the AI autonomously write tons of code. You're going to be reading every single line it produces. Be lazy: if something doesn't make sense, don't try to puzzle it out, just send it straight to the LLM.</div>
+          <div class="what"><strong>What for</strong>: Building <code>spmd_types</code>, type checker for distributed PyTorch — but with full human review of every line.</div>
+          <div class="chips">
+            <span class="chip cli">CLI</span>
+            <span class="chip">1 window/worktree</span>
+            <span class="chip">no orchestrator</span>
+          </div>
+          <div class="insight"><strong>Surprising</strong>"Do NOT multitask review — undivided attention. This step is the bottleneck." Comprehension > throughput. Direct opposite of Cherny/Yegge parallel pattern. For PyTorch maintainer working on type theory.</div>
+          <a href="https://blog.ezyang.com/2026/03/ai-assisted-programming-for-spmd-types/" target="_blank" rel="noreferrer" class="source-link">blog.ezyang.com/2026/03/ai-assisted-programming-for-spmd-types →</a>
+        </article>
+
+      </div>
+
+      <!-- Parallelism spectrum SVG -->
+      <div class="spectrum-card">
+        <div class="spectrum-title">Parallelism spectrum — disagreement is real</div>
+        <div class="spectrum-sub">Số lượng agent chạy đồng thời mà mỗi luminary thực hành. Không có industry consensus.</div>
+        <div style="margin-top: 24px;">
+          <svg class="svg-fluid" viewBox="0 0 940 240" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Parallelism spectrum from 1 to 30 agents">
+            <!-- spectrum line -->
+            <line x1="80" y1="120" x2="860" y2="120" stroke="#e7e5e4" stroke-width="3"/>
+
+            <!-- gradient fill on line -->
+            <defs>
+              <linearGradient id="spec" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#1d4ed8" stop-opacity="0.6"/>
+                <stop offset="50%" stop-color="#7c3aed" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#b91c1c" stop-opacity="0.6"/>
+              </linearGradient>
+            </defs>
+            <line x1="80" y1="120" x2="860" y2="120" stroke="url(#spec)" stroke-width="6" stroke-linecap="round"/>
+
+            <!-- left/right labels -->
+            <text x="80" y="160" font-size="12" font-weight="600" fill="#1d4ed8">"Read every line"</text>
+            <text x="80" y="178" font-size="11" fill="#a8a29e">comprehension &gt; throughput</text>
+            <text x="860" y="160" text-anchor="end" font-size="12" font-weight="600" fill="#b91c1c">"Factory farming"</text>
+            <text x="860" y="178" text-anchor="end" font-size="11" fill="#a8a29e">throughput maxed</text>
+
+            <!-- person dots -->
+            <!-- Yang: 1 -->
+            <circle cx="100" cy="120" r="9" fill="#1d4ed8"/>
+            <text x="100" y="100" text-anchor="middle" font-size="12" font-weight="600" fill="#1d4ed8">Yang</text>
+            <text x="100" y="86" text-anchor="middle" font-size="10" fill="#78716c">1 window</text>
+
+            <!-- Litt: serial 1, but with prep agents -->
+            <circle cx="180" cy="120" r="9" fill="#1d4ed8"/>
+            <text x="180" y="100" text-anchor="middle" font-size="12" font-weight="600" fill="#1d4ed8">Litt</text>
+            <text x="180" y="86" text-anchor="middle" font-size="10" fill="#78716c">"surgeon"</text>
+
+            <!-- Karpathy: serial -->
+            <circle cx="280" cy="120" r="9" fill="#1d4ed8"/>
+            <text x="280" y="100" text-anchor="middle" font-size="12" font-weight="600" fill="#1d4ed8">Karpathy</text>
+            <text x="280" y="86" text-anchor="middle" font-size="10" fill="#78716c">single agent</text>
+
+            <!-- Willison: serial-ish, mobile + skills -->
+            <circle cx="380" cy="120" r="9" fill="#1d4ed8"/>
+            <text x="380" y="100" text-anchor="middle" font-size="12" font-weight="600" fill="#1d4ed8">Willison</text>
+            <text x="380" y="86" text-anchor="middle" font-size="10" fill="#78716c">single agent</text>
+
+            <!-- Hashimoto: 1+1 background -->
+            <circle cx="470" cy="120" r="10" fill="#7c3aed"/>
+            <text x="470" y="100" text-anchor="middle" font-size="12" font-weight="600" fill="#7c3aed">Hashimoto</text>
+            <text x="470" y="86" text-anchor="middle" font-size="10" fill="#78716c">+ bg agent</text>
+
+            <!-- Ronacher: YOLO mode, watches it run -->
+            <circle cx="540" cy="120" r="9" fill="#7c3aed"/>
+            <text x="540" y="148" text-anchor="middle" font-size="12" font-weight="600" fill="#7c3aed">Ronacher</text>
+            <text x="540" y="200" text-anchor="middle" font-size="10" fill="#78716c">YOLO · watches</text>
+            <line x1="540" y1="129" x2="540" y2="146" stroke="#7c3aed" stroke-width="1" opacity="0.4"/>
+
+            <!-- Cherny: 10-15 -->
+            <circle cx="700" cy="120" r="14" fill="#b91c1c"/>
+            <text x="700" y="100" text-anchor="middle" font-size="12" font-weight="700" fill="#b91c1c">Cherny</text>
+            <text x="700" y="86" text-anchor="middle" font-size="10" fill="#78716c">10-15 agents</text>
+
+            <!-- Yegge: 20-30 (Gas Town) -->
+            <circle cx="830" cy="120" r="18" fill="#b91c1c"/>
+            <text x="830" y="100" text-anchor="middle" font-size="12" font-weight="700" fill="#b91c1c">Yegge</text>
+            <text x="830" y="86" text-anchor="middle" font-size="10" fill="#78716c">20-30 agents</text>
+
+            <!-- consensus annotation -->
+            <text x="470" y="220" text-anchor="middle" font-size="11" fill="#a8a29e" font-style="italic">Plan-mode + verification loop — consensus. Parallelism — disputed.</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- 5 patterns across luminaries -->
+      <h2 style="margin-top: 56px;">5 pattern recurring across all 8 luminary</h2>
+      <div class="patterns">
+        <div class="pat tech">
+          <div class="num">01</div>
+          <div class="body"><strong>Plan mode is consensus</strong>Cherny, Ronacher, Hashimoto, Karpathy đều start với planning trước generation. Cherny: "never a line of code until plan approved" — single most repeated practice. Even Ronacher's "no plan mode" thực ra là custom plan-as-markdown.</div>
+        </div>
+        <div class="pat tech">
+          <div class="num">02</div>
+          <div class="body"><strong>Verification loop &gt; raw speed</strong>Cherny "2-3× quality from feedback loop", Yang "review every line", Hashimoto "QA while agent codes", Yegge "plan-implement-review-test loop". Tests, type checker, browser MCP — anything machine-checkable là moat.</div>
+        </div>
+        <div class="pat tech">
+          <div class="num">03</div>
+          <div class="body"><strong>Parallelism real but disputed</strong>Cherny (10-15), Yegge (20-30), Hashimoto (always-on bg), Litt (kanban-managed) lean heavy. Yang + Litt push back: comprehension và surgical focus matter more. Không có consensus.</div>
+        </div>
+        <div class="pat tech">
+          <div class="num">04</div>
+          <div class="body"><strong>Skills + CLAUDE.md beat MCP</strong>Willison + Ronacher cùng public downgrade MCP. Skills (post-Oct 2025) và well-tuned CLAUDE.md (Karpathy, Cherny team file) là cái people thực sự dùng day-to-day. SEONGON: invest first vào CLAUDE.md + skills, treat MCP optional.</div>
+        </div>
+        <div class="pat tech">
+          <div class="num">05</div>
+          <div class="body"><strong>Senior nhất là người opinionated nhất về limits</strong>Karpathy nanochat retreat, Yang "read every line", Litt surgeon framing — endorsement mạnh nhất luôn kèm explicit limits. More credible signal than uniform hype: những người này đã nghĩ về where it breaks.</div>
+        </div>
+      </div>
+
+      <!-- Dropped -->
+      <div class="dropped">
+        <h3>Đã investigate nhưng drop (không có evidence first-person)</h3>
+        <p class="lede">Transparency: research agent đã search những người sau nhưng không tìm được direct quote / specific Claude Code workflow. Better drop than fabricate.</p>
+        <div class="dropped-grid">
+          <div class="item"><strong>John Carmack</strong> · <span>general AI takes only, no Claude Code specifics</span></div>
+          <div class="item"><strong>Kelsey Hightower</strong> · <span>general AI commentary, no workflow</span></div>
+          <div class="item"><strong>Cassidy Williams</strong> · <span>no material found</span></div>
+          <div class="item"><strong>Dan Abramov, Sebastian Markbåge</strong> · <span>nothing surfaced</span></div>
+          <div class="item"><strong>Beyang Liu</strong> · <span>works on Amp (competitor) — off-message</span></div>
+          <div class="item"><strong>Trenton Bricken</strong> · <span>interpretability comments only, not workflow</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ NON-ENGINEER LEADERS -->
+  <section id="leaders" class="alt">
+    <div class="wrap">
+      <div class="eyebrow lead">02 · Non-engineer leader · NON-marketing use</div>
+      <h2 style="margin-top: 8px;">CEO / founder / journalist dùng Claude Code cho cái KHÔNG phải marketing</h2>
+      <p class="lede">Drop hết example "X dùng Claude Code viết blog post / ad copy / SEO content" — đó là pure marketing use. Tìm chỉ ones dùng cho personal infrastructure, strategy coaching, ops automation, hiring docs, M&amp;A, learning, side project. Kết quả: 7 well-sourced + 1 flagged (Houston) + 9 dropped. Pattern lớn nhất: <strong>"tools, not text"</strong>.</p>
+
+      <div class="grid-3" style="margin-top: 32px;">
+
+        <!-- Mullenweg -->
+        <article class="person lead">
+          <div class="head-row">
+            <span class="tier-pill a">Top documented</span>
+            <div class="name">Matt Mullenweg</div>
+            <div class="role">CEO Automattic · WordPress co-founder</div>
+          </div>
+          <div class="quote">All 29 Sonos speakers were running on WiFi with SonosNet completely disabled. They had accumulated ~89 million dropped packets across the system... variable positive reinforcement slot machine cowboy hacking.</div>
+          <div class="what"><strong>What for</strong>: <strong>Personal life infrastructure, NOT WordPress code</strong>. Sonos network debug, daily calendar summary, GitHub project sync, Brave browser tab manager, macOS PDF export utility.</div>
+          <div class="chips">
+            <span class="chip cli">CLI</span>
+            <span class="chip">personal Mac</span>
+            <span class="chip">ad-hoc scripts</span>
+          </div>
+          <div class="insight"><strong>Surprising</strong>CEO Automattic dùng Claude Code debug Sonos WiFi nhà mình, không phải code WordPress. Why over ChatGPT: cần tool ACT trên local files/network/devices, không chỉ chat box. <strong>Most quotable example cho SEONGON pitch.</strong></div>
+          <a href="https://ma.tt/2026/02/claude-sonos/" target="_blank" rel="noreferrer" class="source-link">ma.tt/2026/02/claude-sonos →</a>
+        </article>
+
+        <!-- Casey Newton -->
+        <article class="person lead">
+          <div class="head-row">
+            <span class="tier-pill a">Tier A</span>
+            <div class="name">Casey Newton</div>
+            <div class="role">Founder Platformer · co-host Hard Fork</div>
+          </div>
+          <div class="quote">I'm not interested in AI tools that do the writing for me… I'm almost always more interested in tools that improve my thinking. It's waking people up to LLMs' power to generate <em>tools</em>.</div>
+          <div class="what"><strong>What for</strong>: Replaced $200/yr Squarespace với cnewton.org (1 hour Claude Code). Built database of his writing với semantic queries — "When was last time I wrote about Grok?" Bespoke tools, not text generation.</div>
+          <div class="chips">
+            <span class="chip cli">CLI</span>
+            <span class="chip">Ghostty</span>
+            <span class="chip">Netlify deploy</span>
+          </div>
+          <div class="insight"><strong>Surprising</strong>Tech journalist không có engineering background. Explicitly distances from "AI writes content" — focus là "tools to improve thinking". Recurring pattern across non-eng leaders: <strong>tools, not text</strong>.</div>
+          <a href="https://www.platformer.news/claude-code-review-web-design/" target="_blank" rel="noreferrer" class="source-link">platformer.news/claude-code-review-web-design →</a>
+        </article>
+
+        <!-- Lenny Rachitsky -->
+        <article class="person lead">
+          <div class="head-row">
+            <span class="tier-pill a">Tier A</span>
+            <div class="name">Lenny Rachitsky</div>
+            <div class="role">Lenny's Newsletter · ex-PM Airbnb</div>
+          </div>
+          <div class="quote">The trick is to forget that it's called Claude Code and instead think of it as Claude Local or Claude Agent. It's essentially a super-intelligent AI running locally, able to do stuff directly on your computer.</div>
+          <div class="what"><strong>What for</strong>: Mac storage cleanup, screenshot enhancement, YouTube video download, batch image extraction từ Google Docs, "pick random row from Sheet" cho subscriber giveaway. Runs từ home directory.</div>
+          <div class="chips">
+            <span class="chip cli">CLI</span>
+            <span class="chip">~/</span>
+            <span class="chip">filesystem ops</span>
+          </div>
+          <div class="insight"><strong>Surprising</strong>Ex-PM, không phải engineer. Title của post: "Everyone should be using Claude Code more". Frames the name as obstacle. Why: raw filesystem access — chat-based AI can't act on actual local files.</div>
+          <a href="https://www.lennysnewsletter.com/p/everyone-should-be-using-claude-code" target="_blank" rel="noreferrer" class="source-link">lennysnewsletter.com/p/everyone-should-be-using-claude-code →</a>
+        </article>
+
+        <!-- Garry Tan -->
+        <article class="person lead">
+          <div class="head-row">
+            <span class="tier-pill a">Tier A · 66K stars</span>
+            <div class="name">Garry Tan</div>
+            <div class="role">CEO/President Y Combinator</div>
+          </div>
+          <div class="quote">I just open sourced my entire Claude Code setup I used to average 10K LOC and 100 PR's per week in the last 50 days.</div>
+          <div class="what"><strong>What for</strong>: <strong>gstack</strong> — 23 opinionated skills/slash command modeling roles: CEO, Designer, Eng Manager, Release Manager, QA. Treats Claude Code như team simulator cho solo operator. ~66K stars trong vài tuần.</div>
+          <div class="chips">
+            <span class="chip cli">CLI</span>
+            <span class="chip skill">23 skills</span>
+            <span class="chip">role simulator</span>
+          </div>
+          <div class="insight"><strong>Surprising</strong>Designer/investor by trade. Clearest published template của <strong>"non-engineer leader uses Claude Code as their org chart"</strong>. SEONGON có thể clone pattern này — codify methodology như slash command.</div>
+          <a href="https://github.com/garrytan/gstack" target="_blank" rel="noreferrer" class="source-link">github.com/garrytan/gstack →</a>
+        </article>
+
+        <!-- Sahil Lavingia -->
+        <article class="person lead">
+          <div class="head-row">
+            <span class="tier-pill a">Tier A · 4.8K stars</span>
+            <div class="name">Sahil Lavingia</div>
+            <div class="role">Founder Gumroad</div>
+          </div>
+          <div class="quote">slavingia/skills — converting <em>The Minimalist Entrepreneur</em> into Claude Code skills.</div>
+          <div class="what"><strong>What for</strong>: Book của ông convert thành 9 slash command: <code>/find-community</code>, <code>/validate-idea</code>, <code>/mvp</code>, <code>/first-customers</code>, <code>/pricing</code>... Claude Code asks structured questions, walks through scoping startup decision. <strong>Strategy interview, không phải code.</strong></div>
+          <div class="chips">
+            <span class="chip cli">CLI</span>
+            <span class="chip skill">9 strategy skills</span>
+            <span class="chip">consulting surface</span>
+          </div>
+          <div class="insight"><strong>Surprising</strong>Demonstrates non-engineer dùng Claude Code như <strong>consulting/coaching surface</strong> for strategy, không phải code generator. Value: persistent skill definition + filesystem context, không phải generated code.</div>
+          <a href="https://github.com/slavingia/skills" target="_blank" rel="noreferrer" class="source-link">github.com/slavingia/skills →</a>
+        </article>
+
+        <!-- Pieter Levels -->
+        <article class="person lead">
+          <div class="head-row">
+            <span class="tier-pill a">Tier A</span>
+            <div class="name">Pieter Levels</div>
+            <div class="role">Indie founder · Nomad List · Photo AI · Remote OK</div>
+          </div>
+          <div class="quote">I just SSH into @Hetzner_Online $5/mo VPS… Then install Claude `npm install -g @anthropic-ai/claude-code`. Then type `claude` to start it. Treat it like a coworker.</div>
+          <div class="what"><strong>What for</strong>: Run Claude Code 24/7 trên cheap VPS ($5/mo Hetzner) — accessed mobile via SSH (Termius). Rebuild pieter.com như 3D environment với Three.js (1990s PC model). Hobby/brand project.</div>
+          <div class="chips">
+            <span class="chip vps">VPS</span>
+            <span class="chip">SSH mobile</span>
+            <span class="chip">--dangerously-skip-permissions</span>
+          </div>
+          <div class="insight"><strong>Surprising</strong>Closer to "fleet of agents" than "IDE assistant". Detached from laptop. Indicates pattern emerge: leaders treat Claude Code as <strong>background worker on server</strong>, not chat tab.</div>
+          <a href="https://x.com/levelsio/status/1953022273595506910" target="_blank" rel="noreferrer" class="source-link">x.com/levelsio/status/1953022273595506910 →</a>
+        </article>
+
+        <!-- Aravind Srinivas -->
+        <article class="person lead">
+          <div class="head-row">
+            <span class="tier-pill a">Tier A</span>
+            <div class="name">Aravind Srinivas</div>
+            <div class="role">CEO Perplexity</div>
+          </div>
+          <div class="quote">You can now use Claude Code and GitHub CLI directly inside Perplexity Computer.</div>
+          <div class="what"><strong>What for</strong>: Perplexity Computer + Claude Code + GitHub CLI orchestration — autonomous agent loop (fork repo → plan fix → submit PR). CEO product-tests competitive agent design.</div>
+          <div class="chips">
+            <span class="chip">Perplexity Computer</span>
+            <span class="chip">GitHub CLI</span>
+            <span class="chip parallel">autonomous loop</span>
+          </div>
+          <div class="insight"><strong>Surprising</strong>Lower-confidence inclusion — closer to "CEO validates competitor's tech" than personal life use. Nhưng first-person from non-engineer-CEO role. Indicates Claude Code đã trở thành benchmark cho rival agent products.</div>
+          <a href="https://www.linkedin.com/posts/aravind-srinivas-16051987_you-can-now-use-claude-code-and-github-cli-activity-7436805672442245120-2NVX" target="_blank" rel="noreferrer" class="source-link">linkedin.com/posts/aravind-srinivas...activity-7436805672442245120 →</a>
+        </article>
+
+        <!-- Drew Houston FLAGGED -->
+        <article class="person flagged">
+          <div class="head-row">
+            <span class="tier-pill flag">⚠ Flagged</span>
+            <div class="name">Drew Houston</div>
+            <div class="role">CEO Dropbox</div>
+          </div>
+          <div class="quote">[Houston feeds] board letters, company information, and records of past conversations into AI agents that act as his "thought partners".</div>
+          <div class="what"><strong>What for (claimed)</strong>: 400+ hours coding với LLM trong năm qua. Board prep, strategy memo synthesis, recall over personal corpus. Textbook non-marketing executive use case.</div>
+          <div class="chips">
+            <span class="chip">"AI agents"</span>
+            <span class="chip">board prep</span>
+          </div>
+          <div class="insight"><strong>⚠ Caveat</strong>Semafor article references generic "AI agents / LLMs", KHÔNG name Claude Code specifically. Workflow real, tool attribution weak. Treat as workflow inspiration, không cite as Claude Code user.</div>
+          <a href="https://www.semafor.com/article/10/23/2025/why-dropboxs-ceo-drew-houston-still-does-his-own-coding" target="_blank" rel="noreferrer" class="source-link">semafor.com/article/10/23/2025/why-dropboxs-ceo-drew-houston-still-does-his-own-coding →</a>
+        </article>
+
+      </div>
+
+      <!-- 6 patterns across leaders -->
+      <h2 style="margin-top: 56px;">6 pattern recurring across non-engineer leaders</h2>
+      <div class="patterns">
+        <div class="pat lead">
+          <div class="num">01</div>
+          <div class="body"><strong>Personal-infrastructure glue</strong>Mullenweg's Sonos/calendar/PDF utilities, Lenny's storage cleanup + Sheet randomizer, Newton's writing-archive search. Common thread: "tools too small to justify hiring engineer for, but too annoying to do manually." Claude Code wins over ChatGPT vì <strong>act on local files</strong>.</div>
+        </div>
+        <div class="pat lead">
+          <div class="num">02</div>
+          <div class="body"><strong>Personal websites + brand surface</strong>Newton replaced Squarespace (saved $200/yr). Levels rebuilt pieter.com như 3D Three.js environment. Non-engineer leader đang <strong>kill SaaS subscription</strong> bằng weekend Claude Code project.</div>
+        </div>
+        <div class="pat lead">
+          <div class="num">03</div>
+          <div class="body"><strong>Strategy/coaching surface, không phải code</strong>Lavingia 9 slash command for business decision. Tan gstack roles (CEO/Designer/QA). Claude Code dùng như <strong>structured conversation partner</strong> — value là persistent skill definition + filesystem context, không phải generated code.</div>
+        </div>
+        <div class="pat lead">
+          <div class="num">04</div>
+          <div class="body"><strong>Run-it-headless infrastructure</strong>Levels VPS pattern, Srinivas Perplexity Computer orchestration. Leaders treat Claude Code như <strong>background worker on server</strong>, không phải chat tab. Biggest divergence từ ChatGPT-style use.</div>
+        </div>
+        <div class="pat lead">
+          <div class="num">05</div>
+          <div class="body"><strong>"Tools, not text"</strong>Casey Newton's framing — "LLMs' power to generate <em>tools</em>" — recurs implicitly trong Mullenweg, Tan, Lavingia. Non-engineer dùng Claude Code để <strong>manufacture small bespoke applications</strong>, không phải draft documents.</div>
+        </div>
+        <div class="pat lead">
+          <div class="num">06</div>
+          <div class="body"><strong>Skill pack as portable artifact</strong>Tan + Lavingia ship public skill repo. Trong leaders, "publish your CLAUDE.md / skills" trở thành form of thought leadership <strong>distinct từ blog or podcast</strong>. SEONGON: cân nhắc publish methodology như public skill pack.</div>
+        </div>
+      </div>
+
+      <!-- Implication for SEONGON -->
+      <div class="callout warn" style="margin-top: 40px;">
+        <div class="label">Implication cho SEONGON leadership</div>
+        <p style="margin: 8px 0 0; font-size: 0.95rem;">Use case agency-leadership <strong>không phải "Claude Code viết social post"</strong>. Mà là (a) personal CLI cho ops + personal-data task của lãnh đạo (Mullenweg/Lenny pattern), và (b) <strong>skill pack codify SEONGON methodology</strong> — positioning framework, audit checklist, briefing template — staff non-technical invoke như slash command (Tan/Lavingia pattern). Cái này có thể trở thành <strong>thought-leadership artifact</strong> distinct từ blog/podcast.</p>
+      </div>
+
+      <!-- Dropped leaders -->
+      <div class="dropped">
+        <h3>Đã investigate nhưng drop (no first-person Claude Code workflow)</h3>
+        <p class="lede">Tham vọng leadership angle có thể to nhưng search rộng vẫn không tìm được first-person material. Worth knowing để SEONGON không waste time tìm tiếp.</p>
+        <div class="dropped-grid">
+          <div class="item"><strong>Patrick Collison</strong> · <span>talks về Claude Code adoption ở Stripe, không personal use</span></div>
+          <div class="item"><strong>Naval Ravikant</strong> · <span>tweets về software proliferation generic, không "I use it for X"</span></div>
+          <div class="item"><strong>Marc Andreessen</strong> · <span>1 joke tweet, không workflow source</span></div>
+          <div class="item"><strong>Sam Altman</strong> · <span>nothing publicly visible</span></div>
+          <div class="item"><strong>April Dunford, Rand Fishkin</strong> · <span>methodologies turned into skills BY THIRD PARTIES, không personal use</span></div>
+          <div class="item"><strong>Amanda Natividad</strong> · <span>Claude (chat) cho Formspree widget — possibly Claude.ai not Claude Code</span></div>
+          <div class="item"><strong>Tony Dinh, Marc Lou</strong> · <span>technical indie founder, không "non-engineer" target</span></div>
+          <div class="item"><strong>Anthropic Growth Mktg named individuals</strong> · <span>internal-teams PDF không có individual name — agent search returned no match</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ NULL FINDINGS -->
+  <section id="nulls" class="alt-2">
+    <div class="wrap">
+      <div class="eyebrow vn">03 · 3 null finding</div>
+      <h2 style="margin-top: 8px;">Cái không tìm được — đôi khi quan trọng hơn cái tìm được</h2>
+      <p class="lede">Research agent đã search rộng nhưng những điều dưới đây không có evidence. Đáng surface explicitly để SEONGON ra quyết định strategic chính xác.</p>
+
+      <div class="null-grid">
+        <div class="null-card priority">
+          <div class="label">⚑ Null #1 · cơ hội first-mover</div>
+          <div class="h">Không có Vietnamese C-level public mention</div>
+          <div class="body">Agent search explicitly: <strong>FPT, VNG, Tiki, Shopee Vietnam</strong>. Zero hit về CEO/named leader VN public-post về Claude Code. <strong>SEONGON sẽ là first-mover nếu publish thought-leadership</strong> Vietnamese-market về adoption — competitive moat trong B2B SEO/Ads market VN khi câu chuyện AI-augmented agency trở thành mainstream Q3-Q4 2026.</div>
+        </div>
+
+        <div class="null-card">
+          <div class="label">Null #2</div>
+          <div class="h">Famous AI-using CEO talk AI generically — không name Claude Code</div>
+          <div class="body"><strong>Houston, Collison, Naval, Andreessen, Altman</strong> đều talk về AI adoption công khai, nhưng không attribute Claude Code specifically. Houston (Semafor) quote về board memo "thought partner" — workflow real, tool attribution weak. <strong>Implication</strong>: narrative "F500 CEO uses Claude Code" thực tế NARROWER than headlines. Skeptical media spin về adoption sẽ đúng hơn nếu chỉ count first-person attribution.</div>
+        </div>
+
+        <div class="null-card">
+          <div class="label">Null #3</div>
+          <div class="h">Non-engineer adopters skew indie/journalist, không F500</div>
+          <div class="body"><strong>Mullenweg</strong> (Automattic ~2000 distributed), <strong>Newton</strong> (~3 ppl Platformer), <strong>Levels</strong> (solo), <strong>Lavingia</strong> (Gumroad ~10 ppl). Pattern: laptop-as-work-surface, không corporate IT stack. <strong>Implication</strong>: SEONGON cần thiết kế adoption workflow cho mid-large agency với corporate IT — khác với pattern indie có sẵn. Bài học từ indie pattern transferable nhưng không 1-1 copyable.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ REFERENCES -->
+  <section id="refs">
+    <div class="wrap">
+      <div class="row between">
+        <h2>References — direct first-person sources</h2>
+        <span class="muted">Verify từng URL trước cite external · raw research ở <code>raw/people-using-claude-code/</code></span>
+      </div>
+      <ol class="ref-list">
+        <li>
+          <a href="https://x.com/karpathy/status/2015883857489522876" target="_blank" rel="noreferrer">x.com/karpathy/status/2015883857489522876</a>
+          <span class="meta">Andrej Karpathy · "80→20 manual-to-agent shift" · January 2026</span>
+        </li>
+        <li>
+          <a href="https://simonwillison.net/2025/Dec/25/claude-code-transcripts/" target="_blank" rel="noreferrer">simonwillison.net/2025/Dec/25/claude-code-transcripts</a>
+          <span class="meta">Simon Willison · "writing significantly more code via Claude Code" · December 2025</span>
+        </li>
+        <li>
+          <a href="https://simonwillison.net/2025/Oct/16/claude-skills/" target="_blank" rel="noreferrer">simonwillison.net/2025/Oct/16/claude-skills</a>
+          <span class="meta">Simon Willison · Skills > MCP · October 2025</span>
+        </li>
+        <li>
+          <a href="https://zed.dev/blog/agentic-engineering-with-mitchell-hashimoto" target="_blank" rel="noreferrer">zed.dev/blog/agentic-engineering-with-mitchell-hashimoto</a>
+          <span class="meta">Mitchell Hashimoto · "I'm more or less the architect" · Zed blog interview</span>
+        </li>
+        <li>
+          <a href="https://howborisusesclaudecode.com/" target="_blank" rel="noreferrer">howborisusesclaudecode.com</a>
+          <span class="meta">Boris Cherny · creator of Claude Code · 10-15 concurrent agents pattern</span>
+        </li>
+        <li>
+          <a href="https://www.lennysnewsletter.com/p/head-of-claude-code-what-happens" target="_blank" rel="noreferrer">lennysnewsletter.com/p/head-of-claude-code-what-happens</a>
+          <span class="meta">Boris Cherny interview by Lenny Rachitsky · workflow detail</span>
+        </li>
+        <li>
+          <a href="https://x.com/geoffreylitt/status/1975957752804450513" target="_blank" rel="noreferrer">x.com/geoffreylitt/status/1975957752804450513</a>
+          <span class="meta">Geoffrey Litt · Notion MCP kanban orchestration</span>
+        </li>
+        <li>
+          <a href="https://lucumr.pocoo.org/2025/12/22/a-year-of-vibes/" target="_blank" rel="noreferrer">lucumr.pocoo.org/2025/12/22/a-year-of-vibes</a>
+          <span class="meta">Armin Ronacher · YOLO mode + Sonnet on Max plan</span>
+        </li>
+        <li>
+          <a href="https://newsletter.pragmaticengineer.com/p/steve-yegge-on-ai-agents-and-the" target="_blank" rel="noreferrer">pragmaticengineer.com/p/steve-yegge-on-ai-agents-and-the</a>
+          <span class="meta">Steve Yegge · Gas Town orchestrator · 20-30 parallel</span>
+        </li>
+        <li>
+          <a href="https://blog.ezyang.com/2026/03/ai-assisted-programming-for-spmd-types/" target="_blank" rel="noreferrer">blog.ezyang.com/2026/03/ai-assisted-programming-for-spmd-types</a>
+          <span class="meta">Edward Z. Yang · "read every line" workflow · March 2026</span>
+        </li>
+        <li>
+          <a href="https://ma.tt/2026/02/claude-sonos/" target="_blank" rel="noreferrer">ma.tt/2026/02/claude-sonos</a>
+          <span class="meta">Matt Mullenweg · Sonos network debug · February 2026</span>
+        </li>
+        <li>
+          <a href="https://www.platformer.news/claude-code-review-web-design/" target="_blank" rel="noreferrer">platformer.news/claude-code-review-web-design</a>
+          <span class="meta">Casey Newton · "Claude Code believer" · January 2026</span>
+        </li>
+        <li>
+          <a href="https://www.lennysnewsletter.com/p/everyone-should-be-using-claude-code" target="_blank" rel="noreferrer">lennysnewsletter.com/p/everyone-should-be-using-claude-code</a>
+          <span class="meta">Lenny Rachitsky · personal Mac uses · October 2025</span>
+        </li>
+        <li>
+          <a href="https://github.com/garrytan/gstack" target="_blank" rel="noreferrer">github.com/garrytan/gstack</a>
+          <span class="meta">Garry Tan · 23 skills modeling team roles · ~66K stars</span>
+        </li>
+        <li>
+          <a href="https://github.com/slavingia/skills" target="_blank" rel="noreferrer">github.com/slavingia/skills</a>
+          <span class="meta">Sahil Lavingia · Minimalist Entrepreneur as 9 strategy slash commands</span>
+        </li>
+        <li>
+          <a href="https://x.com/levelsio/status/1953022273595506910" target="_blank" rel="noreferrer">x.com/levelsio/status/1953022273595506910</a>
+          <span class="meta">Pieter Levels · Hetzner $5/mo VPS workflow · August 2025</span>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/posts/aravind-srinivas-16051987_you-can-now-use-claude-code-and-github-cli-activity-7436805672442245120-2NVX" target="_blank" rel="noreferrer">linkedin.com/posts/aravind-srinivas...7436805672442245120</a>
+          <span class="meta">Aravind Srinivas · Perplexity Computer + Claude Code + GitHub CLI · April 2026</span>
+        </li>
+        <li>
+          <a href="https://www.semafor.com/article/10/23/2025/why-dropboxs-ceo-drew-houston-still-does-his-own-coding" target="_blank" rel="noreferrer">semafor.com/article/10/23/2025/why-dropboxs-ceo-drew-houston-still-does-his-own-coding</a>
+          <span class="meta">Drew Houston ⚠ FLAGGED · "AI agents thought partner" but no Claude Code by name</span>
+        </li>
+      </ol>
+
+      <div class="callout warn" style="margin-top: 24px;">
+        <div class="label">⚠ Verify trước cite external</div>
+        <p style="margin: 8px 0 0; font-size: 0.95rem;">Tất cả X status URL được surface bởi web search, không direct WebFetch (X.com return 402). Quote là search snippet — verify exact wording trước khi cite trong deck client. Load-bearing claims cần verify nhất: <strong>Karpathy 80→20 quote</strong>, <strong>howborisusesclaudecode.com domain</strong>, <strong>Mullenweg ma.tt/claude-sonos slug</strong>, <strong>Lenny lennysnewsletter article</strong>. Full audit checklist ở <code>raw/people-using-claude-code/README.md</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="grid">
+        <div>
+          <div style="font-weight: 600;">People research · v1</div>
+          <div style="color: var(--text-3); font-size: 13px; margin-top: 4px;">Compiled 2026-05-05 · 2 parallel research agents · 15 named individuals</div>
+        </div>
+        <div>
+          <strong>Raw research (audit trail)</strong>
+          <ul>
+            <li><a href="raw/people-using-claude-code/01-technical-luminaries-raw.md">01-technical-luminaries-raw.md</a></li>
+            <li><a href="raw/people-using-claude-code/02-leaders-non-marketing-raw.md">02-leaders-non-marketing-raw.md</a></li>
+            <li><a href="raw/people-using-claude-code/README.md">README · audit checklist</a></li>
+          </ul>
+        </div>
+        <div>
+          <strong>Other landing pages</strong>
+          <ul>
+            <li><a href="index.html">← Main landing (research overview)</a></li>
+            <li><a href="best-practices.html">Best-practice playbook</a></li>
+            <li><a href="https://github.com/nhhoang4075/claude-code-research">Source repo</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
