@@ -101,7 +101,6 @@
         <div class="pattern">
           <div class="head-row"><div class="num">01</div><div class="title">Chọn model đúng</div></div>
           <div class="desc">Sonnet default · Opus escalate · Haiku batch.</div>
-          <div class="apply"><strong>SEONGON</strong>Senior strategy → Opus. Junior → Sonnet. Bulk 200 RSA → Haiku.</div>
           <div class="evidence">
             <span class="strength strong">Strong</span>
             <span class="num">SWE-bench Opus 4.7 87.6% · Sonnet 79.6% · Haiku 73.3%</span>. Sonnet 5× rẻ hơn Opus output cho ~1pt gap.
@@ -112,7 +111,6 @@
         <div class="pattern">
           <div class="head-row"><div class="num">02</div><div class="title">Plan trước task lớn</div></div>
           <div class="desc">Shift+Tab. Tách exploration khỏi execution.</div>
-          <div class="apply"><strong>SEONGON</strong>Mọi việc chạm client account thật — bắt buộc plan trước.</div>
           <div class="evidence">
             <span class="strength medium">Medium</span>
             Anthropic doc qualitative: "letting Claude jump straight to coding can produce code that solves wrong problem". <span class="num">Không có win-rate study.</span>
@@ -123,7 +121,6 @@
         <div class="pattern">
           <div class="head-row"><div class="num">03</div><div class="title">Cho Claude verify</div></div>
           <div class="desc">Test case · expected output · regex check · success criteria.</div>
-          <div class="apply"><strong>SEONGON</strong>RSA ≤30 char — Claude regex check, fail thì rút ngắn.</div>
           <div class="evidence">
             <span class="strength strong">Strong</span>
             Cherny verbatim: <span class="num">"feedback loop 2-3× quality of final result"</span>. Anthropic Security Eng: incidents <span class="num">3× faster</span> với stack trace + docs.
@@ -134,7 +131,6 @@
         <div class="pattern">
           <div class="head-row"><div class="num">04</div><div class="title">Systemize bằng skill</div></div>
           <div class="desc">Prompt chạy ≥3 lần → biến thành skill (slash command).</div>
-          <div class="apply"><strong>SEONGON</strong><code>/audit-seo</code> · <code>/brief-content</code> · <code>/qa-rsa</code>.</div>
           <div class="evidence">
             <span class="strength medium">Medium</span>
             Garry Tan gstack <span class="num">66K stars trong vài tuần</span>. Skills "vài chục token extra" (Willison).
@@ -145,7 +141,6 @@
         <div class="pattern">
           <div class="head-row"><div class="num">05</div><div class="title">CLAUDE.md tốt</div></div>
           <div class="desc">User · project · subdir level. &lt;30 dòng/file effective.</div>
-          <div class="apply"><strong>SEONGON</strong>Project-level cho từng repo. Bun, convention, deploy command.</div>
           <div class="evidence">
             <span class="strength medium">Medium</span>
             Karpathy CLAUDE.md fork <span class="num">110K+ stars</span>. Anthropic: "by default goes into every conversation". Hashimoto heuristic: ~70% follow rate (single source).
@@ -156,7 +151,6 @@
         <div class="pattern">
           <div class="head-row"><div class="num">06</div><div class="title">Đọc diff trước accept</div></div>
           <div class="desc">Junior "Ask before edits". Senior "Edit auto" cho task quen.</div>
-          <div class="apply"><strong>SEONGON</strong>Marketer Cowork: review = đọc plan + output trước Apply.</div>
           <div class="evidence">
             <span class="strength strong">Strong</span>
             SO 2025: <span class="num">29% trust · 46% distrust · 66% "almost right but not quite" · 45% lose time debugging</span>. Anthropic RCT n=52: full-delegate &lt;40% comprehension, explanation-seeking &gt;65%.
@@ -167,7 +161,6 @@
         <div class="pattern">
           <div class="head-row"><div class="num">07</div><div class="title">Prompt scope hẹp</div></div>
           <div class="desc">"Đọc dòng 50-100", không "đọc cả file". Edit thay Write.</div>
-          <div class="apply"><strong>SEONGON</strong>Targeted prompt → output tốt, cost thấp, dễ review.</div>
           <div class="evidence">
             <span class="strength strong">Strong</span>
             Read tool <span class="num">25K token limit hardcoded</span>. Hooks pre-filter giảm context <span class="num">2-3 orders of magnitude</span> (10K → 100s tokens).
@@ -234,7 +227,6 @@
         <div class="pattern">
           <div class="head-row"><div class="num">01</div><div class="title">Default Sonnet</div></div>
           <div class="desc">Mặc định Sonnet. Opus chỉ khi thật cần. Haiku cho batch.</div>
-          <div class="apply"><strong>SEONGON</strong>Junior bị ép Sonnet qua CLAUDE.md.</div>
           <div class="evidence">
             <span class="strength strong">Strong</span>
             Ronacher (Flask creator) verbatim: <span class="num">"exclusively use cheaper Sonnet... actually prefer outputs over Opus"</span>. Pricing 5× differential.
@@ -245,7 +237,6 @@
         <div class="pattern">
           <div class="head-row"><div class="num">02</div><div class="title">/clear vs /compact</div></div>
           <div class="desc">Còn cache (idle &lt;5p) → /compact. Cache chết → /clear rẻ hơn.</div>
-          <div class="apply"><strong>SEONGON</strong>Trước task không liên quan: luôn /clear.</div>
           <div class="evidence">
             <span class="strength strong">Strong</span>
             Cache TTL <span class="num">5 phút default · 1h extended</span>. Cache write 1.25× input · read 0.1× = <span class="num">90% rẻ hơn</span> khi reuse.
@@ -256,7 +247,6 @@
         <div class="pattern">
           <div class="head-row"><div class="num">03</div><div class="title">Plan-first ROI</div></div>
           <div class="desc">Plan trước → tránh "code solves the wrong problem".</div>
-          <div class="apply"><strong>SEONGON</strong>Vượt 1.5× budget → dừng, plan lại.</div>
           <div class="evidence">
             <span class="strength medium">Medium</span>
             Anthropic doc qualitative. Cherny on Lenny podcast: plan-then-execute là core workflow. <span class="num">Không có $-saved study.</span>
@@ -267,7 +257,6 @@
         <div class="pattern">
           <div class="head-row"><div class="num">04</div><div class="title">Subscription đúng vai trò</div></div>
           <div class="desc">Pro $20 · Max 5× $100 · Max 20× $200 · API + cap.</div>
-          <div class="apply"><strong>SEONGON</strong>Junior Pro · Senior Max $100 · Strategy Max $200.</div>
           <div class="evidence">
             <span class="strength strong">Strong</span>
             Official pricing. <span class="num">2026-04-21 Anthropic remove Claude Code khỏi Pro plan tạm thời, restore sau</span> — anticipate volatility.
@@ -278,7 +267,6 @@
         <div class="pattern">
           <div class="head-row"><div class="num">05</div><div class="title">Token budget + abort</div></div>
           <div class="desc">Nhỏ &lt;10K · Vừa 20-50K · Lớn 50-200K. Vượt 1.5× → abort.</div>
-          <div class="apply"><strong>SEONGON</strong>Hook log token → tuần check ai burn nhiều.</div>
           <div class="evidence">
             <span class="strength weak">Weak</span>
             Anthropic Economic Index: coding <span class="num">35% Claude.ai conversations · 44% API traffic</span>. Heavy-tail spend. <span class="num">Không có abort-threshold guidance chính thức.</span>
@@ -289,7 +277,6 @@
         <div class="pattern">
           <div class="head-row"><div class="num">06</div><div class="title">Tránh waste vặt</div></div>
           <div class="desc">Đừng đọc lại file. Đừng search redundant. Đừng idle session.</div>
-          <div class="apply"><strong>SEONGON</strong>Onboarding 1h dạy 5 quy tắc → tiết kiệm $20-50/người/tháng.</div>
           <div class="evidence">
             <span class="strength strong">Strong</span>
             Hooks/grep pre-filter giảm context <span class="num">2-3 orders of magnitude</span> ("tens of thousands → hundreds of tokens").
@@ -299,20 +286,19 @@
 
       </div>
 
-      <!-- Plan recommendation -->
+      <!-- Pricing reference -->
       <div class="brutal" style="margin-top: 40px; padding: 0; overflow: hidden;">
         <div style="padding: 20px 24px; border-bottom: 2px solid var(--fg);">
-          <h3>Khuyến nghị plan SEONGON</h3>
-          <p class="muted small" style="margin-top: 4px;">Pricing: claude.com/pricing · Max 20× = "20× more usage per session vs Pro"</p>
+          <h3>Subscription tiers · official pricing</h3>
+          <p class="muted small" style="margin-top: 4px;">Source: claude.com/pricing · Max 20× = "20× more usage per session vs Pro"</p>
         </div>
         <table>
-          <thead><tr><th>Vai trò</th><th>Plan</th><th>$/tháng</th></tr></thead>
+          <thead><tr><th>Plan</th><th>$/tháng</th><th>Note</th></tr></thead>
           <tbody>
-            <tr><td><strong>AM, junior creator</strong></td><td><span class="chip violet">Pro</span></td><td><strong>$20</strong></td></tr>
-            <tr><td><strong>Junior SEO/Ads</strong></td><td><span class="chip violet">Pro</span></td><td><strong>$20</strong></td></tr>
-            <tr><td><strong>Senior heavy</strong></td><td><span class="chip warn">Max 5×</span></td><td><strong>$100</strong></td></tr>
-            <tr><td><strong>Strategy + Opus</strong></td><td><span class="chip danger">Max 20×</span></td><td><strong>$200</strong></td></tr>
-            <tr><td><strong>Pipeline 24/7</strong></td><td><span class="chip">API + cap</span></td><td><strong>$200 cap</strong></td></tr>
+            <tr><td><span class="chip violet">Pro</span></td><td><strong>$20</strong></td><td>Standard usage</td></tr>
+            <tr><td><span class="chip warn">Max 5×</span></td><td><strong>$100</strong></td><td>5× usage vs Pro</td></tr>
+            <tr><td><span class="chip danger">Max 20×</span></td><td><strong>$200</strong></td><td>20× usage vs Pro</td></tr>
+            <tr><td><span class="chip">API + cap</span></td><td><strong>variable</strong></td><td>Pay-per-token + spend cap</td></tr>
           </tbody>
         </table>
       </div>
@@ -460,7 +446,7 @@
     <div class="wrap">
       <span class="eyebrow">04 · Counter-evidence</span>
       <h2 style="margin-top: 12px; color: white;">Findings <span class="hl hl-pink">contradict conventional wisdom</span></h2>
-      <p class="lede" style="margin-top: 16px; color: #cbd5e1;">Adoption ≠ satisfaction. Productivity câu chuyện không đơn giản. Đáng surface explicitly để SEONGON tránh "AI hype trap" trong leadership deck.</p>
+      <p class="lede" style="margin-top: 16px; color: #cbd5e1;">Adoption ≠ satisfaction. Productivity câu chuyện không đơn giản. Surface explicitly để tránh "AI hype trap" trong leadership deck.</p>
 
       <div class="grid-2" style="margin-top: 36px;">
 
@@ -497,8 +483,8 @@
       </div>
 
       <div class="callout" style="margin-top: 32px; background: var(--primary); color: white; border-color: var(--fg);">
-        <div class="label" style="color: white;">⚑ Implication cho SEONGON pitch</div>
-        <p style="color: white;">Adoption Claude Code <strong>không tự động → productivity gain</strong>. Phải kèm: (1) verification loop (P3), (2) review discipline (P6), (3) skill atrophy mitigation (M4), (4) blast radius guardrail (M6). Skip những điều này → đi vào "vibe coding hangover".</p>
+        <div class="label" style="color: white;">⚑ Implication</div>
+        <p style="color: white;">Adoption Claude Code <strong>không tự động → productivity gain</strong>. Counter-evidence cho thấy cần kèm: verification loop (P3), review discipline (P6), skill atrophy mitigation (M4), blast radius guardrail (M6). Skip những điều này → đi vào "vibe coding hangover".</p>
       </div>
     </div>
   </section>
@@ -507,7 +493,7 @@
   <section id="numbers" class="white">
     <div class="wrap">
       <span class="eyebrow">05 · Industry numbers</span>
-      <h2 style="margin-top: 12px;">Số liệu SEONGON cần — <span class="hl">verified sources</span></h2>
+      <h2 style="margin-top: 12px;">Industry numbers — <span class="hl">verified sources</span></h2>
       <p class="lede" style="margin-top: 16px;">Mỗi số có source + confidence tag. <strong style="color: var(--danger);">Drop list</strong> cuối: số liệu prior research bị fabricate, không cite.</p>
 
       <div class="brutal" style="margin-top: 32px; padding: 0; overflow: hidden;">
