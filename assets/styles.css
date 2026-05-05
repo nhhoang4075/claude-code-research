@@ -282,6 +282,41 @@ section.dark .eyebrow { color: var(--muted-2); }
   font-weight: 700;
 }
 
+/* ─── Evidence footer in pattern card ─── */
+.pattern .evidence {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.pattern .evidence .strength {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-weight: 800;
+  margin-right: 6px;
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  font-family: "JetBrains Mono", monospace;
+  text-transform: uppercase;
+  vertical-align: 1px;
+}
+.pattern .evidence .strength.strong { background: var(--good-soft); color: var(--good); }
+.pattern .evidence .strength.medium { background: var(--warn-soft); color: var(--warn); }
+.pattern .evidence .strength.weak { background: var(--surface-2); color: var(--muted); }
+.pattern .evidence .num { color: var(--fg); font-weight: 700; }
+.pattern .evidence a {
+  display: block;
+  color: var(--primary);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  margin-top: 4px;
+  word-break: break-all;
+}
+.pattern .evidence a:hover { text-decoration: underline; }
+
 /* ─── Person card (quote-driven) ─── */
 .person {
   background: var(--bg);
