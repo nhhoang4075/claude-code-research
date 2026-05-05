@@ -101,71 +101,36 @@
         <div class="pattern">
           <div class="head-row"><div class="num">01</div><div class="title">Chọn model đúng</div></div>
           <div class="desc">Sonnet default · Opus escalate · Haiku batch.</div>
-          <div class="evidence">
-            <span class="strength strong">Strong</span>
-            <span class="num">SWE-bench Opus 4.7 87.6% · Sonnet 79.6% · Haiku 73.3%</span>. Sonnet 5× rẻ hơn Opus output cho ~1pt gap.
-            <a href="https://anthropic.com/news/claude-opus-4-5" target="_blank">anthropic.com/news/claude-opus-4-5</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">02</div><div class="title">Plan trước task lớn</div></div>
           <div class="desc">Shift+Tab. Tách exploration khỏi execution.</div>
-          <div class="evidence">
-            <span class="strength medium">Medium</span>
-            Anthropic doc qualitative: "letting Claude jump straight to coding can produce code that solves wrong problem". <span class="num">Không có win-rate study.</span>
-            <a href="https://code.claude.com/docs/en/best-practices" target="_blank">code.claude.com/docs/en/best-practices</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">03</div><div class="title">Cho Claude verify</div></div>
           <div class="desc">Test case · expected output · regex check · success criteria.</div>
-          <div class="evidence">
-            <span class="strength strong">Strong</span>
-            Cherny verbatim: <span class="num">"feedback loop 2-3× quality of final result"</span>. Anthropic Security Eng: incidents <span class="num">3× faster</span> với stack trace + docs.
-            <a href="https://x.com/bcherny/status/2007179861115511237" target="_blank">x.com/bcherny/status/2007179861115511237</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">04</div><div class="title">Systemize bằng skill</div></div>
           <div class="desc">Prompt chạy ≥3 lần → biến thành skill (slash command).</div>
-          <div class="evidence">
-            <span class="strength medium">Medium</span>
-            Garry Tan gstack <span class="num">66K stars trong vài tuần</span>. Skills "vài chục token extra" (Willison).
-            <a href="https://github.com/garrytan/gstack" target="_blank">github.com/garrytan/gstack</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">05</div><div class="title">CLAUDE.md tốt</div></div>
           <div class="desc">User · project · subdir level. &lt;30 dòng/file effective.</div>
-          <div class="evidence">
-            <span class="strength medium">Medium</span>
-            Karpathy CLAUDE.md fork <span class="num">110K+ stars</span>. Anthropic: "by default goes into every conversation". Hashimoto heuristic: ~70% follow rate (single source).
-            <a href="https://x.com/karpathy/status/2015883857489522876" target="_blank">x.com/karpathy/status/2015883857489522876</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">06</div><div class="title">Đọc diff trước accept</div></div>
           <div class="desc">Junior "Ask before edits". Senior "Edit auto" cho task quen.</div>
-          <div class="evidence">
-            <span class="strength strong">Strong</span>
-            SO 2025: <span class="num">29% trust · 46% distrust · 66% "almost right but not quite" · 45% lose time debugging</span>. Anthropic RCT n=52: full-delegate &lt;40% comprehension, explanation-seeking &gt;65%.
-            <a href="https://survey.stackoverflow.co/2025/ai/" target="_blank">survey.stackoverflow.co/2025/ai/</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">07</div><div class="title">Prompt scope hẹp</div></div>
           <div class="desc">"Đọc dòng 50-100", không "đọc cả file". Edit thay Write.</div>
-          <div class="evidence">
-            <span class="strength strong">Strong</span>
-            Read tool <span class="num">25K token limit hardcoded</span>. Hooks pre-filter giảm context <span class="num">2-3 orders of magnitude</span> (10K → 100s tokens).
-            <a href="https://code.claude.com/docs/en/costs" target="_blank">code.claude.com/docs/en/costs</a>
-          </div>
         </div>
 
       </div>
@@ -227,61 +192,31 @@
         <div class="pattern">
           <div class="head-row"><div class="num">01</div><div class="title">Default Sonnet</div></div>
           <div class="desc">Mặc định Sonnet. Opus chỉ khi thật cần. Haiku cho batch.</div>
-          <div class="evidence">
-            <span class="strength strong">Strong</span>
-            Ronacher (Flask creator) verbatim: <span class="num">"exclusively use cheaper Sonnet... actually prefer outputs over Opus"</span>. Pricing 5× differential.
-            <a href="https://lucumr.pocoo.org/2025/06/12/agentic-coding/" target="_blank">lucumr.pocoo.org/2025/06/12/agentic-coding</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">02</div><div class="title">/clear vs /compact</div></div>
           <div class="desc">Còn cache (idle &lt;5p) → /compact. Cache chết → /clear rẻ hơn.</div>
-          <div class="evidence">
-            <span class="strength strong">Strong</span>
-            Cache TTL <span class="num">5 phút default · 1h extended</span>. Cache write 1.25× input · read 0.1× = <span class="num">90% rẻ hơn</span> khi reuse.
-            <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching" target="_blank">platform.claude.com/.../prompt-caching</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">03</div><div class="title">Plan-first ROI</div></div>
           <div class="desc">Plan trước → tránh "code solves the wrong problem".</div>
-          <div class="evidence">
-            <span class="strength medium">Medium</span>
-            Anthropic doc qualitative. Cherny on Lenny podcast: plan-then-execute là core workflow. <span class="num">Không có $-saved study.</span>
-            <a href="https://code.claude.com/docs/en/best-practices" target="_blank">code.claude.com/docs/en/best-practices</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">04</div><div class="title">Subscription đúng vai trò</div></div>
           <div class="desc">Pro $20 · Max 5× $100 · Max 20× $200 · API + cap.</div>
-          <div class="evidence">
-            <span class="strength strong">Strong</span>
-            Official pricing. <span class="num">2026-04-21 Anthropic remove Claude Code khỏi Pro plan tạm thời, restore sau</span> — anticipate volatility.
-            <a href="https://claude.com/pricing" target="_blank">claude.com/pricing</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">05</div><div class="title">Token budget + abort</div></div>
           <div class="desc">Nhỏ &lt;10K · Vừa 20-50K · Lớn 50-200K. Vượt 1.5× → abort.</div>
-          <div class="evidence">
-            <span class="strength weak">Weak</span>
-            Anthropic Economic Index: coding <span class="num">35% Claude.ai conversations · 44% API traffic</span>. Heavy-tail spend. <span class="num">Không có abort-threshold guidance chính thức.</span>
-            <a href="https://anthropic.com/research/anthropic-economic-index-january-2026-report" target="_blank">anthropic.com/research/anthropic-economic-index-january-2026-report</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">06</div><div class="title">Tránh waste vặt</div></div>
           <div class="desc">Đừng đọc lại file. Đừng search redundant. Đừng idle session.</div>
-          <div class="evidence">
-            <span class="strength strong">Strong</span>
-            Hooks/grep pre-filter giảm context <span class="num">2-3 orders of magnitude</span> ("tens of thousands → hundreds of tokens").
-            <a href="https://code.claude.com/docs/en/costs" target="_blank">code.claude.com/docs/en/costs</a>
-          </div>
         </div>
 
       </div>
@@ -316,101 +251,51 @@
         <div class="pattern">
           <div class="head-row"><div class="num">01</div><div class="title">Doing → Directing</div></div>
           <div class="desc">30% spec + 50% review + 20% intervene. Ngừng cố làm typist.</div>
-          <div class="evidence">
-            <span class="strength strong">Strong</span>
-            Karpathy verbatim Jan 2026: <span class="num">"80% manual+autocomplete → 80% agent coding... biggest change in 2 decades of programming"</span>.
-            <a href="https://x.com/karpathy/status/2015883857489522876" target="_blank">x.com/karpathy/status/2015883857489522876</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">02</div><div class="title">Đọc code thành core skill</div></div>
           <div class="desc">Test "narrate-back": kể lại được từng block làm gì → mới accept.</div>
-          <div class="evidence">
-            <span class="strength medium">Medium</span>
-            SO 2025: <span class="num">61.3% want to fully understand their code · 76% won't trust AI for deployment</span>. Pattern real, magnitude anecdotal.
-            <a href="https://survey.stackoverflow.co/2025/ai/" target="_blank">survey.stackoverflow.co/2025/ai/</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">03</div><div class="title">Trust-but-verify</div></div>
           <div class="desc">70% problem (Osmani). Review output mệt hơn review work của con người.</div>
-          <div class="evidence">
-            <span class="strength strong">Strong</span>
-            Osmani: favorable views AI coding <span class="num">70% → 60% trong 2 năm · ~30% report little/no trust</span>. Vectara: Sonnet 4.5 <span class="num">&gt;10% hallucination</span> (summarization).
-            <a href="https://addyo.substack.com/p/the-70-problem-hard-truths-about" target="_blank">addyo.substack.com/p/the-70-problem-hard-truths-about</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">04</div><div class="title">Skill atrophy mitigation</div></div>
           <div class="desc">No-AI sprint định kỳ. Junior 6 tháng đầu hạn chế Claude cho fundamentals.</div>
-          <div class="evidence">
-            <span class="strength strong">Strong</span>
-            <span class="num">Anthropic RCT n=52</span> Feb 2026: AI users <span class="num">17% lower comprehension</span>. Full-delegate &lt;40%, explanation-seeking &gt;65%.
-            <a href="https://anthropic.com/research/AI-assistance-coding-skills" target="_blank">anthropic.com/research/AI-assistance-coding-skills</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">05</div><div class="title">Spec-first thinking</div></div>
           <div class="desc">Brief 500-1500 từ với constraint, ví dụ, anti-pattern. Brief &lt;200 từ chưa đủ.</div>
-          <div class="evidence">
-            <span class="strength weak">Weak</span>
-            Practitioner consensus only. Cherny: plan mode + feedback loop là core. <span class="num">Không có controlled study về "brief quality → output quality" correlation.</span>
-            <a href="https://code.claude.com/docs/en/best-practices" target="_blank">code.claude.com/docs/en/best-practices</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">06</div><div class="title">Blast radius mindset</div></div>
           <div class="desc">Không bao giờ Claude trực tiếp đụng prod. Staging → verify → apply.</div>
-          <div class="evidence">
-            <span class="strength strong">Strong</span>
-            PocketOS: Claude Opus 4.6 deleted prod DB <span class="num">trong 9 giây</span>, including backups. Replit Jul 2025: deleted DB during code freeze, <span class="num">fabricated 4,000 fake users</span>.
-            <a href="https://blog.railway.com/p/your-ai-wants-to-nuke-your-database" target="_blank">blog.railway.com/p/your-ai-wants-to-nuke-your-database</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">07</div><div class="title">Override khi Claude bịa</div></div>
           <div class="desc">Số liệu SEO phải trace về MCP source thực.</div>
-          <div class="evidence">
-            <span class="strength strong">Strong</span>
-            <span class="num">METR RCT Jul 2025</span>: experienced devs <span class="num">19% slower</span> với AI tools, despite believing 20-24% faster. Vectara: Sonnet 4.5 <span class="num">&gt;10% hallucination</span>.
-            <a href="https://arxiv.org/abs/2507.09089" target="_blank">arxiv.org/abs/2507.09089</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">08</div><div class="title">Learning loop hàng ngày</div></div>
           <div class="desc">Mentor Loop (Fowler): goal nhỏ → plan → check → reflect tradeoff.</div>
-          <div class="evidence">
-            <span class="strength strong">Strong</span>
-            Fowler verbatim: <span class="num">"don't shortcut the learning loop"</span>, LLMs là "ultimate Maintenance Cliff". Anthropic RCT confirms: iterative debug → 17% lower comprehension.
-            <a href="https://martinfowler.com/articles/llm-learning-loop.html" target="_blank">martinfowler.com/articles/llm-learning-loop.html</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">09</div><div class="title">Non-dev cần học gì</div></div>
           <div class="desc">Terminal · git · JSON/YAML · Markdown · prompt design. KHÔNG cần Python/JS.</div>
-          <div class="evidence">
-            <span class="strength medium">Medium</span>
-            "How Anthropic Teams Use Claude Code" PDF: <span class="num">"lawyers built phone tree systems, marketers generated hundreds of ad variations, data scientists created visualizations without knowing JavaScript"</span>.
-            <a href="https://www-cdn.anthropic.com/58284b19e702b49db9302d5b6f135ad8871e7658.pdf" target="_blank">anthropic.com/.../How Anthropic teams use Claude Code (PDF)</a>
-          </div>
         </div>
 
         <div class="pattern">
           <div class="head-row"><div class="num">10</div><div class="title">Không thành button-pusher</div></div>
           <div class="desc">Treat Claude như "OS for knowledge work", không "magic answer machine".</div>
-          <div class="evidence">
-            <span class="strength strong">Strong</span>
-            METR <span class="num">19% slower</span>. Anthropic RCT <span class="num">17% lower comprehension</span>. Harness research: AI-gen code <span class="num">−7.2% delivery stability</span>.
-            <a href="https://arxiv.org/abs/2507.09089" target="_blank">arxiv.org/abs/2507.09089</a>
-          </div>
         </div>
       </div>
 
